@@ -1,5 +1,5 @@
 /* Bhakti Amrit Sanatan - Progressive Web App Service Worker */
-const CACHE_NAME = 'bas-pwa-v1';
+const CACHE_NAME = 'bas-pwa-v433';
 const PRECACHE_URLS = [
   '/',
   '/assets/images/cropped-Logo-150x150.png'
