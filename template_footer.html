@@ -550,7 +550,7 @@ BAS.initRotatingQuotes = function () {
   setInterval(showQuote, 5000);
 };
 
-// ── SEARCH SUGGESTIONS ─────────────────────────────────
+// ── SEARCH SUGGESTIONS & AUTOCOMPLETE ──────────────────
 BAS.initSearchBar = function () {
   const form  = document.getElementById('hero-search-form');
   if (!form) return;
@@ -558,36 +558,87 @@ BAS.initSearchBar = function () {
   const input = form.querySelector('input');
   if (!input) return;
 
-  const suggestions = ['गायत्री मंत्र', 'महामृत्युंजय मंत्र', 'हनुमान चालीसा', 'दुर्गा पूजा विधि', 'एकादशी व्रत', 'नवरात्रि व्रत', 'गीता श्लोक', 'शिव पूजा', 'सोमवार व्रत'];
+  form.setAttribute('action', '/articles');
+  form.setAttribute('method', 'GET');
+  input.setAttribute('name', 'q');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const q = input.value.trim();
+    if (q) {
+      window.location.href = '/articles?q=' + encodeURIComponent(q);
+    } else {
+      window.location.href = '/articles';
+    }
+  });
+
+  const defaultSuggestions = ['गायत्री मंत्र', 'महामृत्युंजय मंत्र', 'हनुमान चालीसा', 'दुर्गा पूजा विधि', 'एकादशी व्रत', 'नवरात्रि व्रत', 'गीता श्लोक', 'शिव पूजा', 'सोमवार व्रत'];
 
   const list = document.createElement('ul');
-  list.style.cssText = 'position:absolute;top:100%;left:0;right:0;background:rgba(13,0,31,0.97);border:1px solid rgba(245,158,11,0.25);border-radius:16px;margin-top:8px;overflow:hidden;list-style:none;padding:8px 0;display:none;z-index:100;backdrop-filter:blur(20px);';
+  list.style.cssText = 'position:absolute;top:100%;left:0;right:0;background:rgba(13,0,31,0.98);border:1px solid rgba(245,158,11,0.3);border-radius:16px;margin-top:8px;overflow-y:auto;max-height:360px;list-style:none;padding:8px 0;display:none;z-index:9999;backdrop-filter:blur(20px);box-shadow:0 16px 36px rgba(0,0,0,0.8);';
   form.style.position = 'relative';
   form.appendChild(list);
 
-  input.addEventListener('focus', () => {
+  function renderList(items) {
     list.innerHTML = '';
-    suggestions.forEach(s => {
+    if (!items.length) {
+      list.style.display = 'none';
+      return;
+    }
+    items.slice(0, 8).forEach(item => {
       const li = document.createElement('li');
-      li.textContent = '🔍 ' + s;
-      li.style.cssText = 'padding:10px 20px;cursor:pointer;font-family:var(--font-deva);font-size:0.875rem;color:rgba(255,255,255,0.75);transition:background 0.15s;';
-      li.addEventListener('mouseenter', () => li.style.background = 'rgba(245,158,11,0.1)');
+      li.style.cssText = 'padding:10px 20px;cursor:pointer;font-family:var(--font-deva);font-size:0.9rem;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:10px;transition:background 0.15s;border-bottom:1px solid rgba(255,255,255,0.05);';
+      
+      const titleSpan = document.createElement('span');
+      titleSpan.textContent = '📖 ' + (item.title || item);
+      li.appendChild(titleSpan);
+
+      if (item.category) {
+        const catBadge = document.createElement('span');
+        catBadge.textContent = item.category;
+        catBadge.style.cssText = 'font-size:0.75rem;background:rgba(245,158,11,0.15);color:var(--clr-gold-light);padding:2px 8px;border-radius:10px;border:1px solid rgba(245,158,11,0.3);';
+        li.appendChild(catBadge);
+      }
+
+      li.addEventListener('mouseenter', () => li.style.background = 'rgba(245,158,11,0.15)');
       li.addEventListener('mouseleave', () => li.style.background = '');
-      li.addEventListener('mousedown', (e) => { e.preventDefault(); input.value = s; list.style.display = 'none'; form.submit(); });
+      li.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        if (item.url) {
+          window.location.href = item.url;
+        } else {
+          window.location.href = '/articles?q=' + encodeURIComponent(item.title || item);
+        }
+      });
       list.appendChild(li);
     });
     list.style.display = 'block';
+  }
+
+  input.addEventListener('focus', () => {
+    if (!input.value.trim()) {
+      renderList(defaultSuggestions.map(s => ({ title: s })));
+    }
   });
 
-  input.addEventListener('blur', () => setTimeout(() => { list.style.display = 'none'; }, 200));
+  input.addEventListener('blur', () => setTimeout(() => { list.style.display = 'none'; }, 250));
 
   input.addEventListener('input', () => {
-    const val = input.value.trim().toLowerCase();
-    const items = list.querySelectorAll('li');
-    items.forEach(li => {
-      li.style.display = li.textContent.toLowerCase().includes(val) ? 'block' : 'none';
-    });
-    list.style.display = 'block';
+    const q = input.value.trim().toLowerCase();
+    if (!q) {
+      renderList(defaultSuggestions.map(s => ({ title: s })));
+      return;
+    }
+
+    if (window.SANATAN_ARTICLES && Array.isArray(window.SANATAN_ARTICLES)) {
+      const matches = window.SANATAN_ARTICLES.filter(a =>
+        a.t.toLowerCase().includes(q) || a.e.toLowerCase().includes(q) || a.c.toLowerCase().includes(q)
+      ).map(a => ({ title: a.t, url: a.u, category: a.ch || a.c }));
+      renderList(matches);
+    } else {
+      const matches = defaultSuggestions.filter(s => s.toLowerCase().includes(q)).map(s => ({ title: s }));
+      renderList(matches);
+    }
   });
 };
 

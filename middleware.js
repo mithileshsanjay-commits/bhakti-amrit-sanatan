@@ -20,6 +20,19 @@ export default function middleware(request) {
     }
   }
   
+  // Exclude non-Dharma cricket / IPL URLs permanently with 410 Gone
+  const pathname = decodeURIComponent(url.pathname).toLowerCase()
+  if (
+    pathname.includes('cricket') || 
+    pathname.includes('आईपीएल') || 
+    pathname.includes('ipl')
+  ) {
+    return new Response('410 Gone - This content is no longer available.', {
+      status: 410,
+      headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+    })
+  }
+
   // Force canonical hostname
   if (url.hostname === 'bhaktiamritsanatan.com' || url.hostname.endsWith('vercel.app')) {
     url.hostname = 'www.bhaktiamritsanatan.com'

@@ -2,6 +2,9 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
+    { "source": "/articles",      "destination": "/articles.html" },
+    { "source": "/all-articles",  "destination": "/articles.html" },
+    { "source": "/blog",          "destination": "/articles.html" },
     { "source": "/mantras",       "destination": "/mantras.html" },
     { "source": "/puja-vidhi",    "destination": "/puja-vidhi.html" },
     { "source": "/geeta-gyan",    "destination": "/geeta-gyan.html" },
