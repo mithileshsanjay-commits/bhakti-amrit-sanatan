@@ -2,7 +2,7 @@
 const CACHE_NAME = 'bas-pwa-v1';
 const PRECACHE_URLS = [
   '/',
-  '/wp-content/uploads/2026/02/cropped-Logo-150x150.png'
+  '/assets/images/cropped-Logo-150x150.png'
 ];
 
 self.addEventListener('install', (event) => {
