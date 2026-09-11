@@ -1,0 +1,526 @@
+/* ============================================================
+   BHAKTI AMRIT SANATAN — AFFILIATE SHOP STYLES
+   ============================================================ */
+
+.shop-hero-banner {
+  background: var(--grad-hero);
+  padding: var(--sp-2xl) 0 var(--sp-xl);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--clr-glass-border);
+}
+
+.shop-affiliate-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: var(--clr-gold-light);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.shop-hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.shop-hero-subtitle {
+  font-family: var(--font-deva);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--clr-gold-light);
+  margin-bottom: 8px;
+}
+
+.shop-hero-desc {
+  color: var(--clr-text-muted);
+  max-width: 65ch;
+  margin: 0 auto 28px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Shop Search & Filter Toolbar */
+.shop-toolbar {
+  max-width: 640px;
+  margin: 0 auto 20px;
+  position: relative;
+}
+
+.shop-search-input {
+  width: 100%;
+  padding: 14px 20px 14px 46px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--radius-full);
+  color: #fff;
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.shop-search-input:focus {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--clr-gold);
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.25);
+}
+
+.shop-search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+  color: var(--clr-gold);
+  pointer-events: none;
+}
+
+/* Multi-Country Devotee Store Switcher */
+.shop-country-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 auto;
+  max-width: 780px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(245, 158, 11, 0.22);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(8px);
+}
+
+.shop-country-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--clr-gold-light);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+.shop-country-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.shop-country-btn:hover {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #ffffff;
+}
+
+.shop-country-btn.active {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  border-color: #f59e0b;
+  color: #0d001f;
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(245, 158, 11, 0.35);
+}
+
+/* Category Filter Bar */
+.shop-filter-bar {
+  background: var(--clr-bg-dark);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.12);
+  padding: var(--sp-md) 0;
+  position: sticky;
+  top: 70px;
+  z-index: 20;
+  backdrop-filter: blur(12px);
+}
+
+.shop-categories-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 4px 0;
+}
+
+.shop-categories-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.shop-cat-filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  background: var(--clr-glass);
+  border: 1px solid var(--clr-glass-border);
+  color: var(--clr-text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.shop-cat-filter-btn:hover {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: var(--clr-gold);
+  color: var(--clr-gold-light);
+}
+
+.shop-cat-filter-btn.active {
+  background: var(--grad-gold);
+  border-color: var(--clr-gold);
+  color: #0d001f;
+  font-weight: 700;
+  box-shadow: 0 2px 12px rgba(245, 158, 11, 0.3);
+}
+
+.shop-cat-count {
+  font-size: 0.72rem;
+  background: rgba(0, 0, 0, 0.25);
+  color: inherit;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+}
+
+/* Products Grid */
+.products-section {
+  padding: var(--sp-2xl) 0 var(--sp-3xl);
+  background: linear-gradient(180deg, var(--clr-bg-darkest) 0%, var(--clr-bg-dark) 100%);
+  min-height: 60vh;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--sp-xl);
+}
+
+/* Product Card */
+.affiliate-product-card {
+  background: var(--grad-card);
+  border: 1px solid var(--clr-glass-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.affiliate-product-card:hover {
+  border-color: rgba(245, 158, 11, 0.5);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 24px rgba(245, 158, 11, 0.18);
+}
+
+.product-badge-wrap {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+}
+
+.product-pill-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.3px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.badge-gold {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #0d001f;
+}
+
+.badge-green {
+  background: rgba(34, 197, 94, 0.2);
+  border: 1px solid rgba(34, 197, 94, 0.5);
+  color: #4ade80;
+}
+
+.badge-purple {
+  background: rgba(168, 85, 247, 0.25);
+  border: 1px solid rgba(168, 85, 247, 0.5);
+  color: #c084fc;
+}
+
+.product-media {
+  aspect-ratio: 16/11;
+  background: linear-gradient(135deg, rgba(59, 7, 100, 0.5), rgba(26, 5, 51, 0.8));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.5rem;
+  position: relative;
+  border-bottom: 1px solid rgba(245, 158, 11, 0.1);
+  overflow: hidden;
+}
+
+.product-media-icon {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+}
+
+.affiliate-product-card:hover .product-media-icon {
+  transform: scale(1.15) rotate(-4deg);
+}
+
+.product-vendor-tag {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: rgba(13, 0, 31, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: var(--clr-gold-light);
+}
+
+/* Card Body */
+.product-content {
+  padding: var(--sp-lg);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-category-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--clr-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.product-item-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.35;
+  margin-bottom: 8px;
+  min-height: 2.7em;
+}
+
+.product-item-desc {
+  font-size: 0.84rem;
+  color: var(--clr-text-muted);
+  line-height: 1.55;
+  margin-bottom: 14px;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Rating */
+.product-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  font-size: 0.8rem;
+}
+
+.product-rating-stars {
+  color: #fbbf24;
+  letter-spacing: 1px;
+}
+
+.product-rating-score {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.product-reviews-count {
+  color: var(--clr-text-faint);
+  font-size: 0.75rem;
+}
+
+/* Price Row */
+.product-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.product-current-price {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--clr-gold-light);
+}
+
+.product-mrp-price {
+  font-size: 0.85rem;
+  color: var(--clr-text-faint);
+  text-decoration: line-through;
+}
+
+.product-discount-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #4ade80;
+  background: rgba(34, 197, 94, 0.12);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Amazon Buy Button */
+.btn-amazon-affiliate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 18px;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #0d001f !important;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: var(--radius-full);
+  text-decoration: none !important;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.25);
+  border: none;
+}
+
+.btn-amazon-affiliate:hover {
+  background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+  color: #000000 !important;
+}
+
+.btn-amazon-affiliate svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Empty State */
+.shop-no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--clr-text-muted);
+}
+
+.shop-no-results-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+/* Trust / Why Buy Section */
+.shop-trust-section {
+  padding: var(--sp-2xl) 0;
+  background: var(--clr-bg-darkest);
+  border-top: 1px solid rgba(245, 158, 11, 0.1);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.1);
+}
+
+.shop-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--sp-lg);
+}
+
+.shop-trust-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(245, 158, 11, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  text-align: center;
+}
+
+.shop-trust-icon {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+}
+
+.shop-trust-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--clr-gold-light);
+  margin-bottom: 8px;
+}
+
+.shop-trust-desc {
+  font-size: 0.85rem;
+  color: var(--clr-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Affiliate Disclosure Box */
+.shop-disclosure-box {
+  background: rgba(245, 158, 11, 0.05);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-top: 40px;
+  text-align: center;
+  max-width: 840px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.shop-disclosure-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--clr-gold);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.shop-disclosure-text {
+  font-size: 0.82rem;
+  color: var(--clr-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--sp-md);
+  }
+  .shop-filter-bar {
+    top: 60px;
+  }
+}
