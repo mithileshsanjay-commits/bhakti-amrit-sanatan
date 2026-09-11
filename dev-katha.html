@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="hi" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dev Katha — देव कथा | दिव्य कहानियां | Bhakti Amrit Sanatan</title>
+  <meta name="description" content="सनातन धर्म की दिव्य देव कथाएं हिंदी में — शिव पुराण, विष्णु पुराण, रामायण, महाभारत की अद्भुत कहानियां। Divine stories of Hindu gods and goddesses.">
+  <meta name="keywords" content="dev katha, देव कथा, shiv katha, vishnu katha, ram katha, divine stories, hindu stories, purana katha">
+  <meta property="og:title" content="Dev Katha — देव कथा | Bhakti Amrit Sanatan">
+  <meta property="og:description" content="सनातन धर्म की दिव्य देव कथाएं — शिव, विष्णु, राम, कृष्ण की अद्भुत कहानियां">
+  <meta property="og:url" content="https://www.bhaktiamritsanatan.com/dev-katha/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.bhaktiamritsanatan.com/dev-katha/">
+  <link rel="icon" href="https://www.bhaktiamritsanatan.com/wp-content/uploads/2025/12/cropped-cropped-BHAKTI-AMRIT-SANATAN-LOGO-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"CollectionPage","name":"Dev Katha","description":"सनातन धर्म की दिव्य देव कथाएं","url":"https://www.bhaktiamritsanatan.com/dev-katha/","publisher":{"@type":"Organization","name":"Bhakti Amrit Sanatan","url":"https://www.bhaktiamritsanatan.com"}}
+  </script>
+  <style>
+    .reading-progress-bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#f59e0b,#ea580c);z-index:9999}
+    .katha-card{background:var(--grad-card);border:1px solid var(--clr-glass-border);border-radius:var(--radius-xl);overflow:hidden;transition:all var(--dur-mid) var(--ease-smooth);text-decoration:none;display:block;position:relative}
+    .katha-card:hover{transform:translateY(-8px);border-color:rgba(245,158,11,0.45);box-shadow:var(--shadow-card),0 0 40px rgba(245,158,11,0.15)}
+    .katha-card__img{aspect-ratio:16/9;overflow:hidden;position:relative}
+    .katha-card__img img{width:100%;height:100%;object-fit:cover;transition:transform var(--dur-slow) var(--ease-smooth)}
+    .katha-card:hover .katha-card__img img{transform:scale(1.08)}
+    .katha-card__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,0,31,0.95) 0%,transparent 55%)}
+    .katha-card__deity{position:absolute;top:14px;left:14px;background:var(--grad-gold);color:#fff;font-size:0.7rem;font-weight:700;letter-spacing:0.08em;padding:4px 14px;border-radius:var(--radius-full);z-index:2}
+    .katha-card__body{padding:var(--sp-lg)}
+    .katha-card__title{font-family:var(--font-serif);font-size:1.1rem;font-weight:700;color:var(--clr-text-white);line-height:1.4;margin-bottom:var(--sp-sm);transition:color var(--dur-fast) var(--ease-smooth)}
+    .katha-card:hover .katha-card__title{color:var(--clr-gold-light)}
+    .katha-card__excerpt{font-size:0.875rem;color:var(--clr-text-muted);line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+    .katha-card__meta{display:flex;align-items:center;justify-content:space-between;margin-top:var(--sp-md);padding-top:var(--sp-md);border-top:1px solid rgba(255,255,255,0.06);font-size:0.78rem;color:var(--clr-text-faint)}
+    .katha-card__read{color:var(--clr-gold);font-weight:700;display:flex;align-items:center;gap:4px}
+    .katha-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-lg)}
+    .katha-featured{grid-column:1/-1;display:grid;grid-template-columns:1.4fr 1fr;min-height:360px}
+    .katha-featured .katha-card__img{aspect-ratio:unset;min-height:360px}
+    .katha-featured .katha-card__body{padding:var(--sp-xl);display:flex;flex-direction:column;justify-content:center;background:var(--grad-card)}
+    .katha-featured .katha-card__title{font-size:1.5rem}
+    .deity-nav{display:flex;flex-wrap:wrap;gap:var(--sp-sm);justify-content:center}
+    .deity-btn{display:flex;align-items:center;gap:8px;padding:10px 22px;border-radius:var(--radius-full);border:1px solid var(--clr-glass-border);background:var(--clr-glass);color:var(--clr-text-muted);font-size:0.875rem;font-weight:600;cursor:pointer;transition:all var(--dur-fast) var(--ease-smooth)}
+    .deity-btn:hover,.deity-btn.active{background:rgba(245,158,11,0.15);border-color:var(--clr-gold);color:var(--clr-gold-light)}
+    .purana-card{background:var(--grad-card);border:1px solid var(--clr-glass-border);border-radius:var(--radius-xl);padding:var(--sp-xl);position:relative;overflow:hidden;transition:all var(--dur-mid) var(--ease-smooth)}
+    .purana-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--grad-gold);transform:scaleX(0);transform-origin:left;transition:transform 0.5s var(--ease-smooth)}
+    .purana-card:hover::before{transform:scaleX(1)}
+    .purana-card:hover{border-color:rgba(245,158,11,0.35);box-shadow:var(--shadow-gold)}
+    @media(max-width:900px){.katha-grid{grid-template-columns:1fr 1fr}.katha-featured{grid-template-columns:1fr;min-height:auto}.katha-featured .katha-card__img{min-height:220px}}
+    @media(max-width:640px){.katha-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div class="reading-progress-bar reading-progress" role="progressbar"></div>
+<div class="topbar" role="banner">
+  <div class="container">
+    <div class="topbar__inner">
+      <span class="topbar__label">आज का पंचांग</span>
+      <div class="topbar__ticker-wrap"><span class="topbar__ticker" id="bas-panchang-text" aria-live="polite">सोमवार · तिथि: त्रयोदशी · मास: भाद्रपद · ॐ नमः शिवाय · जय श्री राम · हरे कृष्ण · ॐ गं गणपतये नमः</span></div>
+      <div class="topbar__links"><a href="donate.html">🙏 Donate</a><a href="shop.html">🛒 Shop</a></div>
+    </div>
+  </div>
+</div>
+<header class="site-nav" role="navigation">
+  <div class="container">
+    <nav class="nav__inner" aria-label="Main Navigation">
+      <a class="nav__logo" href="index.html" aria-label="Home">
+        <img class="nav__logo-img" src="https://www.bhaktiamritsanatan.com/wp-content/uploads/2026/02/cropped-Logo-150x150.png" alt="Logo" width="44" height="44">
+        <span class="nav__logo-text"><span class="nav__logo-name">Bhakti Amrit Sanatan</span><span class="nav__logo-tagline">भक्ति अमृत सनातन</span></span>
+      </a>
+    <div class="nav__drawer" id="main-nav-drawer">
+      <ul class="nav__menu" id="main-menu">
+        <li><a class="nav__link" href="index.html">🏠 Home</a></li>
+        <li><a class="nav__link" href="mantras.html">🔱 Mantras</a></li>
+        <li><a class="nav__link" href="puja-vidhi.html">🪔 Puja Vidhi</a></li>
+        <li><a class="nav__link" href="vrat-festivals.html">📅 Vrat &amp; Festivals</a></li>
+        <li><a class="nav__link" href="dev-katha.html">📖 Dev Katha</a></li>
+        <li><a class="nav__link" href="geeta-gyan.html">🕉️ Geeta Gyan</a></li>
+      </ul>
+      <div class="nav__mobile-actions">
+        <a class="btn btn--ghost" href="shop.html">🛒 Shop</a>
+        <a class="btn btn--primary" href="donate.html">🙏 Donate</a>
+      </div>
+    </div>
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="shop.html">🛒 Shop</a>
+      <a class="btn btn--primary" href="donate.html">🙏 Donate</a>
+    </div>
+    <button class="nav-toggle" aria-controls="main-nav-drawer" aria-expanded="false" aria-label="Toggle Menu">
+      <span></span><span></span><span></span>
+    </button>
+    </nav>
+  </div>
+</header>
+<section class="page-hero" aria-labelledby="page-title">
+  <div class="mandala-bg" aria-hidden="true"><svg class="mandala-1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" fill="none"><circle cx="250" cy="250" r="240" stroke="#f59e0b" stroke-width="0.5"/><circle cx="250" cy="250" r="160" stroke="#f59e0b" stroke-width="0.5"/><polygon points="250,30 470,170 470,330 250,470 30,330 30,170" stroke="#f59e0b" stroke-width="0.4" fill="none"/></svg></div>
+  <div class="hero__bg-glow hero__bg-glow--1" aria-hidden="true"></div>
+  <div class="hero__bg-glow hero__bg-glow--2" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:2">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">🏠 Home</a><span>›</span><span>Dev Katha</span></nav>
+    <span class="page-hero__icon">📖</span>
+    <h1 class="page-hero__title" id="page-title">Dev Katha</h1>
+    <p class="page-hero__subtitle">देव कथा — दिव्य कहानियां</p>
+    <p class="page-hero__desc">Discover the timeless divine stories of Sanatan Dharma — tales of Shiva, Vishnu, Rama, Krishna, Durga and all deities that illuminate the path of dharma and liberation.</p>
+    <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:999px;padding:6px 18px;font-size:0.8rem;color:var(--clr-gold)">📖 100+ Divine Stories</div>
+      <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:999px;padding:6px 18px;font-size:0.8rem;color:var(--clr-gold)">🔱 Shiv Puran</div>
+      <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:999px;padding:6px 18px;font-size:0.8rem;color:var(--clr-gold)">🏹 Ramayana</div>
+    </div>
+  </div>
+</section>
+<div style="padding:32px 0;background:var(--clr-bg-dark);border-bottom:1px solid rgba(245,158,11,0.1);position:sticky;top:var(--nav-height);z-index:50;backdrop-filter:blur(12px)">
+  <div class="container">
+    <div class="deity-nav" id="deity-filter">
+      <button class="deity-btn active filter-btn" data-deity="all">🙏 All Kathas</button>
+      <button class="deity-btn filter-btn" data-deity="shiva">🔱 Shiva</button>
+      <button class="deity-btn filter-btn" data-deity="vishnu">🪷 Vishnu</button>
+      <button class="deity-btn filter-btn" data-deity="rama">🏹 Rama</button>
+      <button class="deity-btn filter-btn" data-deity="krishna">🦚 Krishna</button>
+      <button class="deity-btn filter-btn" data-deity="durga">🌺 Durga</button>
+      <button class="deity-btn filter-btn" data-deity="ganesh">🐘 Ganesh</button>
+      <button class="deity-btn filter-btn" data-deity="hanuman">🐒 Hanuman</button>
+    </div>
+  </div>
+</div>
+<section style="padding:var(--sp-3xl) 0;background:var(--clr-bg-darkest)" aria-labelledby="featured-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">⭐ Featured Story</span>
+      <h2 class="section-title" id="featured-heading">इस सप्ताह की विशेष कथा</h2>
+      <div class="divider-om">॥ ॐ ॥</div>
+    </div>
+    <div class="katha-grid">
+      <a class="katha-card katha-featured reveal" href="https://www.bhaktiamritsanatan.com/shiv-katha/" target="_blank" rel="noopener">
+        <div class="katha-card__img"><img src="https://www.bhaktiamritsanatan.com/wp-content/uploads/2026/07/sanatan_1784715094484_0-150x150.jpg" alt="Shiv Katha" loading="lazy"><div class="katha-card__overlay"></div><span class="katha-card__deity">🔱 Shiva Katha</span></div>
+        <div class="katha-card__body">
+          <div style="font-size:0.75rem;color:var(--clr-text-faint);margin-bottom:12px">📅 August 2026 · शिव पुराण</div>
+          <h3 class="katha-card__title" style="font-size:1.5rem">समुद्र मंथन — अमृत और हलाहल की अद्भुत कथा</h3>
+          <p class="katha-card__excerpt" style="-webkit-line-clamp:5">जब देव और दानव मिलकर क्षीरसागर मंथन करने लगे, तब पहले निकला भयंकर हलाहल विष। संसार को बचाने के लिए महादेव शिव ने वह विष पी लिया और नीलकंठ कहलाए। यह कथा हमें सिखाती है कि सच्चा परोपकार ही देवत्व का लक्षण है।</p>
+          <div class="katha-card__meta" style="margin-top:auto"><span>⏱ 12 min read</span><span class="katha-card__read">Read Full Katha →</span></div>
+        </div>
+      </a>
+      <a class="katha-card reveal reveal-delay-1" href="https://www.bhaktiamritsanatan.com/ram-katha/" target="_blank" rel="noopener">
+        <div class="katha-card__img"><img src="https://www.bhaktiamritsanatan.com/wp-content/uploads/2026/07/sanatan_1784297501195_0-150x150.jpg" alt="Ram Katha" loading="lazy"><div class="katha-card__overlay"></div><span class="katha-card__deity">🏹 Ram Katha</span></div>
+        <div class="katha-card__body">
+          <div style="font-size:0.75rem;color:var(--clr-text-faint);margin-bottom:8px">📅 August 2026</div>
+          <h3 class="katha-card__title">सीता स्वयंवर — शिव धनुष भंग की रोचक कथा</h3>
+          <p class="katha-card__excerpt">जनक की नगरी मिथिला में लगे महायज्ञ में जब शिव का दिव्य धनुष रखा गया, तब किसी राजा से भी न उठा — पर राम के एक स्पर्श से वह धनुष टूट गया।</p>
+          <div class="katha-card__meta"><span>⏱ 8 min read</span><span class="katha-card__read">Read →</span></div>
+        </div>
+      </a>
+      <a class="katha-card reveal reveal-delay-2" href="https://www.bhaktiamritsanatan.com/krishna-katha/" target="_blank" rel="noopener">
+        <div class="katha-card__img"><img src="https://www.bhaktiamritsanatan.com/wp-content/uploads/2026/07/sanatan_1784141275913_0-150x150.jpg" alt="Krishna Katha" loading="lazy"><div class="katha-card__overlay"></div><span class="katha-card__deity">🦚 Krishna Katha</span></div>
+        <div class="katha-card__body">
+          <div style="font-size:0.75rem;color:var(--clr-text-faint);margin-bottom:8px">📅 July 2026</div>
+          <h3 class="katha-card__title">कालिया नाग दमन — यमुना को मुक्त करने की कथा</h3>
+          <p class="katha-card__excerpt">जब विषैले कालिया नाग ने यमुना को प्रदूषित कर दिया, तब बालकृष्ण ने यमुना में कूदकर उसका दमन किया।</p>
+          <div class="katha-card__meta"><span>⏱ 6 min read</span><span class="katha-card__read">Read →</span></div>
+        </div>
+      </a>
+      <a class="katha-card reveal" href="https://www.bhaktiamritsanatan.com/durga-katha/" target="_blank" rel="noopener">
+        <div class="katha-card__img"><img src="https://www.bhaktiamritsanatan.com/wp-content/uploads/2026/07/sanatan_1783879384971_0-150x150.jpg" alt="Durga Katha" loading="lazy"><div class="katha-card__overlay"></div><span class="katha-card__deity">🌺 Durga Katha</span></div>
+        <div class="katha-card__body">
+          <div style="font-size:0.75rem;color:var(--clr-text-faint);margin-bottom:8px">📅 July 2026</div>
+          <h3 class="katha-card__title">महिषासुर मर्दिनी — देवी दुर्गा और महिषासुर का युद्ध</h3>
+          <p class="katha-card__excerpt">जब महिषासुर का अत्याचार देवलोक में भी फैल गया, तब सभी देवताओं की शक्ति से माँ दुर्गा प्रकट हुईं।</p>
+          <div class="katha-card__meta"><span>⏱ 10 min read</span><span class="katha-card__read">Read →</span></div>
+        </div>
+      </a>
+      <a class="katha-card reveal reveal-delay-1" href="https://www.bhaktiamritsanatan.com/ganesh-katha/" target="_blank" rel="noopener">
+        <div class="katha-card__img"><img src="https://www.bhaktiamritsanatan.com/wp-content/uploads/2026/07/sanatan_1783838948082_0-150x150.jpg" alt="Ganesh Katha" loading="lazy"><div class="katha-card__overlay"></div><span class="katha-card__deity">🐘 Ganesh Katha</span></div>
+        <div class="katha-card__body">
+          <div style="font-size:0.75rem;color:var(--clr-text-faint);margin-bottom:8px">📅 July 2026</div>
+          <h3 class="katha-card__title">गणेश जी का जन्म — पार्वती और शिव की अद्भुत कथा</h3>
+          <p class="katha-card__excerpt">माँ पार्वती ने हल्दी और तेल से बनाए एक बालक में प्राण डाले और उसे द्वारपाल बनाया।</p>
+          <div class="katha-card__meta"><span>⏱ 7 min read</span><span class="katha-card__read">Read →</span></div>
+        </div>
+      </a>
+      <a class="katha-card reveal reveal-delay-2" href="https://www.bhaktiamritsanatan.com/hanuman-katha/" target="_blank" rel="noopener">
+        <div class="katha-card__img"><img src="https://www.bhaktiamritsanatan.com/wp-content/uploads/2026/07/sanatan_1783624315090_1-150x150.jpg" alt="Hanuman Katha" loading="lazy"><div class="katha-card__overlay"></div><span class="katha-card__deity">🐒 Hanuman Katha</span></div>
+        <div class="katha-card__body">
+          <div style="font-size:0.75rem;color:var(--clr-text-faint);margin-bottom:8px">📅 June 2026</div>
+          <h3 class="katha-card__title">हनुमान जी का सूर्य को फल समझना — बाल कथा</h3>
+          <p class="katha-card__excerpt">बालक हनुमान ने सूर्य को लाल फल समझकर उन्हें पकड़ने के लिए आकाश में उड़ान भरी।</p>
+          <div class="katha-card__meta"><span>⏱ 5 min read</span><span class="katha-card__read">Read →</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+<section style="padding:var(--sp-3xl) 0;background:linear-gradient(180deg,var(--clr-bg-darkest) 0%,var(--clr-bg-dark) 100%)" aria-labelledby="purana-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">📚 Sacred Scriptures</span>
+      <h2 class="section-title" id="purana-heading">पुराणों की कथाएं</h2>
+      <p class="section-subtitle">18 महापुराण की अद्भुत कहानियां</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--sp-lg)">
+      <div class="purana-card reveal"><div style="font-size:2.5rem;margin-bottom:16px">🔱</div><h3 style="font-family:var(--font-serif);font-size:1.2rem;color:var(--clr-gold-light);margin-bottom:8px">शिव पुराण</h3><p style="font-family:var(--font-deva);font-size:0.875rem;color:var(--clr-text-muted);line-height:1.8;margin-bottom:16px">महादेव की असीम लीलाओं, सती के बलिदान, तारकासुर वध और महाकाल की महिमा से भरी अद्भुत कथाएं।</p><a href="https://www.bhaktiamritsanatan.com/shiv-puran/" target="_blank" rel="noopener" class="btn btn--outline" style="font-size:0.82rem;padding:10px 20px">Read Shiv Puran →</a></div>
+      <div class="purana-card reveal reveal-delay-1"><div style="font-size:2.5rem;margin-bottom:16px">🪷</div><h3 style="font-family:var(--font-serif);font-size:1.2rem;color:var(--clr-gold-light);margin-bottom:8px">विष्णु पुराण</h3><p style="font-family:var(--font-deva);font-size:0.875rem;color:var(--clr-text-muted);line-height:1.8;margin-bottom:16px">भगवान विष्णु के 10 अवतारों, प्रह्लाद भक्ति और नरसिंह अवतार की दिव्य लीलाएं।</p><a href="https://www.bhaktiamritsanatan.com/vishnu-puran/" target="_blank" rel="noopener" class="btn btn--outline" style="font-size:0.82rem;padding:10px 20px">Read Vishnu Puran →</a></div>
+      <div class="purana-card reveal reveal-delay-2"><div style="font-size:2.5rem;margin-bottom:16px">🌺</div><h3 style="font-family:var(--font-serif);font-size:1.2rem;color:var(--clr-gold-light);margin-bottom:8px">देवी भागवत</h3><p style="font-family:var(--font-deva);font-size:0.875rem;color:var(--clr-text-muted);line-height:1.8;margin-bottom:16px">माँ दुर्गा, लक्ष्मी, सरस्वती, काली की अद्भुत शक्ति लीलाएं और नवरात्रि की नौ देवियों की कथाएं।</p><a href="https://www.bhaktiamritsanatan.com/devi-bhagwat/" target="_blank" rel="noopener" class="btn btn--outline" style="font-size:0.82rem;padding:10px 20px">Read Devi Bhagwat →</a></div>
+      <div class="purana-card reveal reveal-delay-3"><div style="font-size:2.5rem;margin-bottom:16px">🏹</div><h3 style="font-family:var(--font-serif);font-size:1.2rem;color:var(--clr-gold-light);margin-bottom:8px">वाल्मीकि रामायण</h3><p style="font-family:var(--font-deva);font-size:0.875rem;color:var(--clr-text-muted);line-height:1.8;margin-bottom:16px">मर्यादापुरुषोत्तम राम की जीवन गाथा — बाल कांड से उत्तर कांड तक की सम्पूर्ण कथा का सार।</p><a href="https://www.bhaktiamritsanatan.com/ramayan/" target="_blank" rel="noopener" class="btn btn--outline" style="font-size:0.82rem;padding:10px 20px">Read Ramayana →</a></div>
+    </div>
+  </div>
+</section>
+<section class="cta-strip" aria-labelledby="newsletter-heading">
+  <div class="container">
+    <div class="cta-strip__inner">
+      <div><p class="cta-strip__text" id="newsletter-heading">🔔 <strong>Get new Dev Kathas every week</strong><br><small>हर सप्ताह नई देव कथा सबसे पहले पाएं — निःशुल्क</small></p></div>
+      <form class="cta-strip__form" data-newsletter-form aria-label="Newsletter subscribe"><label for="newsletter-email2" class="visually-hidden">Your email</label><input class="cta-strip__input" type="email" id="newsletter-email2" placeholder="your@email.com" required autocomplete="email"><button class="btn btn--primary" type="submit">🙏 Subscribe Free</button></form>
+    </div>
+  </div>
+</section>
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-main"><div class="container"><div class="footer-grid">
+    <div class="footer-logo-block">
+      <div class="footer-logo"><img src="https://www.bhaktiamritsanatan.com/wp-content/uploads/2026/02/cropped-Logo-150x150.png" alt="Bhakti Amrit Sanatan" width="56" height="56" loading="lazy"><span class="footer-brand-name">Bhakti Amrit Sanatan</span></div>
+      <p class="footer-desc">सनातन धर्म की सम्पूर्ण जानकारी निःशुल्क।<br>Mantras, Puja Vidhi, Dev Katha, Geeta Gyan — all in one place.</p>
+      <p class="footer-desc" style="margin-top:8px;color:var(--clr-gold);font-style:italic">॥ सर्वे भवन्तु सुखिनः ॥</p>
+      <div class="footer-social"><a href="https://www.youtube.com/@bhaktiamritsanatan" target="_blank" rel="noopener" aria-label="YouTube">▶️</a><a href="https://www.facebook.com/bhaktiamritsanatan" target="_blank" rel="noopener" aria-label="Facebook">📘</a><a href="https://www.instagram.com/bhaktiamritsanatan" target="_blank" rel="noopener" aria-label="Instagram">📷</a><a href="https://t.me/bhaktiamritsanatan" target="_blank" rel="noopener" aria-label="Telegram">💬</a></div>
+    </div>
+    <div><h3 class="footer-heading">Quick Links</h3><ul class="footer-links"><li><a href="mantras.html">🔱 Mantras</a></li><li><a href="puja-vidhi.html">🪔 Puja Vidhi</a></li><li><a href="vrat-festivals.html">📅 Vrat &amp; Festivals</a></li><li><a href="dev-katha.html">📖 Dev Katha</a></li><li><a href="geeta-gyan.html">🕉️ Geeta Gyan</a></li></ul></div>
+    <div><h3 class="footer-heading">Support</h3><ul class="footer-links"><li><a href="donate.html">🙏 Donate / Daan</a></li><li><a href="shop.html">🛒 Bhakti Shop</a></li><li><a href="https://www.bhaktiamritsanatan.com/contact/" target="_blank">📞 Contact Us</a></li></ul></div>
+    <div><div class="footer-donate-card"><div style="font-size:2.5rem;margin-bottom:12px">📖</div><h4>Share the Wisdom</h4><p>इन कथाओं को परिवार के साथ शेयर करें</p><a class="btn" href="donate.html">🙏 Support Us</a><a class="btn" href="shop.html">🛒 Visit Shop</a></div></div>
+  </div></div></div>
+  <div class="footer-bottom"><div class="container"><div class="footer-bottom__inner"><div>© 2026 <a href="index.html"><strong style="color:var(--clr-gold)">Bhakti Amrit Sanatan</strong></a> · All Rights Reserved</div><div style="display:flex;gap:16px;flex-wrap:wrap"><a href="https://www.bhaktiamritsanatan.com/privacy-policy/" target="_blank">Privacy Policy</a><a href="https://www.bhaktiamritsanatan.com/disclaimer/" target="_blank">Disclaimer</a><a href="https://www.bhaktiamritsanatan.com/sitemap/" target="_blank">Sitemap</a></div></div></div></div>
+</footer>
+<button class="back-to-top" aria-label="Back to top">↑</button>
+<script src="scripts/main.js" defer></script>
+</body>
+</html>

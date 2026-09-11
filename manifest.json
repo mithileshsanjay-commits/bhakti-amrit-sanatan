@@ -1,0 +1,31 @@
+{
+  "name": "Bhakti Amrit Sanatan",
+  "short_name": "Bhakti Amrit",
+  "description": "सनातन धर्म की सम्पूर्ण जानकारी हिंदी में - मंत्र, पूजा विधि, व्रत, देव कथा, गीता ज्ञान व दैनिक पंचांग",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0614",
+  "theme_color": "#0a0614",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/wp-content/uploads/2026/02/cropped-Logo-150x150.png",
+      "sizes": "150x150",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/wp-content/uploads/2026/02/cropped-Logo-150x150.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/wp-content/uploads/2026/02/cropped-Logo-150x150.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

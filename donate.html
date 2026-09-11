@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="hi" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Donate — दान करें | Bhakti Amrit Sanatan</title>
+  <meta name="description" content="Support Bhakti Amrit Sanatan's mission to spread Sanatan Dharma knowledge freely. Donate to keep this sacred resource alive for millions. दान करें और पुण्य कमाएं।">
+  <link rel="icon" href="https://www.bhaktiamritsanatan.com/wp-content/uploads/2025/12/cropped-cropped-BHAKTI-AMRIT-SANATAN-LOGO-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <style>
+    .reading-progress-bar { position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#f59e0b,#ea580c);z-index:9999; }
+
+    .donate-hero {
+      position: relative;
+      padding: var(--sp-3xl) 0;
+      background: var(--grad-hero);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .impact-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-md);
+      margin-bottom: var(--sp-2xl);
+    }
+    .impact-card {
+      background: var(--clr-glass);
+      border: 1px solid var(--clr-glass-border);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-lg);
+      text-align: center;
+      transition: all var(--dur-mid) var(--ease-smooth);
+    }
+    .impact-card:hover {
+      border-color: rgba(245,158,11,0.4);
+      background: rgba(245,158,11,0.06);
+      transform: translateY(-4px);
+    }
+    .impact-icon { font-size: 2rem; display:block; margin-bottom:10px; }
+    .impact-stat {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 900;
+      background: var(--grad-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .impact-label { font-size: 0.8rem; color: var(--clr-text-muted); }
+
+    /* Donation Form */
+    .donate-form-card {
+      background: linear-gradient(145deg, rgba(59,7,100,0.8), rgba(26,5,51,0.95));
+      border: 1px solid rgba(245,158,11,0.25);
+      border-radius: var(--radius-xl);
+      padding: var(--sp-xl);
+    }
+    .donate-form-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--clr-text-white);
+      margin-bottom: 6px;
+    }
+    .donate-form-subtitle {
+      font-family: var(--font-deva);
+      color: var(--clr-gold);
+      font-size: 0.9rem;
+      margin-bottom: var(--sp-lg);
+    }
+    .amount-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-sm);
+      margin-bottom: var(--sp-md);
+    }
+    .amount-btn {
+      padding: 14px 10px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(245,158,11,0.25);
+      background: rgba(245,158,11,0.06);
+      color: var(--clr-text-white);
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .amount-btn:hover, .amount-btn.selected {
+      background: rgba(245,158,11,0.18);
+      border-color: var(--clr-gold);
+      color: var(--clr-gold);
+      box-shadow: var(--shadow-gold);
+    }
+    .amount-btn small { display: block; font-size: 0.68rem; color: var(--clr-text-muted); font-weight: 400; margin-top: 2px; }
+    .amount-btn.selected small { color: rgba(245,158,11,0.7); }
+
+    .donate-input-group { margin-bottom: var(--sp-md); }
+    .donate-input-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--clr-text-muted);
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+    .donate-input {
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(245,158,11,0.25);
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      font-family: inherit;
+    }
+    .donate-input:focus { border-color: var(--clr-gold); }
+    .donate-input::placeholder { color: rgba(255,255,255,0.3); }
+
+    .donate-submit-btn {
+      width: 100%;
+      padding: 16px;
+      border-radius: var(--radius-full);
+      background: var(--grad-gold);
+      color: #fff;
+      font-weight: 900;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s var(--ease-smooth);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: var(--shadow-gold);
+    }
+    .donate-submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(245,158,11,0.5);
+    }
+
+    .payment-methods {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .payment-badge {
+      font-size: 0.72rem;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      background: rgba(255,255,255,0.05);
+      color: var(--clr-text-faint);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* Trust section */
+    .trust-item {
+      display: flex;
+      gap: var(--sp-md);
+      align-items: flex-start;
+      padding: var(--sp-lg);
+      background: var(--clr-glass);
+      border: 1px solid var(--clr-glass-border);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--sp-md);
+    }
+    .trust-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .trust-title { font-family: var(--font-serif); font-size: 1rem; font-weight: 700; color: var(--clr-gold-light); margin-bottom: 4px; }
+    .trust-desc { font-size: 0.85rem; color: var(--clr-text-muted); line-height: 1.6; font-family: var(--font-deva); }
+
+    /* UPI QR Section */
+    .upi-card {
+      background: var(--grad-card);
+      border: 1px solid var(--clr-glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--sp-xl);
+      text-align: center;
+      margin-top: var(--sp-lg);
+    }
+    .upi-id {
+      font-family: monospace;
+      font-size: 1.1rem;
+      color: var(--clr-gold);
+      background: rgba(245,158,11,0.08);
+      border: 1px solid rgba(245,158,11,0.25);
+      border-radius: var(--radius-md);
+      padding: 12px 24px;
+      margin: var(--sp-md) 0;
+      display: inline-block;
+      letter-spacing: 0.05em;
+    }
+
+    .donate-layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: var(--sp-xl);
+      align-items: start;
+      padding: var(--sp-3xl) 0;
+    }
+    @media(max-width:900px){ .donate-layout{grid-template-columns:1fr;} }
+    @media(max-width:700px){ .impact-cards{grid-template-columns:repeat(2,1fr);} .amount-grid{grid-template-columns:repeat(2,1fr);} }
+  </style>
+</head>
+<body>
+<div class="reading-progress-bar reading-progress"></div>
+
+<!-- TOP BAR -->
+<div class="topbar"><div class="container"><div class="topbar__inner">
+  <span class="topbar__label">आज का पंचांग</span>
+  <div class="topbar__ticker-wrap"><span class="topbar__ticker" id="bas-panchang-text">सोमवार · तिथि: त्रयोदशी · मास: भाद्रपद · ॐ नमः शिवाय · जय श्री राम</span></div>
+  <div class="topbar__links"><a href="donate.html">🙏 Donate</a><a href="shop.html">🛒 Shop</a></div>
+</div></div></div>
+
+<!-- NAVIGATION -->
+<header class="site-nav"><div class="container"><nav class="nav__inner">
+  <a class="nav__logo" href="index.html">
+    <img class="nav__logo-img" src="https://www.bhaktiamritsanatan.com/wp-content/uploads/2026/02/cropped-Logo-150x150.png" alt="Logo" width="44" height="44">
+    <span class="nav__logo-text"><span class="nav__logo-name">Bhakti Amrit Sanatan</span><span class="nav__logo-tagline">भक्ति अमृत सनातन</span></span>
+  </a>
+    <div class="nav__drawer" id="main-nav-drawer">
+      <ul class="nav__menu" id="main-menu">
+        <li><a class="nav__link" href="index.html">🏠 Home</a></li>
+        <li><a class="nav__link" href="mantras.html">🔱 Mantras</a></li>
+        <li><a class="nav__link" href="puja-vidhi.html">🪔 Puja Vidhi</a></li>
+        <li><a class="nav__link" href="vrat-festivals.html">📅 Vrat &amp; Festivals</a></li>
+        <li><a class="nav__link" href="dev-katha.html">📖 Dev Katha</a></li>
+        <li><a class="nav__link" href="geeta-gyan.html">🕉️ Geeta Gyan</a></li>
+      </ul>
+      <div class="nav__mobile-actions">
+        <a class="btn btn--ghost" href="shop.html">🛒 Shop</a>
+        <a class="btn btn--primary" href="donate.html">🙏 Donate</a>
+      </div>
+    </div>
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="shop.html">🛒 Shop</a>
+      <a class="btn btn--primary" href="donate.html">🙏 Donate</a>
+    </div>
+    <button class="nav-toggle" aria-controls="main-nav-drawer" aria-expanded="false" aria-label="Toggle Menu">
+      <span></span><span></span><span></span>
+    </button>
+</nav></div></header>
+
+<!-- DONATE HERO -->
+<section class="donate-hero" aria-labelledby="donate-title">
+  <div class="mandala-bg" aria-hidden="true">
+    <svg class="mandala-1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <circle cx="250" cy="250" r="240" stroke="#f59e0b" stroke-width="0.5"/>
+      <polygon points="250,30 470,170 470,330 250,470 30,330 30,170" stroke="#f59e0b" stroke-width="0.4" fill="none"/>
+    </svg>
+  </div>
+  <div class="hero__bg-glow hero__bg-glow--1" aria-hidden="true"></div>
+  <div class="particles" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="breadcrumb" style="justify-content:center;"><a href="index.html">Home</a><span>›</span><span>Donate</span></div>
+    <span style="font-size:4rem; display:block; margin-bottom:16px; animation:float-up-down 4s ease-in-out infinite;" aria-hidden="true">🙏</span>
+    <h1 style="font-family:var(--font-serif);font-size:clamp(2rem,5vw,3.5rem);font-weight:900;color:#fff;margin-bottom:12px;" id="donate-title">
+      Donate &amp; Earn Punya
+    </h1>
+    <p style="font-family:var(--font-deva);font-size:1.15rem;color:var(--clr-gold);margin-bottom:12px;">दान करें और पुण्य कमाएं</p>
+    <p style="max-width:55ch;margin:0 auto;color:rgba(255,255,255,0.7);font-size:0.95rem;line-height:1.8;">
+      Your donation keeps Bhakti Amrit Sanatan's mission alive — providing free Sanatan Dharma knowledge to millions across the world.
+    </p>
+  </div>
+</section>
+
+<!-- IMPACT STATS -->
+<section style="background:var(--clr-bg-dark); padding:var(--sp-xl) 0; border-bottom:1px solid rgba(245,158,11,0.1);">
+  <div class="container">
+    <div class="impact-cards">
+      <div class="impact-card reveal">
+        <span class="impact-icon">📖</span>
+        <span class="impact-stat" data-count="287">287</span>
+        <span class="impact-label">Articles Published</span>
+      </div>
+      <div class="impact-card reveal reveal-delay-1">
+        <span class="impact-icon">🕉️</span>
+        <span class="impact-stat" data-count="18">18</span>
+        <span class="impact-label">Geeta Adhyayas</span>
+      </div>
+      <div class="impact-card reveal reveal-delay-2">
+        <span class="impact-icon">✨</span>
+        <span class="impact-stat" data-count="100" data-suffix="%">100%</span>
+        <span class="impact-label">Free Dharma Seva</span>
+      </div>
+      <div class="impact-card reveal reveal-delay-3">
+        <span class="impact-icon">📿</span>
+        <span class="impact-stat" data-count="108" data-suffix="+">108+</span>
+        <span class="impact-label">Mantras &amp; Stotras</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN DONATE CONTENT -->
+<div style="background:linear-gradient(180deg,var(--clr-bg-darkest) 0%,var(--clr-bg-dark) 100%);">
+<div class="container">
+<div class="donate-layout">
+
+  <!-- LEFT: Trust + Impact -->
+  <div>
+
+    <div class="section-header reveal" style="text-align:left; margin-bottom:32px;">
+      <span class="section-label">🌟 Your Impact</span>
+      <h2 class="section-title">Why Your Donation Matters</h2>
+      <p style="color:var(--clr-text-muted); margin-top:12px; font-family:var(--font-deva); line-height:1.8;">
+        आपका दान लाखों श्रद्धालुओं तक सनातन धर्म का ज्ञान पहुँचाने में सहायता करता है।
+      </p>
+    </div>
+
+    <div class="trust-item reveal">
+      <div class="trust-icon">📜</div>
+      <div>
+        <div class="trust-title">Free Knowledge for All</div>
+        <div class="trust-desc">आपके दान से हम सनातन धर्म की सम्पूर्ण जानकारी सभी के लिए निःशुल्क प्रदान कर पाते हैं।</div>
+      </div>
+    </div>
+    <div class="trust-item reveal reveal-delay-1">
+      <div class="trust-icon">🎥</div>
+      <div>
+        <div class="trust-title">High-Quality Video Content</div>
+        <div class="trust-desc">नए भजन, कथा और पूजा विधि के वीडियो बनाना जारी रखने में आपका सहयोग अमूल्य है।</div>
+      </div>
+    </div>
+    <div class="trust-item reveal reveal-delay-2">
+      <div class="trust-icon">🌐</div>
+      <div>
+        <div class="trust-title">Website Maintenance &amp; Growth</div>
+        <div class="trust-desc">Server, hosting, and content creation costs are covered by your generosity.</div>
+      </div>
+    </div>
+    <div class="trust-item reveal reveal-delay-3">
+      <div class="trust-icon">🏫</div>
+      <div>
+        <div class="trust-title">Dharmic Education</div>
+        <div class="trust-desc">भावी पीढ़ी को सनातन मूल्यों से जोड़ने के हमारे मिशन में साझेदार बनें।</div>
+      </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="section-header reveal" style="text-align:left; margin:40px 0 24px;">
+      <span class="section-label">💬 Community</span>
+      <h2 class="section-title">What Devotees Say</h2>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div style="background:var(--clr-glass);border:1px solid var(--clr-glass-border);border-radius:var(--radius-lg);padding:var(--sp-lg);" class="reveal">
+        <p style="font-family:var(--font-deva);font-size:0.9rem;color:var(--clr-text-muted);font-style:italic;line-height:1.8;margin-bottom:12px;">
+          "भक्ति अमृत सनातन ने मुझे सनातन धर्म को समझने में बहुत मदद की है। इनकी मेहनत सच में सराहनीय है।"
+        </p>
+        <div style="font-size:0.8rem;color:var(--clr-gold);font-weight:700;">— Rajesh Kumar, Delhi</div>
+      </div>
+      <div style="background:var(--clr-glass);border:1px solid var(--clr-glass-border);border-radius:var(--radius-lg);padding:var(--sp-lg);" class="reveal reveal-delay-1">
+        <p style="font-family:var(--font-deva);font-size:0.9rem;color:var(--clr-text-muted);font-style:italic;line-height:1.8;margin-bottom:12px;">
+          "इनके YouTube चैनल के भजन सुनकर मन को बहुत शांति मिलती है। Keep up the amazing work!"
+        </p>
+        <div style="font-size:0.8rem;color:var(--clr-gold);font-weight:700;">— Priya Sharma, Mumbai</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT: Donation Form -->
+  <div>
+    <div class="donate-form-card reveal">
+      <h2 class="donate-form-title">🙏 Make a Donation</h2>
+      <p class="donate-form-subtitle">दान करें — हर एक रुपया मायने रखता है</p>
+
+      <div class="amount-grid">
+        <button class="amount-btn donate-amount-btn" data-amount="51">₹51<small>Basic Support</small></button>
+        <button class="amount-btn donate-amount-btn selected" data-amount="101">₹101<small>Popular</small></button>
+        <button class="amount-btn donate-amount-btn" data-amount="251">₹251<small>Generous</small></button>
+        <button class="amount-btn donate-amount-btn" data-amount="501">₹501<small>Patron</small></button>
+        <button class="amount-btn donate-amount-btn" data-amount="1001">₹1001<small>Champion</small></button>
+        <button class="amount-btn donate-amount-btn" data-amount="2100">₹2100<small>Mahadaani</small></button>
+      </div>
+
+      <div class="donate-input-group">
+        <label for="donate-custom">Custom Amount (₹)</label>
+        <input class="donate-input" type="number" id="donate-custom" placeholder="Enter custom amount" min="1" value="101">
+      </div>
+      <div class="donate-input-group">
+        <label for="donate-name">Your Name</label>
+        <input class="donate-input" type="text" id="donate-name" placeholder="Devotee's name">
+      </div>
+      <div class="donate-input-group">
+        <label for="donate-message">Message (Optional)</label>
+        <textarea class="donate-input" id="donate-message" placeholder="Your blessings, prayers, or message..." rows="3" style="resize:vertical;"></textarea>
+      </div>
+
+      <a class="donate-submit-btn" href="https://www.bhaktiamritsanatan.com/donate/" target="_blank" rel="noopener">
+        🙏 Donate Now — Earn Punya
+      </a>
+
+      <div class="payment-methods" style="margin-top:16px;">
+        <span class="payment-badge">UPI</span>
+        <span class="payment-badge">PhonePe</span>
+        <span class="payment-badge">Google Pay</span>
+        <span class="payment-badge">Net Banking</span>
+        <span class="payment-badge">Cards</span>
+      </div>
+      <p style="font-size:0.72rem; color:var(--clr-text-faint); text-align:center; margin-top:12px;">
+        🔒 Secure donation. Your information is protected.
+      </p>
+    </div>
+
+    <!-- UPI Direct -->
+    <div class="upi-card reveal">
+      <p style="font-size:0.82rem; color:var(--clr-text-muted); margin-bottom:12px;">Or donate directly via UPI:</p>
+      <div class="upi-id">bhaktiamritsanatan@upi</div>
+      <p style="font-size:0.78rem; color:var(--clr-text-faint);">Scan with any UPI app — Google Pay, PhonePe, Paytm</p>
+      <div style="width:120px;height:120px;margin:16px auto;background:rgba(255,255,255,0.05);border-radius:12px;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:3rem;">QR</div>
+      <p style="font-size:0.72rem; color:var(--clr-text-faint);">QR Code will be displayed on official site</p>
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
+
+<!-- CTA STRIP -->
+<section class="cta-strip"><div class="container"><div class="cta-strip__inner">
+  <p class="cta-strip__text">📧 <strong>Get donation receipts &amp; updates</strong> — Subscribe free!</p>
+  <form class="cta-strip__form" data-newsletter-form>
+    <input class="cta-strip__input" type="email" placeholder="your@email.com" required>
+    <button class="btn btn--primary" type="submit">Subscribe Free</button>
+  </form>
+</div></div></section>
+
+<!-- FOOTER -->
+<footer class="site-footer"><div class="footer-main"><div class="container"><div class="footer-grid">
+  <div class="footer-logo-block">
+    <div class="footer-logo"><img src="https://www.bhaktiamritsanatan.com/wp-content/uploads/2026/02/cropped-Logo-150x150.png" alt="Logo" width="56" height="56" loading="lazy"><span class="footer-brand-name">Bhakti Amrit Sanatan</span></div>
+    <p class="footer-desc">सनातन धर्म की सम्पूर्ण जानकारी निःशुल्क।</p>
+    <p class="footer-desc" style="color:var(--clr-gold);font-style:italic;font-family:var(--font-deva);">॥ सर्वे भवन्तु सुखिनः ॥</p>
+    <div class="footer-social">
+      <a href="https://www.youtube.com/@bhaktiamritsanatan" target="_blank" rel="noopener" aria-label="YouTube">▶️</a>
+      <a href="https://www.facebook.com/bhaktiamritsanatan" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
+      <a href="https://www.instagram.com/bhaktiamritsanatan" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+      <a href="https://t.me/bhaktiamritsanatan" target="_blank" rel="noopener" aria-label="Telegram">💬</a>
+    </div>
+  </div>
+  <div><h3 class="footer-heading">Quick Links</h3><ul class="footer-links">
+    <li><a href="mantras.html">🔱 Mantras</a></li><li><a href="puja-vidhi.html">🪔 Puja Vidhi</a></li>
+    <li><a href="vrat-festivals.html">📅 Vrat &amp; Festivals</a></li><li><a href="dev-katha.html">📖 Dev Katha</a></li>
+    <li><a href="geeta-gyan.html">🕉️ Geeta Gyan</a></li>
+  </ul></div>
+  <div><h3 class="footer-heading">Support</h3><ul class="footer-links">
+    <li><a href="donate.html">🙏 Donate</a></li><li><a href="shop.html">🛒 Shop</a></li>
+    <li><a href="https://www.bhaktiamritsanatan.com/contact/" target="_blank">📞 Contact</a></li>
+  </ul></div>
+  <div><div class="footer-donate-card"><div style="font-size:2.5rem;margin-bottom:12px;">🪔</div><h4>Donate for Punya</h4><p>इस मिशन को जीवित रखने में सहयोग करें</p><a class="btn" href="donate.html">🙏 Donate Now</a><a class="btn" href="shop.html">🛒 Visit Shop</a></div></div>
+</div></div></div>
+<div class="footer-bottom"><div class="container"><div class="footer-bottom__inner">
+  <div>© 2026 <a href="index.html"><strong style="color:var(--clr-gold);">Bhakti Amrit Sanatan</strong></a> · All Rights Reserved</div>
+  <div style="display:flex;gap:16px;"><a href="https://www.bhaktiamritsanatan.com/privacy-policy/" target="_blank">Privacy Policy</a><a href="https://www.bhaktiamritsanatan.com/disclaimer/" target="_blank">Disclaimer</a></div>
+</div></div></div></footer>
+
+<button class="back-to-top" aria-label="Back to top">↑</button>
+<script src="scripts/main.js" defer></script>
+</body>
+</html>

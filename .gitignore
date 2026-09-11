@@ -1,0 +1,22 @@
+# ── Admin & server scripts (never deploy) ──
+*.py
+*.php
+*.zip
+*.log
+*.bak
+*.bak_*
+
+# ── WordPress / server-only dirs ──
+bhaktiamrit-child-theme/
+bhaktiamrit-child-theme.zip
+
+# ── Git & OS ──
+.git/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Node (if ever added) ──
+node_modules/
+.env
+.env.*
