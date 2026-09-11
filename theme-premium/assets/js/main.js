@@ -413,7 +413,7 @@ BAS.initNewsletterForm = function () {
       const original=btn.textContent; btn.disabled=true; btn.textContent='Please wait…'; if(status){status.textContent='';status.className='bas-form-status';}
       try{
         const data=new URLSearchParams({action:'bas_newsletter_subscribe',nonce:BAS_WP.newsletterNonce,email:input.value.trim()});
-        const res=await fetch(BAS_WP.ajaxUrl,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:data.toString(),credentials:'same-origin'});
+        throw new Error('Newsletter functionality is currently being upgraded.');},body:data.toString(),credentials:'same-origin'});
         const json=await res.json();
         if(!json.success) throw new Error(json?.data?.message || 'Subscription failed.');
         if(status){status.textContent=json.data.message;status.classList.add('is-success');} input.value='';
@@ -1441,3 +1441,58 @@ if (document.readyState === 'loading') {
   BAS.init();
 }
 
+
+
+// ── STATIC VRAT CALENDAR ──────────────────────────────────────
+BAS.vratFestivals = [
+  { date: '2026-10-02', name: 'Sharad Navratri', deva: 'आश्विन शुक्ल प्रतिपदा', icon: '🌺', desc: 'माँ दुर्गा के ९ पावन स्वरूपों की आराधना' },
+  { date: '2026-10-20', name: 'Karwa Chauth', deva: 'कार्तिक कृष्ण चतुर्थी', icon: '🌙', desc: 'अखंड सौभाग्य की प्राप्ति' },
+  { date: '2026-11-08', name: 'Diwali', deva: 'कार्तिक अमावस्या', icon: '🪔', desc: 'प्रकाश पर्व और महालक्ष्मी पूजन' },
+  { date: '2026-11-23', name: 'Tulsi Vivah', deva: 'कार्तिक शुक्ल एकादशी', icon: '🌿', desc: 'तुलसी और शालिग्राम का पावन विवाह' }
+];
+
+BAS.initHeroFestival = function() {
+  const nameEl = document.getElementById('festival-name');
+  const dateEl = document.getElementById('festival-date');
+  const daysEl = document.getElementById('cd-days');
+  const hoursEl = document.getElementById('cd-hours');
+  const minsEl = document.getElementById('cd-mins');
+  const secsEl = document.getElementById('cd-secs');
+
+  if (!nameEl || !dateEl) return;
+
+  const now = new Date();
+  let nextFest = BAS.vratFestivals.find(f => new Date(f.date) > now);
+  if (!nextFest) nextFest = BAS.vratFestivals[0]; // fallback
+
+  nameEl.innerHTML = nextFest.icon + ' ' + nextFest.name;
+  dateEl.innerHTML = nextFest.deva + ' · ' + new Date(nextFest.date).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+
+  const targetDate = new Date(nextFest.date).getTime();
+
+  function updateTimer() {
+    const nowMs = new Date().getTime();
+    const distance = targetDate - nowMs;
+
+    if (distance < 0) return;
+
+    const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+    if (daysEl) daysEl.innerText = d.toString().padStart(2, '0');
+    if (hoursEl) hoursEl.innerText = h.toString().padStart(2, '0');
+    if (minsEl) minsEl.innerText = m.toString().padStart(2, '0');
+    if (secsEl) secsEl.innerText = s.toString().padStart(2, '0');
+  }
+
+  updateTimer();
+  setInterval(updateTimer, 1000);
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        if(typeof BAS.initHeroFestival === 'function') BAS.initHeroFestival();
+    }, 100);
+});

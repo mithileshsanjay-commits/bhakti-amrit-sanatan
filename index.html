@@ -2138,41 +2138,37 @@ img {
   <!-- Particles -->
   <div class="particles" aria-hidden="true"></div>
 
-  <div class="container">
+  <div class="container hero__container">
+  <div class="hero__grid">
     <div class="hero__content">
 
-      <!-- Badge -->
       <div class="hero__badge">
         <span class="diya-flame">🪔</span>
         सनातन धर्म की सम्पूर्ण जानकारी
       </div>
 
-      <!-- Om symbol -->
-      <span class="hero__om" aria-hidden="true">ॐ</span>
+      <span aria-hidden="true" class="hero__om">ॐ</span>
 
-      <!-- Title -->
       <h1 class="hero__title" id="hero-title">
-        <span class="highlight">Bhakti Amrit</span><br>
+        <span class="highlight">Bhakti Amrit</span><br/>
         Sanatan
       </h1>
 
-      <!-- Tagline -->
       <p class="hero__tagline">
-        मंत्र · पूजा विधि · व्रत कथा · देव कथा · गीता ज्ञान<br>
+        मंत्र · पूजा विधि · व्रत कथा · देव कथा · गीता ज्ञान<br/>
         <em>Your complete guide to Sanatan Dharma</em>
       </p>
 
-      <!-- CTAs -->
       <div class="hero__cta">
-        <a class="btn btn--primary" href="mantras.html">🔱 Explore Mantras</a>
-        <a class="btn btn--outline" href="geeta-gyan.html">🕉️ Geeta Gyan</a>
-        <a class="btn btn--ghost" href="https://youtube.com/@bhaktiamritsanatan" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+        <a class="btn btn--primary" href="">🔱 Explore Mantras</a>
+        <a class="btn btn--outline" href="">🕉️ Geeta Gyan</a>
+        <a class="btn btn--ghost" href="https://youtube.com/@bhaktiamritsanatan" rel="noopener" target="_blank">▶ Watch on YouTube</a>
       </div>
 
-      <!-- Stats -->
+      
       <div class="hero__stats">
         <div class="hero__stat">
-          <span class="hero__stat-number" data-count="287">287</span>
+          <span class="hero__stat-number" data-count=""></span>
           <span class="hero__stat-label">Articles Published</span>
         </div>
         <div class="hero__stat">
@@ -2185,20 +2181,274 @@ img {
         </div>
       </div>
 
-      <!-- Search Bar -->
-      <form class="hero-search" id="hero-search-form" role="search" aria-label="Search Bhakti Amrit Sanatan" action="https://www.bhaktiamritsanatan.com/" method="GET">
-        <input type="search" name="s" placeholder="मंत्र, व्रत, देव कथा खोजें..." aria-label="Search mantras, vrat, katha" autocomplete="off">
+      <form action="" aria-label="Search Bhakti Amrit Sanatan" class="hero-search" id="hero-search-form" method="GET" role="search">
+        <input aria-label="Search mantras, vrat, katha" autocomplete="off" name="s" placeholder="मंत्र, व्रत, देव कथा खोजें..." type="search"/>
         <button type="submit">🔍 Search</button>
       </form>
 
+      <div class="hero-quick-pills">
+        <span class="quick-pill-label">त्वरित दर्शन:</span>
+        <a class="quick-pill" href="">🔱 महामृत्युंजय मंत्र</a>
+        <a class="quick-pill" href="">🪔 गणेश चतुर्थी व्रत</a>
+        <a class="quick-pill" href="">📖 गीता श्लोक</a>
+        <a class="quick-pill" href="">📿 दैनिक पूजा</a>
+      </div>
     </div>
-  </div>
+
+    <!-- Right Column: Live Daily Hindu Panchang Widget -->
+    <div class="hero__panchang-col">
+      <div class="panchang-hero-widget" id="panchang-hero-widget">
+        <div class="panchang-hero-widget__header">
+          <div class="panchang-hero-widget__title-wrap">
+            <span class="panchang-hero-widget__om" aria-hidden="true">🕉️</span>
+            <span class="panchang-hero-widget__title">दैनिक हिन्दू पंचांग</span>
+          </div>
+          <span class="panchang-hero-widget__live"><span class="live-dot"></span>Live</span>
+        </div>
+        <div class="panchang-hero-widget__date" id="panchang-date"></div>
+        <div class="panchang-city-selector-wrap">
+          <span class="city-selector-pin" aria-hidden="true">📍</span>
+          <select id="panchang-city-select" class="panchang-city-select" aria-label="स्थान / शहर चुनें (Select City)" title="स्थान / टाइमज़ोन चुनें">
+            <option value="Asia/Kolkata" selected>🇮🇳 नई दिल्ली (New Delhi - IST)</option>
+            <option value="Asia/Dubai">🇦🇪 दुबई (Dubai - GST)</option>
+            <option value="Europe/London">🇬🇧 लंदन (London - GMT/BST)</option>
+            <option value="America/New_York">🇺🇸 न्यूयॉर्क (New York - EST)</option>
+            <option value="America/Los_Angeles">🇺🇸 लॉस एंजिल्स (LA - PST)</option>
+            <option value="America/Toronto">🇨🇦 टोरंटो (Toronto - EST)</option>
+            <option value="Australia/Sydney">🇦🇺 सिडनी (Sydney - AEST)</option>
+          </select>
+        </div>
+        <div class="panchang-hero-widget__divider"></div>
+
+        <div class="panchang-hero-widget__grid">
+          <div class="panchang-hero-card">
+            <div class="panchang-hero-card__head">
+              <span class="panchang-hero-card__icon" aria-hidden="true">🌙</span>
+              <span class="panchang-hero-card__label">तिथि (TITHI)</span>
+            </div>
+            <span class="panchang-hero-card__value" id="panchang-tithi">दशमी (Dashami)</span>
+          </div>
+          <div class="panchang-hero-card">
+            <div class="panchang-hero-card__head">
+              <span class="panchang-hero-card__icon" aria-hidden="true">🌓</span>
+              <span class="panchang-hero-card__label">पक्ष (PAKSHA)</span>
+            </div>
+            <span class="panchang-hero-card__value" id="panchang-paksha">कृष्ण पक्ष (Krishna Paksha)</span>
+          </div>
+          <div class="panchang-hero-card">
+            <div class="panchang-hero-card__head">
+              <span class="panchang-hero-card__icon" aria-hidden="true">✨</span>
+              <span class="panchang-hero-card__label">नक्षत्र (NAKSHATRA)</span>
+            </div>
+            <span class="panchang-hero-card__value" id="panchang-nakshatra">आर्द्रा</span>
+          </div>
+          <div class="panchang-hero-card">
+            <div class="panchang-hero-card__head">
+              <span class="panchang-hero-card__icon" aria-hidden="true">☀️</span>
+              <span class="panchang-hero-card__label">वार (DAY)</span>
+            </div>
+            <span class="panchang-hero-card__value" id="panchang-var">रविवार (Sunday)</span>
+          </div>
+        </div>
+
+        <div class="panchang-hero-time-row panchang-hero-time-row--shubh">
+          <span class="time-label"><span class="time-dot"></span>शुभ मुहूर्त (Abhijit):</span>
+          <span class="time-val" id="panchang-abhijit">11:50 AM – 12:40 PM</span>
+        </div>
+
+        <div class="panchang-hero-time-row panchang-hero-time-row--rahu">
+          <span class="time-label"><span class="time-dot"></span>राहुकाल (Rahu Kaal):</span>
+          <span class="time-val" id="panchang-rahukaal">04:30 PM – 06:00 PM</span>
+        </div>
+
+        <div class="panchang-hero-footer">
+          <a href="">
+            <span>📅 सम्पूर्ण पंचांग व शुभ मुहूर्त देखें</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2: Upcoming Festival Countdown Card -->
+      
+      <div class="festival-hero-card" id="festival-hero-card">
+        <div class="festival-hero-card__header">
+          <div class="festival-hero-card__tag">
+            <span>🎉 आगामी महापर्व</span>
+            <span class="festival-tag-sep">·</span>
+            <span>Next Festival</span>
+          </div>
+          <a class="festival-hero-card__link" href="">
+            व्रत कैलेंडर →
+          </a>
+        </div>
+
+        <div class="festival-hero-card__details">
+          <h3 id="festival-name" class="festival-hero-card__title">
+            
+          </h3>
+          <p id="festival-date" class="festival-hero-card__date">
+            
+          </p>
+        </div>
+
+        <div class="countdown-boxes festival-hero-card__countdown">
+          <div class="countdown-box">
+            <span class="countdown-box__num" id="cd-days">00</span>
+            <span class="countdown-box__label">Days</span>
+          </div>
+          <div class="countdown-box">
+            <span class="countdown-box__num" id="cd-hours">00</span>
+            <span class="countdown-box__label">Hours</span>
+          </div>
+          <div class="countdown-box">
+            <span class="countdown-box__num" id="cd-mins">00</span>
+            <span class="countdown-box__label">Mins</span>
+          </div>
+          <div class="countdown-box">
+            <span class="countdown-box__num" id="cd-secs">00</span>
+            <span class="countdown-box__label">Secs</span>
+          </div>
+        </div>
+      </div>
 
   <!-- Rotating mandala visual on right -->
   <div class="hero__visual" aria-hidden="true">
     <div class="hero__mandala-ring"></div>
   </div>
 
+</section>
+
+<section id="daily-rashifal-section" class="daily-rashifal-section" aria-label="दैनिक राशिफल">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">✨ आज का भविष्यफल</span>
+      <h2 class="section-title">दैनिक राशिफल (Daily Horoscope)</h2>
+      <p class="section-subtitle">अपनी राशि चुनें और जानें आज का दिन, शुभ रंग, अंक व विशेष उपाय</p>
+      <div class="divider-om">॥ ॐ ॥</div>
+    </div>
+
+    <!-- 12 Rashi Selection Bar -->
+    <div class="rashi-selector-wrap reveal">
+      <div class="rashi-selector-track" id="rashi-selector-track">
+        <button type="button" class="rashi-btn active" data-rashi="0">
+          <span class="rashi-icon">♈</span>
+          <span class="rashi-name">मेष</span>
+          <span class="rashi-en">Aries</span>
+        </button>
+        <button type="button" class="rashi-btn" data-rashi="1">
+          <span class="rashi-icon">♉</span>
+          <span class="rashi-name">वृषभ</span>
+          <span class="rashi-en">Taurus</span>
+        </button>
+        <button type="button" class="rashi-btn" data-rashi="2">
+          <span class="rashi-icon">♊</span>
+          <span class="rashi-name">मिथुन</span>
+          <span class="rashi-en">Gemini</span>
+        </button>
+        <button type="button" class="rashi-btn" data-rashi="3">
+          <span class="rashi-icon">♋</span>
+          <span class="rashi-name">कर्क</span>
+          <span class="rashi-en">Cancer</span>
+        </button>
+        <button type="button" class="rashi-btn" data-rashi="4">
+          <span class="rashi-icon">♌</span>
+          <span class="rashi-name">सिंह</span>
+          <span class="rashi-en">Leo</span>
+        </button>
+        <button type="button" class="rashi-btn" data-rashi="5">
+          <span class="rashi-icon">♍</span>
+          <span class="rashi-name">कन्या</span>
+          <span class="rashi-en">Virgo</span>
+        </button>
+        <button type="button" class="rashi-btn" data-rashi="6">
+          <span class="rashi-icon">♎</span>
+          <span class="rashi-name">तुला</span>
+          <span class="rashi-en">Libra</span>
+        </button>
+        <button type="button" class="rashi-btn" data-rashi="7">
+          <span class="rashi-icon">♏</span>
+          <span class="rashi-name">वृश्चिक</span>
+          <span class="rashi-en">Scorpio</span>
+        </button>
+        <button type="button" class="rashi-btn" data-rashi="8">
+          <span class="rashi-icon">♐</span>
+          <span class="rashi-name">धनु</span>
+          <span class="rashi-en">Sagittarius</span>
+        </button>
+        <button type="button" class="rashi-btn" data-rashi="9">
+          <span class="rashi-icon">♑</span>
+          <span class="rashi-name">मकर</span>
+          <span class="rashi-en">Capricorn</span>
+        </button>
+        <button type="button" class="rashi-btn" data-rashi="10">
+          <span class="rashi-icon">♒</span>
+          <span class="rashi-name">कुंभ</span>
+          <span class="rashi-en">Aquarius</span>
+        </button>
+        <button type="button" class="rashi-btn" data-rashi="11">
+          <span class="rashi-icon">♓</span>
+          <span class="rashi-name">मीन</span>
+          <span class="rashi-en">Pisces</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Active Rashifal Display Card -->
+    <div class="rashifal-display-card reveal" id="rashifal-display-card">
+      <div class="rashifal-card__top">
+        <div class="rashifal-card__sign">
+          <span class="rashi-card-icon" id="rashifal-hero-icon">♈</span>
+          <div>
+            <h3 class="rashi-card-title" id="rashifal-hero-title">मेष राशि (Aries)</h3>
+            <span class="rashi-card-meta" id="rashifal-hero-meta">स्वामी: मंगल · तत्व: अग्नि</span>
+          </div>
+        </div>
+        <div class="rashifal-date-badge" id="rashifal-hero-date">
+          📅 
+        </div>
+      </div>
+
+      <div class="rashifal-prediction-box">
+        <p class="rashifal-prediction-text" id="rashifal-hero-prediction">
+          आज का दिन आपके लिए ऊर्जा और नवीन अवसरों से परिपूर्ण रहेगा। कार्यक्षेत्र में आपके पराक्रम की प्रशंसा होगी। परिवार में किसी शुभ कार्य की योजना बन सकती है। स्वास्थ्य उत्तम रहेगा।
+        </p>
+      </div>
+
+      <div class="rashifal-attributes-grid">
+        <div class="rashi-attr-item">
+          <span class="attr-icon">🎨</span>
+          <div>
+            <div class="attr-label">शुभ रंग (Lucky Color)</div>
+            <div class="attr-val" id="rashifal-hero-color">लाल / सिंदूरी</div>
+          </div>
+        </div>
+        <div class="rashi-attr-item">
+          <span class="attr-icon">🔢</span>
+          <div>
+            <div class="attr-label">शुभ अंक (Lucky Number)</div>
+            <div class="attr-val" id="rashifal-hero-number">9</div>
+          </div>
+        </div>
+        <div class="rashi-attr-item rashi-attr-item--upay">
+          <span class="attr-icon">🪔</span>
+          <div>
+            <div class="attr-label">आज का विशेष उपाय (Daily Remedy)</div>
+            <div class="attr-val" id="rashifal-hero-upay">हनुमान जी को सिंदूर व चमेली का तेल अर्पित करें तथा संकटमोचन हनुमानाष्टक का पाठ करें।</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rashifal-card__footer">
+        <a href="#" class="btn-rashi-wa" id="btn-share-rashi-wa" target="_blank" rel="noopener" aria-label="Share Rashifal on WhatsApp">
+          <span>📲</span> <span>WhatsApp पर शेयर करें</span>
+        </a>
+        <button type="button" class="btn-rashi-save" id="btn-save-my-rashi" title="इस राशि को मेरा स्थायी राशिफल बनाएं">
+          <span>⭐</span> <span id="save-rashi-btn-label">मेरी राशि सेट करें</span>
+        </button>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ===== TRENDING BAR ===== -->

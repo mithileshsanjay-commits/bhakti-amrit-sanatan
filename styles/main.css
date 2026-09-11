@@ -313,22 +313,24 @@ input, textarea, select {
 }
 
 .topbar__links a {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  color: var(--clr-gold);
-  border: 1px solid rgba(245,158,11,0.35);
+  color: #fff !important;
+  background: #d97706 !important;
+  border: 1px solid rgba(245,158,11,0.5);
   border-radius: var(--radius-full);
-  padding: 3px 12px;
+  padding: 4px 16px;
   transition: all var(--dur-fast) var(--ease-smooth);
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
 }
 
 .topbar__links a:hover {
-  background: rgba(245,158,11,0.15);
+  background: #f59e0b !important;
   border-color: var(--clr-gold);
-  color: #fff;
+  color: #fff !important;
+  box-shadow: 0 2px 10px rgba(245,158,11,0.4);
 }
 
 /* ---------- MAIN NAVIGATION ---------- */
