@@ -123,7 +123,7 @@
       font-family: inherit;
     }
     .donate-input:focus { border-color: var(--clr-gold); }
-    .donate-input::placeholder { color: rgba(255,255,255,0.3); }
+    .donate-input:: { color: rgba(255,255,255,0.3); }
 
     .donate-submit-btn {
       width: 100%;
@@ -388,15 +388,15 @@
 
       <div class="donate-input-group">
         <label for="donate-custom">Custom Amount (₹)</label>
-        <input class="donate-input" type="number" id="donate-custom" placeholder="Enter custom amount" min="1" value="101">
+        <input class="donate-input" type="number" id="donate-custom" ="Enter custom amount" min="1" value="101">
       </div>
       <div class="donate-input-group">
         <label for="donate-name">Your Name</label>
-        <input class="donate-input" type="text" id="donate-name" placeholder="Devotee's name">
+        <input class="donate-input" type="text" id="donate-name" ="Devotee's name">
       </div>
       <div class="donate-input-group">
         <label for="donate-message">Message (Optional)</label>
-        <textarea class="donate-input" id="donate-message" placeholder="Your blessings, prayers, or message..." rows="3" style="resize:vertical;"></textarea>
+        <textarea class="donate-input" id="donate-message" ="Your blessings, prayers, or message..." rows="3" style="resize:vertical;"></textarea>
       </div>
 
       <a class="donate-submit-btn" href="https://www.bhaktiamritsanatan.com/donate/" target="_blank" rel="noopener">
@@ -433,7 +433,7 @@
 <section class="cta-strip"><div class="container"><div class="cta-strip__inner">
   <p class="cta-strip__text">📧 <strong>Get donation receipts &amp; updates</strong> — Subscribe free!</p>
   <form class="cta-strip__form" data-newsletter-form>
-    <input class="cta-strip__input" type="email" placeholder="your@email.com" required>
+    <input class="cta-strip__input" type="email" ="your@email.com" required>
     <button class="btn btn--primary" type="submit">Subscribe Free</button>
   </form>
 </div></div></section>

@@ -1134,7 +1134,7 @@ input, textarea, select {
   transition: border-color var(--dur-fast) var(--ease-smooth);
 }
 
-.cta-strip__input::placeholder { color: rgba(255,255,255,0.45); }
+.cta-strip__input:: { color: rgba(255,255,255,0.45); }
 .cta-strip__input:focus { border-color: var(--clr-gold); }
 
 /* ---------- FOOTER ---------- */
@@ -1822,7 +1822,7 @@ img {
       font-size: 0.95rem;
       font-family: var(--font-deva);
     }
-    .hero-search input::placeholder { color: rgba(255,255,255,0.45); }
+    .hero-search input:: { color: rgba(255,255,255,0.45); }
     .hero-search button {
       background: var(--grad-gold);
       color: #fff;
@@ -2182,7 +2182,7 @@ img {
       </div>
 
       <form action="" aria-label="Search Bhakti Amrit Sanatan" class="hero-search" id="hero-search-form" method="GET" role="search">
-        <input aria-label="Search mantras, vrat, katha" autocomplete="off" name="s" placeholder="मंत्र, व्रत, देव कथा खोजें..." type="search"/>
+        <input aria-label="Search mantras, vrat, katha" autocomplete="off" name="s" ="मंत्र, व्रत, देव कथा खोजें..." type="search"/>
         <button type="submit">🔍 Search</button>
       </form>
 
@@ -2794,7 +2794,7 @@ img {
       </div>
       <form class="cta-strip__form" data-newsletter-form aria-label="Newsletter subscribe">
         <label for="newsletter-email" class="visually-hidden">Your email address</label>
-        <input class="cta-strip__input" type="email" id="newsletter-email" placeholder="your@email.com" required autocomplete="email">
+        <input class="cta-strip__input" type="email" id="newsletter-email" ="your@email.com" required autocomplete="email">
         <button class="btn btn--primary" type="submit">🙏 Subscribe Free</button>
       </form>
     </div>
