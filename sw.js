@@ -34,10 +34,6 @@ self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET' || !event.request.url.startsWith(self.location.origin)) {
     return;
   }
-  // Exclude wp-admin and wp-login from service worker handling
-  if (event.request.url.includes('/wp-admin') || event.request.url.includes('wp-login.php')) {
-    return;
-  }
 
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {

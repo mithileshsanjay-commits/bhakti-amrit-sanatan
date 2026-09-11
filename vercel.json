@@ -9,9 +9,15 @@
     { "source": "/puja-vidhi",    "destination": "/puja-vidhi.html" },
     { "source": "/geeta-gyan",    "destination": "/geeta-gyan.html" },
     { "source": "/vrat-festivals","destination": "/vrat-festivals.html" },
-    { "source": "/dev-katha",     "destination": "/dev-katha.html" },
-    { "source": "/shop",          "destination": "/shop.html" },
-    { "source": "/donate",        "destination": "/donate.html" }
+    { "source": "/dev-katha",             "destination": "/dev-katha.html" },
+    { "source": "/donate",                "destination": "/donate.html" },
+    { "source": "/about",                 "destination": "/about.html" },
+    { "source": "/contact",               "destination": "/contact.html" },
+    { "source": "/privacy-policy",        "destination": "/privacy-policy.html" },
+    { "source": "/disclaimer",            "destination": "/disclaimer.html" },
+    { "source": "/terms",                 "destination": "/terms.html" },
+    { "source": "/editorial-policy",      "destination": "/editorial-policy.html" },
+    { "source": "/affiliate-disclosure",  "destination": "/affiliate-disclosure.html" }
   ],
   "headers": [
     {

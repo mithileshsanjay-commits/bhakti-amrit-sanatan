@@ -5,6 +5,9 @@
 *.log
 *.bak
 *.bak_*
+*.sql
+*.gz
+scratch/
 
 # ── WordPress / server-only dirs ──
 bhaktiamrit-child-theme/

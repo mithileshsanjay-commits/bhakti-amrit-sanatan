@@ -20,14 +20,17 @@ export default function middleware(request) {
     }
   }
   
-  // Exclude non-Dharma cricket / IPL URLs permanently with 410 Gone
+  // Exclude non-Dharma cricket / IPL URLs and retired Shop URLs permanently with 410 Gone
   const pathname = decodeURIComponent(url.pathname).toLowerCase()
   if (
+    pathname === '/shop' ||
+    pathname === '/shop.html' ||
+    pathname.startsWith('/shop/') ||
     pathname.includes('cricket') || 
     pathname.includes('आईपीएल') || 
     pathname.includes('ipl')
   ) {
-    return new Response('410 Gone - This content is no longer available.', {
+    return new Response('410 Gone - This section has been retired.', {
       status: 410,
       headers: { 'Content-Type': 'text/plain; charset=utf-8' }
     })
