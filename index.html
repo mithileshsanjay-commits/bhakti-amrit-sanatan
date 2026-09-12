@@ -3501,6 +3501,144 @@ BAS.initSearchBar = function () {
   });
 };
 
+BAS.initHeroPanchang = function () {
+  const dateEl      = document.getElementById('panchang-date');
+  const tithiEl     = document.getElementById('panchang-tithi');
+  const pakshaEl    = document.getElementById('panchang-paksha');
+  const nakshatraEl = document.getElementById('panchang-nakshatra');
+  const varEl       = document.getElementById('panchang-var');
+  const abhijitEl   = document.getElementById('panchang-abhijit');
+  const rahuEl      = document.getElementById('panchang-rahukaal');
+  const citySelect  = document.getElementById('panchang-city-select');
+
+  if (!tithiEl && !dateEl) return;
+
+  // Handle city / timezone change
+  let selectedTz = localStorage.getItem('bas_panchang_tz') || 'Asia/Kolkata';
+  if (citySelect) {
+    citySelect.value = selectedTz;
+    if (!citySelect.dataset.listenerAttached) {
+      citySelect.dataset.listenerAttached = 'true';
+      citySelect.addEventListener('change', function () {
+        localStorage.setItem('bas_panchang_tz', this.value);
+        BAS.initHeroPanchang();
+        if (BAS.showToast) {
+          BAS.showToast('पंचांग शहर अपडेट हुआ: ' + this.options[this.selectedIndex].text);
+        }
+      });
+    }
+  }
+
+  // Calculate local time in the selected timezone
+  let now = new Date();
+  try {
+    const tzString = new Date().toLocaleString('en-US', { timeZone: selectedTz });
+    now = new Date(tzString);
+  } catch (e) {}
+
+  const dayIdx = now.getDay();
+
+  const dayNames = [
+    { hi: 'रविवार', en: 'Sunday' },
+    { hi: 'सोमवार', en: 'Monday' },
+    { hi: 'मंगलवार', en: 'Tuesday' },
+    { hi: 'बुधवार', en: 'Wednesday' },
+    { hi: 'गुरुवार', en: 'Thursday' },
+    { hi: 'शुक्रवार', en: 'Friday' },
+    { hi: 'शनिवार', en: 'Saturday' }
+  ];
+
+  const hindiMonths = [
+    'जनवरी', 'फ़रवरी', 'मार्च', 'अप्रैल', 'मई', 'जून',
+    'जुलाई', 'अगस्त', 'सितंबर', 'अक्टूबर', 'नवंबर', 'दिसंबर'
+  ];
+
+  // Date formatting (e.g. 6 सितंबर 2026)
+  if (dateEl) {
+    dateEl.textContent = `${now.getDate()} ${hindiMonths[now.getMonth()]} ${now.getFullYear()}`;
+  }
+
+  // Day of week
+  if (varEl) {
+    const curDay = dayNames[dayIdx];
+    varEl.textContent = `${curDay.hi} (${curDay.en})`;
+  }
+
+  // Rahu Kaal by day of week (standard Vedic 90-minute muhurtas)
+  const rahuTimes = [
+    '04:30 PM – 06:00 PM', // Sun (8th)
+    '07:30 AM – 09:00 AM', // Mon (2nd)
+    '03:00 PM – 04:30 PM', // Tue (7th)
+    '12:00 PM – 01:30 PM', // Wed (5th)
+    '01:30 PM – 03:00 PM', // Thu (6th)
+    '10:30 AM – 12:00 PM', // Fri (4th)
+    '09:00 AM – 10:30 AM'  // Sat (3rd)
+  ];
+  if (rahuEl) {
+    rahuEl.textContent = rahuTimes[dayIdx];
+  }
+
+  if (abhijitEl) {
+    abhijitEl.textContent = '11:50 AM – 12:40 PM';
+  }
+
+  // 15 Tithis of a Paksha
+  const tithisList = [
+    { hi: 'प्रतिपदा', en: 'Pratipada' },
+    { hi: 'द्वितीया', en: 'Dwitiya' },
+    { hi: 'तृतीया', en: 'Tritiya' },
+    { hi: 'चतुर्थी', en: 'Chaturthi' },
+    { hi: 'पंचमी', en: 'Panchami' },
+    { hi: 'षष्ठी', en: 'Shashthi' },
+    { hi: 'सप्तमी', en: 'Saptami' },
+    { hi: 'अष्टमी', en: 'Ashtami' },
+    { hi: 'नवमी', en: 'Navami' },
+    { hi: 'दशमी', en: 'Dashami' },
+    { hi: 'एकादशी', en: 'Ekadashi' },
+    { hi: 'द्वादशी', en: 'Dwadashi' },
+    { hi: 'त्रयोदशी', en: 'Trayodashi' },
+    { hi: 'चतुर्दशी', en: 'Chaturdashi' },
+    { hi: 'पूर्णिमा', en: 'Purnima' }
+  ];
+
+  // 27 Vedic Nakshatras
+  const nakshatras = [
+    'अश्विनी', 'भरणी', 'कृत्तिका', 'रोहिणी', 'मृगशिरा', 'आर्द्रा', 'पुनर्वसु', 'पुष्य',
+    'आश्लेषा', 'मघा', 'पूर्वाफाल्गुनी', 'उत्तराफाल्गुनी', 'हस्त', 'चित्रा', 'स्वाति',
+    'विशाखा', 'अनुराधा', 'ज्येष्ठा', 'मूल', 'पूर्वाषाढ़ा', 'उत्तराषाढ़ा', 'श्रवण',
+    'धनिष्ठा', 'शतभिषा', 'पूर्वाभाद्रपद', 'उत्तराभाद्रपद', 'रेवती'
+  ];
+
+  // Authentic Vedic Anchor: 6 September 2026 (Sunday)
+  // Tithi: Bhadrapada Krishna Paksha Dashami (index 9 in Krishna paksha)
+  // Nakshatra: Ardra (index 5)
+  const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+  const anchorMidnight = new Date(2026, 8, 6).getTime(); // Note: Month 8 = September
+  const diffDays = Math.round((todayMidnight - anchorMidnight) / 86400000);
+
+  // In our 30-day lunar cycle:
+  // 0-14: Shukla Paksha (0: Pratipada -> 14: Purnima)
+  // 15-29: Krishna Paksha (15: Pratipada -> 24: Dashami -> 29: Amavasya)
+  // On 6 Sept 2026, Krishna Dashami is index 24
+  let tithiIndex = (24 + diffDays) % 30;
+  if (tithiIndex < 0) tithiIndex += 30;
+
+  if (tithiIndex < 15) {
+    if (tithiEl)  tithiEl.textContent  = `${tithisList[tithiIndex].hi} (${tithisList[tithiIndex].en})`;
+    if (pakshaEl) pakshaEl.textContent = 'शुक्ल पक्ष (Shukla Paksha)';
+  } else {
+    const kIdx = tithiIndex - 15;
+    const tName = kIdx === 14 ? { hi: 'अमावस्या', en: 'Amavasya' } : tithisList[kIdx];
+    if (tithiEl)  tithiEl.textContent  = `${tName.hi} (${tName.en})`;
+    if (pakshaEl) pakshaEl.textContent = 'कृष्ण पक्ष (Krishna Paksha)';
+  }
+
+  // Nakshatra: on 6 Sept 2026, Ardra is index 5
+  let nIdx = (5 + diffDays) % 27;
+  if (nIdx < 0) nIdx += 27;
+  if (nakshatraEl) nakshatraEl.textContent = nakshatras[nIdx];
+};
+
 // ── INIT ALL ───────────────────────────────────────────
 BAS.init = function () {
   BAS.initTicker();
@@ -3518,6 +3656,7 @@ BAS.init = function () {
   BAS.initReadingProgress();
   BAS.updateDates();
   BAS.initFestivalCountdown();
+  BAS.initHeroPanchang();
   BAS.initRotatingQuotes();
   BAS.initSearchBar();
 };
