@@ -161,20 +161,48 @@
 </head>
 <body>
 
-<header class="site-header">
-  <div class="nav-container">
-    <a href="/" class="nav-brand">
-      <img src="/assets/images/cropped-Logo-150x150.png" alt="Bhakti Amrit Sanatan Logo">
-      <span class="nav-brand-title">Bhakti Amrit Sanatan</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="/articles">📚 सभी लेख (281)</a></li>
-      <li><a href="/mantras">🔱 Mantras</a></li>
-      <li><a href="/puja-vidhi">🪔 Puja Vidhi</a></li>
-      <li><a href="/geeta-gyan">🕉️ Geeta Gyan</a></li>
-      <li><a href="/vrat-festivals">📅 Vrat & Festivals</a></li>
-      <li><a href="/dev-katha">📖 Dev Katha</a></li>
-    </ul>
+<!-- ===== MAIN NAVIGATION ===== -->
+<header class="site-nav" role="navigation">
+  <div class="container">
+    <nav class="nav__inner" aria-label="Main Navigation">
+
+      <!-- Logo -->
+      <a class="nav__logo" href="/" aria-label="Bhakti Amrit Sanatan Home">
+        <img class="nav__logo-img"
+             src="/assets/images/cropped-Logo-150x150.png"
+             alt="Bhakti Amrit Sanatan Logo" width="44" height="44">
+        <span class="nav__logo-text">
+          <span class="nav__logo-name">Bhakti Amrit Sanatan</span>
+          <span class="nav__logo-tagline">भक्ति अमृत सनातन</span>
+        </span>
+      </a>
+
+      <!-- Navigation Menu -->
+      <div class="nav__drawer" id="main-nav-drawer">
+        <ul class="nav__menu" id="main-menu">
+          <li><a class="nav__link" href="/" data-nav="home">🏠 Home</a></li>
+          <li><a class="nav__link" href="/articles" data-nav="articles">📚 सभी लेख (281)</a></li>
+          <li><a class="nav__link" href="/mantras" data-nav="mantras">🔱 Mantras</a></li>
+          <li><a class="nav__link" href="/puja-vidhi" data-nav="puja">🪔 Puja Vidhi</a></li>
+          <li><a class="nav__link" href="/vrat-festivals" data-nav="vrat">📅 Vrat &amp; Festivals</a></li>
+          <li><a class="nav__link" href="/dev-katha" data-nav="katha">📖 Dev Katha</a></li>
+          <li><a class="nav__link" href="/geeta-gyan" data-nav="geeta">🕉️ Geeta Gyan</a></li>
+        </ul>
+      </div>
+
+      <!-- Single CTA group (No duplicate buttons) -->
+      <div class="nav__cta">
+        <button type="button" class="lang-toggle-btn" id="lang-toggle-btn" aria-label="Switch Language / भाषा बदलें" title="Switch Language / भाषा बदलें">
+          <span aria-hidden="true">🌐</span> <span class="lang-btn-text">English</span>
+        </button>
+        <a class="nav-donate-btn" href="/donate" data-nav="donate">🙏 Donate</a>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button class="nav-toggle" aria-controls="main-nav-drawer" aria-expanded="false" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
   </div>
 </header>
 
@@ -218,5 +246,6 @@
   <p>© 2026 Bhakti Amrit Sanatan. All Rights Reserved. ॥ सर्वे भवन्तु सुखिनः ॥</p>
 </footer>
 
+<script src="/scripts/main.js" defer></script>
 </body>
 </html>

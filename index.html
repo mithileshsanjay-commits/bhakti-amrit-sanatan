@@ -1384,6 +1384,52 @@ body {
   inset: 0;
 }
 
+.youtube-embed-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.youtube-direct-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 18px;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-size: 0.85rem;
+}
+
+.youtube-direct-bar:hover {
+  background: rgba(245, 158, 11, 0.18);
+  border-color: #f59e0b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.25);
+}
+
+.youtube-direct-bar .yt-title-text {
+  font-family: var(--font-deva);
+  color: #fff;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.youtube-direct-bar .yt-watch-badge {
+  background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.74rem;
+  padding: 4px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
 /* ---------- NEWSLETTER / CTA STRIP ---------- */
 .cta-strip {
   background: var(--grad-cta);
@@ -3198,12 +3244,13 @@ img {
 </div>
 
 <!-- ===== MAIN NAVIGATION ===== -->
+<!-- ===== MAIN NAVIGATION ===== -->
 <header class="site-nav" role="navigation">
   <div class="container">
     <nav class="nav__inner" aria-label="Main Navigation">
 
       <!-- Logo -->
-      <a class="nav__logo" href="index.html" aria-label="Bhakti Amrit Sanatan Home">
+      <a class="nav__logo" href="/" aria-label="Bhakti Amrit Sanatan Home">
         <img class="nav__logo-img"
              src="/assets/images/cropped-Logo-150x150.png"
              alt="Bhakti Amrit Sanatan Logo" width="44" height="44">
@@ -3231,7 +3278,7 @@ img {
         <button type="button" class="lang-toggle-btn" id="lang-toggle-btn" aria-label="Switch Language / भाषा बदलें" title="Switch Language / भाषा बदलें">
           <span aria-hidden="true">🌐</span> <span class="lang-btn-text">English</span>
         </button>
-        <a class="nav-donate-btn" href="donate.html" data-nav="donate">🙏 Donate</a>
+        <a class="nav-donate-btn" href="/donate" data-nav="donate">🙏 Donate</a>
       </div>
 
       <!-- Mobile toggle -->
@@ -3885,15 +3932,25 @@ img {
         </div>
       </div>
 
-      <div class="youtube-embed reveal reveal-delay-2">
-        <iframe
-          src="https://www.youtube.com/embed/YevwYZ-xV4M?rel=0"
-          title="Bhakti Amrit Sanatan - Divine Satsang &amp; Bhakti"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          loading="lazy">
-        </iframe>
+      <div class="youtube-embed-wrapper reveal reveal-delay-2">
+        <div class="youtube-embed" style="background: #000 url('https://i.ytimg.com/vi/YevwYZ-xV4M/hqdefault.jpg') center/cover no-repeat;">
+          <iframe
+            src="https://www.youtube.com/embed/YevwYZ-xV4M?rel=0&amp;enablejsapi=1"
+            title="करूँ मैं नमन विनायक को — श्री गणेश भजन | Bhakti Amrit Sanatan"
+            width="100%"
+            height="100%"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            loading="eager">
+          </iframe>
+        </div>
+        <a class="youtube-direct-bar" href="https://youtu.be/YevwYZ-xV4M" target="_blank" rel="noopener" aria-label="Watch on YouTube">
+          <span class="yt-play-icon">▶️</span>
+          <span class="yt-title-text">करूँ मैं नमन विनायक को (श्री गणेश भजन)</span>
+          <span class="yt-watch-badge">Watch on YouTube ↗</span>
+        </a>
       </div>
 
     </div>
@@ -5422,6 +5479,105 @@ BAS.initDailyRashifal = function () {
   renderRashi(currentRashiIdx);
 };
 
+// ── MOBILE PWA INSTALL POPUP ────────────────────────────
+BAS.initPwaInstallPopup = function () {
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  if (isStandalone) return;
+
+  const dismissedTime = localStorage.getItem('bas_pwa_dismissed');
+  if (dismissedTime && (Date.now() - parseInt(dismissedTime, 10)) < 3 * 24 * 60 * 60 * 1000) {
+    return;
+  }
+
+  let deferredPrompt = null;
+  const isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
+  const isMobile = window.innerWidth <= 820 || /android|iphone|ipad|ipod|mobile/i.test(window.navigator.userAgent);
+
+  const banner = document.createElement('div');
+  banner.className = 'pwa-install-banner';
+  banner.id = 'pwa-install-banner';
+  banner.setAttribute('role', 'dialog');
+  banner.setAttribute('aria-label', 'Install Bhakti Amrit Sanatan App');
+
+  const isEn = (BAS.currentLang === 'en');
+  const title = isEn ? 'Bhakti Amrit Sanatan App' : 'भक्ति अमृत सनातन ऐप';
+  const badge = isEn ? 'ॐ OFFICIAL APP' : 'ॐ आधिकारिक ऐप';
+  const desc = isEn ? 'Fast access to Daily Panchang, 281 Vedic articles, Aartis & Mantras on your home screen!' : 'दैनिक पंचांग, आरती, चालीसा और 281 सनातन लेख सीधे अपनी होम स्क्रीन पर पाएं!';
+  const installBtnText = isEn ? '📲 Install App' : '📲 ऐप इंस्टॉल करें';
+  const laterBtnText = isEn ? 'Later' : 'बाद में';
+  const iosHelp = isEn ? 'To install on iPhone/iPad: Tap Share ⎋ below, then choose "Add to Home Screen ➕".' : 'iPhone/iPad पर इंस्टॉल करने के लिए: सफारी में नीचे Share ⎋ दबाएं और "Add to Home Screen ➕" चुनें।';
+
+  banner.innerHTML = `
+    <div class="pwa-banner-header">
+      <div class="pwa-banner-brand">
+        <img class="pwa-banner-icon" src="/assets/images/cropped-Logo-150x150.png" alt="Logo" width="44" height="44">
+        <div>
+          <div class="pwa-banner-title">${title}</div>
+          <div class="pwa-banner-sub">${badge}</div>
+        </div>
+      </div>
+      <button class="pwa-banner-close" id="pwa-banner-close" aria-label="Close">✕</button>
+    </div>
+    <div class="pwa-banner-body">
+      ${desc}
+      <div class="pwa-ios-instructions" id="pwa-ios-instructions">${iosHelp}</div>
+    </div>
+    <div class="pwa-banner-actions">
+      <button class="pwa-install-btn" id="pwa-install-btn">${installBtnText}</button>
+      <button class="pwa-dismiss-btn" id="pwa-dismiss-btn">${laterBtnText}</button>
+    </div>
+  `;
+
+  document.body.appendChild(banner);
+
+  const closeBtn = document.getElementById('pwa-banner-close');
+  const dismissBtn = document.getElementById('pwa-dismiss-btn');
+  const installBtn = document.getElementById('pwa-install-btn');
+  const iosBox = document.getElementById('pwa-ios-instructions');
+
+  function hideBanner() {
+    banner.classList.remove('show');
+    try { localStorage.setItem('bas_pwa_dismissed', Date.now().toString()); } catch (e) {}
+    setTimeout(() => { if (banner.parentNode) banner.parentNode.removeChild(banner); }, 450);
+  }
+
+  if (closeBtn) closeBtn.addEventListener('click', hideBanner);
+  if (dismissBtn) dismissBtn.addEventListener('click', hideBanner);
+
+  if (installBtn) {
+    installBtn.addEventListener('click', () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            hideBanner();
+          }
+          deferredPrompt = null;
+        });
+      } else if (isIos && iosBox) {
+        iosBox.style.display = 'block';
+      } else {
+        alert(isEn ? 'Please use browser menu (⋮) -> "Install App" or "Add to Home Screen".' : 'कृपया ब्राउज़र मेनू (⋮) खोलें और "Install app" या "होम स्क्रीन में जोड़ें" चुनें।');
+        hideBanner();
+      }
+    });
+  }
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    setTimeout(() => { banner.classList.add('show'); }, 2000);
+  });
+
+  if (isMobile) {
+    setTimeout(() => {
+      if (!banner.classList.contains('show')) {
+        banner.classList.add('show');
+      }
+    }, 3500);
+  }
+};
+
 // ── INIT ALL ───────────────────────────────────────────
 BAS.init = function () {
   BAS.initTicker();
@@ -5445,6 +5601,7 @@ BAS.init = function () {
   BAS.initLanguageToggle();
   BAS.initRotatingQuotes();
   BAS.initSearchBar();
+  BAS.initPwaInstallPopup();
 };
 
 // DOM Ready
@@ -5455,5 +5612,6 @@ if (document.readyState === 'loading') {
 }
 
 </script>
+<script src="/scripts/main.js" defer></script>
 </body>
 </html>

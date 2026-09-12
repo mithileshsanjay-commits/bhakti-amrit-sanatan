@@ -157,17 +157,34 @@ BAS.initFilters = function () {
       btn.classList.add('active');
       
       const filterValue = btn.getAttribute('data-filter');
-      const items = document.querySelectorAll('[data-category]');
       
+      if (filterValue === 'shlokas') {
+        const feat = document.getElementById('featured-shloka');
+        if (feat) {
+          feat.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        return;
+      }
+
+      const items = document.querySelectorAll('[data-category]');
       if (!items.length) return;
 
       items.forEach(item => {
-        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-          item.style.display = 'block';
-          setTimeout(() => item.style.opacity = '1', 50);
+        const cats = (item.getAttribute('data-category') || '').trim().split(/\s+/);
+        if (filterValue === 'all' || cats.includes(filterValue)) {
+          item.style.display = '';
+          requestAnimationFrame(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+          });
         } else {
           item.style.opacity = '0';
-          setTimeout(() => item.style.display = 'none', 300);
+          item.style.transform = 'translateY(10px)';
+          setTimeout(() => {
+            if (item.style.opacity === '0') {
+              item.style.display = 'none';
+            }
+          }, 250);
         }
       });
     });
@@ -969,6 +986,103 @@ BAS.initLanguageToggle = function () {
       if (attempts >= 25) clearInterval(timer);
     }, 200);
   }
+// ── MOBILE PWA INSTALL POPUP ────────────────────────────
+BAS.initPwaInstallPopup = function () {
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  if (isStandalone) return;
+
+  const dismissedTime = localStorage.getItem('bas_pwa_dismissed');
+  if (dismissedTime && (Date.now() - parseInt(dismissedTime, 10)) < 3 * 24 * 60 * 60 * 1000) {
+    return;
+  }
+
+  let deferredPrompt = null;
+  const isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
+  const isMobile = window.innerWidth <= 820 || /android|iphone|ipad|ipod|mobile/i.test(window.navigator.userAgent);
+
+  const banner = document.createElement('div');
+  banner.className = 'pwa-install-banner';
+  banner.id = 'pwa-install-banner';
+  banner.setAttribute('role', 'dialog');
+  banner.setAttribute('aria-label', 'Install Bhakti Amrit Sanatan App');
+
+  const isEn = (BAS.currentLang === 'en');
+  const title = isEn ? 'Bhakti Amrit Sanatan App' : 'भक्ति अमृत सनातन ऐप';
+  const badge = isEn ? 'ॐ OFFICIAL APP' : 'ॐ आधिकारिक ऐप';
+  const desc = isEn ? 'Fast access to Daily Panchang, 281 Vedic articles, Aartis & Mantras on your home screen!' : 'दैनिक पंचांग, आरती, चालीसा और 281 सनातन लेख सीधे अपनी होम स्क्रीन पर पाएं!';
+  const installBtnText = isEn ? '📲 Install App' : '📲 ऐप इंस्टॉल करें';
+  const laterBtnText = isEn ? 'Later' : 'बाद में';
+  const iosHelp = isEn ? 'To install on iPhone/iPad: Tap Share ⎋ below, then choose "Add to Home Screen ➕".' : 'iPhone/iPad पर इंस्टॉल करने के लिए: सफारी में नीचे Share ⎋ दबाएं और "Add to Home Screen ➕" चुनें।';
+
+  banner.innerHTML = `
+    <div class="pwa-banner-header">
+      <div class="pwa-banner-brand">
+        <img class="pwa-banner-icon" src="/assets/images/cropped-Logo-150x150.png" alt="Logo" width="44" height="44">
+        <div>
+          <div class="pwa-banner-title">${title}</div>
+          <div class="pwa-banner-sub">${badge}</div>
+        </div>
+      </div>
+      <button class="pwa-banner-close" id="pwa-banner-close" aria-label="Close">✕</button>
+    </div>
+    <div class="pwa-banner-body">
+      ${desc}
+      <div class="pwa-ios-instructions" id="pwa-ios-instructions">${iosHelp}</div>
+    </div>
+    <div class="pwa-banner-actions">
+      <button class="pwa-install-btn" id="pwa-install-btn">${installBtnText}</button>
+      <button class="pwa-dismiss-btn" id="pwa-dismiss-btn">${laterBtnText}</button>
+    </div>
+  `;
+
+  document.body.appendChild(banner);
+
+  const closeBtn = document.getElementById('pwa-banner-close');
+  const dismissBtn = document.getElementById('pwa-dismiss-btn');
+  const installBtn = document.getElementById('pwa-install-btn');
+  const iosBox = document.getElementById('pwa-ios-instructions');
+
+  function hideBanner() {
+    banner.classList.remove('show');
+    try { localStorage.setItem('bas_pwa_dismissed', Date.now().toString()); } catch (e) {}
+    setTimeout(() => { if (banner.parentNode) banner.parentNode.removeChild(banner); }, 450);
+  }
+
+  if (closeBtn) closeBtn.addEventListener('click', hideBanner);
+  if (dismissBtn) dismissBtn.addEventListener('click', hideBanner);
+
+  if (installBtn) {
+    installBtn.addEventListener('click', () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            hideBanner();
+          }
+          deferredPrompt = null;
+        });
+      } else if (isIos && iosBox) {
+        iosBox.style.display = 'block';
+      } else {
+        alert(isEn ? 'Please use browser menu (⋮) -> "Install App" or "Add to Home Screen".' : 'कृपया ब्राउज़र मेनू (⋮) खोलें और "Install app" या "होम स्क्रीन में जोड़ें" चुनें।');
+        hideBanner();
+      }
+    });
+  }
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    setTimeout(() => { banner.classList.add('show'); }, 2000);
+  });
+
+  if (isMobile) {
+    setTimeout(() => {
+      if (!banner.classList.contains('show')) {
+        banner.classList.add('show');
+      }
+    }, 3500);
+  }
 };
 
 // ── INIT ALL ───────────────────────────────────────────
@@ -995,6 +1109,7 @@ BAS.init = function () {
   BAS.initRotatingQuotes();
   BAS.initSearchBar();
   BAS.initWhatsAppShare();
+  BAS.initPwaInstallPopup();
 };
 
 // DOM Ready

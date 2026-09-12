@@ -585,46 +585,72 @@
     }
   }
   </script>
+  <link rel="stylesheet" href="/styles/main.css?v=2.6">
 </head>
 <body>
 
-  <!-- TOPBAR -->
-  <header class="topbar">
-    <div class="container topbar__inner">
-      <div class="topbar__badge">
-        <span>🕉️</span> <span>सत्यमेव जयते नानृतम् — सनातन धर्म का पावन ज्ञान</span>
-      </div>
-      <div class="topbar__links">
-        <a href="/mantras">मंत्र</a>
-        <a href="/puja-vidhi">पूजा विधि</a>
-        <a href="/vrat-festivals">व्रत एवं त्यौहार</a>
-        <a href="/geeta-gyan">गीता ज्ञान</a>
-        <a href="/dev-katha">देव कथा</a>
+  <!-- ===== TOP TICKER BAR ===== -->
+  <div class="topbar" role="banner" aria-label="Today's Panchang">
+    <div class="container">
+      <div class="topbar__inner">
+        <span class="topbar__label">आज का पंचांग</span>
+        <div class="topbar__ticker-wrap">
+          <span class="topbar__ticker" id="bas-panchang-text" aria-live="polite">
+            सोमवार · तिथि: त्रयोदशी · मास: भाद्रपद · ॐ नमः शिवाय · जय श्री राम · हरे कृष्ण · ॐ गं गणपतये नमः
+          </span>
+        </div>
+        <div class="topbar__links">
+          <span class="topbar__motto" style="font-size:0.8rem;color:#fcd34d;font-weight:600;letter-spacing:0.05em;">धर्मो रक्षति रक्षितः</span>
+        </div>
       </div>
     </div>
-  </header>
+  </div>
 
   <!-- NAVBAR -->
-  <nav class="site-nav">
-    <div class="container nav__inner">
-      <a href="/" class="nav__logo">
-        <img src="/assets/images/cropped-Logo-150x150.png" alt="Bhakti Amrit Sanatan Logo" class="nav__logo-img" width="44" height="44">
-        <div class="nav__logo-text">
-          <div class="nav__logo-title">Bhakti Amrit Sanatan</div>
-          <div class="nav__logo-sub">भक्ति अमृत सनातन</div>
-        </div>
+  <!-- ===== MAIN NAVIGATION ===== -->
+<header class="site-nav" role="navigation">
+  <div class="container">
+    <nav class="nav__inner" aria-label="Main Navigation">
+
+      <!-- Logo -->
+      <a class="nav__logo" href="/" aria-label="Bhakti Amrit Sanatan Home">
+        <img class="nav__logo-img"
+             src="/assets/images/cropped-Logo-150x150.png"
+             alt="Bhakti Amrit Sanatan Logo" width="44" height="44">
+        <span class="nav__logo-text">
+          <span class="nav__logo-name">Bhakti Amrit Sanatan</span>
+          <span class="nav__logo-tagline">भक्ति अमृत सनातन</span>
+        </span>
       </a>
-      <div class="nav__menu">
-        <a href="/" class="nav__link">गृह (Home)</a>
-        <a href="/articles" class="nav__link active">📚 सभी लेख (281)</a>
-        <a href="/mantras" class="nav__link">🔱 मंत्र</a>
-        <a href="/puja-vidhi" class="nav__link">🪔 पूजा विधि</a>
-        <a href="/vrat-festivals" class="nav__link">📅 व्रत-त्यौहार</a>
-        <a href="/geeta-gyan" class="nav__link">🕉️ गीता ज्ञान</a>
-        <a href="/dev-katha" class="nav__link">📖 देव कथा</a>
+
+      <!-- Navigation Menu -->
+      <div class="nav__drawer" id="main-nav-drawer">
+        <ul class="nav__menu" id="main-menu">
+          <li><a class="nav__link" href="/" data-nav="home">🏠 Home</a></li>
+          <li><a class="nav__link active" href="/articles" data-nav="articles">📚 सभी लेख (281)</a></li>
+          <li><a class="nav__link" href="/mantras" data-nav="mantras">🔱 Mantras</a></li>
+          <li><a class="nav__link" href="/puja-vidhi" data-nav="puja">🪔 Puja Vidhi</a></li>
+          <li><a class="nav__link" href="/vrat-festivals" data-nav="vrat">📅 Vrat &amp; Festivals</a></li>
+          <li><a class="nav__link" href="/dev-katha" data-nav="katha">📖 Dev Katha</a></li>
+          <li><a class="nav__link" href="/geeta-gyan" data-nav="geeta">🕉️ Geeta Gyan</a></li>
+        </ul>
       </div>
-    </div>
-  </nav>
+
+      <!-- Single CTA group (No duplicate buttons) -->
+      <div class="nav__cta">
+        <button type="button" class="lang-toggle-btn" id="lang-toggle-btn" aria-label="Switch Language / भाषा बदलें" title="Switch Language / भाषा बदलें">
+          <span aria-hidden="true">🌐</span> <span class="lang-btn-text">English</span>
+        </button>
+        <a class="nav-donate-btn" href="/donate" data-nav="donate">🙏 Donate</a>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button class="nav-toggle" aria-controls="main-nav-drawer" aria-expanded="false" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
 
   <!-- HERO -->
   <section class="articles-hero">
@@ -1287,5 +1313,6 @@
     })();
   </script>
 
+<script src="/scripts/main.js" defer></script>
 </body>
 </html>

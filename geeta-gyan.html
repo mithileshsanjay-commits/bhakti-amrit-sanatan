@@ -1784,7 +1784,10 @@ img {
     .chapter-title { font-family: var(--font-serif); font-size: 1rem; font-weight: 700; color: var(--clr-text-white); margin-bottom: 4px; }
     .chapter-title-hi { font-family: var(--font-deva); font-size: 0.82rem; color: var(--clr-gold); margin-bottom: 10px; }
     .chapter-desc { font-size: 0.82rem; color: var(--clr-text-muted); line-height: 1.6; }
-    .chapter-slokas { font-size: 0.72rem; color: var(--clr-text-faint); margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .chapter-slokas { font-size: 0.72rem; color: var(--clr-text-faint); margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; }
+    .chapter-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; color: #fcd34d; background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3); border-radius: 999px; padding: 2px 10px; margin-bottom: 8px; }
+    .chapter-read-link { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 0.78rem; font-weight: 700; color: var(--clr-gold); }
+    .chapter-card:hover .chapter-read-link { color: #fff; }
 
     /* Featured Shloka */
     .shloka-feature {
@@ -1855,6 +1858,7 @@ img {
   </style>
 
     <link rel="canonical" href="https://www.bhaktiamritsanatan.com/geeta-gyan" />
+  <link rel="stylesheet" href="/styles/main.css?v=2.6">
 </head>
 <body>
 <div class="reading-progress-bar reading-progress"></div>
@@ -1867,34 +1871,50 @@ img {
 </div></div></div>
 
 <!-- NAVIGATION -->
-<header class="site-nav"><div class="container"><nav class="nav__inner">
-  <a class="nav__logo" href="index.html">
-    <img class="nav__logo-img" src="/assets/images/cropped-Logo-150x150.png" alt="Logo" width="44" height="44">
-    <span class="nav__logo-text"><span class="nav__logo-name">Bhakti Amrit Sanatan</span><span class="nav__logo-tagline">भक्ति अमृत सनातन</span></span>
-  </a>
-    <div class="nav__drawer" id="main-nav-drawer">
-      <ul class="nav__menu" id="main-menu">
-        <li><a class="nav__link" href="index.html">🏠 Home</a></li>
-        <li><a class="nav__link" href="/articles">📚 सभी लेख (281)</a></li>
-        <li><a class="nav__link" href="mantras.html">🔱 Mantras</a></li>
-        <li><a class="nav__link" href="puja-vidhi.html">🪔 Puja Vidhi</a></li>
-        <li><a class="nav__link" href="vrat-festivals.html">📅 Vrat &amp; Festivals</a></li>
-        <li><a class="nav__link" href="dev-katha.html">📖 Dev Katha</a></li>
-        <li><a class="nav__link" href="geeta-gyan.html">🕉️ Geeta Gyan</a></li>
-      </ul>
-      <div class="nav__mobile-actions">
-        <a class="btn btn--ghost" href="/articles">📚 सभी लेख</a>
-        <a class="btn btn--primary" href="donate.html">🙏 Donate</a>
+<!-- ===== MAIN NAVIGATION ===== -->
+<header class="site-nav" role="navigation">
+  <div class="container">
+    <nav class="nav__inner" aria-label="Main Navigation">
+
+      <!-- Logo -->
+      <a class="nav__logo" href="/" aria-label="Bhakti Amrit Sanatan Home">
+        <img class="nav__logo-img"
+             src="/assets/images/cropped-Logo-150x150.png"
+             alt="Bhakti Amrit Sanatan Logo" width="44" height="44">
+        <span class="nav__logo-text">
+          <span class="nav__logo-name">Bhakti Amrit Sanatan</span>
+          <span class="nav__logo-tagline">भक्ति अमृत सनातन</span>
+        </span>
+      </a>
+
+      <!-- Navigation Menu -->
+      <div class="nav__drawer" id="main-nav-drawer">
+        <ul class="nav__menu" id="main-menu">
+          <li><a class="nav__link" href="/" data-nav="home">🏠 Home</a></li>
+          <li><a class="nav__link" href="/articles" data-nav="articles">📚 सभी लेख (281)</a></li>
+          <li><a class="nav__link" href="/mantras" data-nav="mantras">🔱 Mantras</a></li>
+          <li><a class="nav__link" href="/puja-vidhi" data-nav="puja">🪔 Puja Vidhi</a></li>
+          <li><a class="nav__link" href="/vrat-festivals" data-nav="vrat">📅 Vrat &amp; Festivals</a></li>
+          <li><a class="nav__link" href="/dev-katha" data-nav="katha">📖 Dev Katha</a></li>
+          <li><a class="nav__link active" href="/geeta-gyan" data-nav="geeta">🕉️ Geeta Gyan</a></li>
+        </ul>
       </div>
-    </div>
-    <div class="nav__cta">
-      <a class="btn btn--ghost" href="/articles">📚 सभी लेख</a>
-      <a class="btn btn--primary" href="donate.html">🙏 Donate</a>
-    </div>
-    <button class="nav-toggle" aria-controls="main-nav-drawer" aria-expanded="false" aria-label="Toggle Menu">
-      <span></span><span></span><span></span>
-    </button>
-</nav></div></header>
+
+      <!-- Single CTA group (No duplicate buttons) -->
+      <div class="nav__cta">
+        <button type="button" class="lang-toggle-btn" id="lang-toggle-btn" aria-label="Switch Language / भाषा बदलें" title="Switch Language / भाषा बदलें">
+          <span aria-hidden="true">🌐</span> <span class="lang-btn-text">English</span>
+        </button>
+        <a class="nav-donate-btn" href="/donate" data-nav="donate">🙏 Donate</a>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button class="nav-toggle" aria-controls="main-nav-drawer" aria-expanded="false" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
 
 <!-- PAGE HERO -->
 <section class="page-hero om-pattern">
@@ -1924,13 +1944,13 @@ img {
 
 <!-- FILTER BAR -->
 <div class="filter-bar"><div class="container"><div class="filter-bar__inner">
-  <button class="filter-btn active">All Chapters</button>
-  <button class="filter-btn">📖 Karma Yoga</button>
-  <button class="filter-btn">🧘 Jnana Yoga</button>
-  <button class="filter-btn">💙 Bhakti Yoga</button>
-  <button class="filter-btn">🕊️ Moksha</button>
-  <button class="filter-btn">⚖️ Dharma</button>
-  <button class="filter-btn">🌟 Featured Shlokas</button>
+  <button class="filter-btn active" data-filter="all">📖 All 18 Chapters (सभी अध्याय)</button>
+  <button class="filter-btn" data-filter="karma">📖 Karma Yoga (कर्म योग)</button>
+  <button class="filter-btn" data-filter="jnana">🧘 Jnana Yoga (ज्ञान योग)</button>
+  <button class="filter-btn" data-filter="bhakti">💙 Bhakti Yoga (भक्ति योग)</button>
+  <button class="filter-btn" data-filter="moksha">🕊️ Moksha (मोक्ष मार्ग)</button>
+  <button class="filter-btn" data-filter="dharma">⚖️ Dharma (धर्म व कर्तव्य)</button>
+  <button class="filter-btn" data-filter="shlokas">🌟 Featured Shlokas (प्रमुख श्लोक)</button>
 </div></div></div>
 
 <div style="background:linear-gradient(180deg,var(--clr-bg-darkest) 0%,var(--clr-bg-dark) 100%);">
@@ -1940,7 +1960,7 @@ img {
   <main role="main">
 
     <!-- Featured Shloka -->
-    <div class="shloka-feature reveal">
+    <div class="shloka-feature reveal" id="featured-shloka">
       <span class="section-label" style="margin-bottom:20px; display:inline-block;">🌟 Featured Shloka</span>
       <blockquote>
         <p class="shloka-sanskrit">
@@ -1989,68 +2009,245 @@ img {
       <p style="color:var(--clr-text-muted); margin-top:8px; font-size:0.9rem;">Click any chapter to read on bhaktiamritsanatan.com</p>
     </div>
 
-    <div class="chapter-grid">
-      <a class="chapter-card reveal" href="https://www.bhaktiamritsanatan.com/geeta-gyan/" target="_blank">
+    <div class="chapter-grid" id="chapter-grid">
+      <!-- Chapter 01 -->
+      <a class="chapter-card reveal" data-category="dharma" href="/chapter-1-arjuna-vishada.html">
         <div class="chapter-num">01</div>
+        <span class="chapter-tag">⚖️ Dharma &amp; Duty</span>
         <div class="chapter-title">Arjuna Vishada Yoga</div>
-        <div class="chapter-title-hi">अर्जुन विषाद योग</div>
-        <div class="chapter-desc">Arjuna's grief and despondency at the battlefield of Kurukshetra.</div>
-        <div class="chapter-slokas">47 Shlokas</div>
+        <div class="chapter-title-hi">अर्जुनविषादयोग — अर्जुन का विषाद</div>
+        <div class="chapter-desc">कुरुक्षेत्र के रणक्षेत्र में सगे-संबंधियों को देखकर अर्जुन का मोह, शोक और धर्म-संकट। गांडीव धनुष का त्याग और आत्मसमर्पण की भूमिका।</div>
+        <div class="chapter-slokas">
+          <span>47 Shlokas (४७ श्लोक)</span>
+          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+        </div>
       </a>
-      <a class="chapter-card reveal reveal-delay-1" href="https://www.bhaktiamritsanatan.com/geeta-gyan/" target="_blank">
+
+      <!-- Chapter 02 -->
+      <a class="chapter-card reveal reveal-delay-1" data-category="jnana dharma karma" href="/chapter-2-sankhya-yoga.html">
         <div class="chapter-num">02</div>
+        <span class="chapter-tag">🧘 Jnana &amp; Karma</span>
         <div class="chapter-title">Sankhya Yoga</div>
-        <div class="chapter-title-hi">सांख्य योग</div>
-        <div class="chapter-desc">The eternal nature of the soul, duty, and the philosophy of action.</div>
-        <div class="chapter-slokas">72 Shlokas</div>
+        <div class="chapter-title-hi">सांख्ययोग — अमर आत्मा व निष्काम कर्म</div>
+        <div class="chapter-desc">आत्मा की अमरता, देह की नश्वरता, निष्काम कर्म सिद्धांत (कर्मण्येवाधिकारस्ते...) तथा स्थितप्रज्ञ पुरुष के दिव्य लक्षण।</div>
+        <div class="chapter-slokas">
+          <span>72 Shlokas (७२ श्लोक)</span>
+          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+        </div>
       </a>
-      <a class="chapter-card reveal reveal-delay-2" href="https://www.bhaktiamritsanatan.com/geeta-gyan/" target="_blank">
+
+      <!-- Chapter 03 -->
+      <a class="chapter-card reveal reveal-delay-2" data-category="karma" href="/chapter-3-karma-yoga.html">
         <div class="chapter-num">03</div>
+        <span class="chapter-tag">⚡ Karma Yoga</span>
         <div class="chapter-title">Karma Yoga</div>
-        <div class="chapter-title-hi">कर्म योग</div>
-        <div class="chapter-desc">The path of selfless action and performing one's duty.</div>
-        <div class="chapter-slokas">43 Shlokas</div>
+        <div class="chapter-title-hi">कर्मयोग — अनासक्त कर्तव्य मार्ग</div>
+        <div class="chapter-desc">कर्म त्याग नहीं, आसक्ति का त्याग ही संन्यास है। लोकसंग्रह व सृष्टि चक्र के लिए कर्तव्य पालन और काम-क्रोध रूपी शत्रुओं पर विजय।</div>
+        <div class="chapter-slokas">
+          <span>43 Shlokas (४३ श्लोक)</span>
+          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+        </div>
       </a>
-      <a class="chapter-card reveal" href="https://www.bhaktiamritsanatan.com/geeta-gyan/" target="_blank">
+
+      <!-- Chapter 04 -->
+      <a class="chapter-card reveal" data-category="jnana karma" href="/chapter-4-jnana-karma.html">
         <div class="chapter-num">04</div>
+        <span class="chapter-tag">🧘 Jnana Yoga</span>
         <div class="chapter-title">Jnana Karma Sanyasa Yoga</div>
-        <div class="chapter-title-hi">ज्ञान कर्म संन्यास योग</div>
-        <div class="chapter-desc">The path of wisdom, knowledge, and renunciation of action.</div>
-        <div class="chapter-slokas">42 Shlokas</div>
+        <div class="chapter-title-hi">ज्ञानकर्मसंन्यासयोग — दिव्य अवतार व ज्ञानयज्ञ</div>
+        <div class="chapter-desc">भगवान के दिव्य अवतार का रहस्य (यदा यदा हि धर्मस्य...), गुरु-शिष्य परंपरा और ज्ञान रूपी अग्नि से समस्त कर्मबंधनों का दहन।</div>
+        <div class="chapter-slokas">
+          <span>42 Shlokas (४२ श्लोक)</span>
+          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+        </div>
       </a>
-      <a class="chapter-card reveal reveal-delay-1" href="https://www.bhaktiamritsanatan.com/geeta-gyan/" target="_blank">
+
+      <!-- Chapter 05 -->
+      <a class="chapter-card reveal reveal-delay-1" data-category="karma jnana moksha" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+5">
+        <div class="chapter-num">05</div>
+        <span class="chapter-tag">⚡ Karma &amp; Sanyasa</span>
+        <div class="chapter-title">Karma Sanyasa Yoga</div>
+        <div class="chapter-title-hi">कर्मसंन्यासयोग — कर्मफल त्याग व ब्रह्म-निर्वाण</div>
+        <div class="chapter-desc">संन्यास और कर्मयोग का तात्विक समन्वय। ब्रह्म में समर्पित होकर कर्म करने वाले साधक का कमलपत्र की भांति निष्कलंक जीवन।</div>
+        <div class="chapter-slokas">
+          <span>29 Shlokas (२९ श्लोक)</span>
+          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+        </div>
+      </a>
+
+      <!-- Chapter 06 -->
+      <a class="chapter-card reveal reveal-delay-2" data-category="jnana moksha" href="/chapter-6-dhyana-yoga.html">
+        <div class="chapter-num">06</div>
+        <span class="chapter-tag">🧘 Dhyana &amp; Mind</span>
+        <div class="chapter-title">Dhyana Yoga (Atma Samyama)</div>
+        <div class="chapter-title-hi">आत्मसंयमयोग — मन का निग्रह व ध्यान साधना</div>
+        <div class="chapter-desc">मनुष्य स्वयं का मित्र या शत्रु है। अभ्यास और वैराग्य से मन पर विजय, अष्टांग ध्यान विधि, समत्व बुद्धि तथा योगी की श्रेष्ठता।</div>
+        <div class="chapter-slokas">
+          <span>47 Shlokas (४७ श्लोक)</span>
+          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+        </div>
+      </a>
+
+      <!-- Chapter 07 -->
+      <a class="chapter-card reveal" data-category="bhakti jnana" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+7">
+        <div class="chapter-num">07</div>
+        <span class="chapter-tag">💙 Bhakti &amp; Jnana</span>
+        <div class="chapter-title">Jnana Vijnana Yoga</div>
+        <div class="chapter-title-hi">ज्ञानविज्ञानयोग — परा-अपरा प्रकृति व ईश्वर दर्शन</div>
+        <div class="chapter-desc">परा (चेतन) व अपरा (जड़) प्रकृति का रहस्य, माया का प्रभाव और चार प्रकार के आर्त, जिज्ञासु, अर्थार्थी और ज्ञानी भक्तों का निरूपण।</div>
+        <div class="chapter-slokas">
+          <span>30 Shlokas (३० श्लोक)</span>
+          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+        </div>
+      </a>
+
+      <!-- Chapter 08 -->
+      <a class="chapter-card reveal reveal-delay-1" data-category="moksha bhakti" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+8">
+        <div class="chapter-num">08</div>
+        <span class="chapter-tag">🕊️ Moksha &amp; Mukti</span>
+        <div class="chapter-title">Akshara Brahma Yoga</div>
+        <div class="chapter-title-hi">अक्षरब्रह्मयोग — अंतकाल स्मरण व परम धाम</div>
+        <div class="chapter-desc">अंतकाल में भगवन्नाम स्मरण और ॐ कार साधना का फल। उत्तरायण-दक्षिणायन मार्ग और जन्म-मरण के बंधन से शाश्वत मुक्ति का रहस्य।</div>
+        <div class="chapter-slokas">
+          <span>28 Shlokas (२८ श्लोक)</span>
+          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+        </div>
+      </a>
+
+      <!-- Chapter 09 -->
+      <a class="chapter-card reveal reveal-delay-2" data-category="bhakti" href="/chapter-9-raja-vidya.html">
+        <div class="chapter-num">09</div>
+        <span class="chapter-tag">💙 Sovereign Secret</span>
+        <div class="chapter-title">Raja Vidya Raja Guhya Yoga</div>
+        <div class="chapter-title-hi">राजविद्याराजगुह्ययोग — परम गोपनीय ज्ञान व योगक्षेम</div>
+        <div class="chapter-desc">ज्ञानों का राजा—परम पवित्र व साक्षात् फलप्रद। पत्रं पुष्पं फलं तोयं समर्पण, तथा अनन्य भक्तों के योगक्षेम का भगवान द्वारा स्वयं वहन।</div>
+        <div class="chapter-slokas">
+          <span>34 Shlokas (३४ श्लोक)</span>
+          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+        </div>
+      </a>
+
+      <!-- Chapter 10 -->
+      <a class="chapter-card reveal" data-category="bhakti jnana" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+10">
+        <div class="chapter-num">10</div>
+        <span class="chapter-tag">💙 Divine Splendor</span>
+        <div class="chapter-title">Vibhuti Yoga</div>
+        <div class="chapter-title-hi">विभूतियोग — परमात्मा की ब्रह्मांडीय विभूतियां</div>
+        <div class="chapter-desc">समस्त ब्रह्मांड में जो भी ऐश्वर्य, सौंदर्य, तेज और सामर्थ्य है, वह परमात्मा का अंश मात्र है। वेदों में सामवेद और ज्योतियों में सूर्य।</div>
+        <div class="chapter-slokas">
+          <span>42 Shlokas (४२ श्लोक)</span>
+          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+        </div>
+      </a>
+
+      <!-- Chapter 11 -->
+      <a class="chapter-card reveal reveal-delay-1" data-category="bhakti jnana" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+11">
         <div class="chapter-num">11</div>
+        <span class="chapter-tag">🌟 Cosmic Vision</span>
         <div class="chapter-title">Vishwaroop Darshan Yoga</div>
-        <div class="chapter-title-hi">विश्वरूप दर्शन योग</div>
-        <div class="chapter-desc">Krishna reveals His universal, cosmic form to Arjuna.</div>
-        <div class="chapter-slokas">55 Shlokas</div>
+        <div class="chapter-title-hi">विश्वरूपदर्शनयोग — श्री कृष्ण का विराट विश्वरूप</div>
+        <div class="chapter-desc">भगवान द्वारा अर्जुन को दिव्य चक्षु प्रदान कर अपने अनंत, भयप्रद, तेजोमय व सर्वव्यापी काल-स्वरूप का साक्षात् प्रत्यक्ष दर्शन कराना।</div>
+        <div class="chapter-slokas">
+          <span>55 Shlokas (५५ श्लोक)</span>
+          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+        </div>
       </a>
-      <a class="chapter-card reveal reveal-delay-2" href="https://www.bhaktiamritsanatan.com/geeta-gyan/" target="_blank">
+
+      <!-- Chapter 12 -->
+      <a class="chapter-card reveal reveal-delay-2" data-category="bhakti" href="/chapter-12-bhakti-yoga.html">
         <div class="chapter-num">12</div>
+        <span class="chapter-tag">💙 Bhakti Yoga</span>
         <div class="chapter-title">Bhakti Yoga</div>
-        <div class="chapter-title-hi">भक्ति योग</div>
-        <div class="chapter-desc">The path of devotion and loving worship of the Supreme.</div>
-        <div class="chapter-slokas">20 Shlokas</div>
+        <div class="chapter-title-hi">भक्तियोग — प्रेम-भक्ति व प्रिय भक्त के गुण</div>
+        <div class="chapter-desc">सगुण और निर्गुण उपासना की तुलना। भगवान के प्रिय भक्त के ३५ दुर्लभ सद्गुण—अद्वेष्टा, दयालु, समता, संतोष और पूर्ण शरणागति।</div>
+        <div class="chapter-slokas">
+          <span>20 Shlokas (२० श्लोक)</span>
+          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+        </div>
       </a>
-      <a class="chapter-card reveal" href="https://www.bhaktiamritsanatan.com/geeta-gyan/" target="_blank">
+
+      <!-- Chapter 13 -->
+      <a class="chapter-card reveal" data-category="jnana moksha" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+13">
+        <div class="chapter-num">13</div>
+        <span class="chapter-tag">🧘 Kshetra &amp; Soul</span>
+        <div class="chapter-title">Kshetra Kshetrajna Vibhaga</div>
+        <div class="chapter-title-hi">क्षेत्रक्षेत्रज्ञविभागयोग — देह व आत्मा का तत्वज्ञान</div>
+        <div class="chapter-desc">शरीर (क्षेत्र) और अंतरंग साक्षी आत्मा (क्षेत्रज्ञ) का वैज्ञानिक विवेक। प्रकृति और पुरुष का भेद जानकर तत्वज्ञान द्वारा अमरत्व की प्राप्ति।</div>
+        <div class="chapter-slokas">
+          <span>35 Shlokas (३५ श्लोक)</span>
+          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+        </div>
+      </a>
+
+      <!-- Chapter 14 -->
+      <a class="chapter-card reveal reveal-delay-1" data-category="jnana moksha" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+14">
+        <div class="chapter-num">14</div>
+        <span class="chapter-tag">🧘 The Three Gunas</span>
+        <div class="chapter-title">Gunatraya Vibhaga Yoga</div>
+        <div class="chapter-title-hi">गुणत्रयविभागयोग — सत्व, रज व तम गुण का रहस्य</div>
+        <div class="chapter-desc">प्रकृति के तीन गुण—सत्व, रज, तम—जीवात्मा को देह में बांधते हैं। गुणों के प्रभाव से परे होकर 'गुणातीत' बनने की पावन साधना और लक्षण।</div>
+        <div class="chapter-slokas">
+          <span>27 Shlokas (२७ श्लोक)</span>
+          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+        </div>
+      </a>
+
+      <!-- Chapter 15 -->
+      <a class="chapter-card reveal reveal-delay-2" data-category="jnana bhakti moksha" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+15">
         <div class="chapter-num">15</div>
+        <span class="chapter-tag">🕊️ Supreme Being</span>
         <div class="chapter-title">Purushottama Yoga</div>
-        <div class="chapter-title-hi">पुरुषोत्तम योग</div>
-        <div class="chapter-desc">The Supreme Person and the eternal nature of the soul and universe.</div>
-        <div class="chapter-slokas">20 Shlokas</div>
+        <div class="chapter-title-hi">पुरुषोत्तमयोग — अश्वत्थ वृक्ष व परम पुरुषोत्तम</div>
+        <div class="chapter-desc">संसार रूपी ऊर्ध्वमूल अश्वत्थ वृक्ष का वैराग्य-कुठार से छेदन। क्षर (नाशवान) और अक्षर (अविनाशी) से परे स्वयं पुरुषोत्तम श्री कृष्ण का स्वरूप।</div>
+        <div class="chapter-slokas">
+          <span>20 Shlokas (२० श्लोक)</span>
+          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+        </div>
       </a>
-      <a class="chapter-card reveal reveal-delay-1" href="https://www.bhaktiamritsanatan.com/geeta-gyan/" target="_blank">
+
+      <!-- Chapter 16 -->
+      <a class="chapter-card reveal" data-category="dharma" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+16">
+        <div class="chapter-num">16</div>
+        <span class="chapter-tag">⚖️ Divine vs Demonic</span>
+        <div class="chapter-title">Daivasura Sampad Vibhaga</div>
+        <div class="chapter-title-hi">दैवासुरसंपद्विभागयोग — दैवी व आसुरी संपदा</div>
+        <div class="chapter-desc">अभय, सत्य, अहिंसा रूपी दैवी गुण मोक्ष दिलाते हैं। दंभ, दर्प और क्रोध रूपी आसुरी गुण पतन कराते हैं। काम, क्रोध, लोभ—नरक के तीन द्वार।</div>
+        <div class="chapter-slokas">
+          <span>24 Shlokas (२४ श्लोक)</span>
+          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+        </div>
+      </a>
+
+      <!-- Chapter 17 -->
+      <a class="chapter-card reveal reveal-delay-1" data-category="dharma karma" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+17">
+        <div class="chapter-num">17</div>
+        <span class="chapter-tag">⚖️ Threefold Faith</span>
+        <div class="chapter-title">Shraddhatraya Vibhaga Yoga</div>
+        <div class="chapter-title-hi">श्रद्धात्रयविभागयोग — तीन प्रकार की श्रद्धा व ॐ तत् सत्</div>
+        <div class="chapter-desc">सात्विक, राजसिक और तामसिक आहार, यज्ञ, तप एवं दान के भेद। 'ॐ तत् सत्' के उच्चारण से समस्त कर्मों का परम पावन व निर्दोष होना।</div>
+        <div class="chapter-slokas">
+          <span>28 Shlokas (२८ श्लोक)</span>
+          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+        </div>
+      </a>
+
+      <!-- Chapter 18 -->
+      <a class="chapter-card reveal reveal-delay-2" data-category="moksha karma bhakti dharma" href="/chapter-18-moksha-sanyasa.html">
         <div class="chapter-num">18</div>
+        <span class="chapter-tag">🕊️ Supreme Liberation</span>
         <div class="chapter-title">Moksha Sanyasa Yoga</div>
-        <div class="chapter-title-hi">मोक्ष संन्यास योग</div>
-        <div class="chapter-desc">Conclusion — the supreme secret and the path to liberation.</div>
-        <div class="chapter-slokas">78 Shlokas</div>
+        <div class="chapter-title-hi">मोक्षसंन्यासयोग — संपूर्ण गीता सार व शरणागति</div>
+        <div class="chapter-desc">गीता का परम शिखर। त्याग व संन्यास का रहस्य, स्वधर्म पालन, तथा 'सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज'—परम शरणागति से मोक्ष।</div>
+        <div class="chapter-slokas">
+          <span>78 Shlokas (७८ श्लोक)</span>
+          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+        </div>
       </a>
     </div>
 
     <div style="text-align:center; margin-top:40px; padding-bottom:var(--sp-3xl);">
-      <a class="btn btn--primary" href="https://www.bhaktiamritsanatan.com/geeta-gyan/" target="_blank">
-        🕉️ Read All 18 Chapters on bhaktiamritsanatan.com →
+      <a class="btn btn--primary" href="/articles?category=Bhagavad+Gita">
+        🕉️ Explore All 84 Bhagavad Gita Articles in Library →
       </a>
     </div>
 
@@ -2300,17 +2497,34 @@ BAS.initFilters = function () {
       btn.classList.add('active');
       
       const filterValue = btn.getAttribute('data-filter');
-      const items = document.querySelectorAll('[data-category]');
       
+      if (filterValue === 'shlokas') {
+        const feat = document.getElementById('featured-shloka');
+        if (feat) {
+          feat.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        return;
+      }
+
+      const items = document.querySelectorAll('[data-category]');
       if (!items.length) return;
 
       items.forEach(item => {
-        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-          item.style.display = 'block';
-          setTimeout(() => item.style.opacity = '1', 50);
+        const cats = (item.getAttribute('data-category') || '').trim().split(/\s+/);
+        if (filterValue === 'all' || cats.includes(filterValue)) {
+          item.style.display = '';
+          requestAnimationFrame(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+          });
         } else {
           item.style.opacity = '0';
-          setTimeout(() => item.style.display = 'none', 300);
+          item.style.transform = 'translateY(10px)';
+          setTimeout(() => {
+            if (item.style.opacity === '0') {
+              item.style.display = 'none';
+            }
+          }, 250);
         }
       });
     });
@@ -2663,5 +2877,6 @@ if (document.readyState === 'loading') {
 
 </script>
 <script src="/articles-data.js" defer></script>
+<script src="/scripts/main.js" defer></script>
 </body>
 </html>

@@ -1781,6 +1781,7 @@ img {
   </style>
 
     <link rel="canonical" href="https://www.bhaktiamritsanatan.com/puja-vidhi" />
+  <link rel="stylesheet" href="/styles/main.css?v=2.6">
 </head>
 <body>
 <div class="reading-progress-bar reading-progress"></div>
@@ -1791,34 +1792,50 @@ img {
   <div class="topbar__links"><a href="/articles">📚 सभी लेख</a><a href="donate.html">🙏 Donate</a></div>
 </div></div></div>
 
-<header class="site-nav"><div class="container"><nav class="nav__inner">
-  <a class="nav__logo" href="index.html">
-    <img class="nav__logo-img" src="/assets/images/cropped-Logo-150x150.png" alt="Logo" width="44" height="44">
-    <span class="nav__logo-text"><span class="nav__logo-name">Bhakti Amrit Sanatan</span><span class="nav__logo-tagline">भक्ति अमृत सनातन</span></span>
-  </a>
-    <div class="nav__drawer" id="main-nav-drawer">
-      <ul class="nav__menu" id="main-menu">
-        <li><a class="nav__link" href="index.html">🏠 Home</a></li>
-        <li><a class="nav__link" href="/articles">📚 सभी लेख (281)</a></li>
-        <li><a class="nav__link" href="mantras.html">🔱 Mantras</a></li>
-        <li><a class="nav__link" href="puja-vidhi.html">🪔 Puja Vidhi</a></li>
-        <li><a class="nav__link" href="vrat-festivals.html">📅 Vrat &amp; Festivals</a></li>
-        <li><a class="nav__link" href="dev-katha.html">📖 Dev Katha</a></li>
-        <li><a class="nav__link" href="geeta-gyan.html">🕉️ Geeta Gyan</a></li>
-      </ul>
-      <div class="nav__mobile-actions">
-        <a class="btn btn--ghost" href="/articles">📚 सभी लेख</a>
-        <a class="btn btn--primary" href="donate.html">🙏 Donate</a>
+<!-- ===== MAIN NAVIGATION ===== -->
+<header class="site-nav" role="navigation">
+  <div class="container">
+    <nav class="nav__inner" aria-label="Main Navigation">
+
+      <!-- Logo -->
+      <a class="nav__logo" href="/" aria-label="Bhakti Amrit Sanatan Home">
+        <img class="nav__logo-img"
+             src="/assets/images/cropped-Logo-150x150.png"
+             alt="Bhakti Amrit Sanatan Logo" width="44" height="44">
+        <span class="nav__logo-text">
+          <span class="nav__logo-name">Bhakti Amrit Sanatan</span>
+          <span class="nav__logo-tagline">भक्ति अमृत सनातन</span>
+        </span>
+      </a>
+
+      <!-- Navigation Menu -->
+      <div class="nav__drawer" id="main-nav-drawer">
+        <ul class="nav__menu" id="main-menu">
+          <li><a class="nav__link" href="/" data-nav="home">🏠 Home</a></li>
+          <li><a class="nav__link" href="/articles" data-nav="articles">📚 सभी लेख (281)</a></li>
+          <li><a class="nav__link" href="/mantras" data-nav="mantras">🔱 Mantras</a></li>
+          <li><a class="nav__link active" href="/puja-vidhi" data-nav="puja">🪔 Puja Vidhi</a></li>
+          <li><a class="nav__link" href="/vrat-festivals" data-nav="vrat">📅 Vrat &amp; Festivals</a></li>
+          <li><a class="nav__link" href="/dev-katha" data-nav="katha">📖 Dev Katha</a></li>
+          <li><a class="nav__link" href="/geeta-gyan" data-nav="geeta">🕉️ Geeta Gyan</a></li>
+        </ul>
       </div>
-    </div>
-    <div class="nav__cta">
-      <a class="btn btn--ghost" href="/articles">📚 सभी लेख</a>
-      <a class="btn btn--primary" href="donate.html">🙏 Donate</a>
-    </div>
-    <button class="nav-toggle" aria-controls="main-nav-drawer" aria-expanded="false" aria-label="Toggle Menu">
-      <span></span><span></span><span></span>
-    </button>
-</nav></div></header>
+
+      <!-- Single CTA group (No duplicate buttons) -->
+      <div class="nav__cta">
+        <button type="button" class="lang-toggle-btn" id="lang-toggle-btn" aria-label="Switch Language / भाषा बदलें" title="Switch Language / भाषा बदलें">
+          <span aria-hidden="true">🌐</span> <span class="lang-btn-text">English</span>
+        </button>
+        <a class="nav-donate-btn" href="/donate" data-nav="donate">🙏 Donate</a>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button class="nav-toggle" aria-controls="main-nav-drawer" aria-expanded="false" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
 
 <section class="page-hero om-pattern">
   <div class="mandala-bg" aria-hidden="true">
@@ -2521,5 +2538,6 @@ if (document.readyState === 'loading') {
 
 </script>
 <script src="/articles-data.js" defer></script>
+<script src="/scripts/main.js" defer></script>
 </body>
 </html>
