@@ -2303,29 +2303,13 @@ BAS.initLazyImages = function () {
 
 // ── SMOOTH PAGE TRANSITIONS ────────────────────────────
 BAS.initPageTransitions = function () {
-  const links = document.querySelectorAll('a[href]');
-  links.forEach(link => {
-    const href = link.getAttribute('href');
-    // Only same-origin internal links
-    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
+  // Always guarantee page is visible immediately
+  document.body.style.opacity = '1';
 
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      document.body.style.opacity = '0';
-      document.body.style.transition = 'opacity 0.2s ease';
-      setTimeout(() => {
-        window.location.href = href;
-      }, 200);
-    });
-  });
-
-  // Fade in on load
-  window.addEventListener('load', () => {
+  // Handle browser Back/Forward navigation from bfcache
+  window.addEventListener('pageshow', function () {
     document.body.style.opacity = '1';
-    document.body.style.transition = 'opacity 0.4s ease';
   });
-
-  document.body.style.opacity = '0';
 };
 
 // ── DIYA GLOW CURSOR (desktop) ─────────────────────────

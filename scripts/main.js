@@ -300,31 +300,15 @@ BAS.initLazyImages = function () {
   imgs.forEach(img => io.observe(img));
 };
 
-// ── SMOOTH PAGE TRANSITIONS ────────────────────────────
+// ── SMOOTH PAGE VISIBILITY & BFCACHE RESTORE ───────────
 BAS.initPageTransitions = function () {
-  const links = document.querySelectorAll('a[href]');
-  links.forEach(link => {
-    const href = link.getAttribute('href');
-    // Only same-origin internal links
-    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
+  // Always guarantee page is visible immediately
+  document.body.style.opacity = '1';
 
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      document.body.style.opacity = '0';
-      document.body.style.transition = 'opacity 0.2s ease';
-      setTimeout(() => {
-        window.location.href = href;
-      }, 200);
-    });
-  });
-
-  // Fade in on load
-  window.addEventListener('load', () => {
+  // Handle browser Back/Forward navigation from bfcache
+  window.addEventListener('pageshow', function () {
     document.body.style.opacity = '1';
-    document.body.style.transition = 'opacity 0.4s ease';
   });
-
-  document.body.style.opacity = '0';
 };
 
 // ── DIYA GLOW CURSOR (desktop) ─────────────────────────
@@ -730,6 +714,8 @@ BAS.init = function () {
   BAS.updateDates();
   BAS.initFestivalCountdown();
   if (typeof BAS.initHeroPanchang === 'function') BAS.initHeroPanchang();
+  if (typeof BAS.initHeroAudio === 'function') BAS.initHeroAudio();
+  if (typeof BAS.initDailyRashifal === 'function') BAS.initDailyRashifal();
   BAS.initLanguageToggle();
   BAS.initRotatingQuotes();
   BAS.initSearchBar();
@@ -885,4 +871,165 @@ BAS.initHeroPanchang = function () {
   let nIdx = (5 + diffDays) % 27;
   if (nIdx < 0) nIdx += 27;
   if (nakshatraEl) nakshatraEl.textContent = nakshatras[nIdx];
+};
+
+// ── DEVOTIONAL BACKGROUND AUDIO PLAYER ──────────────────
+BAS.initHeroAudio = function () {
+  const audio = document.getElementById('hero-bg-audio');
+  const toggleBtn = document.getElementById('hero-audio-toggle');
+  const audioText = document.getElementById('audio-text');
+  if (!audio || !toggleBtn) return;
+
+  function updateAudioState(isPlaying) {
+    if (isPlaying) {
+      toggleBtn.classList.add('playing');
+      if (audioText) audioText.textContent = 'संगीत चालू ॐ';
+    } else {
+      toggleBtn.classList.remove('playing');
+      if (audioText) audioText.textContent = 'भक्ति संगीत';
+    }
+  }
+
+  // Attempt autoplay immediately
+  const playPromise = audio.play();
+  if (playPromise !== undefined) {
+    playPromise.then(() => {
+      updateAudioState(true);
+    }).catch(() => {
+      // Autoplay blocked by browser policy without user gesture.
+      // Automatically start playing on the very first user interaction anywhere!
+      updateAudioState(false);
+      const startAudioOnce = () => {
+        audio.play().then(() => {
+          updateAudioState(true);
+        }).catch(() => {});
+        ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
+          document.removeEventListener(evt, startAudioOnce, true);
+        });
+      };
+      ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
+        document.addEventListener(evt, startAudioOnce, { capture: true, once: true });
+      });
+    });
+  }
+
+  // User click toggle
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (audio.paused) {
+      audio.play().then(() => {
+        updateAudioState(true);
+      }).catch(() => {});
+    } else {
+      audio.pause();
+      updateAudioState(false);
+    }
+  });
+
+  audio.addEventListener('play', () => updateAudioState(true));
+  audio.addEventListener('pause', () => updateAudioState(false));
+  audio.addEventListener('ended', () => updateAudioState(false));
+};
+
+// ── DAILY RASHIFAL (HOROSCOPE) ─────────────────────────
+BAS.initDailyRashifal = function () {
+  const rashiTrack = document.getElementById('rashi-selector-track');
+  const heroIcon   = document.getElementById('rashifal-hero-icon');
+  const heroTitle  = document.getElementById('rashifal-hero-title');
+  const heroMeta   = document.getElementById('rashifal-hero-meta');
+  const heroDate   = document.getElementById('rashifal-hero-date');
+  const heroPred   = document.getElementById('rashifal-hero-prediction');
+  const heroColor  = document.getElementById('rashifal-hero-color');
+  const heroNum    = document.getElementById('rashifal-hero-number');
+  const heroUpay   = document.getElementById('rashifal-hero-upay');
+  const shareBtn   = document.getElementById('btn-share-rashi-wa');
+  const saveBtn    = document.getElementById('btn-save-my-rashi');
+  const saveLabel  = document.getElementById('save-rashi-btn-label');
+
+  if (!rashiTrack || !heroTitle) return;
+
+  const todayStr = new Date().toLocaleDateString('hi-IN', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+  });
+  if (heroDate) heroDate.textContent = `📅 आज: ${todayStr}`;
+
+  const rashisData = [
+    { name: 'मेष राशि (Aries)', icon: '♈', lord: 'मंगल', element: 'अग्नि', color: 'लाल / सिंदूरी', number: '9', prediction: 'आज का दिन आपके लिए ऊर्जा और नवीन अवसरों से परिपूर्ण रहेगा। कार्यक्षेत्र में आपके पराक्रम की प्रशंसा होगी। परिवार में किसी शुभ कार्य की योजना बन सकती है। स्वास्थ्य उत्तम रहेगा।', upay: 'हनुमान जी को सिंदूर व चमेली का तेल अर्पित करें तथा संकटमोचन हनुमानाष्टक का पाठ करें।' },
+    { name: 'वृषभ राशि (Taurus)', icon: '♉', lord: 'शुक्र', element: 'पृथ्वी', color: 'सफेद / गुलाबी', number: '6', prediction: 'आर्थिक स्थिति में सुधार के प्रबल योग हैं। रुके हुए धन की प्राप्ति हो सकती है। व्यापार में नए संबंध लाभकारी सिद्ध होंगे। दांपत्य जीवन में सुख-शांति बनी रहेगी।', upay: 'माता लक्ष्मी को खीर या सफेद मिष्ठान का भोग लगाएं व ॐ श्रीं नमः का 11 बार जप करें।' },
+    { name: 'मिथुन राशि (Gemini)', icon: '♊', lord: 'बुध', element: 'वायु', color: 'हरा / पन्ना', number: '5', prediction: 'बुद्धि और संवाद के बल पर कठिन कार्य भी सुगमता से संपन्न होंगे। मित्रों का सहयोग प्राप्त होगा। विद्यार्थियों के लिए आज का दिन अत्यंत अनुकूल और प्रगतिशील रहेगा।', upay: 'भगवान श्री गणेश जी को 21 दूर्वा अर्पित करें और ॐ गं गणपतये नमः मंत्र जपें।' },
+    { name: 'कर्क राशि (Cancer)', icon: '♋', lord: 'चंद्रमा', element: 'जल', color: 'सफेद / चांदी', number: '2', prediction: 'आज मानसिक शांति और भावनात्मक संतुलन बना रहेगा। माता का पूर्ण आशीर्वाद प्राप्त होगा। कला, साहित्य अथवा रचनात्मक कार्यों में रुचि बढ़ेगी। यात्रा सुखद रहेगी।', upay: 'शिवलिंग पर कच्चा दूध, जल व अक्षत अर्पित कर ॐ नमः शिवाय का श्रद्धापूर्वक जप करें।' },
+    { name: 'सिंह राशि (Leo)', icon: '♌', lord: 'सूर्य', element: 'अग्नि', color: 'सुनहरा / नारंगी', number: '1', prediction: 'आत्मविश्वास और प्रतिष्ठा में उल्लेखनीय वृद्धि होगी। उच्च अधिकारियों का सहयोग मिलेगा। सामाजिक जीवन में सम्मान बढ़ेगा। महत्वपूर्ण निर्णय लेने के लिए श्रेष्ठ दिन है।', upay: 'प्रातःकाल तांबे के लोटे में रोली-अक्षत मिलाकर भगवान सूर्यदेव को अर्घ्य दें।' },
+    { name: 'कन्या राशि (Virgo)', icon: '♍', lord: 'बुध', element: 'पृथ्वी', color: 'गहरा हरा', number: '5', prediction: 'व्यापार और कार्यक्षेत्र में योजनाबद्ध तरीके से किए गए प्रयासों में पूर्ण सफलता मिलेगी। स्वास्थ्य के प्रति थोड़ी सजगता रखें। अनावश्यक व्यय पर नियंत्रण रखें।', upay: 'गौमाता को हरा चारा अथवा पालक खिलाएं और बुध गायत्री मंत्र का स्मरण करें।' },
+    { name: 'तुला राशि (Libra)', icon: '♎', lord: 'शुक्र', element: 'वायु', color: 'चमकीला सफेद / आसमानी', number: '6', prediction: 'सौहार्द और सामंजस्य से भरा दिन रहेगा। व्यापार में साझेदारी से लाभ की संभावना है। जीवनसाथी के साथ संबंध और अधिक मधुर होंगे। धार्मिक यात्रा का योग बन सकता है।', upay: 'कन्याओं को फल अथवा सफेद मिष्ठान भेंट करें और महालक्ष्मी स्तुति का पाठ करें।' },
+    { name: 'वृश्चिक राशि (Scorpio)', icon: '♏', lord: 'मंगल', element: 'जल', color: 'महरून / गहरा लाल', number: '9', prediction: 'साहस और धैर्य से आप सभी विरोधियों पर विजय प्राप्त करेंगे। गूढ़ विषयों व धर्म-कर्म में मन लगेगा। किसी महत्वपूर्ण अनुबंध पर हस्ताक्षर हो सकते हैं।', upay: 'सुंदरकांड अथवा हनुमान चालीसा का पाठ करें और बंदरों को गुड़-चना खिलाएं।' },
+    { name: 'धनु राशि (Sagittarius)', icon: '♐', lord: 'गुरु (बृहस्पति)', element: 'अग्नि', color: 'पीला / केसरिया', number: '3', prediction: 'भाग्य का भरपूर साथ मिलेगा। आध्यात्मिक कार्यों में संलग्नता बढ़ेगी। गुरुजनों और वरिष्ठों का मार्गदर्शन आपको नई दिशा देगा। धन लाभ के अवसर प्राप्त होंगे।', upay: 'केले के वृक्ष में जल अर्पित करें, हल्दी का तिलक लगाएं और ॐ नमो भगवते वासुदेवाय जपें।' },
+    { name: 'मकर राशि (Capricorn)', icon: '♑', lord: 'शनि', element: 'पृथ्वी', color: 'नीला / स्लेटी', number: '8', prediction: 'परिश्रम का उत्तम फल प्राप्त होगा। पैतृक संपत्ति से जुड़े मामलों में प्रगति होगी। शांत मन से अपने लक्ष्यों पर केंद्रित रहें। सांयकाल में परिवार संग समय बीतेगा।', upay: 'पीपल के वृक्ष के नीचे सरसों के तेल का चौमुखी दीपक जलाएं और शनि चालीसा पढ़ें।' },
+    { name: 'कुंभ राशि (Aquarius)', icon: '♒', lord: 'शनि', element: 'वायु', color: 'बैंगनी / गहरा नीला', number: '8', prediction: 'नवीन विचारों और योजनाओं को क्रियान्वित करने का अनुकूल समय है। जनसंपर्क और मित्रों से लाभ होगा। भविष्य की चिंता छोड़कर वर्तमान कार्यों पर ध्यान केंद्रित करें।', upay: 'काले तिल और उड़द की दाल का दान करें अथवा किसी जरूरतमंद को भोजन कराएं।' },
+    { name: 'मीन राशि (Pisces)', icon: '♓', lord: 'गुरु (बृहस्पति)', element: 'जल', color: 'पीला / सुनहरा', number: '3', prediction: 'सकारात्मकता और दयालु भाव से आपका प्रभाव बढ़ेगा। किसी शुभ समाचार से घर में हर्ष का वातावरण रहेगा। धार्मिक साहित्य और सत्संग में रुचि बढ़ेगी।', upay: 'भगवान श्री हरि विष्णु को पीले फूल व तुलसी दल अर्पित करें और विष्णु सहस्रनाम सुनें।' }
+  ];
+
+  let currentRashiIdx = parseInt(localStorage.getItem('bas_my_rashi') || '0', 10);
+  if (isNaN(currentRashiIdx) || currentRashiIdx < 0 || currentRashiIdx > 11) currentRashiIdx = 0;
+
+  function renderRashi(idx) {
+    const data = rashisData[idx];
+    if (!data) return;
+
+    currentRashiIdx = idx;
+
+    const buttons = rashiTrack.querySelectorAll('.rashi-btn');
+    buttons.forEach((b, i) => {
+      if (i === idx) {
+        b.classList.add('active');
+        b.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      } else {
+        b.classList.remove('active');
+      }
+    });
+
+    if (heroIcon)  heroIcon.textContent  = data.icon;
+    if (heroTitle) heroTitle.textContent = data.name;
+    if (heroMeta)  heroMeta.textContent  = `स्वामी ग्रह: ${data.lord} · तत्व: ${data.element}`;
+    if (heroPred)  heroPred.textContent  = data.prediction;
+    if (heroColor) heroColor.textContent = data.color;
+    if (heroNum)   heroNum.textContent   = data.number;
+    if (heroUpay)  heroUpay.textContent  = data.upay;
+
+    const savedRashi = localStorage.getItem('bas_my_rashi');
+    if (savedRashi !== null && parseInt(savedRashi, 10) === idx) {
+      if (saveLabel) saveLabel.textContent = 'मेरी पसंदीदा राशि ✓';
+      if (saveBtn) {
+        saveBtn.style.background = 'linear-gradient(135deg, #f59e0b, #ea580c)';
+        saveBtn.style.color = '#ffffff';
+      }
+    } else {
+      if (saveLabel) saveLabel.textContent = 'मेरी राशि सेट करें';
+      if (saveBtn) {
+        saveBtn.style.background = 'rgba(245, 158, 11, 0.15)';
+        saveBtn.style.color = '#fbbf24';
+      }
+    }
+
+    if (shareBtn) {
+      const shareText = `✨ *दैनिक राशिफल — ${data.name}* ✨\n\n🔮 *आज का फलकथन:*\n${data.prediction}\n\n🎨 *शुभ रंग:* ${data.color}\n🔢 *शुभ अंक:* ${data.number}\n🪔 *दैनिक उपाय:* ${data.upay}\n\n🕉️ अपना दैनिक पंचांग व राशिफल पढ़ें: ${window.location.origin}/#daily-rashifal-section`;
+      shareBtn.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(shareText);
+    }
+  }
+
+  const buttons = rashiTrack.querySelectorAll('.rashi-btn');
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', function () {
+      const idx = parseInt(this.dataset.rashi, 10);
+      renderRashi(idx);
+    });
+  });
+
+  if (saveBtn) {
+    saveBtn.addEventListener('click', function () {
+      localStorage.setItem('bas_my_rashi', currentRashiIdx);
+      renderRashi(currentRashiIdx);
+    });
+  }
+
+  renderRashi(currentRashiIdx);
 };

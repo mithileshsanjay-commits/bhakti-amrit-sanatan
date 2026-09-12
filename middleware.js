@@ -4,7 +4,7 @@ export default function middleware(request) {
   
   if (Array.from(params.keys()).length > 0) {
     let hasJunk = false
-    const allowed = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']
+    const allowed = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 's', 'q', 'cat', 'tag', 'page', 'lang', 'city']
     
     for (const key of Array.from(params.keys())) {
       if (!allowed.includes(key.toLowerCase())) {
