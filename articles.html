@@ -1058,7 +1058,34 @@
   <!-- CLIENT-SIDE APPLICATION SCRIPT -->
   <script>
     (function() {
-      const articles = window.SANATAN_ARTICLES || [];
+      const rawArticles = (window.SANATAN_ARTICLES && window.SANATAN_ARTICLES.length > 0)
+        ? window.SANATAN_ARTICLES
+        : (window.ARTICLES_DATA || []);
+
+      const articles = rawArticles.map(a => {
+        const title = a.title || a.t || '';
+        const excerpt = a.excerpt || a.e || '';
+        const slug = a.slug || a.s || '';
+        const category = a.category || a.c || '';
+        const categoryHi = a.categoryHi || a.ch || category;
+        const date = (a.publishedAt || a.date || a.d || '').slice(0, 10);
+        const image = a.image || a.m || '/assets/images/cropped-Logo-150x150.png';
+        const url = a.canonicalPath || a.url || a.u || ('/' + slug);
+        const id = a.id || a.i || slug;
+        return {
+          id, i: id,
+          title, t: title,
+          slug, s: slug,
+          url, u: url,
+          category, c: category,
+          categoryHi, ch: categoryHi,
+          publishedAt: a.publishedAt || (date ? date + ' 00:00:00' : ''),
+          date, d: date,
+          excerpt, e: excerpt,
+          image, m: image
+        };
+      });
+
       const PAGE_SIZE = 18;
       
       let currentCategory = 'all';
@@ -1088,7 +1115,7 @@
       }
       if (paramQ) {
         currentQuery = paramQ;
-        searchInput.value = paramQ;
+        if (searchInput) searchInput.value = paramQ;
       }
 
       function filterAndSortArticles() {
@@ -1096,85 +1123,92 @@
 
         // 1. Category Filter
         if (currentCategory !== 'all') {
-          filtered = filtered.filter(a => a.c === currentCategory);
+          filtered = filtered.filter(a => a.c === currentCategory || a.category === currentCategory);
         }
 
         // 2. Search Query Filter
         if (currentQuery.trim()) {
           const q = currentQuery.trim().toLowerCase();
           filtered = filtered.filter(a => 
-            a.t.toLowerCase().includes(q) || 
-            a.e.toLowerCase().includes(q) || 
-            a.s.toLowerCase().includes(q) ||
-            a.c.toLowerCase().includes(q) ||
-            a.ch.toLowerCase().includes(q)
+            (a.t && a.t.toLowerCase().includes(q)) || 
+            (a.e && a.e.toLowerCase().includes(q)) || 
+            (a.s && a.s.toLowerCase().includes(q)) ||
+            (a.c && a.c.toLowerCase().includes(q)) ||
+            (a.ch && a.ch.toLowerCase().includes(q))
           );
         }
 
         // 3. Sorting
         if (currentSort === 'newest') {
-          filtered.sort((a, b) => b.d.localeCompare(a.d));
+          filtered.sort((a, b) => (b.d || '').localeCompare(a.d || ''));
         } else if (currentSort === 'oldest') {
-          filtered.sort((a, b) => a.d.localeCompare(b.d));
+          filtered.sort((a, b) => (a.d || '').localeCompare(b.d || ''));
         } else if (currentSort === 'title-asc') {
-          filtered.sort((a, b) => a.t.localeCompare(b.t, 'hi'));
+          filtered.sort((a, b) => (a.t || '').localeCompare(b.t || '', 'hi'));
         }
 
         return filtered;
       }
 
       function render() {
-        const filtered = filterAndSortArticles();
-        const totalFiltered = filtered.length;
-        const totalPages = Math.ceil(totalFiltered / PAGE_SIZE) || 1;
+        try {
+          const filtered = filterAndSortArticles();
+          const totalFiltered = filtered.length;
+          const totalPages = Math.ceil(totalFiltered / PAGE_SIZE) || 1;
 
-        if (currentPage > totalPages) currentPage = totalPages;
-        if (currentPage < 1) currentPage = 1;
+          if (currentPage > totalPages) currentPage = totalPages;
+          if (currentPage < 1) currentPage = 1;
 
-        const startIndex = (currentPage - 1) * PAGE_SIZE;
-        const endIndex = Math.min(startIndex + PAGE_SIZE, totalFiltered);
-        const pageItems = filtered.slice(startIndex, endIndex);
+          const startIndex = (currentPage - 1) * PAGE_SIZE;
+          const endIndex = Math.min(startIndex + PAGE_SIZE, totalFiltered);
+          const pageItems = filtered.slice(startIndex, endIndex);
 
-        // Update counts
-        visibleCountEl.textContent = totalFiltered;
-        renderedCountEl.textContent = pageItems.length;
-        pageIndicatorEl.textContent = `पृष्ठ ${currentPage} / ${totalPages}`;
+          // Update counts
+          if (visibleCountEl) visibleCountEl.textContent = totalFiltered;
+          if (renderedCountEl) renderedCountEl.textContent = pageItems.length;
+          if (pageIndicatorEl) pageIndicatorEl.textContent = `पृष्ठ ${currentPage} / ${totalPages}`;
 
-        if (totalFiltered === 0) {
-          grid.innerHTML = '';
-          emptyState.style.display = 'block';
-          paginationBar.innerHTML = '';
-          return;
+          if (totalFiltered === 0) {
+            if (grid) grid.innerHTML = '';
+            if (emptyState) emptyState.style.display = 'block';
+            if (paginationBar) paginationBar.innerHTML = '';
+            return;
+          }
+
+          if (emptyState) emptyState.style.display = 'none';
+
+          // Render Cards
+          if (grid) {
+            grid.innerHTML = pageItems.map(a => `
+              <article class="article-card">
+                <a href="${a.u}" class="article-card__img-link">
+                  <img src="${a.m}" alt="${a.t}" class="article-card__img" loading="lazy" onerror="this.onerror=null;this.src='/assets/images/cropped-Logo-150x150.png';">
+                  <span class="article-card__badge">${a.ch}</span>
+                </a>
+                <div class="article-card__body">
+                  <div class="article-card__meta">
+                    <span class="article-card__date">📅 ${a.d}</span>
+                    <span class="article-card__cat">${a.c}</span>
+                  </div>
+                  <h2 class="article-card__title">
+                    <a href="${a.u}">${a.t}</a>
+                  </h2>
+                  <p class="article-card__excerpt">${a.e}...</p>
+                  <a href="${a.u}" class="article-card__readmore">सम्पूर्ण लेख पढ़ें <span>→</span></a>
+                </div>
+              </article>
+            `).join('');
+          }
+
+          // Render Pagination
+          renderPagination(totalPages);
+        } catch (err) {
+          console.error("Error rendering articles:", err);
         }
-
-        emptyState.style.display = 'none';
-
-        // Render Cards
-        grid.innerHTML = pageItems.map(a => `
-          <article class="article-card">
-            <a href="${a.u}" class="article-card__img-link">
-              <img src="${a.m}" alt="${a.t}" class="article-card__img" loading="lazy" onerror="this.onerror=null;this.src='/assets/images/cropped-Logo-150x150.png';">
-              <span class="article-card__badge">${a.ch}</span>
-            </a>
-            <div class="article-card__body">
-              <div class="article-card__meta">
-                <span class="article-card__date">📅 ${a.d}</span>
-                <span class="article-card__cat">${a.c}</span>
-              </div>
-              <h2 class="article-card__title">
-                <a href="${a.u}">${a.t}</a>
-              </h2>
-              <p class="article-card__excerpt">${a.e}...</p>
-              <a href="${a.u}" class="article-card__readmore">सम्पूर्ण लेख पढ़ें <span>→</span></a>
-            </div>
-          </article>
-        `).join('');
-
-        // Render Pagination
-        renderPagination(totalPages);
       }
 
       function renderPagination(totalPages) {
+        if (!paginationBar) return;
         if (totalPages <= 1) {
           paginationBar.innerHTML = '';
           return;
@@ -1209,35 +1243,44 @@
       }
 
       // Event Listeners
-      searchInput.addEventListener('input', (e) => {
-        currentQuery = e.target.value;
-        currentPage = 1;
-        render();
-      });
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          currentQuery = e.target.value;
+          currentPage = 1;
+          render();
+        });
+      }
 
-      sortSelect.addEventListener('change', (e) => {
-        currentSort = e.target.value;
-        currentPage = 1;
-        render();
-      });
+      if (sortSelect) {
+        sortSelect.addEventListener('change', (e) => {
+          currentSort = e.target.value;
+          currentPage = 1;
+          render();
+        });
+      }
 
-      catFilters.addEventListener('click', (e) => {
-        const btn = e.target.closest('.cat-btn');
-        if (!btn) return;
-        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentCategory = btn.dataset.cat;
-        currentPage = 1;
-        render();
-      });
+      if (catFilters) {
+        catFilters.addEventListener('click', (e) => {
+          const btn = e.target.closest('.cat-btn');
+          if (!btn) return;
+          document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentCategory = btn.dataset.cat;
+          currentPage = 1;
+          render();
+        });
+      }
 
-      paginationBar.addEventListener('click', (e) => {
-        const btn = e.target.closest('.page-btn');
-        if (!btn || btn.disabled || !btn.dataset.page) return;
-        currentPage = parseInt(btn.dataset.page, 10);
-        render();
-        document.getElementById('articles-main').scrollIntoView({ behavior: 'smooth' });
-      });
+      if (paginationBar) {
+        paginationBar.addEventListener('click', (e) => {
+          const btn = e.target.closest('.page-btn');
+          if (!btn || btn.disabled || !btn.dataset.page) return;
+          currentPage = parseInt(btn.dataset.page, 10);
+          render();
+          const mainEl = document.getElementById('articles-main');
+          if (mainEl) mainEl.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
 
       // Initial Render
       render();
