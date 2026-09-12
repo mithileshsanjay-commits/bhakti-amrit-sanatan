@@ -2,9 +2,14 @@ export default function middleware(request) {
   const url = new URL(request.url)
   const params = url.searchParams
   
+  const pathname = decodeURIComponent(url.pathname).toLowerCase()
+
   if (Array.from(params.keys()).length > 0) {
     let hasJunk = false
-    const allowed = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 's', 'q', 'cat', 'tag', 'page', 'lang', 'city']
+    const isArticlesPage = pathname === '/articles' || pathname === '/articles.html'
+    const allowed = isArticlesPage
+      ? ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'category', 'q', 'page', 'lang']
+      : ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'lang']
     
     for (const key of Array.from(params.keys())) {
       if (!allowed.includes(key.toLowerCase())) {
@@ -21,7 +26,6 @@ export default function middleware(request) {
   }
   
   // Exclude non-Dharma cricket / IPL URLs and retired Shop URLs permanently with 410 Gone
-  const pathname = decodeURIComponent(url.pathname).toLowerCase()
   if (
     pathname === '/shop' ||
     pathname === '/shop.html' ||
