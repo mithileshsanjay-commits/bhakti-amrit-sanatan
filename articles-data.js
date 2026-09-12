@@ -2603,8 +2603,8 @@ window.SANATAN_ARTICLES = window.ARTICLES_DATA = [
   {
     "id": "1608",
     "i": "1608",
-    "title": "Unlocking 5 Vedic Philosophy Secrets",
-    "t": "Unlocking 5 Vedic Philosophy Secrets",
+    "title": "Unlocking 5 Core Vedic Philosophy Teachings",
+    "t": "Unlocking 5 Core Vedic Philosophy Teachings",
     "slug": "unlocking-5-vedic-philosophy-secrets",
     "s": "unlocking-5-vedic-philosophy-secrets",
     "canonicalPath": "/unlocking-5-vedic-philosophy-secrets",
