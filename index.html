@@ -25,6 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/main.css?v=2.6">
   <style>/* ============================================================
    BHAKTI AMRIT SANATAN — CORE DESIGN SYSTEM
    Premium Spiritual Website Stylesheet
@@ -362,16 +363,17 @@ input, textarea, select {
 .site-nav {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background: rgba(13,0,31,0.92);
+  z-index: 1000;
+  background: rgba(13, 2, 28, 0.98) !important;
   backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(245,158,11,0.15);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.3) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
   transition: all var(--dur-mid) var(--ease-smooth);
 }
 
 .site-nav.scrolled {
-  box-shadow: 0 4px 32px rgba(0,0,0,0.5);
-  border-bottom-color: rgba(245,158,11,0.25);
+  box-shadow: 0 6px 36px rgba(0, 0, 0, 0.85);
+  border-bottom-color: rgba(245, 158, 11, 0.45);
 }
 
 .nav__inner {
@@ -427,9 +429,9 @@ input, textarea, select {
 }
 
 .nav__link {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--clr-text-muted);
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
   padding: 8px 14px;
   border-radius: var(--radius-sm);
   transition: all var(--dur-fast) var(--ease-smooth);
@@ -437,6 +439,7 @@ input, textarea, select {
   align-items: center;
   gap: 5px;
   position: relative;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .nav__link::after {
@@ -449,14 +452,43 @@ input, textarea, select {
   transition: all var(--dur-fast) var(--ease-smooth);
 }
 
-.nav__link:hover,
+.nav__link:hover {
+  color: #fcd34d !important;
+  background: rgba(245, 158, 11, 0.16);
+}
+
 .nav__link.active {
-  color: var(--clr-gold-light);
+  color: #fbbf24 !important;
+  background: rgba(245, 158, 11, 0.12);
 }
 
 .nav__link:hover::after,
 .nav__link.active::after {
   left: 14px; right: 14px;
+}
+
+.lang-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(245, 158, 11, 0.5);
+  background: rgba(245, 158, 11, 0.12);
+  color: #fcd34d;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.lang-toggle-btn:hover {
+  background: rgba(245, 158, 11, 0.25);
+  color: #ffffff;
+  border-color: #f59e0b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
 }
 
 .nav__cta {
@@ -2040,6 +2072,456 @@ img {
       .testimonials-grid { grid-template-columns: 1fr; }
       .countdown-boxes { flex-wrap: wrap; justify-content: center; }
     }
+
+    /* ============================================================
+       HERO GRID & TWO-COLUMN LAYOUT
+       ============================================================ */
+    .hero__container {
+      width: 100%;
+      position: relative;
+      z-index: 4;
+    }
+
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+      width: 100%;
+      padding: 40px 0 60px;
+    }
+
+    .hero__panchang-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      z-index: 5;
+    }
+
+    @media (max-width: 992px) {
+      .hero__grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 24px 0 40px;
+      }
+    }
+
+    /* ============================================================
+       DAILY HINDU PANCHANG CARD WIDGET (Image 1)
+       ============================================================ */
+    .panchang-hero-widget {
+      background: #121927 !important;
+      border: 1px solid rgba(255, 255, 255, 0.09) !important;
+      border-radius: 20px !important;
+      padding: 24px !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 30px rgba(245, 158, 11, 0.06) !important;
+      position: relative !important;
+      overflow: hidden !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    }
+
+    .panchang-hero-widget:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(245, 158, 11, 0.12) !important;
+    }
+
+    .panchang-hero-widget__header {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: flex-start !important;
+      margin-bottom: 4px !important;
+    }
+
+    .panchang-hero-widget__title-wrap {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+
+    .panchang-hero-widget__om {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 28px !important;
+      height: 28px !important;
+      background: linear-gradient(135deg, #7c3aed, #4c1d95) !important;
+      border-radius: 6px !important;
+      font-size: 0.95rem !important;
+      box-shadow: 0 2px 8px rgba(124, 58, 237, 0.4) !important;
+    }
+
+    .panchang-hero-widget__title {
+      font-family: var(--font-deva), var(--font-sans) !important;
+      font-size: 1.25rem !important;
+      font-weight: 800 !important;
+      color: #f97316 !important;
+      letter-spacing: 0.01em !important;
+    }
+
+    .panchang-hero-widget__live {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      padding: 4px 12px !important;
+      border-radius: 999px !important;
+      background: rgba(0, 0, 0, 0.55) !important;
+      border: 1px solid rgba(245, 158, 11, 0.35) !important;
+      font-size: 0.75rem !important;
+      font-weight: 700 !important;
+      color: #fcd34d !important;
+    }
+
+    .panchang-hero-widget__live .live-dot {
+      width: 7px !important;
+      height: 7px !important;
+      border-radius: 50% !important;
+      background: #22c55e !important;
+      box-shadow: 0 0 8px #22c55e !important;
+      animation: pulse-live 1.8s infinite !important;
+    }
+
+    .panchang-hero-widget__date {
+      font-family: var(--font-deva), var(--font-sans) !important;
+      font-size: 0.95rem !important;
+      color: #94a3b8 !important;
+      font-weight: 500 !important;
+      margin-bottom: 12px !important;
+    }
+
+    .panchang-city-selector-wrap {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      background: rgba(30, 41, 59, 0.7) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      border-radius: 8px !important;
+      padding: 4px 10px !important;
+      margin-bottom: 16px !important;
+    }
+
+    .city-selector-pin {
+      font-size: 0.9rem !important;
+    }
+
+    .panchang-city-select {
+      background: transparent !important;
+      border: none !important;
+      color: #f1f5f9 !important;
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+      width: 100% !important;
+      outline: none !important;
+      cursor: pointer !important;
+    }
+
+    .panchang-city-select option {
+      background: #1e293b !important;
+      color: #ffffff !important;
+    }
+
+    /* 2x2 Grid with Orange Left Border (Image 1) */
+    .panchang-hero-widget__grid {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 12px !important;
+      margin-bottom: 14px !important;
+    }
+
+    .panchang-hero-card {
+      background: #1a2436 !important;
+      border-left: 4px solid #f97316 !important;
+      border-radius: 10px !important;
+      padding: 12px 14px !important;
+      transition: transform 0.2s ease, background 0.2s ease !important;
+      box-sizing: border-box !important;
+    }
+
+    .panchang-hero-card:hover {
+      background: #223048 !important;
+      transform: translateY(-1px) !important;
+    }
+
+    .panchang-hero-card__label {
+      display: block !important;
+      font-size: 0.72rem !important;
+      font-weight: 700 !important;
+      color: #94a3b8 !important;
+      letter-spacing: 0.05em !important;
+      text-transform: uppercase !important;
+      margin-bottom: 4px !important;
+    }
+
+    .panchang-hero-card__value {
+      display: block !important;
+      font-size: 1.15rem !important;
+      font-weight: 800 !important;
+      color: #ffffff !important;
+      font-family: var(--font-deva), var(--font-sans) !important;
+      line-height: 1.3 !important;
+    }
+
+    /* Green Shubh Muhurat Row */
+    .panchang-hero-time-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 10px 16px !important;
+      border-radius: 10px !important;
+      margin-bottom: 10px !important;
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+    }
+
+    .panchang-hero-time-row--shubh {
+      background: rgba(16, 185, 129, 0.12) !important;
+      border: 1px solid rgba(16, 185, 129, 0.35) !important;
+    }
+
+    .panchang-hero-time-row--shubh .time-label {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      color: #34d399 !important;
+      font-weight: 700 !important;
+    }
+
+    .panchang-hero-time-row--shubh .time-dot {
+      width: 8px !important;
+      height: 8px !important;
+      border-radius: 50% !important;
+      background: #10b981 !important;
+      box-shadow: 0 0 10px #10b981 !important;
+    }
+
+    .panchang-hero-time-row--shubh .time-val {
+      color: #6ee7b7 !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.02em !important;
+    }
+
+    /* Red Rahu Kaal Row */
+    .panchang-hero-time-row--rahu {
+      background: rgba(239, 68, 68, 0.12) !important;
+      border: 1px solid rgba(239, 68, 68, 0.35) !important;
+      margin-bottom: 14px !important;
+    }
+
+    .panchang-hero-time-row--rahu .time-label {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      color: #f87171 !important;
+      font-weight: 700 !important;
+    }
+
+    .panchang-hero-time-row--rahu .time-dot {
+      width: 8px !important;
+      height: 8px !important;
+      border-radius: 50% !important;
+      background: #ef4444 !important;
+      box-shadow: 0 0 10px #ef4444 !important;
+    }
+
+    .panchang-hero-time-row--rahu .time-val {
+      color: #fca5a5 !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.02em !important;
+    }
+
+    .panchang-hero-footer a {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 6px !important;
+      padding: 9px 16px !important;
+      border-radius: 8px !important;
+      background: rgba(245, 158, 11, 0.08) !important;
+      border: 1px solid rgba(245, 158, 11, 0.25) !important;
+      color: #fcd34d !important;
+      font-weight: 700 !important;
+      font-size: 0.85rem !important;
+      text-decoration: none !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .panchang-hero-footer a:hover {
+      background: rgba(245, 158, 11, 0.2) !important;
+      color: #ffffff !important;
+      border-color: #f59e0b !important;
+    }
+
+    /* ============================================================
+       UPCOMING FESTIVAL STANDALONE SECTION (Image 3)
+       ============================================================ */
+    .upcoming-festival-section {
+      padding: 50px 0 60px;
+      background: #0d001f;
+      position: relative;
+      z-index: 5;
+    }
+
+    .festival-section-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .festival-section-badge {
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 9999px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #fcd34d;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .festival-section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 800;
+      color: #ffffff;
+      text-align: center;
+      letter-spacing: -0.01em;
+    }
+
+    .festival-countdown-banner {
+      background: linear-gradient(135deg, #38075e 0%, #52157d 50%, #3d0a64 100%) !important;
+      border: 1px solid rgba(192, 132, 252, 0.28) !important;
+      border-radius: 24px !important;
+      padding: 38px 46px !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      gap: 36px !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 40px rgba(107, 33, 168, 0.2) !important;
+    }
+
+    .festival-banner__left {
+      flex: 1;
+    }
+
+    .festival-banner__tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #f59e0b;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .festival-banner__name {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .festival-banner__date {
+      font-family: var(--font-deva), var(--font-sans);
+      font-size: 1rem;
+      color: #cbd5e1;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    .festival-countdown-boxes {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .fest-cd-box {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 14px 18px;
+      min-width: 78px;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .fest-cd-num {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: #f97316;
+      line-height: 1;
+    }
+
+    .fest-cd-label {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #c084fc;
+      letter-spacing: 0.1em;
+      margin-top: 6px;
+      text-transform: uppercase;
+    }
+
+    .festival-banner__right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+
+    .festival-elephant-icon {
+      font-size: 4.8rem;
+      line-height: 1;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+      animation: float-up-down 4s ease-in-out infinite;
+    }
+
+    .festival-banner__btn {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+      color: #ffffff !important;
+      font-weight: 700 !important;
+      font-size: 0.95rem !important;
+      border-radius: 9999px !important;
+      padding: 14px 28px !important;
+      box-shadow: 0 8px 24px rgba(234, 88, 12, 0.45) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      text-decoration: none !important;
+      transition: all 0.25s ease !important;
+      white-space: nowrap !important;
+    }
+
+    .festival-banner__btn:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 12px 30px rgba(234, 88, 12, 0.65) !important;
+      color: #ffffff !important;
+    }
+
+    @media (max-width: 860px) {
+      .festival-countdown-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px !important;
+        gap: 24px !important;
+      }
+      .festival-countdown-boxes {
+        justify-content: center;
+      }
+      .festival-banner__right {
+        width: 100%;
+        align-items: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -2058,8 +2540,7 @@ img {
         </span>
       </div>
       <div class="topbar__links">
-        <a href="donate.html" title="Donate / दान करें">🙏 Donate</a>
-        
+        <span class="topbar__motto" style="font-size:0.8rem;color:#fcd34d;font-weight:600;letter-spacing:0.05em;">धर्मो रक्षति रक्षितः</span>
       </div>
     </div>
   </div>
@@ -2084,24 +2565,28 @@ img {
       <!-- Navigation Menu & Mobile Drawer -->
       <div class="nav__drawer" id="main-nav-drawer">
         <ul class="nav__menu" id="main-menu">
-          <li><a class="nav__link active" href="/">🏠 Home</a></li>
-          <li><a class="nav__link" href="/articles">📚 सभी लेख (281)</a></li>
-          <li><a class="nav__link" href="/mantras">🔱 Mantras</a></li>
-          <li><a class="nav__link" href="/puja-vidhi">🪔 Puja Vidhi</a></li>
-          <li><a class="nav__link" href="/vrat-festivals">📅 Vrat &amp; Festivals</a></li>
-          <li><a class="nav__link" href="/dev-katha">📖 Dev Katha</a></li>
-          <li><a class="nav__link" href="/geeta-gyan">🕉️ Geeta Gyan</a></li>
+          <li><a class="nav__link active" href="/" data-nav="home">🏠 Home</a></li>
+          <li><a class="nav__link" href="/articles" data-nav="articles">📚 सभी लेख (281)</a></li>
+          <li><a class="nav__link" href="/mantras" data-nav="mantras">🔱 Mantras</a></li>
+          <li><a class="nav__link" href="/puja-vidhi" data-nav="puja">🪔 Puja Vidhi</a></li>
+          <li><a class="nav__link" href="/vrat-festivals" data-nav="vrat">📅 Vrat &amp; Festivals</a></li>
+          <li><a class="nav__link" href="/dev-katha" data-nav="katha">📖 Dev Katha</a></li>
+          <li><a class="nav__link" href="/geeta-gyan" data-nav="geeta">🕉️ Geeta Gyan</a></li>
         </ul>
         <div class="nav__mobile-actions">
-          <a class="btn btn--ghost" href="/articles">📚 सभी लेख (281)</a>
-          <a class="btn btn--primary" href="donate.html">🙏 Donate</a>
+          <button type="button" class="lang-toggle-btn lang-toggle-btn--mobile" id="lang-toggle-btn-mobile" aria-label="Switch Language / भाषा बदलें">
+            <span aria-hidden="true">🌐</span> <span class="lang-btn-text">English</span>
+          </button>
+          <a class="btn btn--primary" href="donate.html" data-nav="donate">🙏 Donate</a>
         </div>
       </div>
 
       <!-- CTA buttons -->
       <div class="nav__cta">
-        <a class="btn btn--ghost" href="/articles">📚 सभी लेख</a>
-        <a class="btn btn--primary" href="donate.html">🙏 Donate</a>
+        <button type="button" class="lang-toggle-btn" id="lang-toggle-btn" aria-label="Switch Language / भाषा बदलें" title="Switch Language / भाषा बदलें">
+          <span aria-hidden="true">🌐</span> <span class="lang-btn-text">English</span>
+        </button>
+        <a class="btn btn--primary" href="donate.html" data-nav="donate">🙏 Donate</a>
       </div>
 
       <!-- Mobile toggle -->
@@ -2145,7 +2630,7 @@ img {
 
       <div class="hero__badge">
         <span class="diya-flame">🪔</span>
-        सनातन धर्म की सम्पूर्ण जानकारी
+        <span id="hero-badge-text">सनातन धर्म की सम्पूर्ण जानकारी</span>
       </div>
 
       <span aria-hidden="true" class="hero__om">ॐ</span>
@@ -2155,13 +2640,13 @@ img {
         Sanatan
       </h1>
 
-      <p class="hero__tagline">
+      <p class="hero__tagline" id="hero-tagline-text">
         मंत्र · पूजा विधि · व्रत कथा · देव कथा · गीता ज्ञान<br/>
         <em>Your complete guide to Sanatan Dharma</em>
       </p>
 
       <div class="hero__cta">
-        <a class="btn btn--primary" href="/articles" style="background:var(--grad-gold);color:#fff;">📚 सम्पूर्ण 281 लेख संग्रह</a>
+        <a class="btn btn--primary" id="hero-cta-articles" href="/articles" style="background:var(--grad-gold);color:#fff;">📚 सम्पूर्ण 281 लेख संग्रह</a>
         <a class="btn btn--outline" href="/mantras">🔱 Mantras</a>
         <a class="btn btn--ghost" href="/geeta-gyan">🕉️ Geeta Gyan</a>
       </div>
@@ -2169,7 +2654,7 @@ img {
       <div class="hero__stats">
         <div class="hero__stat">
           <span class="hero__stat-number" data-count="281">281</span>
-          <span class="hero__stat-label">Articles Published</span>
+          <span class="hero__stat-label" id="stat-articles-label">Articles Published</span>
         </div>
         <div class="hero__stat">
           <span class="hero__stat-number" data-count="108" data-suffix="+">108+</span>
@@ -2181,31 +2666,32 @@ img {
         </div>
       </div>
 
-      <form action="" aria-label="Search Bhakti Amrit Sanatan" class="hero-search" id="hero-search-form" method="GET" role="search">
-        <input aria-label="Search mantras, vrat, katha" autocomplete="off" name="s" ="मंत्र, व्रत, देव कथा खोजें..." type="search"/>
-        <button type="submit">🔍 Search</button>
+      <form action="/articles" aria-label="Search Bhakti Amrit Sanatan" class="hero-search" id="hero-search-form" method="GET" role="search">
+        <input id="hero-search-input" aria-label="Search mantras, vrat, katha" autocomplete="off" name="s" placeholder="मंत्र, व्रत, देव कथा खोजें..." type="search"/>
+        <button type="submit" id="hero-search-btn">🔍 Search</button>
       </form>
 
       <div class="hero-quick-pills">
-        <span class="quick-pill-label">त्वरित दर्शन:</span>
-        <a class="quick-pill" href="/">🔱 महामृत्युंजय मंत्र</a>
-        <a class="quick-pill" href="/">🪔 गणेश चतुर्थी व्रत</a>
-        <a class="quick-pill" href="/">📖 गीता श्लोक</a>
-        <a class="quick-pill" href="/">📿 दैनिक पूजा</a>
+        <span class="quick-pill-label" id="quick-pill-label">त्वरित दर्शन:</span>
+        <a class="quick-pill" href="/महामृत्युंजय-मंत्र-mahamrityunjay-mantra">🔱 महामृत्युंजय मंत्र</a>
+        <a class="quick-pill" href="/ganesh-chaturthi-sthapana-vidhi">🪔 गणेश चतुर्थी व्रत</a>
+        <a class="quick-pill" href="/geeta-gyan">📖 गीता श्लोक</a>
+        <a class="quick-pill" href="/puja-vidhi">📿 दैनिक पूजा</a>
       </div>
     </div>
 
-    <!-- Right Column: Live Daily Hindu Panchang Widget -->
+    <!-- Right Column: Live Daily Hindu Panchang Widget (Image 1) -->
     <div class="hero__panchang-col">
       <div class="panchang-hero-widget" id="panchang-hero-widget">
         <div class="panchang-hero-widget__header">
           <div class="panchang-hero-widget__title-wrap">
             <span class="panchang-hero-widget__om" aria-hidden="true">🕉️</span>
-            <span class="panchang-hero-widget__title">दैनिक हिन्दू पंचांग</span>
+            <span class="panchang-hero-widget__title" id="panchang-widget-title">दैनिक हिन्दू पंचांग</span>
           </div>
           <span class="panchang-hero-widget__live"><span class="live-dot"></span>Live</span>
         </div>
         <div class="panchang-hero-widget__date" id="panchang-date"></div>
+
         <div class="panchang-city-selector-wrap">
           <span class="city-selector-pin" aria-hidden="true">📍</span>
           <select id="panchang-city-select" class="panchang-city-select" aria-label="स्थान / शहर चुनें (Select City)" title="स्थान / टाइमज़ोन चुनें">
@@ -2218,105 +2704,95 @@ img {
             <option value="Australia/Sydney">🇦🇺 सिडनी (Sydney - AEST)</option>
           </select>
         </div>
-        <div class="panchang-hero-widget__divider"></div>
 
         <div class="panchang-hero-widget__grid">
           <div class="panchang-hero-card">
-            <div class="panchang-hero-card__head">
-              <span class="panchang-hero-card__icon" aria-hidden="true">🌙</span>
-              <span class="panchang-hero-card__label">तिथि (TITHI)</span>
-            </div>
-            <span class="panchang-hero-card__value" id="panchang-tithi">दशमी (Dashami)</span>
+            <span class="panchang-hero-card__label" id="label-tithi">तिथि (TITHI)</span>
+            <span class="panchang-hero-card__value" id="panchang-tithi">प्रतिपदा (Pratipada)</span>
           </div>
           <div class="panchang-hero-card">
-            <div class="panchang-hero-card__head">
-              <span class="panchang-hero-card__icon" aria-hidden="true">🌓</span>
-              <span class="panchang-hero-card__label">पक्ष (PAKSHA)</span>
-            </div>
-            <span class="panchang-hero-card__value" id="panchang-paksha">कृष्ण पक्ष (Krishna Paksha)</span>
+            <span class="panchang-hero-card__label" id="label-paksha">पक्ष (PAKSHA)</span>
+            <span class="panchang-hero-card__value" id="panchang-paksha">शुक्ल पक्ष (Shukla Paksha)</span>
           </div>
           <div class="panchang-hero-card">
-            <div class="panchang-hero-card__head">
-              <span class="panchang-hero-card__icon" aria-hidden="true">✨</span>
-              <span class="panchang-hero-card__label">नक्षत्र (NAKSHATRA)</span>
-            </div>
-            <span class="panchang-hero-card__value" id="panchang-nakshatra">आर्द्रा</span>
+            <span class="panchang-hero-card__label" id="label-nakshatra">नक्षत्र (NAKSHATRA)</span>
+            <span class="panchang-hero-card__value" id="panchang-nakshatra">उत्तराफाल्गुनी (Uttara Phalguni)</span>
           </div>
           <div class="panchang-hero-card">
-            <div class="panchang-hero-card__head">
-              <span class="panchang-hero-card__icon" aria-hidden="true">☀️</span>
-              <span class="panchang-hero-card__label">वार (DAY)</span>
-            </div>
-            <span class="panchang-hero-card__value" id="panchang-var">रविवार (Sunday)</span>
+            <span class="panchang-hero-card__label" id="label-var">वार (DAY)</span>
+            <span class="panchang-hero-card__value" id="panchang-var">शनिवार (Saturday)</span>
           </div>
         </div>
 
         <div class="panchang-hero-time-row panchang-hero-time-row--shubh">
-          <span class="time-label"><span class="time-dot"></span>शुभ मुहूर्त (Abhijit):</span>
-          <span class="time-val" id="panchang-abhijit">11:50 AM – 12:40 PM</span>
+          <span class="time-label"><span class="time-dot"></span><span id="label-abhijit">शुभ मुहूर्त (Abhijit):</span></span>
+          <span class="time-val" id="panchang-abhijit">11:45 AM – 12:35 PM</span>
         </div>
 
         <div class="panchang-hero-time-row panchang-hero-time-row--rahu">
-          <span class="time-label"><span class="time-dot"></span>राहुकाल (Rahu Kaal):</span>
-          <span class="time-val" id="panchang-rahukaal">04:30 PM – 06:00 PM</span>
+          <span class="time-label"><span class="time-dot"></span><span id="label-rahu">राहुकाल (Rahu Kaal):</span></span>
+          <span class="time-val" id="panchang-rahukaal">09:00 AM – 10:30 AM</span>
         </div>
 
         <div class="panchang-hero-footer">
-          <a href="/">
-            <span>📅 सम्पूर्ण पंचांग व शुभ मुहूर्त देखें</span>
-            <span aria-hidden="true">→</span>
+          <a href="/vrat-festivals" id="panchang-footer-link">
+            <span>📅 सम्पूर्ण पंचांग व शुभ मुहूर्त देखें →</span>
           </a>
         </div>
       </div>
-
-      <!-- Card 2: Upcoming Festival Countdown Card -->
-      
-      <div class="festival-hero-card" id="festival-hero-card">
-        <div class="festival-hero-card__header">
-          <div class="festival-hero-card__tag">
-            <span>🎉 आगामी महापर्व</span>
-            <span class="festival-tag-sep">·</span>
-            <span>Next Festival</span>
-          </div>
-          <a class="festival-hero-card__link" href="/">
-            व्रत कैलेंडर →
-          </a>
-        </div>
-
-        <div class="festival-hero-card__details">
-          <h3 id="festival-name" class="festival-hero-card__title">
-            
-          </h3>
-          <p id="festival-date" class="festival-hero-card__date">
-            
-          </p>
-        </div>
-
-        <div class="countdown-boxes festival-hero-card__countdown">
-          <div class="countdown-box">
-            <span class="countdown-box__num" id="cd-days">00</span>
-            <span class="countdown-box__label">Days</span>
-          </div>
-          <div class="countdown-box">
-            <span class="countdown-box__num" id="cd-hours">00</span>
-            <span class="countdown-box__label">Hours</span>
-          </div>
-          <div class="countdown-box">
-            <span class="countdown-box__num" id="cd-mins">00</span>
-            <span class="countdown-box__label">Mins</span>
-          </div>
-          <div class="countdown-box">
-            <span class="countdown-box__num" id="cd-secs">00</span>
-            <span class="countdown-box__label">Secs</span>
-          </div>
-        </div>
-      </div>
+    </div>
+  </div>
+  </div>
 
   <!-- Rotating mandala visual on right -->
   <div class="hero__visual" aria-hidden="true">
     <div class="hero__mandala-ring"></div>
   </div>
 
+</section>
+
+<!-- ===== UPCOMING FESTIVAL COUNTDOWN SECTION (Image 3) ===== -->
+<section class="upcoming-festival-section" id="upcoming-festival-section" aria-label="Upcoming Festival Countdown">
+  <div class="container">
+    <div class="festival-section-header">
+      <span class="festival-section-badge" id="fest-sec-badge">🎉 UPCOMING FESTIVAL</span>
+      <h2 class="festival-section-title" id="fest-sec-title">आगामी पर्व — Countdown</h2>
+    </div>
+
+    <div class="festival-countdown-banner" id="festival-countdown-banner">
+      <div class="festival-banner__left">
+        <span class="festival-banner__tag" id="fest-banner-tag">🎉 NEXT MAJOR FESTIVAL</span>
+        <h3 class="festival-banner__name" id="festival-name">Ganesh Chaturthi 2026</h3>
+        <p class="festival-banner__date" id="festival-date">भाद्रपद शुक्ल चतुर्थी · 19 August, 2026</p>
+
+        <div class="festival-countdown-boxes">
+          <div class="fest-cd-box">
+            <span class="fest-cd-num" id="cd-days">00</span>
+            <span class="fest-cd-label" id="cd-days-label">DAYS</span>
+          </div>
+          <div class="fest-cd-box">
+            <span class="fest-cd-num" id="cd-hours">00</span>
+            <span class="fest-cd-label" id="cd-hours-label">HOURS</span>
+          </div>
+          <div class="fest-cd-box">
+            <span class="fest-cd-num" id="cd-mins">00</span>
+            <span class="fest-cd-label" id="cd-mins-label">MINS</span>
+          </div>
+          <div class="fest-cd-box">
+            <span class="fest-cd-num" id="cd-secs">00</span>
+            <span class="fest-cd-label" id="cd-secs-label">SECS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="festival-banner__right">
+        <div class="festival-elephant-icon" aria-hidden="true">🐘</div>
+        <a class="festival-banner__btn" href="/vrat-festivals" id="fest-banner-btn">
+          <span>📅 Vrat &amp; Festival Calendar</span>
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="daily-rashifal-section" class="daily-rashifal-section" aria-label="दैनिक राशिफल">
@@ -3501,6 +3977,214 @@ BAS.initSearchBar = function () {
   });
 };
 
+// ── FESTIVAL COUNTDOWN (Image 3) ──────────────────────
+BAS.initFestivalCountdown = function () {
+  const daysEl  = document.getElementById('cd-days');
+  const hoursEl = document.getElementById('cd-hours');
+  const minsEl  = document.getElementById('cd-mins');
+  const secsEl  = document.getElementById('cd-secs');
+  const nameEl  = document.getElementById('festival-name');
+  const dateEl  = document.getElementById('festival-date');
+  if (!daysEl) return;
+
+  // Sanatan Major Festivals 2026-2027
+  const festivals = [
+    { name: 'Ganesh Chaturthi 2026', date: '2026-09-14', deva: 'भाद्रपद शुक्ल चतुर्थी · 14 September, 2026', icon: '🐘' },
+    { name: 'Sharad Navratri 2026', date: '2026-10-02', deva: 'आश्विन शुक्ल प्रतिपदा · 2 October, 2026', icon: '🌺' },
+    { name: 'Dussehra / Vijayadashami 2026', date: '2026-10-11', deva: 'आश्विन शुक्ल दशमी · 11 October, 2026', icon: '🏹' },
+    { name: 'Karwa Chauth 2026', date: '2026-10-20', deva: 'कार्तिक कृष्ण चतुर्थी · 20 October, 2026', icon: '🌕' },
+    { name: 'Dhanteras & Diwali 2026', date: '2026-11-01', deva: 'कार्तिक अमावस्या · 1 November, 2026', icon: '🪔' },
+    { name: 'Chhath Puja 2026', date: '2026-11-05', deva: 'कार्तिक शुक्ल षष्ठी · 5 November, 2026', icon: '☀️' },
+    { name: 'Dev Deepawali 2026', date: '2026-11-15', deva: 'कार्तिक शुक्ल पूर्णिमा · 15 November, 2026', icon: '✨' },
+    { name: 'Makar Sankranti 2027', date: '2027-01-14', deva: 'सूर्य का मकर संक्रमण · 14 January, 2027', icon: '🪁' },
+    { name: 'Maha Shivratri 2027', date: '2027-02-26', deva: 'फाल्गुन कृष्ण त्रयोदशी · 26 February, 2027', icon: '🔱' },
+    { name: 'Holi 2027', date: '2027-03-22', deva: 'फाल्गुन शुक्ल पूर्णिमा · 22 March, 2027', icon: '🎨' },
+    { name: 'Ram Navami 2027', date: '2027-04-15', deva: 'चैत्र शुक्ल नवमी · 15 April, 2027', icon: '🚩' }
+  ];
+
+  const now = new Date();
+  const next = festivals.find(f => new Date(f.date) > now) || festivals[0];
+  const target = new Date(next.date + 'T00:00:00');
+
+  if (nameEl) nameEl.textContent = next.name;
+  if (dateEl) dateEl.textContent = next.deva;
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    const diff = target - new Date();
+    if (diff <= 0) {
+      daysEl.textContent = hoursEl.textContent = minsEl.textContent = secsEl.textContent = '00';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    daysEl.textContent  = pad(d);
+    hoursEl.textContent = pad(h);
+    minsEl.textContent  = pad(m);
+    secsEl.textContent  = pad(s);
+  }
+  tick();
+  setInterval(tick, 1000);
+};
+
+// ── BILINGUAL LANGUAGE SWITCHER (EN / HI) ─────────────────
+BAS.currentLang = localStorage.getItem('bas_lang') || 'hi';
+
+BAS.translations = {
+  hi: {
+    nav_home: '🏠 Home',
+    nav_articles: '📚 सभी लेख (281)',
+    nav_mantras: '🔱 Mantras',
+    nav_puja: '🪔 Puja Vidhi',
+    nav_vrat: '📅 Vrat & Festivals',
+    nav_katha: '📖 Dev Katha',
+    nav_geeta: '🕉️ Geeta Gyan',
+    nav_donate: '🙏 Donate',
+    lang_btn: 'English',
+    hero_badge: 'सनातन धर्म की सम्पूर्ण जानकारी',
+    hero_tagline: 'मंत्र · पूजा विधि · व्रत कथा · देव कथा · गीता ज्ञान\nYour complete guide to Sanatan Dharma',
+    hero_cta_articles: '📚 सम्पूर्ण 281 लेख संग्रह',
+    hero_quick_label: 'त्वरित दर्शन:',
+    hero_search_ph: 'मंत्र, व्रत, देव कथा खोजें...',
+    hero_search_btn: '🔍 Search',
+    panchang_title: 'दैनिक हिन्दू पंचांग',
+    label_tithi: 'तिथि (TITHI)',
+    label_paksha: 'पक्ष (PAKSHA)',
+    label_nakshatra: 'नक्षत्र (NAKSHATRA)',
+    label_var: 'वार (DAY)',
+    label_abhijit: 'शुभ मुहूर्त (Abhijit):',
+    label_rahu: 'राहुकाल (Rahu Kaal):',
+    panchang_footer: '📅 सम्पूर्ण पंचांग व शुभ मुहूर्त देखें →',
+    fest_sec_badge: '🎉 UPCOMING FESTIVAL',
+    fest_sec_title: 'आगामी पर्व — Countdown',
+    fest_banner_tag: '🎉 NEXT MAJOR FESTIVAL',
+    fest_banner_btn: '📅 Vrat & Festival Calendar'
+  },
+  en: {
+    nav_home: '🏠 Home',
+    nav_articles: '📚 All Articles (281)',
+    nav_mantras: '🔱 Mantras',
+    nav_puja: '🪔 Puja Vidhi',
+    nav_vrat: '📅 Vrat & Festivals',
+    nav_katha: '📖 Dev Katha',
+    nav_geeta: '🕉️ Geeta Wisdom',
+    nav_donate: '🙏 Donate',
+    lang_btn: 'हिन्दी',
+    hero_badge: 'Complete Guide to Sanatan Dharma',
+    hero_tagline: 'Mantras · Puja Vidhi · Vrat Katha · Dev Stories · Geeta Wisdom\nYour complete spiritual resource',
+    hero_cta_articles: '📚 All 281 Articles Library',
+    hero_quick_label: 'Quick Links:',
+    hero_search_ph: 'Search mantras, rituals, sacred stories...',
+    hero_search_btn: '🔍 Search',
+    panchang_title: 'Daily Hindu Panchang',
+    label_tithi: 'TITHI (LUNAR DAY)',
+    label_paksha: 'PAKSHA (FORTNIGHT)',
+    label_nakshatra: 'NAKSHATRA (CONSTELLATION)',
+    label_var: 'DAY OF WEEK',
+    label_abhijit: 'Auspicious Time (Abhijit):',
+    label_rahu: 'Inauspicious Time (Rahu Kaal):',
+    panchang_footer: '📅 View Complete Panchang & Muhurat →',
+    fest_sec_badge: '🎉 UPCOMING FESTIVAL',
+    fest_sec_title: 'Upcoming Festival — Countdown',
+    fest_banner_tag: '🎉 NEXT MAJOR FESTIVAL',
+    fest_banner_btn: '📅 Vrat & Festival Calendar'
+  }
+};
+
+BAS.applyLanguage = function (lang) {
+  BAS.currentLang = lang;
+  localStorage.setItem('bas_lang', lang);
+  document.documentElement.lang = lang;
+  const t = BAS.translations[lang] || BAS.translations.hi;
+
+  // Language toggle buttons
+  document.querySelectorAll('.lang-btn-text').forEach(el => {
+    el.textContent = t.lang_btn;
+  });
+
+  // Nav menu
+  const menuMap = {
+    home: t.nav_home,
+    articles: t.nav_articles,
+    mantras: t.nav_mantras,
+    puja: t.nav_puja,
+    vrat: t.nav_vrat,
+    katha: t.nav_katha,
+    geeta: t.nav_geeta,
+    donate: t.nav_donate
+  };
+  Object.keys(menuMap).forEach(key => {
+    document.querySelectorAll(`[data-nav="${key}"]`).forEach(el => {
+      el.textContent = menuMap[key];
+    });
+  });
+
+  // Hero
+  const badgeEl = document.getElementById('hero-badge-text');
+  if (badgeEl) badgeEl.textContent = t.hero_badge;
+
+  const ctaArticles = document.getElementById('hero-cta-articles');
+  if (ctaArticles) ctaArticles.textContent = t.hero_cta_articles;
+
+  const quickLabel = document.getElementById('quick-pill-label');
+  if (quickLabel) quickLabel.textContent = t.hero_quick_label;
+
+  const searchInput = document.getElementById('hero-search-input');
+  if (searchInput) searchInput.setAttribute('placeholder', t.hero_search_ph);
+
+  const searchBtn = document.getElementById('hero-search-btn');
+  if (searchBtn) searchBtn.textContent = t.hero_search_btn;
+
+  // Panchang
+  const pTitle = document.getElementById('panchang-widget-title');
+  if (pTitle) pTitle.textContent = t.panchang_title;
+  const lTithi = document.getElementById('label-tithi');
+  if (lTithi) lTithi.textContent = t.label_tithi;
+  const lPaksha = document.getElementById('label-paksha');
+  if (lPaksha) lPaksha.textContent = t.label_paksha;
+  const lNakshatra = document.getElementById('label-nakshatra');
+  if (lNakshatra) lNakshatra.textContent = t.label_nakshatra;
+  const lVar = document.getElementById('label-var');
+  if (lVar) lVar.textContent = t.label_var;
+  const lAbhijit = document.getElementById('label-abhijit');
+  if (lAbhijit) lAbhijit.textContent = t.label_abhijit;
+  const lRahu = document.getElementById('label-rahu');
+  if (lRahu) lRahu.textContent = t.label_rahu;
+  const pFooter = document.getElementById('panchang-footer-link');
+  if (pFooter) {
+    const span = pFooter.querySelector('span');
+    if (span) span.textContent = t.panchang_footer;
+  }
+
+  // Festival Section
+  const fBadge = document.getElementById('fest-sec-badge');
+  if (fBadge) fBadge.textContent = t.fest_sec_badge;
+  const fTitle = document.getElementById('fest-sec-title');
+  if (fTitle) fTitle.textContent = t.fest_sec_title;
+  const fTag = document.getElementById('fest-banner-tag');
+  if (fTag) fTag.textContent = t.fest_banner_tag;
+  const fBtn = document.getElementById('fest-banner-btn');
+  if (fBtn) {
+    const span = fBtn.querySelector('span');
+    if (span) span.textContent = t.fest_banner_btn;
+  }
+};
+
+BAS.initLanguageToggle = function () {
+  const toggleBtns = document.querySelectorAll('.lang-toggle-btn');
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const nextLang = (BAS.currentLang === 'hi') ? 'en' : 'hi';
+      BAS.applyLanguage(nextLang);
+    });
+  });
+  BAS.applyLanguage(BAS.currentLang);
+};
+
+// ── DAILY HINDU PANCHANG WIDGET (Image 1) ─────────────────
 BAS.initHeroPanchang = function () {
   const dateEl      = document.getElementById('panchang-date');
   const tithiEl     = document.getElementById('panchang-tithi');
@@ -3553,7 +4237,7 @@ BAS.initHeroPanchang = function () {
     'जुलाई', 'अगस्त', 'सितंबर', 'अक्टूबर', 'नवंबर', 'दिसंबर'
   ];
 
-  // Date formatting (e.g. 6 सितंबर 2026)
+  // Date formatting (e.g. 12 सितंबर 2026)
   if (dateEl) {
     dateEl.textContent = `${now.getDate()} ${hindiMonths[now.getMonth()]} ${now.getFullYear()}`;
   }
@@ -3579,7 +4263,7 @@ BAS.initHeroPanchang = function () {
   }
 
   if (abhijitEl) {
-    abhijitEl.textContent = '11:50 AM – 12:40 PM';
+    abhijitEl.textContent = '11:45 AM – 12:35 PM';
   }
 
   // 15 Tithis of a Paksha
@@ -3616,10 +4300,6 @@ BAS.initHeroPanchang = function () {
   const anchorMidnight = new Date(2026, 8, 6).getTime(); // Note: Month 8 = September
   const diffDays = Math.round((todayMidnight - anchorMidnight) / 86400000);
 
-  // In our 30-day lunar cycle:
-  // 0-14: Shukla Paksha (0: Pratipada -> 14: Purnima)
-  // 15-29: Krishna Paksha (15: Pratipada -> 24: Dashami -> 29: Amavasya)
-  // On 6 Sept 2026, Krishna Dashami is index 24
   let tithiIndex = (24 + diffDays) % 30;
   if (tithiIndex < 0) tithiIndex += 30;
 
@@ -3657,6 +4337,7 @@ BAS.init = function () {
   BAS.updateDates();
   BAS.initFestivalCountdown();
   BAS.initHeroPanchang();
+  BAS.initLanguageToggle();
   BAS.initRotatingQuotes();
   BAS.initSearchBar();
 };

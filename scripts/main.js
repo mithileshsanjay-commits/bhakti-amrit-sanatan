@@ -505,6 +505,213 @@ BAS.initSearchBar = function () {
   });
 };
 
+// ── FESTIVAL COUNTDOWN (Image 3) ──────────────────────
+BAS.initFestivalCountdown = function () {
+  const daysEl  = document.getElementById('cd-days');
+  const hoursEl = document.getElementById('cd-hours');
+  const minsEl  = document.getElementById('cd-mins');
+  const secsEl  = document.getElementById('cd-secs');
+  const nameEl  = document.getElementById('festival-name');
+  const dateEl  = document.getElementById('festival-date');
+  if (!daysEl) return;
+
+  // Major Sanatan Festivals
+  const festivals = [
+    { name: 'Ganesh Chaturthi 2026', date: '2026-09-14', deva: 'भाद्रपद शुक्ल चतुर्थी · 14 September, 2026', icon: '🐘' },
+    { name: 'Sharad Navratri 2026', date: '2026-10-02', deva: 'आश्विन शुक्ल प्रतिपदा · 2 October, 2026', icon: '🌺' },
+    { name: 'Dussehra / Vijayadashami 2026', date: '2026-10-11', deva: 'आश्विन शुक्ल दशमी · 11 October, 2026', icon: '🏹' },
+    { name: 'Karwa Chauth 2026', date: '2026-10-20', deva: 'कार्तिक कृष्ण चतुर्थी · 20 October, 2026', icon: '🌕' },
+    { name: 'Dhanteras & Diwali 2026', date: '2026-11-01', deva: 'कार्तिक अमावस्या · 1 November, 2026', icon: '🪔' },
+    { name: 'Chhath Puja 2026', date: '2026-11-05', deva: 'कार्तिक शुक्ल षष्ठी · 5 November, 2026', icon: '☀️' },
+    { name: 'Dev Deepawali 2026', date: '2026-11-15', deva: 'कार्तिक शुक्ल पूर्णिमा · 15 November, 2026', icon: '✨' },
+    { name: 'Makar Sankranti 2027', date: '2027-01-14', deva: 'सूर्य का मकर संक्रमण · 14 January, 2027', icon: '🪁' },
+    { name: 'Maha Shivratri 2027', date: '2027-02-26', deva: 'फाल्गुन कृष्ण त्रयोदशी · 26 February, 2027', icon: '🔱' },
+    { name: 'Holi 2027', date: '2027-03-22', deva: 'फाल्गुन शुक्ल पूर्णिमा · 22 March, 2027', icon: '🎨' },
+    { name: 'Ram Navami 2027', date: '2027-04-15', deva: 'चैत्र शुक्ल नवमी · 15 April, 2027', icon: '🚩' }
+  ];
+
+  const now = new Date();
+  const next = festivals.find(f => new Date(f.date) > now) || festivals[0];
+  const target = new Date(next.date + 'T00:00:00');
+
+  if (nameEl) nameEl.textContent = next.name;
+  if (dateEl) dateEl.textContent = next.deva;
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    const diff = target - new Date();
+    if (diff <= 0) {
+      daysEl.textContent = hoursEl.textContent = minsEl.textContent = secsEl.textContent = '00';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    daysEl.textContent  = pad(d);
+    hoursEl.textContent = pad(h);
+    minsEl.textContent  = pad(m);
+    secsEl.textContent  = pad(s);
+  }
+  tick();
+  setInterval(tick, 1000);
+};
+
+// ── BILINGUAL LANGUAGE SWITCHER (EN / HI) ─────────────────
+BAS.currentLang = localStorage.getItem('bas_lang') || 'hi';
+
+BAS.translations = {
+  hi: {
+    nav_home: '🏠 Home',
+    nav_articles: '📚 सभी लेख (281)',
+    nav_mantras: '🔱 Mantras',
+    nav_puja: '🪔 Puja Vidhi',
+    nav_vrat: '📅 Vrat & Festivals',
+    nav_katha: '📖 Dev Katha',
+    nav_geeta: '🕉️ Geeta Gyan',
+    nav_donate: '🙏 Donate',
+    lang_btn: 'English',
+    hero_badge: 'सनातन धर्म की सम्पूर्ण जानकारी',
+    hero_tagline: 'मंत्र · पूजा विधि · व्रत कथा · देव कथा · गीता ज्ञान\nYour complete guide to Sanatan Dharma',
+    hero_cta_articles: '📚 सम्पूर्ण 281 लेख संग्रह',
+    hero_quick_label: 'त्वरित दर्शन:',
+    hero_search_ph: 'मंत्र, व्रत, देव कथा खोजें...',
+    hero_search_btn: '🔍 Search',
+    panchang_title: 'दैनिक हिन्दू पंचांग',
+    label_tithi: 'तिथि (TITHI)',
+    label_paksha: 'पक्ष (PAKSHA)',
+    label_nakshatra: 'नक्षत्र (NAKSHATRA)',
+    label_var: 'वार (DAY)',
+    label_abhijit: 'शुभ मुहूर्त (Abhijit):',
+    label_rahu: 'राहुकाल (Rahu Kaal):',
+    panchang_footer: '📅 सम्पूर्ण पंचांग व शुभ मुहूर्त देखें →',
+    fest_sec_badge: '🎉 UPCOMING FESTIVAL',
+    fest_sec_title: 'आगामी पर्व — Countdown',
+    fest_banner_tag: '🎉 NEXT MAJOR FESTIVAL',
+    fest_banner_btn: '📅 Vrat & Festival Calendar'
+  },
+  en: {
+    nav_home: '🏠 Home',
+    nav_articles: '📚 All Articles (281)',
+    nav_mantras: '🔱 Mantras',
+    nav_puja: '🪔 Puja Vidhi',
+    nav_vrat: '📅 Vrat & Festivals',
+    nav_katha: '📖 Dev Katha',
+    nav_geeta: '🕉️ Geeta Wisdom',
+    nav_donate: '🙏 Donate',
+    lang_btn: 'हिन्दी',
+    hero_badge: 'Complete Guide to Sanatan Dharma',
+    hero_tagline: 'Mantras · Puja Vidhi · Vrat Katha · Dev Stories · Geeta Wisdom\nYour complete spiritual resource',
+    hero_cta_articles: '📚 All 281 Articles Library',
+    hero_quick_label: 'Quick Links:',
+    hero_search_ph: 'Search mantras, rituals, sacred stories...',
+    hero_search_btn: '🔍 Search',
+    panchang_title: 'Daily Hindu Panchang',
+    label_tithi: 'TITHI (LUNAR DAY)',
+    label_paksha: 'PAKSHA (FORTNIGHT)',
+    label_nakshatra: 'NAKSHATRA (CONSTELLATION)',
+    label_var: 'DAY OF WEEK',
+    label_abhijit: 'Auspicious Time (Abhijit):',
+    label_rahu: 'Inauspicious Time (Rahu Kaal):',
+    panchang_footer: '📅 View Complete Panchang & Muhurat →',
+    fest_sec_badge: '🎉 UPCOMING FESTIVAL',
+    fest_sec_title: 'Upcoming Festival — Countdown',
+    fest_banner_tag: '🎉 NEXT MAJOR FESTIVAL',
+    fest_banner_btn: '📅 Vrat & Festival Calendar'
+  }
+};
+
+BAS.applyLanguage = function (lang) {
+  BAS.currentLang = lang;
+  localStorage.setItem('bas_lang', lang);
+  document.documentElement.lang = lang;
+  const t = BAS.translations[lang] || BAS.translations.hi;
+
+  // Language toggle buttons
+  document.querySelectorAll('.lang-btn-text').forEach(el => {
+    el.textContent = t.lang_btn;
+  });
+
+  // Nav menu
+  const menuMap = {
+    home: t.nav_home,
+    articles: t.nav_articles,
+    mantras: t.nav_mantras,
+    puja: t.nav_puja,
+    vrat: t.nav_vrat,
+    katha: t.nav_katha,
+    geeta: t.nav_geeta,
+    donate: t.nav_donate
+  };
+  Object.keys(menuMap).forEach(key => {
+    document.querySelectorAll(`[data-nav="${key}"]`).forEach(el => {
+      el.textContent = menuMap[key];
+    });
+  });
+
+  // Hero
+  const badgeEl = document.getElementById('hero-badge-text');
+  if (badgeEl) badgeEl.textContent = t.hero_badge;
+
+  const ctaArticles = document.getElementById('hero-cta-articles');
+  if (ctaArticles) ctaArticles.textContent = t.hero_cta_articles;
+
+  const quickLabel = document.getElementById('quick-pill-label');
+  if (quickLabel) quickLabel.textContent = t.hero_quick_label;
+
+  const searchInput = document.getElementById('hero-search-input');
+  if (searchInput) searchInput.setAttribute('placeholder', t.hero_search_ph);
+
+  const searchBtn = document.getElementById('hero-search-btn');
+  if (searchBtn) searchBtn.textContent = t.hero_search_btn;
+
+  // Panchang
+  const pTitle = document.getElementById('panchang-widget-title');
+  if (pTitle) pTitle.textContent = t.panchang_title;
+  const lTithi = document.getElementById('label-tithi');
+  if (lTithi) lTithi.textContent = t.label_tithi;
+  const lPaksha = document.getElementById('label-paksha');
+  if (lPaksha) lPaksha.textContent = t.label_paksha;
+  const lNakshatra = document.getElementById('label-nakshatra');
+  if (lNakshatra) lNakshatra.textContent = t.label_nakshatra;
+  const lVar = document.getElementById('label-var');
+  if (lVar) lVar.textContent = t.label_var;
+  const lAbhijit = document.getElementById('label-abhijit');
+  if (lAbhijit) lAbhijit.textContent = t.label_abhijit;
+  const lRahu = document.getElementById('label-rahu');
+  if (lRahu) lRahu.textContent = t.label_rahu;
+  const pFooter = document.getElementById('panchang-footer-link');
+  if (pFooter) {
+    const span = pFooter.querySelector('span');
+    if (span) span.textContent = t.panchang_footer;
+  }
+
+  // Festival Section
+  const fBadge = document.getElementById('fest-sec-badge');
+  if (fBadge) fBadge.textContent = t.fest_sec_badge;
+  const fTitle = document.getElementById('fest-sec-title');
+  if (fTitle) fTitle.textContent = t.fest_sec_title;
+  const fTag = document.getElementById('fest-banner-tag');
+  if (fTag) fTag.textContent = t.fest_banner_tag;
+  const fBtn = document.getElementById('fest-banner-btn');
+  if (fBtn) {
+    const span = fBtn.querySelector('span');
+    if (span) span.textContent = t.fest_banner_btn;
+  }
+};
+
+BAS.initLanguageToggle = function () {
+  const toggleBtns = document.querySelectorAll('.lang-toggle-btn');
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const nextLang = (BAS.currentLang === 'hi') ? 'en' : 'hi';
+      BAS.applyLanguage(nextLang);
+    });
+  });
+  BAS.applyLanguage(BAS.currentLang);
+};
+
 // ── INIT ALL ───────────────────────────────────────────
 BAS.init = function () {
   BAS.initTicker();
@@ -522,6 +729,8 @@ BAS.init = function () {
   BAS.initReadingProgress();
   BAS.updateDates();
   BAS.initFestivalCountdown();
+  if (typeof BAS.initHeroPanchang === 'function') BAS.initHeroPanchang();
+  BAS.initLanguageToggle();
   BAS.initRotatingQuotes();
   BAS.initSearchBar();
   BAS.initWhatsAppShare();
@@ -533,55 +742,6 @@ if (document.readyState === 'loading') {
 } else {
   BAS.init();
 }
-
-
-// ── STATIC VRAT CALENDAR ──────────────────────────────────────
-BAS.vratFestivals = [
-  { date: '2026-10-02', name: 'Sharad Navratri', deva: 'आश्विन शुक्ल प्रतिपदा', icon: '🌺', desc: 'माँ दुर्गा के ९ पावन स्वरूपों की आराधना' },
-  { date: '2026-10-20', name: 'Karwa Chauth', deva: 'कार्तिक कृष्ण चतुर्थी', icon: '🌙', desc: 'अखंड सौभाग्य की प्राप्ति' },
-  { date: '2026-11-08', name: 'Diwali', deva: 'कार्तिक अमावस्या', icon: '🪔', desc: 'प्रकाश पर्व और महालक्ष्मी पूजन' },
-  { date: '2026-11-23', name: 'Tulsi Vivah', deva: 'कार्तिक शुक्ल एकादशी', icon: '🌿', desc: 'तुलसी और शालिग्राम का पावन विवाह' }
-];
-
-BAS.initHeroFestival = function() {
-  const nameEl = document.getElementById('festival-name');
-  const dateEl = document.getElementById('festival-date');
-  const daysEl = document.getElementById('cd-days');
-  const hoursEl = document.getElementById('cd-hours');
-  const minsEl = document.getElementById('cd-mins');
-  const secsEl = document.getElementById('cd-secs');
-
-  if (!nameEl || !dateEl) return;
-
-  const now = new Date();
-  let nextFest = BAS.vratFestivals.find(f => new Date(f.date) > now);
-  if (!nextFest) nextFest = BAS.vratFestivals[0]; // fallback
-
-  nameEl.innerHTML = nextFest.icon + ' ' + nextFest.name;
-  dateEl.innerHTML = nextFest.deva + ' · ' + new Date(nextFest.date).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
-
-  const targetDate = new Date(nextFest.date).getTime();
-
-  function updateTimer() {
-    const nowMs = new Date().getTime();
-    const distance = targetDate - nowMs;
-
-    if (distance < 0) return;
-
-    const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const s = Math.floor((distance % (1000 * 60)) / 1000);
-
-    if (daysEl) daysEl.innerText = d.toString().padStart(2, '0');
-    if (hoursEl) hoursEl.innerText = h.toString().padStart(2, '0');
-    if (minsEl) minsEl.innerText = m.toString().padStart(2, '0');
-    if (secsEl) secsEl.innerText = s.toString().padStart(2, '0');
-  }
-
-  updateTimer();
-  setInterval(updateTimer, 1000);
-};
 
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
