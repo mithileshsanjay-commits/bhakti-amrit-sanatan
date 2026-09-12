@@ -1191,6 +1191,223 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
 });
 
+// ── ASTRONOMICAL GRAHAN (ECLIPSE) DATABASE & TIMEZONE ENGINE ────────
+BAS.grahanDatabase = [
+  {
+    id: 'lunar-eclipse-2026-03',
+    type: 'chandra',
+    icon: '🌘',
+    name_hi: 'खग्रास चन्द्र ग्रहण (Total Lunar Eclipse)',
+    name_en: 'Total Lunar Eclipse',
+    utc_start: '2026-03-03T09:50:00Z',
+    utc_peak: '2026-03-03T11:34:00Z',
+    utc_end: '2026-03-03T15:40:00Z',
+    sutak_hours: 9,
+    visibility: {
+      'Asia/Kolkata': { visible: true, note: 'भारत: चंद्रोदय समय खंडग्रास दृश्य (सूतक प्रभावी)' },
+      'Asia/Dubai': { visible: false, note: 'दुबई: अदृश्य (सूतक मान्य नहीं)' },
+      'Europe/London': { visible: false, note: 'लंदन: अदृश्य (सूतक मान्य नहीं)' },
+      'America/New_York': { visible: true, note: 'न्यूयॉर्क: दृश्य (सूतक प्रभावी)' },
+      'America/Los_Angeles': { visible: true, note: 'लॉस एंजिल्स: दृश्य (सूतक प्रभावी)' },
+      'America/Toronto': { visible: true, note: 'टोरंटो: दृश्य (सूतक प्रभावी)' },
+      'Australia/Sydney': { visible: true, note: 'सिडनी: दृश्य (सूतक प्रभावी)' }
+    }
+  },
+  {
+    id: 'solar-eclipse-2026-08',
+    type: 'surya',
+    icon: '☀️',
+    name_hi: 'खग्रास सूर्य ग्रहण (Total Solar Eclipse)',
+    name_en: 'Total Solar Eclipse',
+    utc_start: '2026-08-12T15:40:00Z',
+    utc_peak: '2026-08-12T17:46:00Z',
+    utc_end: '2026-08-12T19:55:00Z',
+    sutak_hours: 12,
+    visibility: {
+      'Asia/Kolkata': { visible: false, note: 'भारत: अदृश्य (सूतक मान्य नहीं)' },
+      'Asia/Dubai': { visible: false, note: 'दुबई: अदृश्य (सूतक मान्य नहीं)' },
+      'Europe/London': { visible: true, note: 'लंदन: आंशिक दृश्य (सूतक मान्य)' },
+      'America/New_York': { visible: true, note: 'न्यूयॉर्क: आंशिक दृश्य (सूतक मान्य)' },
+      'America/Los_Angeles': { visible: false, note: 'लॉस एंजिल्स: अदृश्य' },
+      'America/Toronto': { visible: true, note: 'टोरंटो: आंशिक दृश्य' },
+      'Australia/Sydney': { visible: false, note: 'सिडनी: अदृश्य' }
+    }
+  },
+  {
+    id: 'lunar-eclipse-2026-08',
+    type: 'chandra',
+    icon: '🌘',
+    name_hi: 'खंडग्रास चन्द्र ग्रहण (Partial Lunar Eclipse)',
+    name_en: 'Partial Lunar Eclipse',
+    utc_start: '2026-08-28T02:20:00Z',
+    utc_peak: '2026-08-28T04:13:00Z',
+    utc_end: '2026-08-28T05:50:00Z',
+    sutak_hours: 9,
+    visibility: {
+      'Asia/Kolkata': { visible: false, note: 'भारत: अदृश्य (सूतक मान्य नहीं)' },
+      'Asia/Dubai': { visible: false, note: 'दुबई: अदृश्य (सूतक मान्य नहीं)' },
+      'Europe/London': { visible: true, note: 'लंदन: दृश्य (सूतक प्रभावी)' },
+      'America/New_York': { visible: true, note: 'न्यूयॉर्क: दृश्य (सूतक प्रभावी)' },
+      'America/Los_Angeles': { visible: true, note: 'लॉस एंजिल्स: दृश्य (सूतक प्रभावी)' },
+      'America/Toronto': { visible: true, note: 'टोरंटो: दृश्य (सूतक प्रभावी)' },
+      'Australia/Sydney': { visible: false, note: 'सिडनी: अदृश्य' }
+    }
+  },
+  {
+    id: 'solar-eclipse-2027-02',
+    type: 'surya',
+    icon: '☀️',
+    name_hi: 'वलयाकार सूर्य ग्रहण (Annular Solar Eclipse)',
+    name_en: 'Annular Solar Eclipse',
+    utc_start: '2027-02-06T13:50:00Z',
+    utc_peak: '2027-02-06T16:00:00Z',
+    utc_end: '2027-02-06T18:15:00Z',
+    sutak_hours: 12,
+    visibility: {
+      'Asia/Kolkata': { visible: false, note: 'भारत: अदृश्य (सूतक मान्य नहीं)' },
+      'Asia/Dubai': { visible: false, note: 'दुबई: अदृश्य' },
+      'Europe/London': { visible: false, note: 'लंदन: अदृश्य' },
+      'America/New_York': { visible: false, note: 'न्यूयॉर्क: अदृश्य' },
+      'America/Los_Angeles': { visible: false, note: 'अदृश्य' },
+      'America/Toronto': { visible: false, note: 'अदृश्य' },
+      'Australia/Sydney': { visible: false, note: 'अदृश्य' }
+    }
+  },
+  {
+    id: 'solar-eclipse-2027-08',
+    type: 'surya',
+    icon: '☀️',
+    name_hi: 'खग्रास सूर्य ग्रहण (Total Solar Eclipse)',
+    name_en: 'Total Solar Eclipse',
+    utc_start: '2027-08-02T08:30:00Z',
+    utc_peak: '2027-08-02T10:07:00Z',
+    utc_end: '2027-08-02T13:45:00Z',
+    sutak_hours: 12,
+    visibility: {
+      'Asia/Kolkata': { visible: true, note: 'भारत (पश्चिम/उत्तर): आंशिक दृश्य (सूतक मान्य)' },
+      'Asia/Dubai': { visible: true, note: 'दुबई: अत्यधिक दृश्य (सूतक प्रभावी)' },
+      'Europe/London': { visible: true, note: 'लंदन: दृश्य (सूतक प्रभावी)' },
+      'America/New_York': { visible: false, note: 'न्यूयॉर्क: अदृश्य' },
+      'America/Los_Angeles': { visible: false, note: 'अदृश्य' },
+      'America/Toronto': { visible: false, note: 'अदृश्य' },
+      'Australia/Sydney': { visible: false, note: 'अदृश्य' }
+    }
+  }
+];
+
+BAS.updateHeroGrahan = function (selectedTz) {
+  const cardEl = document.getElementById('panchang-grahan-card');
+  const tagEl = document.getElementById('grahan-tag');
+  const visEl = document.getElementById('grahan-vis-badge');
+  const timeValEl = document.getElementById('grahan-time-val');
+  const sutakValEl = document.getElementById('grahan-sutak-val');
+  if (!cardEl || !tagEl) return;
+
+  const tz = selectedTz || localStorage.getItem('bas_panchang_tz') || 'Asia/Kolkata';
+  const now = new Date();
+
+  function formatTzTime(isoStr) {
+    const d = new Date(isoStr);
+    return d.toLocaleTimeString('en-US', {
+      timeZone: tz,
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    });
+  }
+
+  function formatTzDate(isoStr) {
+    const d = new Date(isoStr);
+    return d.toLocaleDateString('hi-IN', {
+      timeZone: tz,
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
+  }
+
+  // Find active or next upcoming grahan
+  let activeGrahan = null;
+  let isToday = false;
+
+  for (let i = 0; i < BAS.grahanDatabase.length; i++) {
+    const g = BAS.grahanDatabase[i];
+    const startTime = new Date(g.utc_start).getTime();
+    const endTime = new Date(g.utc_end).getTime();
+    const sutakStart = startTime - (g.sutak_hours * 3600000);
+
+    // Active window: from sutak start to moksha end
+    if (now.getTime() >= sutakStart && now.getTime() <= endTime) {
+      activeGrahan = g;
+      isToday = true;
+      break;
+    }
+
+    // Or if calendar date matches in selected timezone
+    const gDate = new Date(g.utc_start).toLocaleDateString('en-CA', { timeZone: tz });
+    const todayDate = now.toLocaleDateString('en-CA', { timeZone: tz });
+    if (gDate === todayDate) {
+      activeGrahan = g;
+      isToday = true;
+      break;
+    }
+  }
+
+  // If no active grahan today, find next upcoming
+  if (!activeGrahan) {
+    for (let i = 0; i < BAS.grahanDatabase.length; i++) {
+      const g = BAS.grahanDatabase[i];
+      const endTime = new Date(g.utc_end).getTime();
+      if (endTime > now.getTime()) {
+        activeGrahan = g;
+        break;
+      }
+    }
+  }
+
+  // Fallback to latest
+  if (!activeGrahan) {
+    activeGrahan = BAS.grahanDatabase[BAS.grahanDatabase.length - 1];
+  }
+
+  const visRule = activeGrahan.visibility[tz] || { visible: false, note: 'स्थानीय दृश्यता पंचांग अनुसार' };
+  const startTimeStr = formatTzTime(activeGrahan.utc_start);
+  const peakTimeStr = formatTzTime(activeGrahan.utc_peak);
+  const endTimeStr = formatTzTime(activeGrahan.utc_end);
+  const dateStr = formatTzDate(activeGrahan.utc_start);
+
+  if (isToday) {
+    cardEl.className = 'panchang-grahan-card panchang-grahan-card--active';
+    tagEl.innerHTML = `🚨 <strong style="color:#f59e0b;">आज ग्रहण:</strong> ${activeGrahan.icon} ${activeGrahan.name_hi}`;
+    if (visEl) {
+      visEl.className = 'grahan-visibility-badge ' + (visRule.visible ? 'grahan-visibility-badge--visible' : 'grahan-visibility-badge--not-visible');
+      visEl.textContent = visRule.note;
+    }
+    if (timeValEl) {
+      timeValEl.textContent = `स्पर्श: ${startTimeStr} · मध्य: ${peakTimeStr} · मोक्ष: ${endTimeStr}`;
+    }
+    if (sutakValEl) {
+      const sutakStartTime = new Date(new Date(activeGrahan.utc_start).getTime() - (activeGrahan.sutak_hours * 3600000));
+      const sStr = sutakStartTime.toLocaleTimeString('en-US', { timeZone: tz, hour: '2-digit', minute: '2-digit', hour12: true });
+      sutakValEl.textContent = visRule.visible ? `${sStr} से मोक्ष तक (सूतक मान्य)` : `सूतक मान्य नहीं (अदृश्य)`;
+    }
+  } else {
+    cardEl.className = 'panchang-grahan-card';
+    tagEl.innerHTML = `${activeGrahan.icon} आगामी ${activeGrahan.type === 'surya' ? 'सूर्य' : 'चन्द्र'} ग्रहण · ${dateStr}`;
+    if (visEl) {
+      visEl.className = 'grahan-visibility-badge ' + (visRule.visible ? 'grahan-visibility-badge--visible' : 'grahan-visibility-badge--not-visible');
+      visEl.textContent = visRule.note;
+    }
+    if (timeValEl) {
+      timeValEl.textContent = `${startTimeStr} – ${endTimeStr} (${tz.split('/')[1] || tz})`;
+    }
+    if (sutakValEl) {
+      sutakValEl.textContent = visRule.visible ? `ग्रहण से ${activeGrahan.sutak_hours} घंटे पूर्व प्रारंभ` : `सूतक प्रभावी नहीं`;
+    }
+  }
+};
+
+
 BAS.initHeroPanchang = function () {
   const dateEl      = document.getElementById('panchang-date');
   const timeValEl   = document.getElementById('panchang-time-val');
