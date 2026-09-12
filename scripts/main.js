@@ -1193,6 +1193,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 BAS.initHeroPanchang = function () {
   const dateEl      = document.getElementById('panchang-date');
+  const timeValEl   = document.getElementById('panchang-time-val');
   const tithiEl     = document.getElementById('panchang-tithi');
   const pakshaEl    = document.getElementById('panchang-paksha');
   const nakshatraEl = document.getElementById('panchang-nakshatra');
@@ -1249,14 +1250,39 @@ BAS.initHeroPanchang = function () {
 
   const isEn = BAS.currentLang === 'en';
 
-  // Date formatting
-  if (dateEl) {
-    if (isEn) {
-      dateEl.textContent = `${now.getDate()} ${enMonths[now.getMonth()]} ${now.getFullYear()}`;
-    } else {
-      dateEl.textContent = `${now.getDate()} ${hindiMonths[now.getMonth()]} ${now.getFullYear()}`;
-    }
+  function formatLocalTime(d) {
+    let hours = d.getHours();
+    const minutes = String(d.getMinutes()).padStart(2, '0');
+    const seconds = String(d.getSeconds()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    const strHours = String(hours).padStart(2, '0');
+    return `${strHours}:${minutes}:${seconds} ${ampm}`;
   }
+
+  // Date formatting with icon
+  if (dateEl) {
+    const monthName = isEn ? enMonths[now.getMonth()] : hindiMonths[now.getMonth()];
+    dateEl.innerHTML = `<span aria-hidden="true">📅</span> ${now.getDate()} ${monthName} ${now.getFullYear()}`;
+  }
+
+  // Live Local Time
+  if (timeValEl) {
+    timeValEl.textContent = formatLocalTime(now);
+  }
+
+  if (BAS._panchangClockTimer) clearInterval(BAS._panchangClockTimer);
+  BAS._panchangClockTimer = setInterval(() => {
+    let tNow = new Date();
+    try {
+      const tzStr = new Date().toLocaleString('en-US', { timeZone: selectedTz });
+      tNow = new Date(tzStr);
+    } catch (e) {}
+    if (timeValEl) {
+      timeValEl.textContent = formatLocalTime(tNow);
+    }
+  }, 1000);
 
   // Day of week
   if (varEl) {

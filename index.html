@@ -2601,13 +2601,45 @@ img {
       animation: pulse-live 1.8s infinite !important;
     }
 
-    .panchang-hero-widget__date {
-      font-family: var(--font-deva), var(--font-sans) !important;
-      font-size: 0.92rem !important;
-      color: #cbd5e1 !important;
-      font-weight: 500 !important;
+    .panchang-hero-widget__date-row {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      gap: 8px !important;
       margin-top: 4px !important;
       margin-bottom: 12px !important;
+    }
+
+    .panchang-hero-widget__date {
+      font-family: var(--font-deva), var(--font-sans) !important;
+      font-size: 0.90rem !important;
+      color: #e2e8f0 !important;
+      font-weight: 600 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      margin: 0 !important;
+    }
+
+    .panchang-hero-widget__time {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      padding: 3px 12px !important;
+      border-radius: 9999px !important;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(234, 88, 12, 0.12)) !important;
+      border: 1px solid rgba(245, 158, 11, 0.35) !important;
+      color: #fcd34d !important;
+      font-size: 0.82rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.03em !important;
+      box-shadow: inset 0 1px 0 rgba(245, 158, 11, 0.2), 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+      font-variant-numeric: tabular-nums !important;
+    }
+
+    .panchang-hero-widget__time .time-icon {
+      font-size: 0.85rem !important;
     }
 
     .panchang-city-selector-wrap {
@@ -3398,7 +3430,13 @@ img {
           </div>
           <span class="panchang-hero-widget__live"><span class="live-dot"></span>Live</span>
         </div>
-        <div class="panchang-hero-widget__date" id="panchang-date"></div>
+        <div class="panchang-hero-widget__date-row">
+          <div class="panchang-hero-widget__date" id="panchang-date"></div>
+          <div class="panchang-hero-widget__time" id="panchang-time">
+            <span class="time-icon" aria-hidden="true">⏰</span>
+            <span id="panchang-time-val">--:--:--</span>
+          </div>
+        </div>
 
         <div class="panchang-city-selector-wrap">
           <span class="city-selector-pin" aria-hidden="true">📍</span>
@@ -4627,6 +4665,7 @@ BAS.initGoogleTranslate = function () {};
 // ── DAILY HINDU PANCHANG WIDGET (Image 1) ─────────────────
 BAS.initHeroPanchang = function () {
   const dateEl      = document.getElementById('panchang-date');
+  const timeValEl   = document.getElementById('panchang-time-val');
   const tithiEl     = document.getElementById('panchang-tithi');
   const pakshaEl    = document.getElementById('panchang-paksha');
   const nakshatraEl = document.getElementById('panchang-nakshatra');
@@ -4683,14 +4722,39 @@ BAS.initHeroPanchang = function () {
 
   const isEn = BAS.currentLang === 'en';
 
-  // Date formatting
-  if (dateEl) {
-    if (isEn) {
-      dateEl.textContent = `${now.getDate()} ${enMonths[now.getMonth()]} ${now.getFullYear()}`;
-    } else {
-      dateEl.textContent = `${now.getDate()} ${hindiMonths[now.getMonth()]} ${now.getFullYear()}`;
-    }
+  function formatLocalTime(d) {
+    let hours = d.getHours();
+    const minutes = String(d.getMinutes()).padStart(2, '0');
+    const seconds = String(d.getSeconds()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    const strHours = String(hours).padStart(2, '0');
+    return `${strHours}:${minutes}:${seconds} ${ampm}`;
   }
+
+  // Date formatting with icon
+  if (dateEl) {
+    const monthName = isEn ? enMonths[now.getMonth()] : hindiMonths[now.getMonth()];
+    dateEl.innerHTML = `<span aria-hidden="true">📅</span> ${now.getDate()} ${monthName} ${now.getFullYear()}`;
+  }
+
+  // Live Local Time
+  if (timeValEl) {
+    timeValEl.textContent = formatLocalTime(now);
+  }
+
+  if (BAS._panchangClockTimer) clearInterval(BAS._panchangClockTimer);
+  BAS._panchangClockTimer = setInterval(() => {
+    let tNow = new Date();
+    try {
+      const tzStr = new Date().toLocaleString('en-US', { timeZone: selectedTz });
+      tNow = new Date(tzStr);
+    } catch (e) {}
+    if (timeValEl) {
+      timeValEl.textContent = formatLocalTime(tNow);
+    }
+  }, 1000);
 
   // Day of week
   if (varEl) {
