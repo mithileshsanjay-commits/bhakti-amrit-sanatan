@@ -615,7 +615,11 @@ BAS.translations = {
     amrit_vachan_sub: 'Timeless Wisdom from Sacred Scriptures',
     rashifal_label: '✨ आज का भविष्यफल',
     rashifal_title: 'दैनिक राशिफल (Daily Horoscope)',
-    rashifal_sub: 'अपनी राशि चुनें और जानें आज का दिन, शुभ रंग, अंक व विशेष उपाय'
+    rashifal_sub: 'अपनी राशि चुनें और जानें आज का दिन, शुभ रंग, अंक व विशेष उपाय',
+    stat_articles_label: 'प्रकाशित लेख',
+    stat_mantras_label: 'मंत्र व स्तोत्र',
+    stat_trust_number: 'शास्त्र-सम्मत',
+    stat_trust_label: 'परंपरा-आधारित सामग्री'
   },
   en: {
     nav_home: '🏠 Home',
@@ -632,6 +636,10 @@ BAS.translations = {
     hero_quick_label: 'Quick Links:',
     hero_search_ph: 'Search mantras, rituals, sacred stories...',
     hero_search_btn: '🔍 Search',
+    stat_articles_label: 'Articles Published',
+    stat_mantras_label: 'Mantras & Stotras',
+    stat_trust_number: 'Scripture-Backed',
+    stat_trust_label: 'Tradition-Based Content',
     panchang_title: 'Daily Hindu Panchang',
     label_tithi: 'TITHI (LUNAR DAY)',
     label_paksha: 'PAKSHA (FORTNIGHT)',
@@ -772,6 +780,15 @@ BAS.applyLanguage = function (lang, userTriggered) {
 
   const searchBtn = document.getElementById('hero-search-btn');
   if (searchBtn) searchBtn.textContent = t.hero_search_btn;
+
+  const statArticles = document.getElementById('stat-articles-label');
+  if (statArticles) statArticles.textContent = t.stat_articles_label;
+  const statMantras = document.getElementById('stat-mantras-label');
+  if (statMantras) statMantras.textContent = t.stat_mantras_label;
+  const statTrustNum = document.getElementById('stat-trust-number');
+  if (statTrustNum) statTrustNum.textContent = t.stat_trust_number;
+  const statTrustLabel = document.getElementById('stat-trust-label');
+  if (statTrustLabel) statTrustLabel.textContent = t.stat_trust_label;
 
   // Panchang
   const pTitle = document.getElementById('panchang-widget-title');
