@@ -3808,19 +3808,18 @@ img {
 
 
 /* ============================================================
-   GRAHAN (SOLAR & LUNAR ECLIPSE) INDICATOR (Sanatan Themed)
+   GRAHAN (SOLAR & LUNAR ECLIPSE) CARD — COMPACT & CONTEXTUAL
    ============================================================ */
 .panchang-hero-grahan {
   margin-bottom: 10px !important;
 }
 
 .panchang-grahan-card {
-  background: radial-gradient(circle at top left, rgba(147, 51, 234, 0.15), rgba(13, 2, 28, 0.8)) !important;
-  border: 1px solid rgba(168, 85, 247, 0.35) !important;
-  border-left: 4px solid #a855f7 !important;
+  background: radial-gradient(circle at top left, rgba(147, 51, 234, 0.12), rgba(13, 2, 28, 0.7)) !important;
+  border: 1px solid rgba(168, 85, 247, 0.25) !important;
+  border-left: 3px solid #a855f7 !important;
   border-radius: 10px !important;
-  padding: 10px 12px !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+  padding: 8px 12px !important;
   transition: all 0.25s ease !important;
 }
 
@@ -3829,15 +3828,14 @@ img {
   border-color: rgba(245, 158, 11, 0.6) !important;
   border-left-color: #f59e0b !important;
   box-shadow: 0 0 16px rgba(245, 158, 11, 0.25), 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+  padding: 12px 14px !important;
 }
 
 .panchang-grahan-header {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
-  flex-wrap: wrap !important;
-  gap: 6px !important;
-  margin-bottom: 6px !important;
+  gap: 8px !important;
 }
 
 .grahan-tag {
@@ -3850,36 +3848,44 @@ img {
   gap: 6px !important;
 }
 
-.grahan-visibility-badge {
+.grahan-status-pill {
   font-size: 0.70rem !important;
-  font-weight: 700 !important;
+  font-weight: 600 !important;
   padding: 2px 8px !important;
   border-radius: 9999px !important;
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  color: #e2e8f0 !important;
+  background: rgba(16, 185, 129, 0.12) !important;
+  border: 1px solid rgba(16, 185, 129, 0.28) !important;
+  color: #6ee7b7 !important;
+  white-space: nowrap !important;
 }
 
-.grahan-visibility-badge--visible {
-  background: rgba(234, 88, 12, 0.22) !important;
-  border-color: rgba(249, 115, 22, 0.45) !important;
-  color: #fdba74 !important;
-}
-
-.grahan-visibility-badge--not-visible {
-  background: rgba(100, 116, 139, 0.2) !important;
-  border-color: rgba(148, 163, 184, 0.3) !important;
-  color: #cbd5e1 !important;
-}
-
-.panchang-grahan-body {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 4px !important;
+.panchang-grahan-normal {
+  font-family: var(--font-deva), var(--font-sans) !important;
   font-size: 0.78rem !important;
+  color: #cbd5e1 !important;
+  line-height: 1.5 !important;
+  margin-top: 4px !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 4px 6px !important;
 }
 
-.grahan-time-row {
+.grahan-upcoming-note {
+  color: #94a3b8 !important;
+  font-size: 0.74rem !important;
+}
+
+.panchang-grahan-eclipse {
+  flex-direction: column !important;
+  gap: 5px !important;
+  font-size: 0.78rem !important;
+  margin-top: 8px !important;
+  padding-top: 8px !important;
+  border-top: 1px solid rgba(245, 158, 11, 0.2) !important;
+}
+
+.grahan-detail-row {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;

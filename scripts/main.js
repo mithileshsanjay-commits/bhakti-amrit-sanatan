@@ -1298,13 +1298,36 @@ BAS.grahanDatabase = [
 BAS.updateHeroGrahan = function (selectedTz) {
   const cardEl = document.getElementById('panchang-grahan-card');
   const tagEl = document.getElementById('grahan-tag');
-  const visEl = document.getElementById('grahan-vis-badge');
-  const timeValEl = document.getElementById('grahan-time-val');
-  const sutakValEl = document.getElementById('grahan-sutak-val');
-  if (!cardEl || !tagEl) return;
+  const pillEl = document.getElementById('grahan-status-pill');
+  const normalView = document.getElementById('grahan-normal-view');
+  const upcomingNote = document.getElementById('grahan-upcoming-note');
+  const locVisSpan = document.getElementById('grahan-loc-vis');
+
+  const eclipseView = document.getElementById('grahan-eclipse-view');
+  const typeVal = document.getElementById('grahan-type-val');
+  const startVal = document.getElementById('grahan-start-val');
+  const peakVal = document.getElementById('grahan-peak-val');
+  const endVal = document.getElementById('grahan-end-val');
+  const locLabel = document.getElementById('grahan-loc-label');
+  const visVal = document.getElementById('grahan-vis-val');
+  const sutakRow = document.getElementById('grahan-sutak-detail-row');
+  const sutakVal = document.getElementById('grahan-sutak-val');
+
+  if (!cardEl || !normalView) return;
 
   const tz = selectedTz || localStorage.getItem('bas_panchang_tz') || 'Asia/Kolkata';
   const now = new Date();
+
+  const cityMap = {
+    'Asia/Kolkata': 'नई दिल्ली',
+    'Asia/Dubai': 'दुबई',
+    'Europe/London': 'लंदन',
+    'America/New_York': 'न्यूयॉर्क',
+    'America/Los_Angeles': 'लॉस एंजिल्स',
+    'America/Toronto': 'टोरंटो',
+    'Australia/Sydney': 'सिडनी'
+  };
+  const cityName = cityMap[tz] || 'स्थानीय';
 
   function formatTzTime(isoStr) {
     const d = new Date(isoStr);
@@ -1326,7 +1349,7 @@ BAS.updateHeroGrahan = function (selectedTz) {
     });
   }
 
-  // Find active or next upcoming grahan
+  // Check if today has an active eclipse
   let activeGrahan = null;
   let isToday = false;
 
@@ -1334,16 +1357,15 @@ BAS.updateHeroGrahan = function (selectedTz) {
     const g = BAS.grahanDatabase[i];
     const startTime = new Date(g.utc_start).getTime();
     const endTime = new Date(g.utc_end).getTime();
-    const sutakStart = startTime - (g.sutak_hours * 3600000);
 
-    // Active window: from sutak start to moksha end
-    if (now.getTime() >= sutakStart && now.getTime() <= endTime) {
+    // Check if within window of eclipse event
+    if (now.getTime() >= startTime && now.getTime() <= endTime) {
       activeGrahan = g;
       isToday = true;
       break;
     }
 
-    // Or if calendar date matches in selected timezone
+    // Or same calendar day in the selected timezone
     const gDate = new Date(g.utc_start).toLocaleDateString('en-CA', { timeZone: tz });
     const todayDate = now.toLocaleDateString('en-CA', { timeZone: tz });
     if (gDate === todayDate) {
@@ -1353,56 +1375,71 @@ BAS.updateHeroGrahan = function (selectedTz) {
     }
   }
 
-  // If no active grahan today, find next upcoming
-  if (!activeGrahan) {
+  if (isToday && activeGrahan) {
+    // ── ECLIPSE DAY (Auto-Expand with Verified Information) ──
+    cardEl.className = 'panchang-grahan-card panchang-grahan-card--active';
+    normalView.style.display = 'none';
+    eclipseView.style.display = 'flex';
+
+    const visRule = activeGrahan.visibility[tz] || { visible: false, note: 'अदृश्य' };
+
+    tagEl.innerHTML = `🚨 <strong style="color:#f59e0b;">आज ग्रहण:</strong> ${activeGrahan.icon} ${activeGrahan.name_hi}`;
+    if (pillEl) {
+      pillEl.style.background = visRule.visible ? 'rgba(234, 88, 12, 0.25)' : 'rgba(100, 116, 139, 0.25)';
+      pillEl.style.color = visRule.visible ? '#fdba74' : '#cbd5e1';
+      pillEl.style.borderColor = visRule.visible ? 'rgba(249, 115, 22, 0.45)' : 'rgba(148, 163, 184, 0.3)';
+      pillEl.textContent = visRule.visible ? `${cityName}: दृश्य` : `${cityName}: अदृश्य`;
+    }
+
+    if (typeVal) typeVal.textContent = activeGrahan.name_hi;
+    if (startVal) startVal.textContent = formatTzTime(activeGrahan.utc_start);
+    if (peakVal) peakVal.textContent = formatTzTime(activeGrahan.utc_peak);
+    if (endVal) endVal.textContent = formatTzTime(activeGrahan.utc_end);
+    if (locLabel) locLabel.textContent = `दृश्यता (${cityName}):`;
+    if (visVal) visVal.textContent = visRule.note;
+
+    // Sutak: Only display if applicability and timing are reliably determined for the selected location
+    if (visRule.visible && activeGrahan.sutak_hours) {
+      sutakRow.style.display = 'flex';
+      const sutakStartTime = new Date(new Date(activeGrahan.utc_start).getTime() - (activeGrahan.sutak_hours * 3600000));
+      const sStr = sutakStartTime.toLocaleTimeString('en-US', { timeZone: tz, hour: '2-digit', minute: '2-digit', hour12: true });
+      sutakVal.textContent = `${sStr} से मोक्ष तक (सूतक प्रभावी)`;
+    } else {
+      sutakRow.style.display = 'none';
+    }
+  } else {
+    // ── NORMAL DAY — NO ECLIPSE (Compact & Clean, No '--') ──
+    cardEl.className = 'panchang-grahan-card';
+    normalView.style.display = 'flex';
+    eclipseView.style.display = 'none';
+
+    tagEl.innerHTML = '🌘 ग्रहण जानकारी';
+    if (pillEl) {
+      pillEl.style.background = 'rgba(16, 185, 129, 0.12)';
+      pillEl.style.color = '#6ee7b7';
+      pillEl.style.borderColor = 'rgba(16, 185, 129, 0.28)';
+      pillEl.textContent = 'आज कोई ग्रहण नहीं';
+    }
+
+    // Find next verified upcoming eclipse
+    let nextG = null;
     for (let i = 0; i < BAS.grahanDatabase.length; i++) {
       const g = BAS.grahanDatabase[i];
-      const endTime = new Date(g.utc_end).getTime();
-      if (endTime > now.getTime()) {
-        activeGrahan = g;
+      if (new Date(g.utc_end).getTime() > now.getTime()) {
+        nextG = g;
         break;
       }
     }
-  }
 
-  // Fallback to latest
-  if (!activeGrahan) {
-    activeGrahan = BAS.grahanDatabase[BAS.grahanDatabase.length - 1];
-  }
-
-  const visRule = activeGrahan.visibility[tz] || { visible: false, note: 'स्थानीय दृश्यता पंचांग अनुसार' };
-  const startTimeStr = formatTzTime(activeGrahan.utc_start);
-  const peakTimeStr = formatTzTime(activeGrahan.utc_peak);
-  const endTimeStr = formatTzTime(activeGrahan.utc_end);
-  const dateStr = formatTzDate(activeGrahan.utc_start);
-
-  if (isToday) {
-    cardEl.className = 'panchang-grahan-card panchang-grahan-card--active';
-    tagEl.innerHTML = `🚨 <strong style="color:#f59e0b;">आज ग्रहण:</strong> ${activeGrahan.icon} ${activeGrahan.name_hi}`;
-    if (visEl) {
-      visEl.className = 'grahan-visibility-badge ' + (visRule.visible ? 'grahan-visibility-badge--visible' : 'grahan-visibility-badge--not-visible');
-      visEl.textContent = visRule.note;
-    }
-    if (timeValEl) {
-      timeValEl.textContent = `स्पर्श: ${startTimeStr} · मध्य: ${peakTimeStr} · मोक्ष: ${endTimeStr}`;
-    }
-    if (sutakValEl) {
-      const sutakStartTime = new Date(new Date(activeGrahan.utc_start).getTime() - (activeGrahan.sutak_hours * 3600000));
-      const sStr = sutakStartTime.toLocaleTimeString('en-US', { timeZone: tz, hour: '2-digit', minute: '2-digit', hour12: true });
-      sutakValEl.textContent = visRule.visible ? `${sStr} से मोक्ष तक (सूतक मान्य)` : `सूतक मान्य नहीं (अदृश्य)`;
-    }
-  } else {
-    cardEl.className = 'panchang-grahan-card';
-    tagEl.innerHTML = `${activeGrahan.icon} आगामी ${activeGrahan.type === 'surya' ? 'सूर्य' : 'चन्द्र'} ग्रहण · ${dateStr}`;
-    if (visEl) {
-      visEl.className = 'grahan-visibility-badge ' + (visRule.visible ? 'grahan-visibility-badge--visible' : 'grahan-visibility-badge--not-visible');
-      visEl.textContent = visRule.note;
-    }
-    if (timeValEl) {
-      timeValEl.textContent = `${startTimeStr} – ${endTimeStr} (${tz.split('/')[1] || tz})`;
-    }
-    if (sutakValEl) {
-      sutakValEl.textContent = visRule.visible ? `ग्रहण से ${activeGrahan.sutak_hours} घंटे पूर्व प्रारंभ` : `सूतक प्रभावी नहीं`;
+    if (nextG && upcomingNote) {
+      const gDateStr = formatTzDate(nextG.utc_start);
+      const visRule = nextG.visibility[tz] || { visible: false };
+      const visText = visRule.visible ? 'दृश्य' : 'अदृश्य';
+      const typeLabel = nextG.type === 'surya' ? 'सूर्य ग्रहण' : 'चन्द्र ग्रहण';
+      if (locVisSpan) {
+        locVisSpan.textContent = `[${cityName}: ${visText}]`;
+      }
+      upcomingNote.innerHTML = `· अगला ग्रहण: ${gDateStr} (${typeLabel}) <span id="grahan-loc-vis">[${cityName}: ${visText}]</span>`;
     }
   }
 };
