@@ -3767,3 +3767,9 @@ img {
 }
 
 
+/* P1-B: Cleanly hide incomplete/misleading language switcher and Google Translate */
+.lang-toggle-btn, .lang-btn, #lang-toggle-btn, #google_translate_element, .skiptranslate, .goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}

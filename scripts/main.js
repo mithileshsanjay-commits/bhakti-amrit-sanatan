@@ -384,7 +384,31 @@ BAS.updateDates = function () {
   });
 };
 
-// ── FESTIVAL COUNTDOWN ─────────────────────────────────
+// ── AUTHORITATIVE FESTIVAL DATABASE & COUNTDOWN ENGINE ──────────────
+BAS.festivalDatabase = [
+  { id: 'ganesh-chaturthi-2026', name: 'Ganesh Chaturthi 2026', name_hi: 'श्री गणेश चतुर्थी 2026', date: '2026-09-14', deva: 'भाद्रपद शुक्ल चतुर्थी · 14 September, 2026', icon: '🐘' },
+  { id: 'anant-chaturdashi-2026', name: 'Anant Chaturdashi 2026', name_hi: 'अनंत चतुर्दशी (गणेश विसर्जन) 2026', date: '2026-09-25', deva: 'भाद्रपद शुक्ल चतुर्दशी · 25 September, 2026', icon: '🕉️' },
+  { id: 'sharad-navratri-2026', name: 'Sharad Navratri 2026', name_hi: 'शारदीय नवरात्रि (घटस्थापना) 2026', date: '2026-10-11', deva: 'आश्विन शुक्ल प्रतिपदा · 11 October, 2026', icon: '🌺' },
+  { id: 'dussehra-2026', name: 'Dussehra / Vijayadashami 2026', name_hi: 'दशहरा (विजयादशमी) 2026', date: '2026-10-20', deva: 'आश्विन शुक्ल दशमी · 20 October, 2026', icon: '🏹' },
+  { id: 'karwa-chauth-2026', name: 'Karwa Chauth 2026', name_hi: 'करवा चौथ व्रत 2026', date: '2026-10-29', deva: 'कार्तिक कृष्ण चतुर्थी · 29 October, 2026', icon: '🌕' },
+  { id: 'dhanteras-2026', name: 'Dhanteras 2026', name_hi: 'धनतेरस (धनत्रयोदशी) 2026', date: '2026-11-06', deva: 'कार्तिक कृष्ण त्रयोदशी · 6 November, 2026', icon: '🪙' },
+  { id: 'diwali-2026', name: 'Diwali 2026', name_hi: 'दीपावली (महालक्ष्मी पूजन) 2026', date: '2026-11-08', deva: 'कार्तिक अमावस्या · 8 November, 2026', icon: '🪔' },
+  { id: 'govardhan-puja-2026', name: 'Govardhan Puja 2026', name_hi: 'गोवर्धन पूजा (अन्नकूट) 2026', date: '2026-11-09', deva: 'कार्तिक शुक्ल प्रतिपदा · 9 November, 2026', icon: '🏔️' },
+  { id: 'bhai-dooj-2026', name: 'Bhai Dooj 2026', name_hi: 'भाई दूज (यम द्वितीया) 2026', date: '2026-11-10', deva: 'कार्तिक शुक्ल द्वितीया · 10 November, 2026', icon: '🌸' },
+  { id: 'chhath-puja-2026', name: 'Chhath Puja 2026', name_hi: 'छठ पूजा (संध्या अर्घ्य) 2026', date: '2026-11-14', deva: 'कार्तिक शुक्ल षष्ठी · 14 November, 2026', icon: '☀️' },
+  { id: 'dev-utthana-ekadashi-2026', name: 'Dev Uthani Ekadashi 2026', name_hi: 'देवउठनी एकादशी (तुलसी विवाह) 2026', date: '2026-11-20', deva: 'कार्तिक शुक्ल एकादशी · 20 November, 2026', icon: '🌿' },
+  { id: 'dev-deepawali-2026', name: 'Dev Deepawali 2026', name_hi: 'देव दीपावली (कार्तिक पूर्णिमा) 2026', date: '2026-11-24', deva: 'कार्तिक शुक्ल पूर्णिमा · 24 November, 2026', icon: '✨' },
+  { id: 'gita-jayanti-2026', name: 'Gita Jayanti 2026', name_hi: 'गीता जयंती (मोक्षदा एकादशी) 2026', date: '2026-12-20', deva: 'मार्गशीर्ष शुक्ल एकादशी · 20 December, 2026', icon: '📖' },
+  { id: 'makar-sankranti-2027', name: 'Makar Sankranti 2027', name_hi: 'मकर संक्रांति 2027', date: '2027-01-14', deva: 'सूर्य का मकर संक्रमण · 14 January, 2027', icon: '🪁' },
+  { id: 'vasant-panchami-2027', name: 'Vasant Panchami 2027', name_hi: 'सरस्वती पूजा (बसंत पंचमी) 2027', date: '2027-02-11', deva: 'माघ शुक्ल पंचमी · 11 February, 2027', icon: '🌼' },
+  { id: 'maha-shivratri-2027', name: 'Maha Shivratri 2027', name_hi: 'महाशिवरात्रि 2027', date: '2027-03-06', deva: 'फाल्गुन कृष्ण चतुर्दशी · 6 March, 2027', icon: '🔱' },
+  { id: 'holika-dahan-2027', name: 'Holika Dahan 2027', name_hi: 'होलिका दहन 2027', date: '2027-03-21', deva: 'फाल्गुन शुक्ल पूर्णिमा · 21 March, 2027', icon: '🔥' },
+  { id: 'holi-2027', name: 'Holi 2027', name_hi: 'होली (धुलेंडी) 2027', date: '2027-03-22', deva: 'चैत्र कृष्ण प्रतिपदा · 22 March, 2027', icon: '🎨' },
+  { id: 'chaitra-navratri-2027', name: 'Chaitra Navratri 2027', name_hi: 'चैत्र नवरात्रि / नव संवत्सर 2084', date: '2027-04-07', deva: 'चैत्र शुक्ल प्रतिपदा · 7 April, 2027', icon: '🌺' },
+  { id: 'ram-navami-2027', name: 'Ram Navami 2027', name_hi: 'श्री राम नवमी 2027', date: '2027-04-15', deva: 'चैत्र शुक्ल नवमी · 15 April, 2027', icon: '🚩' },
+  { id: 'hanuman-jayanti-2027', name: 'Hanuman Jayanti 2027', name_hi: 'श्री हनुमान जयंती 2027', date: '2027-04-20', deva: 'चैत्र शुक्ल पूर्णिमा · 20 April, 2027', icon: '🐒' }
+];
+
 BAS.initFestivalCountdown = function () {
   const daysEl  = document.getElementById('cd-days');
   const hoursEl = document.getElementById('cd-hours');
@@ -392,43 +416,112 @@ BAS.initFestivalCountdown = function () {
   const secsEl  = document.getElementById('cd-secs');
   const nameEl  = document.getElementById('festival-name');
   const dateEl  = document.getElementById('festival-date');
+  const tagEl   = document.getElementById('fest-banner-tag');
   if (!daysEl) return;
 
-  // Upcoming Hindu festivals in 2026
-  const festivals = [
-    { name: 'Ganesh Chaturthi 2026', date: '2026-08-27', deva: 'भाद्रपद शुक्ल चतुर्थी', icon: '🐘' },
-    { name: 'Navratri 2026 (Sharad)',  date: '2026-10-02', deva: 'आश्विन शुक्ल प्रतिपदा', icon: '🌺' },
-    { name: 'Dussehra 2026',           date: '2026-10-11', deva: 'विजयादशमी', icon: '🏹' },
-    { name: 'Karwa Chauth 2026',       date: '2026-10-20', deva: 'कार्तिक कृष्ण चतुर्थी', icon: '🌕' },
-    { name: 'Diwali 2026',             date: '2026-11-01', deva: 'कार्तिक अमावस्या', icon: '🪔' },
-    { name: 'Chhath Puja 2026',        date: '2026-11-05', deva: 'कार्तिक शुक्ल षष्ठी', icon: '☀️' },
-    { name: 'Maha Shivratri 2027',     date: '2027-02-26', deva: 'फाल्गुन कृष्ण त्रयोदशी', icon: '🔱' },
-  ];
+  function pad(n) { return String(Math.max(0, n)).padStart(2, '0'); }
 
-  const now  = new Date();
-  const next = festivals.find(f => new Date(f.date) > now) || festivals[0];
-  const target = new Date(next.date + 'T00:00:00');
+  function update() {
+    const selectedTz = localStorage.getItem('bas_panchang_tz') || 'Asia/Kolkata';
+    let localNow = new Date();
+    try {
+      const tzStr = new Date().toLocaleString('en-US', { timeZone: selectedTz });
+      localNow = new Date(tzStr);
+    } catch (e) {}
 
-  if (nameEl) nameEl.textContent = next.icon + ' ' + next.name;
-  if (dateEl) dateEl.textContent = next.deva + ' · ' + new Date(next.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+    const y = localNow.getFullYear();
+    const m = String(localNow.getMonth() + 1).padStart(2, '0');
+    const d = String(localNow.getDate()).padStart(2, '0');
+    const todayStr = `${y}-${m}-${d}`;
 
-  function pad(n) { return String(n).padStart(2, '0'); }
+    let activeFest = null;
+    let isToday = false;
 
-  function tick() {
-    const diff = target - new Date();
-    if (diff <= 0) { daysEl.textContent = hoursEl.textContent = minsEl.textContent = secsEl.textContent = '00'; return; }
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    daysEl.textContent  = pad(d);
-    hoursEl.textContent = pad(h);
-    minsEl.textContent  = pad(m);
-    secsEl.textContent  = pad(s);
+    // 1. Check if today matches any festival
+    for (let i = 0; i < BAS.festivalDatabase.length; i++) {
+      const f = BAS.festivalDatabase[i];
+      if (f.date === todayStr) {
+        activeFest = f;
+        isToday = true;
+        break;
+      }
+    }
+
+    // 2. Otherwise find the earliest future festival
+    if (!activeFest) {
+      for (let i = 0; i < BAS.festivalDatabase.length; i++) {
+        const f = BAS.festivalDatabase[i];
+        if (f.date > todayStr) {
+          activeFest = f;
+          break;
+        }
+      }
+    }
+
+    // Fallback if year ends or all passed
+    if (!activeFest) {
+      activeFest = BAS.festivalDatabase[BAS.festivalDatabase.length - 1];
+    }
+
+    if (nameEl) nameEl.textContent = activeFest.name_hi || activeFest.name;
+    if (dateEl) dateEl.textContent = activeFest.deva;
+
+    if (isToday) {
+      if (tagEl) tagEl.textContent = '🎉 आज पावन पर्व है! (Celebrating Today)';
+      const endOfDay = new Date(localNow.getFullYear(), localNow.getMonth(), localNow.getDate(), 23, 59, 59);
+      const remSecs = Math.max(0, Math.floor((endOfDay - localNow) / 1000));
+      daysEl.textContent = '00';
+      hoursEl.textContent = pad(Math.floor(remSecs / 3600));
+      minsEl.textContent  = pad(Math.floor((remSecs % 3600) / 60));
+      secsEl.textContent  = pad(remSecs % 60);
+    } else {
+      if (tagEl) tagEl.textContent = '🎉 NEXT MAJOR FESTIVAL';
+      const parts = activeFest.date.split('-');
+      const targetMidnight = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10), 0, 0, 0);
+      const diffMs = targetMidnight.getTime() - localNow.getTime();
+
+      if (diffMs <= 0) {
+        // Immediate transition when boundary is crossed
+        daysEl.textContent = '00';
+        hoursEl.textContent = '00';
+        minsEl.textContent = '00';
+        secsEl.textContent = '00';
+      } else {
+        const totalSecs = Math.floor(diffMs / 1000);
+        const days = Math.floor(totalSecs / 86400);
+        const hours = Math.floor((totalSecs % 86400) / 3600);
+        const mins = Math.floor((totalSecs % 3600) / 60);
+        const secs = totalSecs % 60;
+        daysEl.textContent  = pad(days);
+        hoursEl.textContent = pad(hours);
+        minsEl.textContent  = pad(mins);
+        secsEl.textContent  = pad(secs);
+      }
+    }
   }
-  tick();
-  setInterval(tick, 1000);
+
+  update();
+  if (BAS._festTimer) clearInterval(BAS._festTimer);
+  BAS._festTimer = setInterval(update, 1000);
 };
+
+// ── P1-B CLEAN LANGUAGE SWITCHER RETIREMENT ─────────────────
+BAS.initLanguageToggle = function () {
+  try {
+    document.querySelectorAll('.lang-toggle-btn, .lang-btn, #lang-toggle-btn, #google_translate_element').forEach(el => {
+      el.style.display = 'none';
+      el.setAttribute('aria-hidden', 'true');
+    });
+    localStorage.removeItem('bas_lang');
+    document.cookie = 'googtrans=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.documentElement.lang = 'hi';
+  } catch (e) {}
+};
+
+BAS.initGoogleTranslate = function () {
+  // Permanently disabled in P1-B to preserve pristine Hindi typography and avoid mixed language artifacts.
+};
+
 
 // ── ROTATING SPIRITUAL QUOTES ──────────────────────────
 BAS.initRotatingQuotes = function () {
@@ -506,58 +599,7 @@ BAS.initSearchBar = function () {
   });
 };
 
-// ── FESTIVAL COUNTDOWN (Image 3) ──────────────────────
-BAS.initFestivalCountdown = function () {
-  const daysEl  = document.getElementById('cd-days');
-  const hoursEl = document.getElementById('cd-hours');
-  const minsEl  = document.getElementById('cd-mins');
-  const secsEl  = document.getElementById('cd-secs');
-  const nameEl  = document.getElementById('festival-name');
-  const dateEl  = document.getElementById('festival-date');
-  if (!daysEl) return;
 
-  // Major Sanatan Festivals
-  const festivals = [
-    { name: 'Ganesh Chaturthi 2026', date: '2026-09-14', deva: 'भाद्रपद शुक्ल चतुर्थी · 14 September, 2026', icon: '🐘' },
-    { name: 'Sharad Navratri 2026', date: '2026-10-02', deva: 'आश्विन शुक्ल प्रतिपदा · 2 October, 2026', icon: '🌺' },
-    { name: 'Dussehra / Vijayadashami 2026', date: '2026-10-11', deva: 'आश्विन शुक्ल दशमी · 11 October, 2026', icon: '🏹' },
-    { name: 'Karwa Chauth 2026', date: '2026-10-20', deva: 'कार्तिक कृष्ण चतुर्थी · 20 October, 2026', icon: '🌕' },
-    { name: 'Dhanteras & Diwali 2026', date: '2026-11-01', deva: 'कार्तिक अमावस्या · 1 November, 2026', icon: '🪔' },
-    { name: 'Chhath Puja 2026', date: '2026-11-05', deva: 'कार्तिक शुक्ल षष्ठी · 5 November, 2026', icon: '☀️' },
-    { name: 'Dev Deepawali 2026', date: '2026-11-15', deva: 'कार्तिक शुक्ल पूर्णिमा · 15 November, 2026', icon: '✨' },
-    { name: 'Makar Sankranti 2027', date: '2027-01-14', deva: 'सूर्य का मकर संक्रमण · 14 January, 2027', icon: '🪁' },
-    { name: 'Maha Shivratri 2027', date: '2027-02-26', deva: 'फाल्गुन कृष्ण त्रयोदशी · 26 February, 2027', icon: '🔱' },
-    { name: 'Holi 2027', date: '2027-03-22', deva: 'फाल्गुन शुक्ल पूर्णिमा · 22 March, 2027', icon: '🎨' },
-    { name: 'Ram Navami 2027', date: '2027-04-15', deva: 'चैत्र शुक्ल नवमी · 15 April, 2027', icon: '🚩' }
-  ];
-
-  const now = new Date();
-  const next = festivals.find(f => new Date(f.date) > now) || festivals[0];
-  const target = new Date(next.date + 'T00:00:00');
-
-  if (nameEl) nameEl.textContent = next.name;
-  if (dateEl) dateEl.textContent = next.deva;
-
-  function pad(n) { return String(n).padStart(2, '0'); }
-
-  function tick() {
-    const diff = target - new Date();
-    if (diff <= 0) {
-      daysEl.textContent = hoursEl.textContent = minsEl.textContent = secsEl.textContent = '00';
-      return;
-    }
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    daysEl.textContent  = pad(d);
-    hoursEl.textContent = pad(h);
-    minsEl.textContent  = pad(m);
-    secsEl.textContent  = pad(s);
-  }
-  tick();
-  setInterval(tick, 1000);
-};
 
 // ── BILINGUAL LANGUAGE SWITCHER (EN / HI) ─────────────────
 BAS.currentLang = localStorage.getItem('bas_lang') || 'hi';
