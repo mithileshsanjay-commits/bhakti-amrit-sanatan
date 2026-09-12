@@ -1742,6 +1742,179 @@ img {
 :target {
   scroll-margin-top: calc(var(--nav-height) + 20px);
 }
+
+    /* Enhanced Chapter Card & Shloka Box Styles */
+    .chapter-grid {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)) !important;
+      gap: 28px !important;
+    }
+    .chapter-card {
+      background: linear-gradient(145deg, rgba(30, 10, 52, 0.95) 0%, rgba(15, 3, 30, 0.98) 100%) !important;
+      border: 1px solid rgba(245, 158, 11, 0.28) !important;
+      border-radius: 20px !important;
+      padding: 26px 24px !important;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      position: relative !important;
+      overflow: hidden !important;
+      display: flex !important;
+      flex-direction: column !important;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.55), 0 0 16px rgba(245, 158, 11, 0.06) !important;
+    }
+    .chapter-card:hover {
+      border-color: rgba(245, 158, 11, 0.55) !important;
+      transform: translateY(-6px) !important;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7), 0 0 28px rgba(245, 158, 11, 0.2) !important;
+    }
+    .chapter-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .chapter-num {
+      font-family: var(--font-serif);
+      font-size: 2.2rem !important;
+      font-weight: 900 !important;
+      background: var(--grad-gold) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+      line-height: 1 !important;
+      margin-bottom: 0 !important;
+      text-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
+    }
+    .chapter-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem !important;
+      font-weight: 700 !important;
+      color: var(--clr-text-white) !important;
+      margin: 0 0 4px !important;
+      line-height: 1.35 !important;
+    }
+    .chapter-title-hi {
+      font-family: var(--font-deva);
+      font-size: 0.95rem !important;
+      font-weight: 600 !important;
+      color: var(--clr-gold) !important;
+      margin-bottom: 14px !important;
+      line-height: 1.4 !important;
+    }
+    .chapter-desc {
+      font-family: var(--font-deva);
+      font-size: 0.88rem !important;
+      color: rgba(255, 255, 255, 0.86) !important;
+      line-height: 1.75 !important;
+      margin-bottom: 16px !important;
+      flex-grow: 0;
+    }
+    .chapter-card-shloka-box {
+      background: radial-gradient(circle at top left, rgba(245, 158, 11, 0.12), rgba(13, 2, 28, 0.6)) !important;
+      border: 1px solid rgba(245, 158, 11, 0.35) !important;
+      border-left: 4px solid var(--clr-gold) !important;
+      border-radius: 12px !important;
+      padding: 14px 16px !important;
+      margin: 6px 0 16px !important;
+      font-family: var(--font-deva);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    }
+    .chapter-shloka-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--clr-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+    .chapter-shloka-sanskrit {
+      color: #fef08a !important;
+      font-weight: 700 !important;
+      font-size: 0.90rem !important;
+      line-height: 1.8 !important;
+      margin-bottom: 8px !important;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+    }
+    .chapter-shloka-meaning {
+      color: #cbd5e1 !important;
+      font-size: 0.82rem !important;
+      line-height: 1.6 !important;
+      font-style: italic;
+    }
+    .chapter-insights-block {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+    }
+    .chapter-insights-title {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--clr-gold-light);
+      margin-bottom: 8px;
+      font-family: var(--font-deva);
+    }
+    .chapter-insights-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .chapter-insights-list li {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.5;
+      font-family: var(--font-deva);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .insight-bullet {
+      color: var(--clr-gold);
+      flex-shrink: 0;
+      font-size: 0.75rem;
+      margin-top: 2px;
+    }
+    .chapter-slokas {
+      margin-top: auto !important;
+      padding-top: 14px !important;
+      border-top: 1px solid rgba(245, 158, 11, 0.18) !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      font-size: 0.82rem !important;
+    }
+    .chapter-shloka-count {
+      color: var(--clr-gold-light) !important;
+      font-weight: 600 !important;
+      font-size: 0.84rem !important;
+    }
+    .chapter-read-link {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      padding: 6px 16px !important;
+      border-radius: 9999px !important;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(234, 88, 12, 0.22)) !important;
+      border: 1px solid rgba(245, 158, 11, 0.4) !important;
+      color: #fcd34d !important;
+      font-size: 0.82rem !important;
+      font-weight: 700 !important;
+      text-decoration: none !important;
+      transition: all 0.25s ease !important;
+    }
+    .chapter-card:hover .chapter-read-link {
+      background: linear-gradient(135deg, #f59e0b, #ea580c) !important;
+      color: #ffffff !important;
+      border-color: #f59e0b !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35) !important;
+    }
+
 </style>
   <style>
     .reading-progress-bar { position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#f59e0b,#ea580c);z-index:9999; }
@@ -2011,238 +2184,562 @@ img {
 
     <div class="chapter-grid" id="chapter-grid">
       <!-- Chapter 01 -->
-      <a class="chapter-card reveal" data-category="dharma" href="/chapter-1-arjuna-vishada.html">
-        <div class="chapter-num">01</div>
-        <span class="chapter-tag">⚖️ Dharma &amp; Duty</span>
-        <div class="chapter-title">Arjuna Vishada Yoga</div>
-        <div class="chapter-title-hi">अर्जुनविषादयोग — अर्जुन का विषाद</div>
-        <div class="chapter-desc">कुरुक्षेत्र के रणक्षेत्र में सगे-संबंधियों को देखकर अर्जुन का मोह, शोक और धर्म-संकट। गांडीव धनुष का त्याग और आत्मसमर्पण की भूमिका।</div>
-        <div class="chapter-slokas">
-          <span>47 Shlokas (४७ श्लोक)</span>
-          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+      <div class="chapter-card reveal" data-category="dharma">
+        <div class="chapter-card-header">
+          <div class="chapter-num">01</div>
+          <span class="chapter-tag">⚖️ Dharma & Duty (धर्म व कर्तव्य)</span>
         </div>
-      </a>
+        <h3 class="chapter-title">Arjuna Vishada Yoga</h3>
+        <div class="chapter-title-hi">अर्जुनविषादयोग — अर्जुन का विषाद व मोह</div>
+        <p class="chapter-desc">कुरुक्षेत्र के पवित्र धर्मक्षेत्र में दोनों सेनाओं के मध्य रथ खड़ा करवाकर अर्जुन जब अपने पूज्य पितामह भीष्म, गुरु द्रोणाचार्य, भ्राताओं और प्रिय संबंधियों को युद्ध हेतु तत्पर देखता है, तो उसका अंतःकरण तीव्र करुणा, मोह और शोक से व्याकुल हो जाता है। उसके हाथ से गांडीव धनुष फिसल जाता है, शरीर कांपने लगता है और वह युद्ध न करने का निर्णय लेकर विषादग्रस्त हो बैठ जाता है। यह मानवीय दुर्बलता, कर्तव्य-भ्रम और आत्मसमर्पण की प्रथम मनोवैज्ञानिक भूमिका है।</p>
+        
+        <div class="chapter-card-shloka-box">
+          <div class="chapter-shloka-badge">📜 प्रमुख अध्याय श्लोक:</div>
+          <div class="chapter-shloka-sanskrit">सीदन्ति मम गात्राणि मुखं च परिशुष्यति।<br>वेपथुश्च शरीरे मे रोमहर्षश्च जायते॥<br>गाण्डीवं स्रंसते हस्तात्त्वक्चैव परिदह्यते॥ (1.29-30)</div>
+          <div class="chapter-shloka-meaning">"हे कृष्ण! युद्ध में उपस्थित स्वजनों को देखकर मेरे अंग शिथिल हो रहे हैं, मुख सूख रहा है, हाथ से गांडीव धनुष गिर रहा है और त्वचा जल रही है।"</div>
+        </div>
+
+        <div class="chapter-insights-block">
+          <div class="chapter-insights-title">🌟 मुख्य आध्यात्मिक सूत्र:</div>
+          <ul class="chapter-insights-list">
+            <li><span class="insight-bullet">✨</span> <span>मोह और आसक्ति मनुष्य को उसके स्वाभाविक कर्तव्य से भटकाती है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>अत्यधिक ममता में विवेक और न्याय-अन्याय का बोध लुप्त हो जाता है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>जीवन के चरम संकट में सच्चा शिष्य बनकर सद्गुरु की शरण आवश्यक है</span></li>
+          </ul>
+        </div>
+
+        <div class="chapter-slokas">
+          <span class="chapter-shloka-count">📖 47 Shlokas (४७ श्लोक)</span>
+          <a class="chapter-read-link" href="/chapter-1-arjuna-vishada.html">विस्तार से पढ़ें →</a>
+        </div>
+      </div>
 
       <!-- Chapter 02 -->
-      <a class="chapter-card reveal reveal-delay-1" data-category="jnana dharma karma" href="/chapter-2-sankhya-yoga.html">
-        <div class="chapter-num">02</div>
-        <span class="chapter-tag">🧘 Jnana &amp; Karma</span>
-        <div class="chapter-title">Sankhya Yoga</div>
-        <div class="chapter-title-hi">सांख्ययोग — अमर आत्मा व निष्काम कर्म</div>
-        <div class="chapter-desc">आत्मा की अमरता, देह की नश्वरता, निष्काम कर्म सिद्धांत (कर्मण्येवाधिकारस्ते...) तथा स्थितप्रज्ञ पुरुष के दिव्य लक्षण।</div>
-        <div class="chapter-slokas">
-          <span>72 Shlokas (७२ श्लोक)</span>
-          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+      <div class="chapter-card reveal" data-category="jnana dharma karma">
+        <div class="chapter-card-header">
+          <div class="chapter-num">02</div>
+          <span class="chapter-tag">🧘 Jnana & Karma (सांख्य व निष्काम कर्म)</span>
         </div>
-      </a>
+        <h3 class="chapter-title">Sankhya Yoga</h3>
+        <div class="chapter-title-hi">सांख्ययोग — आत्मा की अमरता व स्थितप्रज्ञ लक्षण</div>
+        <p class="chapter-desc">गीता का अत्यंत महत्वपूर्ण व दार्शनिक आधार स्तम्भ। श्रीकृष्ण अर्जुन के विषाद को अज्ञानजनित बताते हुए आत्मतत्व का साक्षात्कार कराते हैं—आत्मा अजर, अमर और अविनाशी है; जिस प्रकार मनुष्य पुराने वस्त्र त्यागकर नवीन वस्त्र धारण करता है, उसी प्रकार आत्मा जीर्ण शरीरों को त्यागकर नवीन शरीर धारण करती है। इसके पश्चात भगवान 'निष्काम कर्मयोग' का उपदेश देते हैं और 'स्थितप्रज्ञ' (स्थिर बुद्धि वाले महापुरुष) के दिव्य लक्षणों का सविस्तार वर्णन करते हैं।</p>
+        
+        <div class="chapter-card-shloka-box">
+          <div class="chapter-shloka-badge">📜 प्रमुख अध्याय श्लोक:</div>
+          <div class="chapter-shloka-sanskrit">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।<br>मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥ (2.47)</div>
+          <div class="chapter-shloka-meaning">"तुम्हारा अधिकार केवल कर्म करने में है, उसके फलों में कभी नहीं। इसलिए कर्मफल के हेतु मत बनो और तुम्हारी आसक्ति अकर्म (कर्मत्याग) में भी न हो।"</div>
+        </div>
+
+        <div class="chapter-insights-block">
+          <div class="chapter-insights-title">🌟 मुख्य आध्यात्मिक सूत्र:</div>
+          <ul class="chapter-insights-list">
+            <li><span class="insight-bullet">✨</span> <span>शरीर नश्वर है, आत्मा शाश्वत, शुद्ध और परम अविनाशी है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>कर्म के परिणाम की व्यग्रता त्यागे बिना मन में सच्ची शांति असंभव है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>सुख-दुःख, मान-अपमान और लाभ-हानि में सम रहने वाला ही स्थितप्रज्ञ है</span></li>
+          </ul>
+        </div>
+
+        <div class="chapter-slokas">
+          <span class="chapter-shloka-count">📖 72 Shlokas (७२ श्लोक)</span>
+          <a class="chapter-read-link" href="/chapter-2-sankhya-yoga.html">विस्तार से पढ़ें →</a>
+        </div>
+      </div>
 
       <!-- Chapter 03 -->
-      <a class="chapter-card reveal reveal-delay-2" data-category="karma" href="/chapter-3-karma-yoga.html">
-        <div class="chapter-num">03</div>
-        <span class="chapter-tag">⚡ Karma Yoga</span>
-        <div class="chapter-title">Karma Yoga</div>
-        <div class="chapter-title-hi">कर्मयोग — अनासक्त कर्तव्य मार्ग</div>
-        <div class="chapter-desc">कर्म त्याग नहीं, आसक्ति का त्याग ही संन्यास है। लोकसंग्रह व सृष्टि चक्र के लिए कर्तव्य पालन और काम-क्रोध रूपी शत्रुओं पर विजय।</div>
-        <div class="chapter-slokas">
-          <span>43 Shlokas (४३ श्लोक)</span>
-          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+      <div class="chapter-card reveal" data-category="karma">
+        <div class="chapter-card-header">
+          <div class="chapter-num">03</div>
+          <span class="chapter-tag">⚡ Karma Yoga (अनासक्त कर्तव्य मार्ग)</span>
         </div>
-      </a>
+        <h3 class="chapter-title">Karma Yoga</h3>
+        <div class="chapter-title-hi">कर्मयोग — लोकसंग्रह व काम-क्रोध पर विजय</div>
+        <p class="chapter-desc">कर्म से पलायन संन्यास नहीं है। संसार में कोई भी प्राणी प्रकृति के गुणों के कारण एक क्षण भी कर्म किए बिना नहीं रह सकता। श्रीकृष्ण समझाते हैं कि हाथ-पैर से कर्म छोड़ना और मन से विषयों का चिंतन करना मिथ्याचार (पाखंड) है। श्रेष्ठ महापुरुष जो-जो आचरण करते हैं, लोक उसी का अनुसरण करता है। यज्ञ रूपी सृष्टि चक्र का अनासक्त पालन, समाज कल्याण (लोकसंग्रह) हेतु सेवा और अंतःकरण में छिपे काम-क्रोध रूपी शत्रुओं का संहार ही कर्मयोग का यथार्थ सार है।</p>
+        
+        <div class="chapter-card-shloka-box">
+          <div class="chapter-shloka-badge">📜 प्रमुख अध्याय श्लोक:</div>
+          <div class="chapter-shloka-sanskrit">यद्यदाचरति श्रेष्ठस्तत्तदेवेतरो जनः।<br>स यत्प्रमाणं कुरुते लोकस्तदनुवर्तते॥ (3.21)</div>
+          <div class="chapter-shloka-meaning">"श्रेष्ठ पुरुष जैसा आचरण करता है, अन्य लोग भी वैसा ही करते हैं। वह अपने आचरण से जो प्रमाण प्रस्तुत करता है, समस्त विश्व उसी का अनुसरण करता है।"</div>
+        </div>
+
+        <div class="chapter-insights-block">
+          <div class="chapter-insights-title">🌟 मुख्य आध्यात्मिक सूत्र:</div>
+          <ul class="chapter-insights-list">
+            <li><span class="insight-bullet">✨</span> <span>कर्म का त्याग नहीं, वरन फल की स्वार्थपूर्ण आसक्ति का त्याग ही वास्तविक योग है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>समाज में उच्च पद पर आसीन व्यक्ति का कर्तव्य है कि वह आदर्श आचरण प्रस्तुत करे</span></li>
+            <li><span class="insight-bullet">✨</span> <span>रजोगुण से उत्पन्न काम और क्रोध ही आत्मा के सबसे घातक वैरी हैं</span></li>
+          </ul>
+        </div>
+
+        <div class="chapter-slokas">
+          <span class="chapter-shloka-count">📖 43 Shlokas (४३ श्लोक)</span>
+          <a class="chapter-read-link" href="/chapter-3-karma-yoga.html">विस्तार से पढ़ें →</a>
+        </div>
+      </div>
 
       <!-- Chapter 04 -->
-      <a class="chapter-card reveal" data-category="jnana karma" href="/chapter-4-jnana-karma.html">
-        <div class="chapter-num">04</div>
-        <span class="chapter-tag">🧘 Jnana Yoga</span>
-        <div class="chapter-title">Jnana Karma Sanyasa Yoga</div>
-        <div class="chapter-title-hi">ज्ञानकर्मसंन्यासयोग — दिव्य अवतार व ज्ञानयज्ञ</div>
-        <div class="chapter-desc">भगवान के दिव्य अवतार का रहस्य (यदा यदा हि धर्मस्य...), गुरु-शिष्य परंपरा और ज्ञान रूपी अग्नि से समस्त कर्मबंधनों का दहन।</div>
-        <div class="chapter-slokas">
-          <span>42 Shlokas (४२ श्लोक)</span>
-          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+      <div class="chapter-card reveal" data-category="jnana karma">
+        <div class="chapter-card-header">
+          <div class="chapter-num">04</div>
+          <span class="chapter-tag">🧘 Jnana Yoga (अवतार तत्व व ज्ञानयज्ञ)</span>
         </div>
-      </a>
+        <h3 class="chapter-title">Jnana Karma Sanyasa Yoga</h3>
+        <div class="chapter-title-hi">ज्ञानकर्मसंन्यासयोग — दिव्य अवतार व ज्ञान-अग्नि</div>
+        <p class="chapter-desc">भगवान श्रीकृष्ण अपने दिव्य जन्म और अलौकिक अवतार का सनातन रहस्य प्रकट करते हैं कि जब-जब धर्म की हानि और अधर्म का उत्थान होता है, तब-तब वे साधु-संतों की रक्षा, दुष्टों के विनाश और धर्म की पुनर्स्थापना हेतु युग-युग में प्रकट होते हैं। भगवान कर्म, अकर्म और विकर्म का सूक्ष्म विवेक समझाते हैं तथा उद्घोष करते हैं कि ज्ञान रूपी प्रज्वलित अग्नि समस्त संचित कर्मबंधनों को भस्म कर देती है। श्रद्धावान और संयमी मनुष्य ही परम ज्ञान का सच्चा अधिकारी बनता है।</p>
+        
+        <div class="chapter-card-shloka-box">
+          <div class="chapter-shloka-badge">📜 प्रमुख अध्याय श्लोक:</div>
+          <div class="chapter-shloka-sanskrit">यदा यदा हि धर्मस्य ग्लानिर्भवति भारत।<br>अभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्॥<br>परित्राणाय साधूनां विनाशाय च दुष्कृताम्।<br>धर्मसंस्थापनार्थाय सम्भवामि युगे युगे॥ (4.7-8)</div>
+          <div class="chapter-shloka-meaning">"हे भारत! जब-जब धर्म की हानि और अधर्म की वृद्धि होती है, तब-तब मैं स्वयं प्रकट होता हूँ। सज्जनों की रक्षा, दुष्टों के विनाश और धर्म की स्थापना हेतु मैं युग-युग में अवतरित होता हूँ।"</div>
+        </div>
+
+        <div class="chapter-insights-block">
+          <div class="chapter-insights-title">🌟 मुख्य आध्यात्मिक सूत्र:</div>
+          <ul class="chapter-insights-list">
+            <li><span class="insight-bullet">✨</span> <span>भगवान के दिव्य जन्म और कर्म का तात्विक ज्ञान मनुष्य को भवबंधन से मुक्त करता है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>ज्ञान रूपी नौका द्वारा बड़े से बड़ा पापी भी संसार-सागर को सुगमता से पार कर लेता है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>'श्रद्धावाँल्लभते ज्ञानम्' — संशयग्रस्त मन का विनाश होता है, श्रद्धालु ही ज्ञान पाता है</span></li>
+          </ul>
+        </div>
+
+        <div class="chapter-slokas">
+          <span class="chapter-shloka-count">📖 42 Shlokas (४२ श्लोक)</span>
+          <a class="chapter-read-link" href="/chapter-4-jnana-karma.html">विस्तार से पढ़ें →</a>
+        </div>
+      </div>
 
       <!-- Chapter 05 -->
-      <a class="chapter-card reveal reveal-delay-1" data-category="karma jnana moksha" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+5">
-        <div class="chapter-num">05</div>
-        <span class="chapter-tag">⚡ Karma &amp; Sanyasa</span>
-        <div class="chapter-title">Karma Sanyasa Yoga</div>
-        <div class="chapter-title-hi">कर्मसंन्यासयोग — कर्मफल त्याग व ब्रह्म-निर्वाण</div>
-        <div class="chapter-desc">संन्यास और कर्मयोग का तात्विक समन्वय। ब्रह्म में समर्पित होकर कर्म करने वाले साधक का कमलपत्र की भांति निष्कलंक जीवन।</div>
-        <div class="chapter-slokas">
-          <span>29 Shlokas (२९ श्लोक)</span>
-          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+      <div class="chapter-card reveal" data-category="karma jnana moksha">
+        <div class="chapter-card-header">
+          <div class="chapter-num">05</div>
+          <span class="chapter-tag">⚡ Karma & Sanyasa (कर्मसंन्यास व समदर्शन)</span>
         </div>
-      </a>
+        <h3 class="chapter-title">Karma Sanyasa Yoga</h3>
+        <div class="chapter-title-hi">कर्मसंन्यासयोग — कर्मफल त्याग व ब्रह्म-निर्वाण</div>
+        <p class="chapter-desc">कर्मसंन्यास (ज्ञान मार्ग) और कर्मयोग (निष्काम सेवा) दोनों का समन्वय। श्रीकृष्ण स्पष्ट करते हैं कि कर्मयोग के बिना संन्यास सिद्ध होना अत्यंत कठिन है, जबकि निष्काम कर्मयोगी अनायास ही ब्रह्म को प्राप्त कर लेता है। जो पुरुष अपने समस्त कर्मों को परमात्मा में समर्पित कर अहंकाररहित आचरण करता है, वह जल में कमल के पत्ते की भांति संसार में रहकर भी कभी पाप-पुण्य के बंधनों से लिप्त नहीं होता। वह ज्ञानी ब्राह्मण, चांडाल, गौ और गज सबमें एक ही परमात्मा को देखता है।</p>
+        
+        <div class="chapter-card-shloka-box">
+          <div class="chapter-shloka-badge">📜 प्रमुख अध्याय श्लोक:</div>
+          <div class="chapter-shloka-sanskrit">ब्रह्मण्याधाय कर्माणि सङ्गं त्यक्त्वा करोति यः।<br>लिप्यते न स पापेन पद्मपत्रमिवाम्भसा॥ (5.10)</div>
+          <div class="chapter-shloka-meaning">"जो पुरुष सब कर्मों को परमात्मा में अर्पण करके और आसक्ति को त्यागकर कर्म करता है, वह पाप से वैसे ही लिप्त नहीं होता, जैसे कमल का पत्ता जल से।"</div>
+        </div>
+
+        <div class="chapter-insights-block">
+          <div class="chapter-insights-title">🌟 मुख्य आध्यात्मिक सूत्र:</div>
+          <ul class="chapter-insights-list">
+            <li><span class="insight-bullet">✨</span> <span>कर्मसंन्यास और कर्मयोग दोनों का अंतिम फल एक ही परम मोक्ष है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>समदर्शी ज्ञानी पुरुष विद्या-विनय सम्पन्न ब्राह्मण, गौ, हाथी और चांडाल में एक सा ब्रह्म देखता है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>जिसकी दृष्टि अंतर्मुखी होकर आत्मसुख में लीन है, वही जीते-जी ब्रह्मनिर्वाण पाता है</span></li>
+          </ul>
+        </div>
+
+        <div class="chapter-slokas">
+          <span class="chapter-shloka-count">📖 29 Shlokas (२९ श्लोक)</span>
+          <a class="chapter-read-link" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+5">विस्तार से पढ़ें →</a>
+        </div>
+      </div>
 
       <!-- Chapter 06 -->
-      <a class="chapter-card reveal reveal-delay-2" data-category="jnana moksha" href="/chapter-6-dhyana-yoga.html">
-        <div class="chapter-num">06</div>
-        <span class="chapter-tag">🧘 Dhyana &amp; Mind</span>
-        <div class="chapter-title">Dhyana Yoga (Atma Samyama)</div>
-        <div class="chapter-title-hi">आत्मसंयमयोग — मन का निग्रह व ध्यान साधना</div>
-        <div class="chapter-desc">मनुष्य स्वयं का मित्र या शत्रु है। अभ्यास और वैराग्य से मन पर विजय, अष्टांग ध्यान विधि, समत्व बुद्धि तथा योगी की श्रेष्ठता।</div>
-        <div class="chapter-slokas">
-          <span>47 Shlokas (४७ श्लोक)</span>
-          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+      <div class="chapter-card reveal" data-category="jnana moksha">
+        <div class="chapter-card-header">
+          <div class="chapter-num">06</div>
+          <span class="chapter-tag">🧘 Dhyana & Mind (मन निग्रह व अष्टांग ध्यान)</span>
         </div>
-      </a>
+        <h3 class="chapter-title">Dhyana Yoga (Atma Samyama)</h3>
+        <div class="chapter-title-hi">आत्मसंयमयोग — मन का संयम व योगी की श्रेष्ठता</div>
+        <p class="chapter-desc">मन को एकाग्र और नियंत्रित करने की संपूर्ण वैज्ञानिक अष्टांग योग पद्धति। भगवान सिखाते हैं कि मनुष्य स्वयं ही अपना मित्र है और स्वयं ही अपना शत्रु। जिसने मन को जीत लिया, उसका मन परम मित्र है; जो मन के वशीभूत रहा, उसका मन शत्रु बनकर विनाश करता है। उचित आहार, विहार, निद्रा और अभ्यास तथा वैराग्य द्वारा चंचल मन को परमात्मा में स्थिर किया जा सकता है। योगभ्रष्ट साधक के विषय में भगवान आश्वासन देते हैं कि कल्याणकारी मार्ग पर चलने वाले का कभी पतन नहीं होता।</p>
+        
+        <div class="chapter-card-shloka-box">
+          <div class="chapter-shloka-badge">📜 प्रमुख अध्याय श्लोक:</div>
+          <div class="chapter-shloka-sanskrit">उद्धरेदात्मनात्मानं नात्मानमवसादयेत्।<br>आत्मैव ह्यात्मनो बन्धुरात्मैव रिपुरात्मनः॥ (6.5)</div>
+          <div class="chapter-shloka-meaning">"मनुष्य को चाहिए कि वह अपने मन द्वारा अपना उद्धार करे, अपने को अधोगति में न गिराए; क्योंकि यह मन ही स्वयं का सच्चा मित्र है और मन ही स्वयं का परम शत्रु है।"</div>
+        </div>
+
+        <div class="chapter-insights-block">
+          <div class="chapter-insights-title">🌟 मुख्य आध्यात्मिक सूत्र:</div>
+          <ul class="chapter-insights-list">
+            <li><span class="insight-bullet">✨</span> <span>अभ्यास और वैराग्य से वायु की भांति चंचल मन को भी निश्चित रूप से वश में किया जा सकता है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>अति भोजन, उपवास या अति जागरण नहीं—सम्यक और संतुलित जीवन ही योग का रहस्य है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>योगभ्रष्ट साधक अगले जन्म में पवित्र कुलों में जन्म लेकर पुनः वहीं से यात्रा प्रारंभ करता है</span></li>
+          </ul>
+        </div>
+
+        <div class="chapter-slokas">
+          <span class="chapter-shloka-count">📖 47 Shlokas (४७ श्लोक)</span>
+          <a class="chapter-read-link" href="/chapter-6-dhyana-yoga.html">विस्तार से पढ़ें →</a>
+        </div>
+      </div>
 
       <!-- Chapter 07 -->
-      <a class="chapter-card reveal" data-category="bhakti jnana" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+7">
-        <div class="chapter-num">07</div>
-        <span class="chapter-tag">💙 Bhakti &amp; Jnana</span>
-        <div class="chapter-title">Jnana Vijnana Yoga</div>
-        <div class="chapter-title-hi">ज्ञानविज्ञानयोग — परा-अपरा प्रकृति व ईश्वर दर्शन</div>
-        <div class="chapter-desc">परा (चेतन) व अपरा (जड़) प्रकृति का रहस्य, माया का प्रभाव और चार प्रकार के आर्त, जिज्ञासु, अर्थार्थी और ज्ञानी भक्तों का निरूपण।</div>
-        <div class="chapter-slokas">
-          <span>30 Shlokas (३० श्लोक)</span>
-          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+      <div class="chapter-card reveal" data-category="bhakti jnana">
+        <div class="chapter-card-header">
+          <div class="chapter-num">07</div>
+          <span class="chapter-tag">💙 Bhakti & Jnana (परा-अपरा प्रकृति व ईश्वर दर्शन)</span>
         </div>
-      </a>
+        <h3 class="chapter-title">Jnana Vijnana Yoga</h3>
+        <div class="chapter-title-hi">ज्ञानविज्ञानयोग — माया का रहस्य व चार प्रकार के भक्त</div>
+        <p class="chapter-desc">भगवान अपनी परा (चेतन आत्म-शक्ति) और अपरा (भूमि, जल, अग्नि, वायु, आकाश, मन, बुद्धि, अहंकार) प्रकृतियों का उद्घाटन करते हैं। श्रीकृष्ण बताते हैं कि संपूर्ण ब्रह्मांड में जल में रस, सूर्य-चंद्रमा में प्रभा, पृथ्वी में पवित्र गंध और वेदों में ओंकार स्वयं वही हैं। त्रिगुणमयी दैवी माया अत्यंत दुर्लंघ्य है, किंतु जो अनन्य भाव से भगवान की शरण में आते हैं, वे इस माया को सरलता से पार कर जाते हैं। भगवान चार प्रकार के भक्तों—आर्त, जिज्ञासु, अर्थार्थी और ज्ञानी—का वर्णन करते हैं।</p>
+        
+        <div class="chapter-card-shloka-box">
+          <div class="chapter-shloka-badge">📜 प्रमुख अध्याय श्लोक:</div>
+          <div class="chapter-shloka-sanskrit">मत्तः परतरं नान्यत्किञ्चिदस्ति धनञ्जय।<br>मयि सर्वमिदं प्रोतं सूत्रे मणिगणा इव॥ (7.7)</div>
+          <div class="chapter-shloka-meaning">"हे धनंजय! मुझसे परे कोई दूसरा श्रेष्ठ कारण नहीं है। यह सम्पूर्ण जगत धागे में पिरोई हुई मणियों के समान मुझमें ही गूंथा हुआ है।"</div>
+        </div>
+
+        <div class="chapter-insights-block">
+          <div class="chapter-insights-title">🌟 मुख्य आध्यात्मिक सूत्र:</div>
+          <ul class="chapter-insights-list">
+            <li><span class="insight-bullet">✨</span> <span>ईश्वर ही समस्त चराचर जगत का मूल उद्गम, संभरण और प्रलय स्थान है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>संसार को मोहित करने वाली त्रिगुणमयी माया को केवल पूर्ण शरणागति से ही पार किया जा सकता है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>'उदाराः सर्व एवैते ज्ञानी त्वात्मैव मे मतम्' — ज्ञानी भक्त भगवान का साक्षात् आत्मा स्वरूप है</span></li>
+          </ul>
+        </div>
+
+        <div class="chapter-slokas">
+          <span class="chapter-shloka-count">📖 30 Shlokas (३० श्लोक)</span>
+          <a class="chapter-read-link" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+7">विस्तार से पढ़ें →</a>
+        </div>
+      </div>
 
       <!-- Chapter 08 -->
-      <a class="chapter-card reveal reveal-delay-1" data-category="moksha bhakti" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+8">
-        <div class="chapter-num">08</div>
-        <span class="chapter-tag">🕊️ Moksha &amp; Mukti</span>
-        <div class="chapter-title">Akshara Brahma Yoga</div>
-        <div class="chapter-title-hi">अक्षरब्रह्मयोग — अंतकाल स्मरण व परम धाम</div>
-        <div class="chapter-desc">अंतकाल में भगवन्नाम स्मरण और ॐ कार साधना का फल। उत्तरायण-दक्षिणायन मार्ग और जन्म-मरण के बंधन से शाश्वत मुक्ति का रहस्य।</div>
-        <div class="chapter-slokas">
-          <span>28 Shlokas (२८ श्लोक)</span>
-          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+      <div class="chapter-card reveal" data-category="moksha bhakti">
+        <div class="chapter-card-header">
+          <div class="chapter-num">08</div>
+          <span class="chapter-tag">🕊️ Moksha & Mukti (अक्षरब्रह्म व परम धाम)</span>
         </div>
-      </a>
+        <h3 class="chapter-title">Akshara Brahma Yoga</h3>
+        <div class="chapter-title-hi">अक्षरब्रह्मयोग — अंतकाल स्मरण व शाश्वत मुक्ति</div>
+        <p class="chapter-desc">अर्जुन के सात गंभीर दार्शनिक प्रश्नों—ब्रह्म, अध्यात्म, कर्म, अधिभूत, अधिदैव, अधियज्ञ और अंतकाल में ईश्वर की अनुभूति—का परम पावन समाधान। भगवान समझाते हैं कि अंतकाल में मनुष्य जिस-जिस भाव का स्मरण करते हुए देह त्याग करता है, उसी भाव को वह प्राप्त होता है। इसलिए जीवन भर 'तस्मात्सर्वेषु कालेषु मामनुस्मर युध्य च' का अभ्यास आवश्यक है। ओंकार साधना, प्राणायाम, शुक्ल-कृष्ण मार्गों और उस अविनाशी परम धाम का वर्णन है जहां पहुंचकर जीव कभी लौटकर संसार में नहीं आता।</p>
+        
+        <div class="chapter-card-shloka-box">
+          <div class="chapter-shloka-badge">📜 प्रमुख अध्याय श्लोक:</div>
+          <div class="chapter-shloka-sanskrit">अन्तकाले च मामेव स्मरन्मुक्त्वा कलेवरम्।<br>यः प्रयाति स मद्भावं याति नास्त्यत्र संशयः॥ (8.5)</div>
+          <div class="chapter-shloka-meaning">"जो पुरुष अंतकाल में भी मेरा ही स्मरण करता हुआ शरीर को त्यागकर प्रयाण करता है, वह मेरे साक्षात् स्वरूप को प्राप्त होता है—इसमें तनिक भी संदेह नहीं है।"</div>
+        </div>
+
+        <div class="chapter-insights-block">
+          <div class="chapter-insights-title">🌟 मुख्य आध्यात्मिक सूत्र:</div>
+          <ul class="chapter-insights-list">
+            <li><span class="insight-bullet">✨</span> <span>जीवन भर का निरंतर सात्विक अभ्यास ही मृत्यु के समय भगवत्स्मरण को सहज बनाता है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>एकाक्षर ब्रह्म 'ॐ' का उच्चारण और मन को हृदय में निरुद्ध कर प्राण त्यागने वाला परम गति पाता है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>ब्रह्मलोक सहित समस्त लोक पुनरावर्ती हैं, किंतु परमात्मा के परम धाम से कभी पुनर्जन्म नहीं होता</span></li>
+          </ul>
+        </div>
+
+        <div class="chapter-slokas">
+          <span class="chapter-shloka-count">📖 28 Shlokas (२८ श्लोक)</span>
+          <a class="chapter-read-link" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+8">विस्तार से पढ़ें →</a>
+        </div>
+      </div>
 
       <!-- Chapter 09 -->
-      <a class="chapter-card reveal reveal-delay-2" data-category="bhakti" href="/chapter-9-raja-vidya.html">
-        <div class="chapter-num">09</div>
-        <span class="chapter-tag">💙 Sovereign Secret</span>
-        <div class="chapter-title">Raja Vidya Raja Guhya Yoga</div>
-        <div class="chapter-title-hi">राजविद्याराजगुह्ययोग — परम गोपनीय ज्ञान व योगक्षेम</div>
-        <div class="chapter-desc">ज्ञानों का राजा—परम पवित्र व साक्षात् फलप्रद। पत्रं पुष्पं फलं तोयं समर्पण, तथा अनन्य भक्तों के योगक्षेम का भगवान द्वारा स्वयं वहन।</div>
-        <div class="chapter-slokas">
-          <span>34 Shlokas (३४ श्लोक)</span>
-          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+      <div class="chapter-card reveal" data-category="bhakti">
+        <div class="chapter-card-header">
+          <div class="chapter-num">09</div>
+          <span class="chapter-tag">💙 Sovereign Secret (राजविद्या व योगक्षेम)</span>
         </div>
-      </a>
+        <h3 class="chapter-title">Raja Vidya Raja Guhya Yoga</h3>
+        <div class="chapter-title-hi">राजविद्याराजगुह्ययोग — परम गोपनीय ज्ञान व योगक्षेम</div>
+        <p class="chapter-desc">यह ज्ञान समस्त विद्याओं का राजा, परम गोपनीय, पवित्र, प्रत्यक्ष अनुभवगम्य और अविनाशी है। भगवान समझाते हैं कि वे किस प्रकार अव्यक्त रूप से संपूर्ण जगत में व्याप्त हैं, फिर भी किसी में लिप्त नहीं हैं। भगवान उद्घोष करते हैं कि जो अनन्य भक्त केवल उनका ही चिंतन करते हुए निष्काम भजन करते हैं, उनके 'योगक्षेम' का भार भगवान स्वयं वहन करते हैं। पत्र, पुष्प, फल या जल—प्रेम से जो कुछ भी अर्पित किया जाए, भगवान उसे सहर्ष स्वीकार करते हैं।</p>
+        
+        <div class="chapter-card-shloka-box">
+          <div class="chapter-shloka-badge">📜 प्रमुख अध्याय श्लोक:</div>
+          <div class="chapter-shloka-sanskrit">अनन्याश्चिन्तयन्तो मां ये जनाः पर्युपासते।<br>तेषां नित्याभियुक्तानां योगक्षेमं वहाम्यहम्॥ (9.22)</div>
+          <div class="chapter-shloka-meaning">"जो अनन्य भक्त मेरा निरंतर चिंतन करते हुए निष्काम भाव से मेरी उपासना करते हैं, उन नित्य युक्त भक्तों के योग और क्षेम की रक्षा का भार मैं स्वयं वहन करता हूँ।"</div>
+        </div>
+
+        <div class="chapter-insights-block">
+          <div class="chapter-insights-title">🌟 मुख्य आध्यात्मिक सूत्र:</div>
+          <ul class="chapter-insights-list">
+            <li><span class="insight-bullet">✨</span> <span>प्रेम और सच्ची निष्काम भक्ति बाह्य आडंबरों, कर्मकांडों और धन-बल से कहीं अधिक मूल्यवान है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>अनन्य शरणागत भक्त की भौतिक व आध्यात्मिक सभी आवश्यकताओं का दायित्व भगवान संभालते हैं</span></li>
+            <li><span class="insight-bullet">✨</span> <span>'अपि चेत्सुदुराचारो भजते मामनन्यभाक्' — पापी से पापी व्यक्ति भी अनन्य भक्ति से शीघ्र धर्मात्मा बन जाता है</span></li>
+          </ul>
+        </div>
+
+        <div class="chapter-slokas">
+          <span class="chapter-shloka-count">📖 34 Shlokas (३४ श्लोक)</span>
+          <a class="chapter-read-link" href="/chapter-9-raja-vidya.html">विस्तार से पढ़ें →</a>
+        </div>
+      </div>
 
       <!-- Chapter 10 -->
-      <a class="chapter-card reveal" data-category="bhakti jnana" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+10">
-        <div class="chapter-num">10</div>
-        <span class="chapter-tag">💙 Divine Splendor</span>
-        <div class="chapter-title">Vibhuti Yoga</div>
-        <div class="chapter-title-hi">विभूतियोग — परमात्मा की ब्रह्मांडीय विभूतियां</div>
-        <div class="chapter-desc">समस्त ब्रह्मांड में जो भी ऐश्वर्य, सौंदर्य, तेज और सामर्थ्य है, वह परमात्मा का अंश मात्र है। वेदों में सामवेद और ज्योतियों में सूर्य।</div>
-        <div class="chapter-slokas">
-          <span>42 Shlokas (४२ श्लोक)</span>
-          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+      <div class="chapter-card reveal" data-category="bhakti jnana">
+        <div class="chapter-card-header">
+          <div class="chapter-num">10</div>
+          <span class="chapter-tag">💙 Divine Splendor (ब्रह्मांडीय विभूतियां)</span>
         </div>
-      </a>
+        <h3 class="chapter-title">Vibhuti Yoga</h3>
+        <div class="chapter-title-hi">विभूतियोग — परमात्मा की दिव्य ब्रह्मांडीय विभूतियां</div>
+        <p class="chapter-desc">भगवान अपनी अलौकिक ब्रह्मांडीय विभूतियों का सविस्तार वर्णन करते हैं ताकि भक्त हर कण में परमात्मा का दर्शन कर सके। श्रीकृष्ण बताते हैं कि वे समस्त भूतों के हृदय में स्थित आत्मा हैं। वे आदित्यों में विष्णु, ज्योतियों में सूर्य, वेदों में सामवेद, देवों में इंद्र, रुद्रों में शंकर, पर्वतों में मेरु, वृक्षों में पीपल, मुनियों में व्यास, योद्धाओं में राम, और समस्त चराचर जगत में जो कुछ भी ऐश्वर्यवान, कांतियुक्त, तेजस्वी अथवा शक्तिशाली है, वह सब उनके तेज के एक अंश से उत्पन्न हुआ है।</p>
+        
+        <div class="chapter-card-shloka-box">
+          <div class="chapter-shloka-badge">📜 प्रमुख अध्याय श्लोक:</div>
+          <div class="chapter-shloka-sanskrit">यद्यद्विभूतिमत्सत्त्वं श्रीमदूर्जितमेव वा।<br>तत्तदेवावगच्छ त्वं मम तेजोऽंशसम्भवम्॥ (10.41)</div>
+          <div class="chapter-shloka-meaning">"संसार में जो-जो भी ऐश्वर्ययुक्त, कांतियुक्त और शक्तिसम्पन्न वस्तु अथवा प्राणी है, उस-उसको तुम मेरे ही तेज के एक अंश की अभिव्यक्ति जानो।"</div>
+        </div>
+
+        <div class="chapter-insights-block">
+          <div class="chapter-insights-title">🌟 मुख्य आध्यात्मिक सूत्र:</div>
+          <ul class="chapter-insights-list">
+            <li><span class="insight-bullet">✨</span> <span>सृष्टि का प्रत्येक सौंदर्य, शक्ति, प्रतिभा और सामर्थ्य साक्षात् परमात्मा की ही दिव्य किरण है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>संपूर्ण ब्रह्मांड भगवान के अनंत तेज के एक अत्यंत सूक्ष्म अंश मात्र से ही व्याप्त है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>इस विभूति-ज्ञान से मनुष्य का हृदय समस्त सृष्टि के प्रति आदर, श्रद्धा और प्रेम से भर जाता है</span></li>
+          </ul>
+        </div>
+
+        <div class="chapter-slokas">
+          <span class="chapter-shloka-count">📖 42 Shlokas (४२ श्लोक)</span>
+          <a class="chapter-read-link" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+10">विस्तार से पढ़ें →</a>
+        </div>
+      </div>
 
       <!-- Chapter 11 -->
-      <a class="chapter-card reveal reveal-delay-1" data-category="bhakti jnana" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+11">
-        <div class="chapter-num">11</div>
-        <span class="chapter-tag">🌟 Cosmic Vision</span>
-        <div class="chapter-title">Vishwaroop Darshan Yoga</div>
-        <div class="chapter-title-hi">विश्वरूपदर्शनयोग — श्री कृष्ण का विराट विश्वरूप</div>
-        <div class="chapter-desc">भगवान द्वारा अर्जुन को दिव्य चक्षु प्रदान कर अपने अनंत, भयप्रद, तेजोमय व सर्वव्यापी काल-स्वरूप का साक्षात् प्रत्यक्ष दर्शन कराना।</div>
-        <div class="chapter-slokas">
-          <span>55 Shlokas (५५ श्लोक)</span>
-          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+      <div class="chapter-card reveal" data-category="bhakti jnana">
+        <div class="chapter-card-header">
+          <div class="chapter-num">11</div>
+          <span class="chapter-tag">🌟 Cosmic Vision (विराट विश्वरूप दर्शन)</span>
         </div>
-      </a>
+        <h3 class="chapter-title">Vishwaroop Darshan Yoga</h3>
+        <div class="chapter-title-hi">विश्वरूपदर्शनयोग — श्री कृष्ण का विराट विश्वरूप</div>
+        <p class="chapter-desc">गीता का सर्वाधिक विस्मयकारी और भव्य अध्याय। अर्जुन की प्रार्थना पर भगवान श्रीकृष्ण उसे दिव्य चक्षु प्रदान करते हैं और अपने अनंत, सर्वव्यापी, तेजोमय विश्वरूप का साक्षात् प्रत्यक्ष दर्शन कराते हैं। अर्जुन देखता है कि करोड़ों सूर्य-चंद्रमा, समस्त देवता, ऋषि, चर-अचर जीव और दोनों सेनाओं के योद्धा भगवान के प्रज्वलित मुखों में काल की भांति समाए जा रहे हैं। भय और विस्मय से कांपते हुए अर्जुन स्तुति करता है। भगवान कहते हैं—'निमित्तमात्रं भव सव्यसाचिन्' (हे अर्जुन! तुम केवल निमित्तमात्र बनो)।</p>
+        
+        <div class="chapter-card-shloka-box">
+          <div class="chapter-shloka-badge">📜 प्रमुख अध्याय श्लोक:</div>
+          <div class="chapter-shloka-sanskrit">कालोऽस्मि लोकक्षयकृत्प्रवृद्धो लोकान्समाहर्तुमिह प्रवृत्तः।<br>ऋतेऽपि त्वां न भविष्यन्ति सर्वे येऽवस्थिताः प्रत्यनीकेषु योधाः॥ (11.32)</div>
+          <div class="chapter-shloka-meaning">"मैं लोकों का नाश करने वाला महाकाल हूँ और इस समय सब लोकों का संहार करने के लिए उद्यत हुआ हूँ। तुम्हारे युद्ध न करने पर भी विपक्ष में स्थित ये सब योद्धा जीवित नहीं बचेंगे।"</div>
+        </div>
+
+        <div class="chapter-insights-block">
+          <div class="chapter-insights-title">🌟 मुख्य आध्यात्मिक सूत्र:</div>
+          <ul class="chapter-insights-list">
+            <li><span class="insight-bullet">✨</span> <span>स्थूल भौतिक नेत्रों से विराट सत्य का दर्शन संभव नहीं, इसके लिए आध्यात्मिक दिव्य दृष्टि आवश्यक है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>काल के महाचक्र में सब कुछ पहले से नियत है, मनुष्य को केवल निमित्त बनकर धर्म का पालन करना चाहिए</span></li>
+            <li><span class="insight-bullet">✨</span> <span>यह परम दुर्लभ विश्वरूप वेदों, तपस्या या दान से नहीं, केवल अनन्य प्रेम-भक्ति से ही सुलभ है</span></li>
+          </ul>
+        </div>
+
+        <div class="chapter-slokas">
+          <span class="chapter-shloka-count">📖 55 Shlokas (५५ श्लोक)</span>
+          <a class="chapter-read-link" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+11">विस्तार से पढ़ें →</a>
+        </div>
+      </div>
 
       <!-- Chapter 12 -->
-      <a class="chapter-card reveal reveal-delay-2" data-category="bhakti" href="/chapter-12-bhakti-yoga.html">
-        <div class="chapter-num">12</div>
-        <span class="chapter-tag">💙 Bhakti Yoga</span>
-        <div class="chapter-title">Bhakti Yoga</div>
-        <div class="chapter-title-hi">भक्तियोग — प्रेम-भक्ति व प्रिय भक्त के गुण</div>
-        <div class="chapter-desc">सगुण और निर्गुण उपासना की तुलना। भगवान के प्रिय भक्त के ३५ दुर्लभ सद्गुण—अद्वेष्टा, दयालु, समता, संतोष और पूर्ण शरणागति।</div>
-        <div class="chapter-slokas">
-          <span>20 Shlokas (२० श्लोक)</span>
-          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+      <div class="chapter-card reveal" data-category="bhakti">
+        <div class="chapter-card-header">
+          <div class="chapter-num">12</div>
+          <span class="chapter-tag">💙 Bhakti Yoga (प्रेम-भक्ति व प्रिय भक्त के गुण)</span>
         </div>
-      </a>
+        <h3 class="chapter-title">Bhakti Yoga</h3>
+        <div class="chapter-title-hi">भक्तियोग — सगुण-निर्गुण व प्रिय भक्त के ३५ लक्षण</div>
+        <p class="chapter-desc">अर्जुन प्रश्न करता है कि सगुण साकार रूप की अनन्य उपासना करने वाले और अव्यक्त निराकार ब्रह्म की साधना करने वाले—इन दोनों में श्रेष्ठ कौन है? श्रीकृष्ण स्पष्ट करते हैं कि दोनों मोक्ष पाते हैं, किंतु देहाभिमानी जीवों के लिए अव्यक्त निराकार का मार्ग अत्यंत क्लेशप्रद है, जबकि सगुण भक्ति सुगम और आनंददायी है। अध्याय के उत्तरार्ध में भगवान अपने प्रिय भक्त के 35 दुर्लभ आंतरिक सद्गुणों की नामावली प्रस्तुत करते हैं—जो द्वेषरहित, दयालु, निर्मम, निरहंकार, सुख-दुःख में सम और संतुष्ट है, वह भगवान को अति प्रिय है।</p>
+        
+        <div class="chapter-card-shloka-box">
+          <div class="chapter-shloka-badge">📜 प्रमुख अध्याय श्लोक:</div>
+          <div class="chapter-shloka-sanskrit">अद्वेष्टा सर्वभूतानां मैत्रः करुण एव च।<br>निर्ममो निरहङ्कारः समदुःखसुखः क्षमी॥ (12.13)</div>
+          <div class="chapter-shloka-meaning">"जो समस्त प्राणियों में द्वेषभाव से रहित, सबका मित्र और करुणामय है, ममता और अहंकार से मुक्त है, सुख-दुःख की प्राप्ति में सम और क्षमाशील है, वह भक्त मुझे अत्यंत प्रिय है।"</div>
+        </div>
+
+        <div class="chapter-insights-block">
+          <div class="chapter-insights-title">🌟 मुख्य आध्यात्मिक सूत्र:</div>
+          <ul class="chapter-insights-list">
+            <li><span class="insight-bullet">✨</span> <span>सगुण प्रेम-भक्ति देहधारी मनुष्य के लिए निराकार साधना की तुलना में अत्यंत सुगम और स्वाभाविक है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>सच्ची भक्ति का मापदंड बाह्य प्रदर्शन नहीं, अपितु अंतःकरण की समता, अद्वेष और करुणा है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>परमात्मा को केवल वही भक्त प्रिय है जो समस्त सृष्टि से निष्काम और निस्वार्थ प्रेम करता है</span></li>
+          </ul>
+        </div>
+
+        <div class="chapter-slokas">
+          <span class="chapter-shloka-count">📖 20 Shlokas (२० श्लोक)</span>
+          <a class="chapter-read-link" href="/chapter-12-bhakti-yoga.html">विस्तार से पढ़ें →</a>
+        </div>
+      </div>
 
       <!-- Chapter 13 -->
-      <a class="chapter-card reveal" data-category="jnana moksha" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+13">
-        <div class="chapter-num">13</div>
-        <span class="chapter-tag">🧘 Kshetra &amp; Soul</span>
-        <div class="chapter-title">Kshetra Kshetrajna Vibhaga</div>
-        <div class="chapter-title-hi">क्षेत्रक्षेत्रज्ञविभागयोग — देह व आत्मा का तत्वज्ञान</div>
-        <div class="chapter-desc">शरीर (क्षेत्र) और अंतरंग साक्षी आत्मा (क्षेत्रज्ञ) का वैज्ञानिक विवेक। प्रकृति और पुरुष का भेद जानकर तत्वज्ञान द्वारा अमरत्व की प्राप्ति।</div>
-        <div class="chapter-slokas">
-          <span>35 Shlokas (३५ श्लोक)</span>
-          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+      <div class="chapter-card reveal" data-category="jnana moksha">
+        <div class="chapter-card-header">
+          <div class="chapter-num">13</div>
+          <span class="chapter-tag">🧘 Kshetra & Soul (देह व आत्मा का तत्वज्ञान)</span>
         </div>
-      </a>
+        <h3 class="chapter-title">Kshetra Kshetrajna Vibhaga</h3>
+        <div class="chapter-title-hi">क्षेत्रक्षेत्रज्ञविभागयोग — देह (क्षेत्र) व आत्मा (क्षेत्रज्ञ) का भेद</div>
+        <p class="chapter-desc">इस अध्याय में दार्शनिक विवेक का वैज्ञानिक निरूपण है। 'क्षेत्र' का अर्थ है यह 24 तत्वों वाला पंचमहाभूत देह, मन, बुद्धि, अहंकार और इंद्रियां। 'क्षेत्रज्ञ' का अर्थ है इस देह को जानने वाला, इसके भीतर साक्षी रूप में विराजमान शाश्वत जीवात्मा। भगवान स्वयं को समस्त क्षेत्रों में एक ही परमात्मा (महाक्षेत्रज्ञ) घोषित करते हैं। अमानित्व, अदम्भित्व, अहिंसा, क्षमा, सरलता, गुरुसेवा, पवित्रता, वैराग्य और अनन्य भक्ति—इन्हीं गुणों को 'ज्ञान' कहा गया है।</p>
+        
+        <div class="chapter-card-shloka-box">
+          <div class="chapter-shloka-badge">📜 प्रमुख अध्याय श्लोक:</div>
+          <div class="chapter-shloka-sanskrit">इदं शरीरं कौन्तेय क्षेत्रमित्यभिधीयते।<br>एतद्यो वेत्ति तं प्राहुः क्षेत्रज्ञ इति तद्विदः॥<br>क्षेत्रज्ञं चापि मां विद्धि सर्वक्षेत्रेषु भारत। (13.1-2)</div>
+          <div class="chapter-shloka-meaning">"हे कुंतीपुत्र! यह शरीर 'क्षेत्र' (कर्मभूमि) कहलाता है, और जो इसे जानता है, उसे तत्वज्ञानी 'क्षेत्रज्ञ' कहते हैं। और तू समस्त क्षेत्रों में क्षेत्रज्ञ भी मुझे ही जान।"</div>
+        </div>
+
+        <div class="chapter-insights-block">
+          <div class="chapter-insights-title">🌟 मुख्य आध्यात्मिक सूत्र:</div>
+          <ul class="chapter-insights-list">
+            <li><span class="insight-bullet">✨</span> <span>शरीर एक कर्मभूमि और साधन मात्र है, आत्मा उसका नित्य, अछूता दृष्टा और साक्षी है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>अहंकार, दंभ और हिंसा का समूल नाश ही वास्तविक आत्मज्ञान की प्रथम अनिवार्य पूर्व शर्त है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>आत्मा संपूर्ण देह में व्याप्त रहकर भी आकाश और सूर्य की भांति कभी अशुद्ध या विकृत नहीं होती</span></li>
+          </ul>
+        </div>
+
+        <div class="chapter-slokas">
+          <span class="chapter-shloka-count">📖 35 Shlokas (३५ श्लोक)</span>
+          <a class="chapter-read-link" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+13">विस्तार से पढ़ें →</a>
+        </div>
+      </div>
 
       <!-- Chapter 14 -->
-      <a class="chapter-card reveal reveal-delay-1" data-category="jnana moksha" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+14">
-        <div class="chapter-num">14</div>
-        <span class="chapter-tag">🧘 The Three Gunas</span>
-        <div class="chapter-title">Gunatraya Vibhaga Yoga</div>
-        <div class="chapter-title-hi">गुणत्रयविभागयोग — सत्व, रज व तम गुण का रहस्य</div>
-        <div class="chapter-desc">प्रकृति के तीन गुण—सत्व, रज, तम—जीवात्मा को देह में बांधते हैं। गुणों के प्रभाव से परे होकर 'गुणातीत' बनने की पावन साधना और लक्षण।</div>
-        <div class="chapter-slokas">
-          <span>27 Shlokas (२७ श्लोक)</span>
-          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+      <div class="chapter-card reveal" data-category="jnana moksha">
+        <div class="chapter-card-header">
+          <div class="chapter-num">14</div>
+          <span class="chapter-tag">🧘 The Three Gunas (सत्व, रज, तम व गुणातीत)</span>
         </div>
-      </a>
+        <h3 class="chapter-title">Gunatraya Vibhaga Yoga</h3>
+        <div class="chapter-title-hi">गुणत्रयविभागयोग — त्रिगुणों का रहस्य व गुणातीत स्थिति</div>
+        <p class="chapter-desc">प्रकृति के तीन मूल गुण—सत्व, रज और तम—जीवात्मा को इस नश्वर देह में बांधकर रखते हैं। सत्व गुण ज्ञान और सुख की आसक्ति से बांधता है; रजोगुण कामना, वासना और तृष्णा से कर्मों में लिप्त करता है; तथा तमोगुण अज्ञान, आलस्य और निद्रा द्वारा प्रमाद में ढकेलता है। श्रीकृष्ण इन तीनों गुणों के लक्षण, कार्य, मृत्यु उपरांत की गतियां और इनसे ऊपर उठकर 'गुणातीत' (तीनों गुणों से परे) बनने का साधन समझाते हैं। गुणातीत पुरुष मान-अपमान, मित्र-शत्रु और मिट्टी-स्वर्ण में समबुद्धि रहता है।</p>
+        
+        <div class="chapter-card-shloka-box">
+          <div class="chapter-shloka-badge">📜 प्रमुख अध्याय श्लोक:</div>
+          <div class="chapter-shloka-sanskrit">गुणानेतानतीत्य त्रीन्देही देहसमुद्भवान्।<br>जन्ममृत्युजरादुःखैर्विमुक्तोऽमृतमश्नुते॥ (14.20)</div>
+          <div class="chapter-shloka-meaning">"मनुष्य जब देह की उत्पत्ति के कारण सत्व, रज और तम तीनों गुणों से परे हो जाता है, तब वह जन्म, मृत्यु, वृद्धावस्था और समस्त दुःखों से मुक्त होकर अमरत्व को प्राप्त करता है।"</div>
+        </div>
+
+        <div class="chapter-insights-block">
+          <div class="chapter-insights-title">🌟 मुख्य आध्यात्मिक सूत्र:</div>
+          <ul class="chapter-insights-list">
+            <li><span class="insight-bullet">✨</span> <span>मानव मन की प्रत्येक भावना और विचार सत्व, रज या तम के प्रभाव से ही संचालित होते हैं</span></li>
+            <li><span class="insight-bullet">✨</span> <span>सत्व गुण से ज्ञान और सुख, रज से लोभ व अशांति, और तम से अज्ञान व आलस्य उत्पन्न होता है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>अडिग भगवद्भक्ति और साक्षी भाव द्वारा ही इन तीनों गुणों के पार 'गुणातीत' हुआ जा सकता है</span></li>
+          </ul>
+        </div>
+
+        <div class="chapter-slokas">
+          <span class="chapter-shloka-count">📖 27 Shlokas (२७ श्लोक)</span>
+          <a class="chapter-read-link" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+14">विस्तार से पढ़ें →</a>
+        </div>
+      </div>
 
       <!-- Chapter 15 -->
-      <a class="chapter-card reveal reveal-delay-2" data-category="jnana bhakti moksha" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+15">
-        <div class="chapter-num">15</div>
-        <span class="chapter-tag">🕊️ Supreme Being</span>
-        <div class="chapter-title">Purushottama Yoga</div>
-        <div class="chapter-title-hi">पुरुषोत्तमयोग — अश्वत्थ वृक्ष व परम पुरुषोत्तम</div>
-        <div class="chapter-desc">संसार रूपी ऊर्ध्वमूल अश्वत्थ वृक्ष का वैराग्य-कुठार से छेदन। क्षर (नाशवान) और अक्षर (अविनाशी) से परे स्वयं पुरुषोत्तम श्री कृष्ण का स्वरूप।</div>
-        <div class="chapter-slokas">
-          <span>20 Shlokas (२० श्लोक)</span>
-          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+      <div class="chapter-card reveal" data-category="jnana bhakti moksha">
+        <div class="chapter-card-header">
+          <div class="chapter-num">15</div>
+          <span class="chapter-tag">🕊️ Supreme Being (अश्वत्थ वृक्ष व पुरुषोत्तम)</span>
         </div>
-      </a>
+        <h3 class="chapter-title">Purushottama Yoga</h3>
+        <div class="chapter-title-hi">पुरुषोत्तमयोग — संसार वृक्ष व परम पुरुषोत्तम स्वरूप</div>
+        <p class="chapter-desc">वेदों का संपूर्ण सार केवल बीस श्लोकों में संकलित। संसार की तुलना एक उलटे अश्वत्थ (पीपल) वृक्ष से की गई है, जिसकी जड़ें ऊपर परमात्मा में हैं और शाखाएं नीचे संसार में फैली हैं। इस संसार वृक्ष को दृढ़ 'असंग-शस्त्र' (वैराग्य रूपी कुल्हाड़े) से काटकर उस परम पद को खोजना चाहिए जहां पहुंचकर कोई लौटता नहीं। संसार में दो प्रकार के पुरुष हैं—'क्षर' (समस्त नाशवान देह) और 'अक्षर' (कूटस्थ अविनाशी आत्मा)। किंतु इन दोनों से परे जो त्रिलोकी का भरण-पोषण करने वाला नित्य परमात्मा है, वही 'पुरुषोत्तम' है।</p>
+        
+        <div class="chapter-card-shloka-box">
+          <div class="chapter-shloka-badge">📜 प्रमुख अध्याय श्लोक:</div>
+          <div class="chapter-shloka-sanskrit">यस्मात्क्षरमतीतोऽहमक्षरादपि चोत्तमः।<br>अतोऽस्मि लोके वेदे च प्रथितः पुरुषोत्तमः॥ (15.18)</div>
+          <div class="chapter-shloka-meaning">"क्योंकि मैं क्षर (नाशवान जड़) से सर्वथा परे हूँ और अक्षर (अविनाशी जीवात्मा) से भी उत्तम हूँ, इसलिए लोक और वेद दोनों में मैं 'पुरुषोत्तम' के नाम से प्रसिद्ध हूँ।"</div>
+        </div>
+
+        <div class="chapter-insights-block">
+          <div class="chapter-insights-title">🌟 मुख्य आध्यात्मिक सूत्र:</div>
+          <ul class="chapter-insights-list">
+            <li><span class="insight-bullet">✨</span> <span>संसार रूपी वृक्ष की आसक्ति को केवल तीव्र वैराग्य और ईश्वर शरणागति से काटा जा सकता है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>परमात्मा ही जठराग्नि बनकर चार प्रकार के अन्नों को पचाता है और स्मृति-ज्ञान प्रदान करता है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>पुरुषोत्तम तत्व को समझ लेना ही संपूर्ण वैदिक ज्ञान और साधना की पराकाष्ठा है</span></li>
+          </ul>
+        </div>
+
+        <div class="chapter-slokas">
+          <span class="chapter-shloka-count">📖 20 Shlokas (२० श्लोक)</span>
+          <a class="chapter-read-link" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+15">विस्तार से पढ़ें →</a>
+        </div>
+      </div>
 
       <!-- Chapter 16 -->
-      <a class="chapter-card reveal" data-category="dharma" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+16">
-        <div class="chapter-num">16</div>
-        <span class="chapter-tag">⚖️ Divine vs Demonic</span>
-        <div class="chapter-title">Daivasura Sampad Vibhaga</div>
-        <div class="chapter-title-hi">दैवासुरसंपद्विभागयोग — दैवी व आसुरी संपदा</div>
-        <div class="chapter-desc">अभय, सत्य, अहिंसा रूपी दैवी गुण मोक्ष दिलाते हैं। दंभ, दर्प और क्रोध रूपी आसुरी गुण पतन कराते हैं। काम, क्रोध, लोभ—नरक के तीन द्वार।</div>
-        <div class="chapter-slokas">
-          <span>24 Shlokas (२४ श्लोक)</span>
-          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+      <div class="chapter-card reveal" data-category="dharma">
+        <div class="chapter-card-header">
+          <div class="chapter-num">16</div>
+          <span class="chapter-tag">⚖️ Divine vs Demonic (दैवी व आसुरी संपदा)</span>
         </div>
-      </a>
+        <h3 class="chapter-title">Daivasura Sampad Vibhaga</h3>
+        <div class="chapter-title-hi">दैवासुरसंपद्विभागयोग — दैवी व आसुरी प्रवृत्तियों का विवेक</div>
+        <p class="chapter-desc">मनुष्य के अंतःकरण में विद्यमान दो प्रवृत्तियों—दैवी संपदा और आसुरी संपदा—का सूक्ष्म मनोवैज्ञानिक व नैतिक विश्लेषण। अभय, अंतःकरण की शुद्धि, ज्ञान-योग में स्थिति, दान, इंद्रिय-संयम, यज्ञ, स्वाध्याय, तप, सरलता, अहिंसा, सत्य, अक्रोध, शांति और क्षमा—ये 26 दैवी गुण मोक्ष और दिव्यता की ओर ले जाते हैं। दूसरी ओर दंभ, घमंड, अभिमान, क्रोध, कठोरता और अज्ञान—ये आसुरी गुण बंधन और पतन का कारण बनते हैं। श्रीकृष्ण काम, क्रोध और लोभ को आत्मा का नाश करने वाले नरक के तीन द्वार बताते हैं।</p>
+        
+        <div class="chapter-card-shloka-box">
+          <div class="chapter-shloka-badge">📜 प्रमुख अध्याय श्लोक:</div>
+          <div class="chapter-shloka-sanskrit">त्रिविधं नरकस्येदं द्वारं नाशनमात्मनः।<br>कामः क्रोधस्तथा लोभस्तस्मादेतत्त्रयं त्यजेत्॥ (16.21)</div>
+          <div class="chapter-shloka-meaning">"काम, क्रोध तथा लोभ—ये आत्मा का नाश करने वाले नरक के तीन द्वार हैं, इसलिए इन तीनों का सर्वथा त्याग कर देना चाहिए।"</div>
+        </div>
+
+        <div class="chapter-insights-block">
+          <div class="chapter-insights-title">🌟 मुख्य आध्यात्मिक सूत्र:</div>
+          <ul class="chapter-insights-list">
+            <li><span class="insight-bullet">✨</span> <span>चरित्र और सद्गुण ही मनुष्य को देवत्व या पतन की ओर अग्रसर करते हैं</span></li>
+            <li><span class="insight-bullet">✨</span> <span>काम, क्रोध और लोभ—यह त्रिकुटी समस्त पापों, मानसिक तनावों और सर्वनाश की जननी है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>जीवन में क्या करना चाहिए और क्या नहीं, इसके लिए शास्त्र प्रमाण ही आदर्श मार्गदर्शक है</span></li>
+          </ul>
+        </div>
+
+        <div class="chapter-slokas">
+          <span class="chapter-shloka-count">📖 24 Shlokas (२४ श्लोक)</span>
+          <a class="chapter-read-link" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+16">विस्तार से पढ़ें →</a>
+        </div>
+      </div>
 
       <!-- Chapter 17 -->
-      <a class="chapter-card reveal reveal-delay-1" data-category="dharma karma" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+17">
-        <div class="chapter-num">17</div>
-        <span class="chapter-tag">⚖️ Threefold Faith</span>
-        <div class="chapter-title">Shraddhatraya Vibhaga Yoga</div>
-        <div class="chapter-title-hi">श्रद्धात्रयविभागयोग — तीन प्रकार की श्रद्धा व ॐ तत् सत्</div>
-        <div class="chapter-desc">सात्विक, राजसिक और तामसिक आहार, यज्ञ, तप एवं दान के भेद। 'ॐ तत् सत्' के उच्चारण से समस्त कर्मों का परम पावन व निर्दोष होना।</div>
-        <div class="chapter-slokas">
-          <span>28 Shlokas (२८ श्लोक)</span>
-          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+      <div class="chapter-card reveal" data-category="dharma karma">
+        <div class="chapter-card-header">
+          <div class="chapter-num">17</div>
+          <span class="chapter-tag">⚖️ Threefold Faith (तीन प्रकार की श्रद्धा व ॐ तत् सत्)</span>
         </div>
-      </a>
+        <h3 class="chapter-title">Shraddhatraya Vibhaga Yoga</h3>
+        <div class="chapter-title-hi">श्रद्धात्रयविभागयोग — आहार, यज्ञ, तप व ॐ तत् सत् का रहस्य</div>
+        <p class="chapter-desc">अर्जुन के प्रश्न पर श्रीकृष्ण समझाते हैं कि मनुष्य की श्रद्धा उसके अंतःकरण के संस्कारों के अनुरूप सात्विक, राजसिक या तामसिक होती है। इसी प्रकार भोजन, यज्ञ, तप और दान भी तीन प्रकार के होते हैं। सात्विक आहार आयु, बुद्धि, बल और आरोग्य बढ़ाता है; राजसिक आहार दुःख और रोग उत्पन्न करता है; तामसिक आहार दुर्गंधयुक्त और अशुद्ध होता है। इसी अध्याय में शरीर, वाणी और मन के सात्विक तप का निरूपण है, तथा समस्त क्रियाओं को दोषमुक्त और पवित्र बनाने वाले महामंत्र 'ॐ तत् सत्' का रहस्य उद्घाटित किया गया है।</p>
+        
+        <div class="chapter-card-shloka-box">
+          <div class="chapter-shloka-badge">📜 प्रमुख अध्याय श्लोक:</div>
+          <div class="chapter-shloka-sanskrit">ॐ तत्सदिति निर्देशो ब्रह्मणस्त्रिविधः स्मृतः।<br>ब्राह्मणास्तेन वेदाश्च यज्ञाश्च विहिताः पुरा॥ (17.23)</div>
+          <div class="chapter-shloka-meaning">"ॐ, तत्, सत्—यह सच्चिदानंदघन परब्रह्म का त्रिविध नाम कहा गया है। उसी से सृष्टि के आदि में वेद और यज्ञ रचे गए।"</div>
+        </div>
+
+        <div class="chapter-insights-block">
+          <div class="chapter-insights-title">🌟 मुख्य आध्यात्मिक सूत्र:</div>
+          <ul class="chapter-insights-list">
+            <li><span class="insight-bullet">✨</span> <span>'श्रद्धामयोऽयं पुरुषो यो यच्छ्रद्धः स एव सः' — मनुष्य जैसी श्रद्धा रखता है, वैसा ही उसका स्वरूप बनता है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>सत्य, प्रिय और हितकारी वाणी बोलना ही वाणी का सबसे बड़ा सात्विक तप (वाङ्मयं तप) है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>परमात्मा के निमित्त 'ॐ तत् सत्' का स्मरण कर निष्काम भाव से किया गया कर्म ही पवित्र होता है</span></li>
+          </ul>
+        </div>
+
+        <div class="chapter-slokas">
+          <span class="chapter-shloka-count">📖 28 Shlokas (२८ श्लोक)</span>
+          <a class="chapter-read-link" href="/articles?category=Bhagavad+Gita&amp;q=अध्याय+17">विस्तार से पढ़ें →</a>
+        </div>
+      </div>
 
       <!-- Chapter 18 -->
-      <a class="chapter-card reveal reveal-delay-2" data-category="moksha karma bhakti dharma" href="/chapter-18-moksha-sanyasa.html">
-        <div class="chapter-num">18</div>
-        <span class="chapter-tag">🕊️ Supreme Liberation</span>
-        <div class="chapter-title">Moksha Sanyasa Yoga</div>
-        <div class="chapter-title-hi">मोक्षसंन्यासयोग — संपूर्ण गीता सार व शरणागति</div>
-        <div class="chapter-desc">गीता का परम शिखर। त्याग व संन्यास का रहस्य, स्वधर्म पालन, तथा 'सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज'—परम शरणागति से मोक्ष।</div>
-        <div class="chapter-slokas">
-          <span>78 Shlokas (७८ श्लोक)</span>
-          <span class="chapter-read-link">अध्याय पढ़ें →</span>
+      <div class="chapter-card reveal" data-category="moksha karma bhakti dharma">
+        <div class="chapter-card-header">
+          <div class="chapter-num">18</div>
+          <span class="chapter-tag">🕊️ Supreme Liberation (संपूर्ण गीता सार व शरणागति)</span>
         </div>
-      </a>
+        <h3 class="chapter-title">Moksha Sanyasa Yoga</h3>
+        <div class="chapter-title-hi">मोक्षसंन्यासयोग — सर्वधर्मान्परित्यज्य व अंतिम उपदेश</div>
+        <p class="chapter-desc">संपूर्ण श्रीमद्भगवद्गीता का महामुकुट और उपसंहार अध्याय। त्याग और संन्यास के सूक्ष्म तात्विक भेद से अध्याय आरंभ होता है: काम्य कर्मों का त्याग 'संन्यास' है और कर्मफल की आसक्ति का त्याग 'त्याग' है। यज्ञ, दान और तप कभी नहीं त्यागने चाहिए, क्योंकि ये मनीषियों को भी पावन करते हैं। ज्ञान, कर्म, कर्ता, बुद्धि, धृति और सुख के सात्विक, राजसिक और तामसिक भेदों का असाधारण मनोवैज्ञानिक निरूपण है। चारों वर्णों के स्वाभाविक गुण और स्वधर्म पालन की अनिवार्यता बताते हुए श्रीकृष्ण शरणागति के चरम शिखर 'सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज' का उद्घोष करते हैं।</p>
+        
+        <div class="chapter-card-shloka-box">
+          <div class="chapter-shloka-badge">📜 प्रमुख अध्याय श्लोक:</div>
+          <div class="chapter-shloka-sanskrit">सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज।<br>अहं त्वां सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः॥<br>मन्मना भव मद्भक्तो मद्याजी मां नमस्कुरु।<br>मामेवैष्यसि सत्यं ते प्रतिजाने प्रियोऽसि मे॥ (18.65-66)</div>
+          <div class="chapter-shloka-meaning">"मुझमें मन वाला हो, मेरा भक्त बन, मेरी पूजा कर और मुझे नमस्कार कर; तू निश्चित रूप से मुझे ही प्राप्त होगा, यह मेरी तुझसे सत्य प्रतिज्ञा है। सब धर्मों को त्यागकर केवल मेरी ही शरण में आ जा। मैं तुझे समस्त पापों से मुक्त कर दूंगा, शोक मत कर।"</div>
+        </div>
+
+        <div class="chapter-insights-block">
+          <div class="chapter-insights-title">🌟 मुख्य आध्यात्मिक सूत्र:</div>
+          <ul class="chapter-insights-list">
+            <li><span class="insight-bullet">✨</span> <span>फल की आसक्ति का त्याग ही सच्चा संन्यास है; कर्तव्य कर्म कभी नहीं छोड़ना चाहिए</span></li>
+            <li><span class="insight-bullet">✨</span> <span>'श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्' — अपने स्वधर्म का पालन करना परधर्म से कहीं अधिक कल्याणकारी है</span></li>
+            <li><span class="insight-bullet">✨</span> <span>भगवान के चरणों में अनन्य आत्मसमर्पण ही भवसागर से मुक्ति का अंतिम और अचूक राजमार्ग है</span></li>
+          </ul>
+        </div>
+
+        <div class="chapter-slokas">
+          <span class="chapter-shloka-count">📖 78 Shlokas (७८ श्लोक)</span>
+          <a class="chapter-read-link" href="/chapter-18-moksha-sanyasa.html">विस्तार से पढ़ें →</a>
+        </div>
+      </div>
     </div>
 
     <div style="text-align:center; margin-top:40px; padding-bottom:var(--sp-3xl);">

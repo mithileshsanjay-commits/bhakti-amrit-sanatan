@@ -3545,4 +3545,225 @@ img {
   display: none;
 }
 
+/* ============================================================
+   GEETA GYAN — 18 ELABORATED CHAPTER CARDS & SHLOKA BOXES
+   ============================================================ */
+.chapter-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)) !important;
+  gap: 28px !important;
+}
+
+.chapter-card {
+  background: linear-gradient(145deg, rgba(30, 10, 52, 0.95) 0%, rgba(15, 3, 30, 0.98) 100%) !important;
+  border: 1px solid rgba(245, 158, 11, 0.28) !important;
+  border-radius: 20px !important;
+  padding: 26px 24px !important;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.55), 0 0 16px rgba(245, 158, 11, 0.06) !important;
+  text-decoration: none !important;
+}
+
+.chapter-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 4px;
+  background: var(--grad-gold);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s ease;
+}
+
+.chapter-card:hover {
+  border-color: rgba(245, 158, 11, 0.55) !important;
+  transform: translateY(-6px) !important;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7), 0 0 28px rgba(245, 158, 11, 0.2) !important;
+}
+
+.chapter-card:hover::before {
+  transform: scaleY(1);
+}
+
+.chapter-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.chapter-num {
+  font-family: var(--font-serif);
+  font-size: 2.2rem !important;
+  font-weight: 900 !important;
+  background: var(--grad-gold) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  line-height: 1 !important;
+  margin-bottom: 0 !important;
+  text-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
+}
+
+.chapter-tag {
+  display: inline-block !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  color: #fcd34d !important;
+  background: rgba(245, 158, 11, 0.12) !important;
+  border: 1px solid rgba(245, 158, 11, 0.35) !important;
+  border-radius: 999px !important;
+  padding: 4px 12px !important;
+}
+
+.chapter-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  color: var(--clr-text-white) !important;
+  margin: 0 0 4px !important;
+  line-height: 1.35 !important;
+}
+
+.chapter-title-hi {
+  font-family: var(--font-deva);
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  color: var(--clr-gold) !important;
+  margin-bottom: 14px !important;
+  line-height: 1.4 !important;
+}
+
+.chapter-desc {
+  font-family: var(--font-deva);
+  font-size: 0.88rem !important;
+  color: rgba(255, 255, 255, 0.86) !important;
+  line-height: 1.75 !important;
+  margin-bottom: 16px !important;
+  flex-grow: 0;
+}
+
+.chapter-card-shloka-box {
+  background: radial-gradient(circle at top left, rgba(245, 158, 11, 0.12), rgba(13, 2, 28, 0.6)) !important;
+  border: 1px solid rgba(245, 158, 11, 0.35) !important;
+  border-left: 4px solid var(--clr-gold) !important;
+  border-radius: 12px !important;
+  padding: 14px 16px !important;
+  margin: 6px 0 16px !important;
+  font-family: var(--font-deva);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.chapter-shloka-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--clr-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.chapter-shloka-sanskrit {
+  color: #fef08a !important;
+  font-weight: 700 !important;
+  font-size: 0.90rem !important;
+  line-height: 1.8 !important;
+  margin-bottom: 8px !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.chapter-shloka-meaning {
+  color: #cbd5e1 !important;
+  font-size: 0.82rem !important;
+  line-height: 1.6 !important;
+  font-style: italic;
+}
+
+.chapter-insights-block {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+}
+
+.chapter-insights-title {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--clr-gold-light);
+  margin-bottom: 8px;
+  font-family: var(--font-deva);
+}
+
+.chapter-insights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.chapter-insights-list li {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.5;
+  font-family: var(--font-deva);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.insight-bullet {
+  color: var(--clr-gold);
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  margin-top: 2px;
+}
+
+.chapter-slokas {
+  margin-top: auto !important;
+  padding-top: 14px !important;
+  border-top: 1px solid rgba(245, 158, 11, 0.18) !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  font-size: 0.82rem !important;
+}
+
+.chapter-shloka-count {
+  color: var(--clr-gold-light) !important;
+  font-weight: 600 !important;
+  font-size: 0.84rem !important;
+}
+
+.chapter-read-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 6px 16px !important;
+  border-radius: 9999px !important;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(234, 88, 12, 0.22)) !important;
+  border: 1px solid rgba(245, 158, 11, 0.4) !important;
+  color: #fcd34d !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease !important;
+}
+
+.chapter-card:hover .chapter-read-link {
+  background: linear-gradient(135deg, #f59e0b, #ea580c) !important;
+  color: #ffffff !important;
+  border-color: #f59e0b !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35) !important;
+}
+
 
