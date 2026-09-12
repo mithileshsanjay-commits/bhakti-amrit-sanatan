@@ -488,6 +488,34 @@ input, textarea, select {
   box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
 }
 
+/* Seamless Google Translate styling */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-te-spinner-pos {
+  display: none !important;
+  visibility: hidden !important;
+}
+body {
+  top: 0px !important;
+  position: static !important;
+}
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+#google_translate_element {
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 .nav-donate-btn {
   display: inline-flex;
   align-items: center;
@@ -3256,3 +3284,61 @@ img {
   border-color: #f59e0b;
   transform: translateY(-1px);
 }
+
+/* ============================================================
+   SANATAN WISDOM LUXURY CARD PLACEHOLDER
+   ============================================================ */
+.wisdom-card-placeholder {
+  max-width: 860px;
+  margin: 0 auto;
+  background: linear-gradient(145deg, rgba(26, 11, 46, 0.95) 0%, rgba(13, 2, 28, 0.98) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.38);
+  border-radius: 20px;
+  padding: 32px 36px 28px;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.6), 0 0 24px rgba(245, 158, 11, 0.1);
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.wisdom-card-placeholder::before {
+  content: 'ॐ';
+  position: absolute;
+  top: -30px;
+  right: 20px;
+  font-size: 11rem;
+  font-family: var(--font-deva);
+  color: rgba(245, 158, 11, 0.04);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.wisdom-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(234, 88, 12, 0.25));
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  border-radius: 999px;
+  padding: 5px 16px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fcd34d;
+  margin-bottom: 16px;
+}
+
+.rotating-quote-source {
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #fbbf24;
+  margin-top: 14px;
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+

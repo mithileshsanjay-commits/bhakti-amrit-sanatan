@@ -557,8 +557,7 @@ BAS.translations = {
     nav_donate: '🙏 Donate',
     lang_btn: 'English',
     hero_badge: 'सनातन धर्म की सम्पूर्ण जानकारी',
-    hero_tagline: 'मंत्र · पूजा विधि · व्रत कथा · देव कथा · गीता ज्ञान\nYour complete guide to Sanatan Dharma',
-    hero_cta_articles: '📚 सम्पूर्ण 281 लेख संग्रह',
+    hero_cta_articles: '📕 सम्पूर्ण 281 लेख संग्रह',
     hero_quick_label: 'त्वरित दर्शन:',
     hero_search_ph: 'मंत्र, व्रत, देव कथा खोजें...',
     hero_search_btn: '🔍 Search',
@@ -573,7 +572,33 @@ BAS.translations = {
     fest_sec_badge: '🎉 UPCOMING FESTIVAL',
     fest_sec_title: 'आगामी पर्व — Countdown',
     fest_banner_tag: '🎉 NEXT MAJOR FESTIVAL',
-    fest_banner_btn: '📅 Vrat & Festival Calendar'
+    fest_banner_btn: '📅 Vrat & Festival Calendar',
+    wisdom_badge: 'सनातन शाश्वत विचार · Sanatan Wisdom',
+    cat_section_label: '🙏 सनातन ज्ञान',
+    cat_section_title: 'Explore Sanatan Dharma',
+    cat_section_sub: 'सनातन धर्म की सम्पूर्ण जानकारी',
+    posts_section_label: '✨ Latest Articles',
+    posts_section_title: 'Featured Bhakti Articles',
+    posts_section_sub: 'नवीनतम आध्यात्मिक लेख',
+    view_all_articles_btn: '📚 सभी 281 प्रामाणिक लेख देखें (View All Articles) →',
+    today_gita_label: '🕉️ गीता ज्ञान',
+    today_gita_title: "Today's Divine Message",
+    today_gita_sub: 'आज का गीता श्लोक',
+    today_gita_btn: '🕉️ Read More Geeta Gyan',
+    yt_label: '▶ YouTube Channel',
+    yt_title: 'Watch & Listen<br>to Divine Bhajans',
+    yt_sub: 'भजन, कथा और आरती',
+    yt_desc: 'हमारे YouTube चैनल पर भजन, देव कथा, मंत्र जाप और पूजा विधि के लाइव प्रसारण देखें। अभी Subscribe करें और कभी कोई उत्सव या व्रत मिस न करें।',
+    yt_sub_btn: '▶ Subscribe Now',
+    yt_all_btn: 'View All Videos',
+    newsletter_title: '🔔 <strong>Never miss a festival, vrat, or divine article</strong><br><small>सनातन धर्म की सम्पूर्ण जानकारी सबसे पहले पाएं — निःशुल्क</small>',
+    newsletter_btn: '🙏 Subscribe Free',
+    amrit_vachan_label: '📜 सनातन अमृत वचन',
+    amrit_vachan_title: 'शाश्वत वैदिक विचार एवं सूक्तियां',
+    amrit_vachan_sub: 'Timeless Wisdom from Sacred Scriptures',
+    rashifal_label: '✨ आज का भविष्यफल',
+    rashifal_title: 'दैनिक राशिफल (Daily Horoscope)',
+    rashifal_sub: 'अपनी राशि चुनें और जानें आज का दिन, शुभ रंग, अंक व विशेष उपाय'
   },
   en: {
     nav_home: '🏠 Home',
@@ -586,8 +611,7 @@ BAS.translations = {
     nav_donate: '🙏 Donate',
     lang_btn: 'हिन्दी',
     hero_badge: 'Complete Guide to Sanatan Dharma',
-    hero_tagline: 'Mantras · Puja Vidhi · Vrat Katha · Dev Stories · Geeta Wisdom\nYour complete spiritual resource',
-    hero_cta_articles: '📚 All 281 Articles Library',
+    hero_cta_articles: '📕 All 281 Articles Library',
     hero_quick_label: 'Quick Links:',
     hero_search_ph: 'Search mantras, rituals, sacred stories...',
     hero_search_btn: '🔍 Search',
@@ -602,18 +626,100 @@ BAS.translations = {
     fest_sec_badge: '🎉 UPCOMING FESTIVAL',
     fest_sec_title: 'Upcoming Festival — Countdown',
     fest_banner_tag: '🎉 NEXT MAJOR FESTIVAL',
-    fest_banner_btn: '📅 Vrat & Festival Calendar'
+    fest_banner_btn: '📅 Vrat & Festival Calendar',
+    wisdom_badge: 'Eternal Vedic Insights · Sanatan Wisdom',
+    cat_section_label: '🙏 Sacred Knowledge',
+    cat_section_title: 'Explore Sanatan Dharma',
+    cat_section_sub: 'Complete authentic insights into Sanatan Vedic traditions',
+    posts_section_label: '✨ Latest Wisdom Articles',
+    posts_section_title: 'Featured Devotional Articles',
+    posts_section_sub: 'Latest authentic scriptural publications',
+    view_all_articles_btn: '📚 Explore All 281 Authentic Articles Library →',
+    today_gita_label: '🕉️ Geeta Wisdom',
+    today_gita_title: "Today's Divine Message",
+    today_gita_sub: 'Daily Bhagavad Gita Shloka & Life Insight',
+    today_gita_btn: '🕉️ Read More Geeta Gyan Chapters',
+    yt_label: '▶ YouTube Channel',
+    yt_title: 'Watch & Listen<br>to Divine Bhajans & Satsang',
+    yt_sub: 'Bhajans, Divine Kathas & Sacred Aarti',
+    yt_desc: 'Watch live broadcasts of Bhajans, sacred Puranic stories, mantra chanting, and authentic puja vidhi on our official YouTube channel. Subscribe now to never miss an auspicious festival or vrat.',
+    yt_sub_btn: '▶ Subscribe on YouTube',
+    yt_all_btn: 'View All Videos',
+    newsletter_title: '🔔 <strong>Never miss a festival, vrat, or divine article</strong><br><small>Get authentic Sanatan Dharma guidance directly to your inbox — 100% Free</small>',
+    newsletter_btn: '🙏 Subscribe Free',
+    amrit_vachan_label: '📜 Vedic Amrit Vachan',
+    amrit_vachan_title: 'Timeless Vedic Maxims & Truths',
+    amrit_vachan_sub: 'Universal Sacred Wisdom from the Vedas, Upanishads & Gita',
+    rashifal_label: "✨ Today's Forecast",
+    rashifal_title: 'Daily Horoscope (दैनिक राशिफल)',
+    rashifal_sub: 'Select your zodiac sign to explore daily guidance, lucky color, lucky number, and sacred remedies'
   }
 };
 
-BAS.applyLanguage = function (lang) {
+BAS.setCookie = function (name, value, days) {
+  let expires = "";
+  if (days) {
+    const d = new Date();
+    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + d.toUTCString();
+  }
+  const host = window.location.hostname;
+  document.cookie = name + "=" + (value || "") + expires + "; path=/;";
+  if (host && host !== 'localhost' && host !== '127.0.0.1') {
+    document.cookie = name + "=" + (value || "") + expires + "; path=/; domain=" + host + ";";
+    const parts = host.split('.');
+    if (parts.length > 1) {
+      document.cookie = name + "=" + (value || "") + expires + "; path=/; domain=." + parts.slice(-2).join('.') + ";";
+    }
+  }
+};
+
+BAS.getCookie = function (name) {
+  const nameEQ = name + "=";
+  const ca = document.cookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+};
+
+BAS.initGoogleTranslate = function () {
+  if (!document.getElementById('google_translate_element')) {
+    const el = document.createElement('div');
+    el.id = 'google_translate_element';
+    el.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;';
+    document.body.appendChild(el);
+  }
+
+  window.googleTranslateElementInit = function () {
+    try {
+      new window.google.translate.TranslateElement({
+        pageLanguage: 'hi',
+        includedLanguages: 'en,hi',
+        autoDisplay: false
+      }, 'google_translate_element');
+    } catch (e) {}
+  };
+
+  if (!document.getElementById('google-translate-script')) {
+    const s = document.createElement('script');
+    s.id = 'google-translate-script';
+    s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    s.async = true;
+    document.head.appendChild(s);
+  }
+};
+
+BAS.applyLanguage = function (lang, userTriggered) {
   BAS.currentLang = lang;
-  localStorage.setItem('bas_lang', lang);
+  try { localStorage.setItem('bas_lang', lang); } catch (e) {}
   document.documentElement.lang = lang;
   const t = BAS.translations[lang] || BAS.translations.hi;
 
   // Language toggle buttons
-  document.querySelectorAll('.lang-btn-text').forEach(el => {
+  document.querySelectorAll('.lang-label, .lang-btn-text').forEach(el => {
     el.textContent = t.lang_btn;
   });
 
@@ -683,17 +789,186 @@ BAS.applyLanguage = function (lang) {
     const span = fBtn.querySelector('span');
     if (span) span.textContent = t.fest_banner_btn;
   }
+
+  // Wisdom Badge
+  const wBadge = document.getElementById('wisdom-card-badge-text');
+  if (wBadge) wBadge.textContent = t.wisdom_badge;
+
+  // Categories Section
+  const catSec = document.querySelector('.categories');
+  if (catSec) {
+    const lbl = catSec.querySelector('.section-label');
+    if (lbl) lbl.textContent = t.cat_section_label;
+    const title = catSec.querySelector('.section-title');
+    if (title) title.textContent = t.cat_section_title;
+    const sub = catSec.querySelector('.section-subtitle');
+    if (sub) sub.textContent = t.cat_section_sub;
+  }
+
+  // Posts Section
+  const postSec = document.querySelector('.posts-section');
+  if (postSec) {
+    const lbl = postSec.querySelector('.section-label');
+    if (lbl) lbl.textContent = t.posts_section_label;
+    const title = postSec.querySelector('.section-title');
+    if (title) title.textContent = t.posts_section_title;
+    const sub = postSec.querySelector('.section-subtitle');
+    if (sub) sub.textContent = t.posts_section_sub;
+    const btnAll = postSec.querySelector('.btn.btn--primary');
+    if (btnAll) btnAll.textContent = t.view_all_articles_btn;
+  }
+
+  // Daily Gita Quote Section
+  const gitaSec = document.querySelector('.quote-section');
+  if (gitaSec) {
+    const lbl = gitaSec.querySelector('.section-label');
+    if (lbl) lbl.textContent = t.today_gita_label;
+    const title = gitaSec.querySelector('.section-title');
+    if (title) title.textContent = t.today_gita_title;
+    const sub = gitaSec.querySelector('.section-subtitle');
+    if (sub) sub.textContent = t.today_gita_sub;
+    const btn = gitaSec.querySelector('.btn.btn--primary');
+    if (btn) btn.textContent = t.today_gita_btn;
+  }
+
+  // YouTube Section
+  const ytSec = document.querySelector('.youtube-section');
+  if (ytSec) {
+    const lbl = ytSec.querySelector('.section-label');
+    if (lbl) lbl.textContent = t.yt_label;
+    const title = ytSec.querySelector('.section-title');
+    if (title) title.innerHTML = t.yt_title;
+    const sub = ytSec.querySelector('.section-subtitle');
+    if (sub) sub.textContent = t.yt_sub;
+    const pDesc = ytSec.querySelector('.youtube-text > p:nth-of-type(2)');
+    if (pDesc) pDesc.textContent = t.yt_desc;
+    const subBtn = ytSec.querySelector('.btn--primary');
+    if (subBtn) subBtn.textContent = t.yt_sub_btn;
+    const allBtn = ytSec.querySelector('.btn--ghost');
+    if (allBtn) allBtn.textContent = t.yt_all_btn;
+  }
+
+  // Newsletter Section
+  const nlText = document.getElementById('newsletter-heading');
+  if (nlText) nlText.innerHTML = t.newsletter_title;
+  const nlBtn = document.querySelector('.cta-strip__form .btn--primary');
+  if (nlBtn) nlBtn.textContent = t.newsletter_btn;
+
+  // Vedic Wisdom Section
+  const vwSec = document.querySelector('[aria-labelledby="vedic-wisdom-heading"]');
+  if (vwSec) {
+    const lbl = vwSec.querySelector('.section-label');
+    if (lbl) lbl.textContent = t.amrit_vachan_label;
+    const title = vwSec.querySelector('.section-title');
+    if (title) title.textContent = t.amrit_vachan_title;
+    const sub = vwSec.querySelector('.section-subtitle');
+    if (sub) sub.textContent = t.amrit_vachan_sub;
+  }
+
+  // Daily Rashifal Section
+  const rashiSec = document.getElementById('daily-rashifal-section');
+  if (rashiSec) {
+    const lbl = rashiSec.querySelector('.section-label');
+    if (lbl) lbl.textContent = t.rashifal_label;
+    const title = rashiSec.querySelector('.section-title');
+    if (title) title.textContent = t.rashifal_title;
+    const sub = rashiSec.querySelector('.section-subtitle');
+    if (sub) sub.textContent = t.rashifal_sub;
+  }
+
+  // Refresh Panchang text in accordance with current language
+  if (typeof BAS.initHeroPanchang === 'function') {
+    BAS.initHeroPanchang();
+  }
+
+  // Sync Google Translate cookie
+  if (lang === 'en') {
+    BAS.setCookie('googtrans', '/hi/en', 30);
+  } else {
+    BAS.setCookie('googtrans', '/hi/hi', 30);
+    document.cookie = 'googtrans=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  }
+
+  // Trigger Google Translate engine
+  const combo = document.querySelector('.goog-te-combo');
+  if (combo) {
+    if (combo.value !== lang) {
+      combo.value = lang;
+      combo.dispatchEvent(new Event('change'));
+    }
+    if (userTriggered && lang === 'hi') {
+      setTimeout(() => { window.location.reload(); }, 200);
+    }
+  } else if (userTriggered) {
+    window.location.reload();
+  }
 };
 
 BAS.initLanguageToggle = function () {
+  // Inject language toggle button into nav if not present
+  if (!document.querySelector('.lang-toggle-btn')) {
+    const navActions = document.querySelector('.nav__actions') || document.querySelector('.nav__cta');
+    if (navActions) {
+      const btn = document.createElement('button');
+      btn.className = 'lang-toggle-btn';
+      btn.id = 'lang-toggle-btn';
+      btn.setAttribute('aria-label', 'Toggle language between Hindi and English');
+      btn.innerHTML = '<span class="lang-icon">🌐</span><span class="lang-label">English</span>';
+      navActions.insertBefore(btn, navActions.firstChild);
+    }
+  }
+
+  const mobileActions = document.querySelector('.nav__mobile-actions');
+  if (mobileActions && !mobileActions.querySelector('.lang-toggle-btn')) {
+    const mBtn = document.createElement('button');
+    mBtn.className = 'lang-toggle-btn';
+    mBtn.style.cssText = 'width:100%; justify-content:center; margin-bottom:10px;';
+    mBtn.innerHTML = '<span class="lang-icon">🌐</span><span class="lang-label">English</span>';
+    mobileActions.insertBefore(mBtn, mobileActions.firstChild);
+  }
+
   const toggleBtns = document.querySelectorAll('.lang-toggle-btn');
   toggleBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
       const nextLang = (BAS.currentLang === 'hi') ? 'en' : 'hi';
-      BAS.applyLanguage(nextLang);
+      BAS.applyLanguage(nextLang, true);
     });
   });
-  BAS.applyLanguage(BAS.currentLang);
+
+  // Determine initial language from storage or cookie
+  let initialLang = 'hi';
+  try {
+    const saved = localStorage.getItem('bas_lang');
+    if (saved === 'en' || saved === 'hi') initialLang = saved;
+  } catch (e) {}
+
+  const gtCookie = BAS.getCookie('googtrans');
+  if (gtCookie && gtCookie.includes('/en')) {
+    initialLang = 'en';
+  }
+
+  BAS.applyLanguage(initialLang, false);
+
+  // Initialize invisible Google Translate engine
+  BAS.initGoogleTranslate();
+
+  // If initial language is English, ensure combo matches once loaded
+  if (initialLang === 'en') {
+    let attempts = 0;
+    const timer = setInterval(() => {
+      attempts++;
+      const combo = document.querySelector('.goog-te-combo');
+      if (combo) {
+        if (combo.value !== 'en') {
+          combo.value = 'en';
+          combo.dispatchEvent(new Event('change'));
+        }
+        clearInterval(timer);
+      }
+      if (attempts >= 25) clearInterval(timer);
+    }, 200);
+  }
 };
 
 // ── INIT ALL ───────────────────────────────────────────
@@ -786,16 +1061,26 @@ BAS.initHeroPanchang = function () {
     'जनवरी', 'फ़रवरी', 'मार्च', 'अप्रैल', 'मई', 'जून',
     'जुलाई', 'अगस्त', 'सितंबर', 'अक्टूबर', 'नवंबर', 'दिसंबर'
   ];
+  const enMonths = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
 
-  // Date formatting (e.g. 6 सितंबर 2026)
+  const isEn = BAS.currentLang === 'en';
+
+  // Date formatting
   if (dateEl) {
-    dateEl.textContent = `${now.getDate()} ${hindiMonths[now.getMonth()]} ${now.getFullYear()}`;
+    if (isEn) {
+      dateEl.textContent = `${now.getDate()} ${enMonths[now.getMonth()]} ${now.getFullYear()}`;
+    } else {
+      dateEl.textContent = `${now.getDate()} ${hindiMonths[now.getMonth()]} ${now.getFullYear()}`;
+    }
   }
 
   // Day of week
   if (varEl) {
     const curDay = dayNames[dayIdx];
-    varEl.textContent = `${curDay.hi} (${curDay.en})`;
+    varEl.textContent = isEn ? `${curDay.en} (${curDay.hi})` : `${curDay.hi} (${curDay.en})`;
   }
 
   // Rahu Kaal by day of week (standard Vedic 90-minute muhurtas)
@@ -837,40 +1122,61 @@ BAS.initHeroPanchang = function () {
 
   // 27 Vedic Nakshatras
   const nakshatras = [
-    'अश्विनी', 'भरणी', 'कृत्तिका', 'रोहिणी', 'मृगशिरा', 'आर्द्रा', 'पुनर्वसु', 'पुष्य',
-    'आश्लेषा', 'मघा', 'पूर्वाफाल्गुनी', 'उत्तराफाल्गुनी', 'हस्त', 'चित्रा', 'स्वाति',
-    'विशाखा', 'अनुराधा', 'ज्येष्ठा', 'मूल', 'पूर्वाषाढ़ा', 'उत्तराषाढ़ा', 'श्रवण',
-    'धनिष्ठा', 'शतभिषा', 'पूर्वाभाद्रपद', 'उत्तराभाद्रपद', 'रेवती'
+    { hi: 'अश्विनी', en: 'Ashwini' },
+    { hi: 'भरणी', en: 'Bharani' },
+    { hi: 'कृत्तिका', en: 'Krittika' },
+    { hi: 'रोहिणी', en: 'Rohini' },
+    { hi: 'मृगशिरा', en: 'Mrigashirsha' },
+    { hi: 'आर्द्रा', en: 'Ardra' },
+    { hi: 'पुनर्वसु', en: 'Punarvasu' },
+    { hi: 'पुष्य', en: 'Pushya' },
+    { hi: 'आश्लेषा', en: 'Ashlesha' },
+    { hi: 'मघा', en: 'Magha' },
+    { hi: 'पूर्वाफाल्गुनी', en: 'Purva Phalguni' },
+    { hi: 'उत्तराफाल्गुनी', en: 'Uttara Phalguni' },
+    { hi: 'हस्त', en: 'Hasta' },
+    { hi: 'चित्रा', en: 'Chitra' },
+    { hi: 'स्वाति', en: 'Swati' },
+    { hi: 'विशाखा', en: 'Vishakha' },
+    { hi: 'अनुराधा', en: 'Anuradha' },
+    { hi: 'ज्येष्ठा', en: 'Jyeshtha' },
+    { hi: 'मूल', en: 'Mula' },
+    { hi: 'पूर्वाषाढ़ा', en: 'Purva Ashadha' },
+    { hi: 'उत्तराषाढ़ा', en: 'Uttara Ashadha' },
+    { hi: 'श्रवण', en: 'Shravana' },
+    { hi: 'धनिष्ठा', en: 'Dhanishta' },
+    { hi: 'शतभिषा', en: 'Shatabhisha' },
+    { hi: 'पूर्वाभाद्रपद', en: 'Purva Bhadrapada' },
+    { hi: 'उत्तराभाद्रपद', en: 'Uttara Bhadrapada' },
+    { hi: 'रेवती', en: 'Revati' }
   ];
 
   // Authentic Vedic Anchor: 6 September 2026 (Sunday)
-  // Tithi: Bhadrapada Krishna Paksha Dashami (index 9 in Krishna paksha)
-  // Nakshatra: Ardra (index 5)
   const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
-  const anchorMidnight = new Date(2026, 8, 6).getTime(); // Note: Month 8 = September
+  const anchorMidnight = new Date(2026, 8, 6).getTime(); // Month 8 = September
   const diffDays = Math.round((todayMidnight - anchorMidnight) / 86400000);
 
-  // In our 30-day lunar cycle:
-  // 0-14: Shukla Paksha (0: Pratipada -> 14: Purnima)
-  // 15-29: Krishna Paksha (15: Pratipada -> 24: Dashami -> 29: Amavasya)
-  // On 6 Sept 2026, Krishna Dashami is index 24
   let tithiIndex = (24 + diffDays) % 30;
   if (tithiIndex < 0) tithiIndex += 30;
 
   if (tithiIndex < 15) {
-    if (tithiEl)  tithiEl.textContent  = `${tithisList[tithiIndex].hi} (${tithisList[tithiIndex].en})`;
-    if (pakshaEl) pakshaEl.textContent = 'शुक्ल पक्ष (Shukla Paksha)';
+    const t = tithisList[tithiIndex];
+    if (tithiEl)  tithiEl.textContent  = isEn ? `${t.en} (${t.hi})` : `${t.hi} (${t.en})`;
+    if (pakshaEl) pakshaEl.textContent = isEn ? 'Shukla Paksha (Waxing Moon)' : 'शुक्ल पक्ष (Shukla Paksha)';
   } else {
     const kIdx = tithiIndex - 15;
     const tName = kIdx === 14 ? { hi: 'अमावस्या', en: 'Amavasya' } : tithisList[kIdx];
-    if (tithiEl)  tithiEl.textContent  = `${tName.hi} (${tName.en})`;
-    if (pakshaEl) pakshaEl.textContent = 'कृष्ण पक्ष (Krishna Paksha)';
+    if (tithiEl)  tithiEl.textContent  = isEn ? `${tName.en} (${tName.hi})` : `${tName.hi} (${tName.en})`;
+    if (pakshaEl) pakshaEl.textContent = isEn ? 'Krishna Paksha (Waning Moon)' : 'कृष्ण पक्ष (Krishna Paksha)';
   }
 
   // Nakshatra: on 6 Sept 2026, Ardra is index 5
   let nIdx = (5 + diffDays) % 27;
   if (nIdx < 0) nIdx += 27;
-  if (nakshatraEl) nakshatraEl.textContent = nakshatras[nIdx];
+  if (nakshatraEl) {
+    const n = nakshatras[nIdx];
+    nakshatraEl.textContent = isEn ? `${n.en} (${n.hi})` : `${n.hi} (${n.en})`;
+  }
 };
 
 // ── DEVOTIONAL BACKGROUND AUDIO PLAYER ──────────────────
