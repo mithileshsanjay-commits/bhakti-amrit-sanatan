@@ -1199,7 +1199,7 @@ BAS.initRashifal = function () {
   let currentRashiIdx = parseInt(localStorage.getItem('bas_my_rashi') || '0', 10);
   if (isNaN(currentRashiIdx) || currentRashiIdx < 0 || currentRashiIdx > 11) currentRashiIdx = 0;
 
-  function renderRashi(idx) {
+  function renderRashi(idx, shouldScrollTrack = false) {
     const data = rashisData[idx];
     if (!data) return;
 
@@ -1210,7 +1210,18 @@ BAS.initRashifal = function () {
     buttons.forEach((b, i) => {
       if (i === idx) {
         b.classList.add('active');
-        b.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        if (shouldScrollTrack) {
+          const wrap = rashiTrack.closest('.rashi-selector-wrap') || rashiTrack.parentElement;
+          if (wrap && wrap.scrollWidth > wrap.clientWidth) {
+            const btnLeft = b.offsetLeft;
+            const btnWidth = b.offsetWidth;
+            const wrapWidth = wrap.clientWidth;
+            wrap.scrollTo({
+              left: btnLeft - (wrapWidth / 2) + (btnWidth / 2),
+              behavior: 'smooth'
+            });
+          }
+        }
       } else {
         b.classList.remove('active');
       }
@@ -1249,7 +1260,7 @@ BAS.initRashifal = function () {
   buttons.forEach((btn) => {
     btn.addEventListener('click', function () {
       const idx = parseInt(this.dataset.rashi, 10);
-      renderRashi(idx);
+      renderRashi(idx, true);
     });
   });
 
@@ -1257,14 +1268,14 @@ BAS.initRashifal = function () {
   if (saveBtn) {
     saveBtn.addEventListener('click', function () {
       localStorage.setItem('bas_my_rashi', currentRashiIdx);
-      renderRashi(currentRashiIdx);
+      renderRashi(currentRashiIdx, false);
       if (BAS.showToast) {
         BAS.showToast(`⭐ ${rashisData[currentRashiIdx].name} को आपकी स्थायी राशि सेट किया गया!`);
       }
     });
   }
 
-  renderRashi(currentRashiIdx);
+  renderRashi(currentRashiIdx, false);
 };
 
 // ── MERI PUJA DIARY (BOOKMARKS & RESOLUTION) ──────────────

@@ -1087,6 +1087,9 @@ BAS.initPwaInstallPopup = function () {
 
 // ── INIT ALL ───────────────────────────────────────────
 BAS.init = function () {
+  if ('scrollRestoration' in history && !window.location.hash) {
+    history.scrollRestoration = 'manual';
+  }
   BAS.initTicker();
   BAS.initNav();
   BAS.initBackToTop();
@@ -1110,6 +1113,10 @@ BAS.init = function () {
   BAS.initSearchBar();
   BAS.initWhatsAppShare();
   BAS.initPwaInstallPopup();
+
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
 };
 
 // DOM Ready
@@ -1392,7 +1399,7 @@ BAS.initDailyRashifal = function () {
   let currentRashiIdx = parseInt(localStorage.getItem('bas_my_rashi') || '0', 10);
   if (isNaN(currentRashiIdx) || currentRashiIdx < 0 || currentRashiIdx > 11) currentRashiIdx = 0;
 
-  function renderRashi(idx) {
+  function renderRashi(idx, shouldScrollTrack = false) {
     const data = rashisData[idx];
     if (!data) return;
 
@@ -1402,7 +1409,18 @@ BAS.initDailyRashifal = function () {
     buttons.forEach((b, i) => {
       if (i === idx) {
         b.classList.add('active');
-        b.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        if (shouldScrollTrack) {
+          const wrap = rashiTrack.closest('.rashi-selector-wrap') || rashiTrack.parentElement;
+          if (wrap && wrap.scrollWidth > wrap.clientWidth) {
+            const btnLeft = b.offsetLeft;
+            const btnWidth = b.offsetWidth;
+            const wrapWidth = wrap.clientWidth;
+            wrap.scrollTo({
+              left: btnLeft - (wrapWidth / 2) + (btnWidth / 2),
+              behavior: 'smooth'
+            });
+          }
+        }
       } else {
         b.classList.remove('active');
       }
@@ -1441,16 +1459,16 @@ BAS.initDailyRashifal = function () {
   buttons.forEach((btn) => {
     btn.addEventListener('click', function () {
       const idx = parseInt(this.dataset.rashi, 10);
-      renderRashi(idx);
+      renderRashi(idx, true);
     });
   });
 
   if (saveBtn) {
     saveBtn.addEventListener('click', function () {
       localStorage.setItem('bas_my_rashi', currentRashiIdx);
-      renderRashi(currentRashiIdx);
+      renderRashi(currentRashiIdx, false);
     });
   }
 
-  renderRashi(currentRashiIdx);
+  renderRashi(currentRashiIdx, false);
 };
