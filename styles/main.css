@@ -338,10 +338,11 @@ input, textarea, select {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(13, 2, 28, 0.98) !important;
-  backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(245, 158, 11, 0.3) !important;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
+  background: rgba(13, 2, 28, 0.92) !important;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.22) !important;
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.6);
   transition: all var(--dur-mid) var(--ease-smooth);
 }
 
@@ -372,7 +373,8 @@ input, textarea, select {
   height: 44px;
   border-radius: 50%;
   object-fit: contain;
-  border: 2px solid rgba(245,158,11,0.4);
+  border: 2px solid rgba(245,158,11,0.5);
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.35);
 }
 
 .nav__logo-text {
@@ -394,80 +396,120 @@ input, textarea, select {
   color: var(--clr-text-muted);
 }
 
+.nav__drawer {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
 .nav__menu {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav__link {
-  font-size: 0.95rem !important;
-  font-weight: 700 !important;
-  color: #ffffff !important;
-  padding: 8px 14px;
-  border-radius: var(--radius-sm);
-  transition: all var(--dur-fast) var(--ease-smooth);
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  position: relative;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  padding: 7px 13px !important;
+  border-radius: 9999px !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border: 1px solid transparent !important;
+  white-space: nowrap !important;
+  text-shadow: none !important;
 }
 
 .nav__link::after {
-  content: '';
-  position: absolute;
-  bottom: 4px; left: 50%; right: 50%;
-  height: 2px;
-  background: var(--clr-gold);
-  border-radius: 2px;
-  transition: all var(--dur-fast) var(--ease-smooth);
+  display: none !important;
 }
 
 .nav__link:hover {
-  color: #fcd34d !important;
-  background: rgba(245, 158, 11, 0.16);
+  color: #ffffff !important;
+  background: rgba(245, 158, 11, 0.14) !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
+  transform: translateY(-1px);
 }
 
 .nav__link.active {
-  color: #fbbf24 !important;
-  background: rgba(245, 158, 11, 0.12);
+  color: #fcd34d !important;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(234, 88, 12, 0.14)) !important;
+  border-color: rgba(245, 158, 11, 0.45) !important;
+  font-weight: 700 !important;
 }
 
 .nav-en-sub {
   display: none !important;
 }
 
+.nav__mobile-actions {
+  display: none;
+}
+
+.nav__cta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
 .lang-toggle-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 16px;
+  padding: 7px 15px;
   border-radius: 9999px;
-  border: 1.5px solid rgba(245, 158, 11, 0.5);
-  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  background: rgba(245, 158, 11, 0.08);
   color: #fcd34d;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
 }
 
 .lang-toggle-btn:hover {
-  background: rgba(245, 158, 11, 0.25);
+  background: rgba(245, 158, 11, 0.22);
   color: #ffffff;
   border-color: #f59e0b;
   transform: translateY(-1px);
   box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
 }
 
-.nav__cta {
-  display: flex;
-  gap: var(--sp-sm);
-  flex-shrink: 0;
+.nav-donate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-decoration: none;
+  border: none;
+  box-shadow: 0 4px 18px rgba(234, 88, 12, 0.4);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.nav-donate-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(234, 88, 12, 0.65);
+  color: #ffffff !important;
 }
 
 .nav-toggle {

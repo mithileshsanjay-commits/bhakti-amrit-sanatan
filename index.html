@@ -364,41 +364,48 @@ input, textarea, select {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(13, 2, 28, 0.98) !important;
-  backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(245, 158, 11, 0.3) !important;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
-  transition: all var(--dur-mid) var(--ease-smooth);
+  background: rgba(13, 2, 28, 0.92) !important;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.22) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.65);
+  transition: all 0.3s ease;
 }
 
 .site-nav.scrolled {
-  box-shadow: 0 6px 36px rgba(0, 0, 0, 0.85);
-  border-bottom-color: rgba(245, 158, 11, 0.45);
+  background: rgba(10, 1, 22, 0.96) !important;
+  border-bottom-color: rgba(245, 158, 11, 0.4) !important;
+  box-shadow: 0 8px 36px rgba(0, 0, 0, 0.85);
 }
 
 .nav__inner {
   display: flex;
   align-items: center;
-  height: var(--nav-height);
-  gap: var(--sp-xl);
+  height: var(--nav-height, 72px);
+  gap: 16px;
+  justify-content: space-between;
 }
 
 .nav__logo {
   display: flex;
   align-items: center;
-  gap: var(--sp-sm);
+  gap: 12px;
   flex-shrink: 0;
-  transition: transform var(--dur-fast) var(--ease-smooth);
+  text-decoration: none;
+  transition: transform 0.25s ease;
 }
 
-.nav__logo:hover { transform: scale(1.03); }
+.nav__logo:hover {
+  transform: scale(1.02);
+}
 
 .nav__logo-img {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  object-fit: contain;
-  border: 2px solid rgba(245,158,11,0.4);
+  object-fit: cover;
+  border: 2px solid rgba(245, 158, 11, 0.7);
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.35);
 }
 
 .nav__logo-text {
@@ -408,93 +415,130 @@ input, textarea, select {
 }
 
 .nav__logo-name {
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--clr-gold-light);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
 }
 
 .nav__logo-tagline {
-  font-family: var(--font-deva);
-  font-size: 0.65rem;
-  color: var(--clr-text-muted);
+  font-family: var(--font-deva), sans-serif;
+  font-size: 0.7rem;
+  color: #f59e0b;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.nav__drawer {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
 }
 
 .nav__menu {
-  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav__link {
-  font-size: 0.95rem !important;
-  font-weight: 700 !important;
-  color: #ffffff !important;
-  padding: 8px 14px;
-  border-radius: var(--radius-sm);
-  transition: all var(--dur-fast) var(--ease-smooth);
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  position: relative;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  padding: 7px 13px !important;
+  border-radius: 9999px !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border: 1px solid transparent !important;
+  white-space: nowrap !important;
+  text-shadow: none !important;
 }
 
 .nav__link::after {
-  content: '';
-  position: absolute;
-  bottom: 4px; left: 50%; right: 50%;
-  height: 2px;
-  background: var(--clr-gold);
-  border-radius: 2px;
-  transition: all var(--dur-fast) var(--ease-smooth);
+  display: none !important;
 }
 
 .nav__link:hover {
-  color: #fcd34d !important;
-  background: rgba(245, 158, 11, 0.16);
+  color: #ffffff !important;
+  background: rgba(245, 158, 11, 0.14) !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
+  transform: translateY(-1px);
 }
 
 .nav__link.active {
-  color: #fbbf24 !important;
-  background: rgba(245, 158, 11, 0.12);
+  color: #fcd34d !important;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(234, 88, 12, 0.14)) !important;
+  border-color: rgba(245, 158, 11, 0.45) !important;
+  font-weight: 700 !important;
 }
 
-.nav__link:hover::after,
-.nav__link.active::after {
-  left: 14px; right: 14px;
+.nav__mobile-actions {
+  display: none;
+}
+
+.nav__cta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .lang-toggle-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 16px;
+  padding: 7px 15px;
   border-radius: 9999px;
-  border: 1.5px solid rgba(245, 158, 11, 0.5);
-  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  background: rgba(245, 158, 11, 0.08);
   color: #fcd34d;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
 }
 
 .lang-toggle-btn:hover {
-  background: rgba(245, 158, 11, 0.25);
+  background: rgba(245, 158, 11, 0.22);
   color: #ffffff;
   border-color: #f59e0b;
   transform: translateY(-1px);
   box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
 }
 
-.nav__cta {
-  display: flex;
-  gap: var(--sp-sm);
-  flex-shrink: 0;
+.nav-donate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-decoration: none;
+  border: none;
+  box-shadow: 0 4px 18px rgba(234, 88, 12, 0.4);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.nav-donate-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(234, 88, 12, 0.65);
+  color: #ffffff !important;
 }
 
 .nav-toggle {
@@ -503,6 +547,9 @@ input, textarea, select {
   gap: 5px;
   padding: 8px;
   border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .nav-toggle span {
@@ -641,9 +688,22 @@ input, textarea, select {
   line-height: 1;
   margin-bottom: 20px;
   display: inline-block;
-  animation: fade-up 0.8s 0.1s var(--ease-smooth) both;
+  animation: fade-up 0.8s 0.1s var(--ease-smooth) both, om-glow-pulse 4s ease-in-out infinite 0.8s;
   text-shadow: 0 0 35px rgba(245, 158, 11, 0.7), 0 0 70px rgba(245, 158, 11, 0.35);
   filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.5));
+}
+
+@keyframes om-glow-pulse {
+  0%, 100% {
+    text-shadow: 0 0 35px rgba(245, 158, 11, 0.7), 0 0 70px rgba(245, 158, 11, 0.35);
+    filter: drop-shadow(0 0 18px rgba(245, 158, 11, 0.5));
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0 55px rgba(245, 158, 11, 0.95), 0 0 100px rgba(245, 158, 11, 0.55);
+    filter: drop-shadow(0 0 28px rgba(245, 158, 11, 0.75));
+    transform: scale(1.03);
+  }
 }
 
 .hero__title {
@@ -657,13 +717,18 @@ input, textarea, select {
 }
 
 .hero__title-gold {
-  color: #f97316;
+  background: linear-gradient(135deg, #fba93b 0%, #f97316 55%, #ea580c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   display: inline-block;
+  filter: drop-shadow(0 2px 12px rgba(234, 88, 12, 0.25));
 }
 
 .hero__title-white {
   color: #ffffff;
   display: inline-block;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
 }
 
 .hero__tagline {
@@ -1986,28 +2051,37 @@ img {
       display: flex !important;
       flex-wrap: wrap !important;
       align-items: center !important;
-      gap: 12px 14px !important;
+      gap: 10px 12px !important;
       font-size: 0.88rem !important;
-      margin-top: 10px !important;
+      margin-top: 12px !important;
     }
     .quick-pill-label {
       color: #cbd5e1 !important;
       font-weight: 600 !important;
       margin-right: 2px !important;
+      font-size: 0.85rem !important;
     }
     .quick-pill {
       color: #f1f5f9 !important;
       text-decoration: none !important;
       font-family: var(--font-deva), sans-serif !important;
+      font-size: 0.84rem !important;
       display: inline-flex !important;
       align-items: center !important;
-      gap: 4px !important;
-      transition: color 0.2s ease, transform 0.2s ease !important;
+      gap: 5px !important;
+      padding: 5px 13px !important;
+      border-radius: 9999px !important;
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      transition: all 0.2s ease !important;
     }
     .quick-pill:hover {
-      color: #f59e0b !important;
+      color: #fcd34d !important;
+      background: rgba(245, 158, 11, 0.16) !important;
+      border-color: rgba(245, 158, 11, 0.45) !important;
       transform: translateY(-1px) !important;
-      text-decoration: underline !important;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.25) !important;
+      text-decoration: none !important;
     }
     /* Trending Bar */
     .trending-bar {
@@ -2704,7 +2778,7 @@ img {
         </span>
       </a>
 
-      <!-- Navigation Menu & Mobile Drawer -->
+      <!-- Navigation Menu -->
       <div class="nav__drawer" id="main-nav-drawer">
         <ul class="nav__menu" id="main-menu">
           <li><a class="nav__link active" href="/" data-nav="home">🏠 Home</a></li>
@@ -2715,20 +2789,14 @@ img {
           <li><a class="nav__link" href="/dev-katha" data-nav="katha">📖 Dev Katha</a></li>
           <li><a class="nav__link" href="/geeta-gyan" data-nav="geeta">🕉️ Geeta Gyan</a></li>
         </ul>
-        <div class="nav__mobile-actions">
-          <button type="button" class="lang-toggle-btn lang-toggle-btn--mobile" id="lang-toggle-btn-mobile" aria-label="Switch Language / भाषा बदलें">
-            <span aria-hidden="true">🌐</span> <span class="lang-btn-text">English</span>
-          </button>
-          <a class="btn btn--primary" href="donate.html" data-nav="donate">🙏 Donate</a>
-        </div>
       </div>
 
-      <!-- CTA buttons -->
+      <!-- Single CTA group (No duplicate buttons) -->
       <div class="nav__cta">
         <button type="button" class="lang-toggle-btn" id="lang-toggle-btn" aria-label="Switch Language / भाषा बदलें" title="Switch Language / भाषा बदलें">
           <span aria-hidden="true">🌐</span> <span class="lang-btn-text">English</span>
         </button>
-        <a class="btn btn--primary" href="donate.html" data-nav="donate">🙏 Donate</a>
+        <a class="nav-donate-btn" href="donate.html" data-nav="donate">🙏 Donate</a>
       </div>
 
       <!-- Mobile toggle -->
@@ -3555,7 +3623,7 @@ img {
         <div>
           <h3 class="footer-heading">Support &amp; Earn</h3>
           <ul class="footer-links">
-            <li><a href="donate.html">🙏 Donate / Daan</a></li>
+            <li><a href="donate.html">🙏 Seva &amp; Contribution</a></li>
             
             
             <li><a href="/#newsletter" target="_blank">✉️ Newsletter</a></li>
