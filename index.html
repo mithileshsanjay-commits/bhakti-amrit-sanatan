@@ -584,11 +584,12 @@ input, textarea, select {
 /* ---------- HERO SECTION ---------- */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 85vh;
   display: flex;
   align-items: center;
-  background: var(--grad-hero);
+  background: radial-gradient(circle at 18% 30%, #1e053d 0%, #0d011c 55%, #150228 100%) !important;
   overflow: hidden;
+  padding: 40px 0 60px;
 }
 
 .hero__bg-glow {
@@ -600,7 +601,7 @@ input, textarea, select {
 
 .hero__bg-glow--1 {
   width: 700px; height: 700px;
-  background: radial-gradient(circle, rgba(107,33,168,0.4) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(107,33,168,0.35) 0%, transparent 70%);
   top: -200px; right: -100px;
 }
 
@@ -619,88 +620,185 @@ input, textarea, select {
 .hero__badge {
   display: inline-flex;
   align-items: center;
-  gap: var(--sp-sm);
-  background: rgba(245,158,11,0.12);
-  border: 1px solid rgba(245,158,11,0.35);
-  border-radius: var(--radius-full);
-  padding: 8px 20px;
-  font-size: 0.8rem;
+  gap: 8px;
+  background: rgba(30, 10, 50, 0.7);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: 9999px;
+  padding: 7px 20px;
+  font-size: 0.85rem;
   font-weight: 700;
-  color: var(--clr-gold);
-  letter-spacing: 0.1em;
-  margin-bottom: var(--sp-lg);
+  color: #f59e0b;
+  letter-spacing: 0.05em;
+  margin-bottom: 22px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   animation: fade-up 0.8s var(--ease-smooth) both;
 }
 
 .hero__om {
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-family: var(--font-deva);
-  color: var(--clr-gold);
+  font-size: clamp(3.8rem, 6.5vw, 5.2rem);
+  font-family: var(--font-deva), serif;
+  color: #f59e0b;
   line-height: 1;
-  margin-bottom: var(--sp-md);
+  margin-bottom: 20px;
+  display: inline-block;
   animation: fade-up 0.8s 0.1s var(--ease-smooth) both;
-  text-shadow: 0 0 60px rgba(245,158,11,0.4);
-  display: block;
+  text-shadow: 0 0 35px rgba(245, 158, 11, 0.7), 0 0 70px rgba(245, 158, 11, 0.35);
+  filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.5));
 }
 
 .hero__title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.8rem, 5.5vw, 4.6rem);
   font-weight: 900;
   line-height: 1.12;
-  color: var(--clr-text-white);
-  margin-bottom: var(--sp-md);
+  margin-bottom: 18px;
   animation: fade-up 0.8s 0.15s var(--ease-smooth) both;
+  letter-spacing: -0.01em;
 }
 
-.hero__title .highlight {
-  background: var(--grad-gold);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.hero__title-gold {
+  color: #f97316;
+  display: inline-block;
+}
+
+.hero__title-white {
+  color: #ffffff;
+  display: inline-block;
 }
 
 .hero__tagline {
-  font-family: var(--font-deva);
-  font-size: clamp(1rem, 2.5vw, 1.4rem);
-  color: var(--clr-text-muted);
-  margin-bottom: var(--sp-lg);
+  margin-bottom: 26px;
   animation: fade-up 0.8s 0.2s var(--ease-smooth) both;
-  line-height: 1.6;
+  line-height: 1.65;
+}
+
+.hero__tagline-deva {
+  font-family: var(--font-deva), sans-serif;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: #cbd5e1;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.hero__tagline-en {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-style: italic;
+  color: #94a3b8;
+  display: inline-block;
 }
 
 .hero__cta {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--sp-md);
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 30px;
   animation: fade-up 0.8s 0.25s var(--ease-smooth) both;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.hero-btn--primary {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+  color: #ffffff !important;
+  padding: 13px 26px;
+  box-shadow: 0 6px 22px rgba(234, 88, 12, 0.45);
+  border: none !important;
+}
+
+.hero-btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(234, 88, 12, 0.65);
+  color: #ffffff !important;
+}
+
+.hero-btn--mantras {
+  background: rgba(18, 10, 36, 0.55) !important;
+  border: 1.5px solid #d97706 !important;
+  color: #fcd34d !important;
+  padding: 13px 24px;
+}
+
+.hero-btn--mantras:hover {
+  background: rgba(217, 119, 6, 0.2) !important;
+  border-color: #f59e0b !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(217, 119, 6, 0.35);
+}
+
+.hero-btn--geeta {
+  background: rgba(76, 29, 149, 0.38) !important;
+  border: 1px solid rgba(168, 85, 247, 0.45) !important;
+  color: #e9d5ff !important;
+  padding: 13px 24px;
+}
+
+.hero-btn--geeta:hover {
+  background: rgba(107, 33, 168, 0.55) !important;
+  border-color: rgba(192, 132, 252, 0.7) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 18px rgba(147, 51, 234, 0.4);
 }
 
 .hero__stats {
   display: flex;
-  gap: var(--sp-xl);
-  margin-top: var(--sp-xl);
-  padding-top: var(--sp-xl);
-  border-top: 1px solid rgba(245,158,11,0.15);
+  gap: 36px;
+  margin-top: 30px;
+  margin-bottom: 24px;
+  padding-top: 0;
+  border-top: none;
   animation: fade-up 0.8s 0.35s var(--ease-smooth) both;
 }
 
+.hero__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero__stat-num-wrap {
+  position: relative;
+  display: inline-block;
+}
+
 .hero__stat-number {
-  font-family: var(--font-serif);
-  font-size: 2rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.2rem;
   font-weight: 900;
-  background: var(--grad-gold);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: block;
+  color: #f59e0b;
   line-height: 1;
+  display: block;
+}
+
+.hero__stat-accent-bar {
+  width: 28px;
+  height: 3px;
+  background: #f97316;
+  border-radius: 2px;
+  margin-top: 4px;
 }
 
 .hero__stat-label {
-  font-size: 0.8rem;
-  color: var(--clr-text-muted);
-  margin-top: 4px;
+  font-size: 0.82rem;
+  color: #cbd5e1;
+  margin-top: 6px;
+  font-weight: 500;
 }
 
 .hero__visual {
@@ -1828,46 +1926,89 @@ img {
       background: linear-gradient(90deg, #f59e0b, #ea580c);
       z-index: 9999; transition: width 0.1s linear;
     }
-    /* Search Bar */
+    /* Integrated Search Bar Pill */
     .hero-search {
-      display: flex;
-      align-items: center;
-      max-width: 540px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(245,158,11,0.35);
-      border-radius: 999px;
-      padding: 6px 8px 6px 20px;
-      margin-top: 32px;
-      backdrop-filter: blur(12px);
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      display: flex !important;
+      align-items: center !important;
+      max-width: 460px !important;
+      width: 100% !important;
+      background: rgba(22, 13, 44, 0.9) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      border-radius: 9999px !important;
+      padding: 4px 6px 4px 20px !important;
+      margin-top: 10px !important;
+      margin-bottom: 16px !important;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45) !important;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+      position: relative !important;
     }
     .hero-search:focus-within {
-      border-color: var(--clr-gold);
-      box-shadow: 0 0 0 3px rgba(245,158,11,0.15);
+      border-color: #f59e0b !important;
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25), 0 6px 24px rgba(0, 0, 0, 0.5) !important;
     }
     .hero-search input {
-      flex: 1;
-      background: none;
-      border: none;
-      outline: none;
-      color: #fff;
-      font-size: 0.95rem;
-      font-family: var(--font-deva);
+      flex: 1 !important;
+      min-width: 0 !important;
+      background: transparent !important;
+      border: none !important;
+      outline: none !important;
+      color: #ffffff !important;
+      font-size: 0.95rem !important;
+      font-family: var(--font-deva), sans-serif !important;
+      padding: 8px 6px !important;
     }
-    .hero-search input:: { color: rgba(255,255,255,0.45); }
+    .hero-search input::placeholder {
+      color: #94a3b8 !important;
+    }
     .hero-search button {
-      background: var(--grad-gold);
-      color: #fff;
-      border: none;
-      border-radius: 999px;
-      padding: 10px 22px;
-      font-size: 0.875rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-      white-space: nowrap;
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+      color: #ffffff !important;
+      border: none !important;
+      border-radius: 9999px !important;
+      padding: 10px 22px !important;
+      font-size: 0.9rem !important;
+      font-weight: 700 !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      box-shadow: 0 4px 14px rgba(234, 88, 12, 0.4) !important;
+      transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+      white-space: nowrap !important;
     }
-    .hero-search button:hover { transform: scale(1.03); }
+    .hero-search button:hover {
+      transform: scale(1.03) !important;
+      box-shadow: 0 6px 18px rgba(234, 88, 12, 0.6) !important;
+    }
+
+    /* Quick Links Below Search */
+    .hero-quick-pills {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      align-items: center !important;
+      gap: 12px 14px !important;
+      font-size: 0.88rem !important;
+      margin-top: 10px !important;
+    }
+    .quick-pill-label {
+      color: #cbd5e1 !important;
+      font-weight: 600 !important;
+      margin-right: 2px !important;
+    }
+    .quick-pill {
+      color: #f1f5f9 !important;
+      text-decoration: none !important;
+      font-family: var(--font-deva), sans-serif !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+      transition: color 0.2s ease, transform 0.2s ease !important;
+    }
+    .quick-pill:hover {
+      color: #f59e0b !important;
+      transform: translateY(-1px) !important;
+      text-decoration: underline !important;
+    }
     /* Trending Bar */
     .trending-bar {
       background: rgba(245,158,11,0.06);
@@ -2111,11 +2252,11 @@ img {
        DAILY HINDU PANCHANG CARD WIDGET (Image 1)
        ============================================================ */
     .panchang-hero-widget {
-      background: #121927 !important;
-      border: 1px solid rgba(255, 255, 255, 0.09) !important;
+      background: #0f172a !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
       border-radius: 20px !important;
       padding: 24px !important;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 30px rgba(245, 158, 11, 0.06) !important;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75) !important;
       position: relative !important;
       overflow: hidden !important;
       width: 100% !important;
@@ -2125,32 +2266,32 @@ img {
 
     .panchang-hero-widget:hover {
       transform: translateY(-2px) !important;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(245, 158, 11, 0.12) !important;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85) !important;
     }
 
     .panchang-hero-widget__header {
       display: flex !important;
       justify-content: space-between !important;
-      align-items: flex-start !important;
+      align-items: center !important;
       margin-bottom: 4px !important;
     }
 
     .panchang-hero-widget__title-wrap {
       display: flex !important;
       align-items: center !important;
-      gap: 8px !important;
+      gap: 10px !important;
     }
 
     .panchang-hero-widget__om {
       display: inline-flex !important;
       align-items: center !important;
       justify-content: center !important;
-      width: 28px !important;
-      height: 28px !important;
+      width: 32px !important;
+      height: 32px !important;
       background: linear-gradient(135deg, #7c3aed, #4c1d95) !important;
-      border-radius: 6px !important;
-      font-size: 0.95rem !important;
-      box-shadow: 0 2px 8px rgba(124, 58, 237, 0.4) !important;
+      border-radius: 8px !important;
+      font-size: 1.05rem !important;
+      box-shadow: 0 2px 10px rgba(124, 58, 237, 0.45) !important;
     }
 
     .panchang-hero-widget__title {
@@ -2165,18 +2306,18 @@ img {
       display: inline-flex !important;
       align-items: center !important;
       gap: 6px !important;
-      padding: 4px 12px !important;
-      border-radius: 999px !important;
-      background: rgba(0, 0, 0, 0.55) !important;
-      border: 1px solid rgba(245, 158, 11, 0.35) !important;
+      padding: 4px 14px !important;
+      border-radius: 9999px !important;
+      background: #000000 !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
       font-size: 0.75rem !important;
       font-weight: 700 !important;
-      color: #fcd34d !important;
+      color: #ffffff !important;
     }
 
     .panchang-hero-widget__live .live-dot {
-      width: 7px !important;
-      height: 7px !important;
+      width: 8px !important;
+      height: 8px !important;
       border-radius: 50% !important;
       background: #22c55e !important;
       box-shadow: 0 0 8px #22c55e !important;
@@ -2188,17 +2329,18 @@ img {
       font-size: 0.95rem !important;
       color: #94a3b8 !important;
       font-weight: 500 !important;
-      margin-bottom: 12px !important;
+      margin-top: 4px !important;
+      margin-bottom: 14px !important;
     }
 
     .panchang-city-selector-wrap {
       display: flex !important;
       align-items: center !important;
       gap: 8px !important;
-      background: rgba(30, 41, 59, 0.7) !important;
-      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      background: #1e293b !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
       border-radius: 8px !important;
-      padding: 4px 10px !important;
+      padding: 6px 12px !important;
       margin-bottom: 16px !important;
     }
 
@@ -2209,7 +2351,7 @@ img {
     .panchang-city-select {
       background: transparent !important;
       border: none !important;
-      color: #f1f5f9 !important;
+      color: #ffffff !important;
       font-size: 0.85rem !important;
       font-weight: 600 !important;
       width: 100% !important;
@@ -2222,7 +2364,7 @@ img {
       color: #ffffff !important;
     }
 
-    /* 2x2 Grid with Orange Left Border (Image 1) */
+    /* 2x2 Grid with Orange Left Border */
     .panchang-hero-widget__grid {
       display: grid !important;
       grid-template-columns: 1fr 1fr !important;
@@ -2231,7 +2373,7 @@ img {
     }
 
     .panchang-hero-card {
-      background: #1a2436 !important;
+      background: #1e293b !important;
       border-left: 4px solid #f97316 !important;
       border-radius: 10px !important;
       padding: 12px 14px !important;
@@ -2240,7 +2382,7 @@ img {
     }
 
     .panchang-hero-card:hover {
-      background: #223048 !important;
+      background: #27354a !important;
       transform: translateY(-1px) !important;
     }
 
@@ -2276,8 +2418,8 @@ img {
     }
 
     .panchang-hero-time-row--shubh {
-      background: rgba(16, 185, 129, 0.12) !important;
-      border: 1px solid rgba(16, 185, 129, 0.35) !important;
+      background: rgba(16, 185, 129, 0.09) !important;
+      border: 1px solid rgba(16, 185, 129, 0.28) !important;
     }
 
     .panchang-hero-time-row--shubh .time-label {
@@ -2297,15 +2439,15 @@ img {
     }
 
     .panchang-hero-time-row--shubh .time-val {
-      color: #6ee7b7 !important;
+      color: #ffffff !important;
       font-weight: 700 !important;
       letter-spacing: 0.02em !important;
     }
 
     /* Red Rahu Kaal Row */
     .panchang-hero-time-row--rahu {
-      background: rgba(239, 68, 68, 0.12) !important;
-      border: 1px solid rgba(239, 68, 68, 0.35) !important;
+      background: rgba(239, 68, 68, 0.09) !important;
+      border: 1px solid rgba(239, 68, 68, 0.28) !important;
       margin-bottom: 14px !important;
     }
 
@@ -2326,7 +2468,7 @@ img {
     }
 
     .panchang-hero-time-row--rahu .time-val {
-      color: #fca5a5 !important;
+      color: #ffffff !important;
       font-weight: 700 !important;
       letter-spacing: 0.02em !important;
     }
@@ -2336,13 +2478,13 @@ img {
       align-items: center !important;
       justify-content: center !important;
       gap: 6px !important;
-      padding: 9px 16px !important;
-      border-radius: 8px !important;
-      background: rgba(245, 158, 11, 0.08) !important;
+      padding: 12px 16px !important;
+      border-radius: 10px !important;
+      background: #1e293b !important;
       border: 1px solid rgba(245, 158, 11, 0.25) !important;
       color: #fcd34d !important;
       font-weight: 700 !important;
-      font-size: 0.85rem !important;
+      font-size: 0.88rem !important;
       text-decoration: none !important;
       transition: all 0.2s ease !important;
     }
@@ -2636,24 +2778,27 @@ img {
       <span aria-hidden="true" class="hero__om">ॐ</span>
 
       <h1 class="hero__title" id="hero-title">
-        <span class="highlight">Bhakti Amrit</span><br/>
-        Sanatan
+        <span class="hero__title-gold">Bhakti Amrit</span><br/>
+        <span class="hero__title-white">Sanatan</span>
       </h1>
 
       <p class="hero__tagline" id="hero-tagline-text">
-        मंत्र · पूजा विधि · व्रत कथा · देव कथा · गीता ज्ञान<br/>
-        <em>Your complete guide to Sanatan Dharma</em>
+        <span class="hero__tagline-deva">मंत्र · पूजा विधि · व्रत कथा · देव कथा · गीता ज्ञान</span><br/>
+        <span class="hero__tagline-en"><em>Your complete guide to Sanatan Dharma</em></span>
       </p>
 
       <div class="hero__cta">
-        <a class="btn btn--primary" id="hero-cta-articles" href="/articles" style="background:var(--grad-gold);color:#fff;">📚 सम्पूर्ण 281 लेख संग्रह</a>
-        <a class="btn btn--outline" href="/mantras">🔱 Mantras</a>
-        <a class="btn btn--ghost" href="/geeta-gyan">🕉️ Geeta Gyan</a>
+        <a class="hero-btn hero-btn--primary" id="hero-cta-articles" href="/articles">📕 सम्पूर्ण 281 लेख संग्रह</a>
+        <a class="hero-btn hero-btn--mantras" href="/mantras">🔱 Mantras</a>
+        <a class="hero-btn hero-btn--geeta" href="/geeta-gyan">🕉️ Geeta Gyan</a>
       </div>
 
       <div class="hero__stats">
         <div class="hero__stat">
-          <span class="hero__stat-number" data-count="281">281</span>
+          <div class="hero__stat-num-wrap">
+            <span class="hero__stat-number" data-count="281">281</span>
+            <div class="hero__stat-accent-bar"></div>
+          </div>
           <span class="hero__stat-label" id="stat-articles-label">Articles Published</span>
         </div>
         <div class="hero__stat">
@@ -4046,7 +4191,7 @@ BAS.translations = {
     lang_btn: 'English',
     hero_badge: 'सनातन धर्म की सम्पूर्ण जानकारी',
     hero_tagline: 'मंत्र · पूजा विधि · व्रत कथा · देव कथा · गीता ज्ञान\nYour complete guide to Sanatan Dharma',
-    hero_cta_articles: '📚 सम्पूर्ण 281 लेख संग्रह',
+    hero_cta_articles: '📕 सम्पूर्ण 281 लेख संग्रह',
     hero_quick_label: 'त्वरित दर्शन:',
     hero_search_ph: 'मंत्र, व्रत, देव कथा खोजें...',
     hero_search_btn: '🔍 Search',
@@ -4075,7 +4220,7 @@ BAS.translations = {
     lang_btn: 'हिन्दी',
     hero_badge: 'Complete Guide to Sanatan Dharma',
     hero_tagline: 'Mantras · Puja Vidhi · Vrat Katha · Dev Stories · Geeta Wisdom\nYour complete spiritual resource',
-    hero_cta_articles: '📚 All 281 Articles Library',
+    hero_cta_articles: '📕 All 281 Articles Library',
     hero_quick_label: 'Quick Links:',
     hero_search_ph: 'Search mantras, rituals, sacred stories...',
     hero_search_btn: '🔍 Search',
