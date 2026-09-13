@@ -3488,13 +3488,13 @@ img {
       <div class="hero__stats">
         <div class="hero__stat">
           <div class="hero__stat-num-wrap">
-            <span class="hero__stat-number" data-count="281">281</span>
+            <span class="hero__stat-number" id="stat-articles-number" data-stat="articles" data-count="286">286</span>
             <div class="hero__stat-accent-bar"></div>
           </div>
           <span class="hero__stat-label" id="stat-articles-label">Articles Published</span>
         </div>
         <div class="hero__stat">
-          <span class="hero__stat-number" data-count="38" data-suffix="+">38+</span>
+          <span class="hero__stat-number" id="stat-mantras-number" data-stat="mantras" data-count="38">38</span>
           <span class="hero__stat-label" id="stat-mantras-label">Mantras &amp; Stotras</span>
         </div>
         <div class="hero__stat hero__stat--trust">
@@ -4097,18 +4097,18 @@ img {
             View All Videos
           </a>
         </div>
-        <div style="margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(245,158,11,0.15); display: flex; gap: 32px;">
+        <div style="margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(245,158,11,0.15); display: flex; gap: 32px; flex-wrap: wrap;">
           <div>
-            <div style="font-family:var(--font-serif); font-size:1.5rem; font-weight:900; color:var(--clr-gold);">50K+</div>
-            <div style="font-size:0.8rem; color:var(--clr-text-muted);">Subscribers</div>
+            <div style="font-family:var(--font-serif); font-size:1.25rem; font-weight:700; color:var(--clr-gold);">दैनिक सत्संग</div>
+            <div style="font-size:0.8rem; color:var(--clr-text-muted);">Daily Satsang</div>
           </div>
           <div>
-            <div style="font-family:var(--font-serif); font-size:1.5rem; font-weight:900; color:var(--clr-gold);">200+</div>
-            <div style="font-size:0.8rem; color:var(--clr-text-muted);">Videos</div>
+            <div style="font-family:var(--font-serif); font-size:1.25rem; font-weight:700; color:var(--clr-gold);">शुद्ध उच्चारण</div>
+            <div style="font-size:0.8rem; color:var(--clr-text-muted);">Vedic Chanting</div>
           </div>
           <div>
-            <div style="font-family:var(--font-serif); font-size:1.5rem; font-weight:900; color:var(--clr-gold);">10M+</div>
-            <div style="font-size:0.8rem; color:var(--clr-text-muted);">Total Views</div>
+            <div style="font-family:var(--font-serif); font-size:1.25rem; font-weight:700; color:var(--clr-gold);">100% निःशुल्क</div>
+            <div style="font-size:0.8rem; color:var(--clr-text-muted);">Free Dharma Seva</div>
           </div>
         </div>
       </div>
@@ -4521,8 +4521,36 @@ BAS.initDonateAmounts = function () {
   });
 };
 
+// ── AUTOMATIC ARTICLE & MANTRA COUNTERS ────────────────
+BAS.updateDynamicCounters = function () {
+  const data = window.ARTICLES_DATA || window.SANATAN_ARTICLES;
+  if (!data || !Array.isArray(data) || !data.length) return;
+
+  const totalArticles = data.length;
+  const totalMantras = data.filter(function (item) {
+    const cat = (item.category || item.c || '').toLowerCase();
+    return cat === 'mantras' || cat === 'mantra';
+  }).length || 38;
+
+  // Update Articles Published counters
+  document.querySelectorAll('[data-stat="articles"]').forEach(function (el) {
+    el.dataset.count = totalArticles;
+    el.textContent = totalArticles.toLocaleString();
+  });
+
+  // Update Mantras & Stotras counters (actual numbers, no fake/plus)
+  document.querySelectorAll('[data-stat="mantras"]').forEach(function (el) {
+    el.dataset.count = totalMantras;
+    el.removeAttribute('data-suffix');
+    el.textContent = totalMantras.toLocaleString();
+  });
+};
+
 // ── COUNTER ANIMATION ──────────────────────────────────
 BAS.animateCounters = function () {
+  if (typeof BAS.updateDynamicCounters === 'function') {
+    BAS.updateDynamicCounters();
+  }
   const counters = document.querySelectorAll('[data-count]');
   if (!counters.length) return;
 
@@ -5566,6 +5594,7 @@ if (document.readyState === 'loading') {
 }
 
 </script>
+<script src="/articles-data.js" defer></script>
 <script src="/scripts/main.js" defer></script>
 </body>
 </html>

@@ -237,8 +237,36 @@ BAS.initDonateAmounts = function () {
   });
 };
 
+// ── AUTOMATIC ARTICLE & MANTRA COUNTERS ────────────────
+BAS.updateDynamicCounters = function () {
+  const data = window.ARTICLES_DATA || window.SANATAN_ARTICLES;
+  if (!data || !Array.isArray(data) || !data.length) return;
+
+  const totalArticles = data.length;
+  const totalMantras = data.filter(function (item) {
+    const cat = (item.category || item.c || '').toLowerCase();
+    return cat === 'mantras' || cat === 'mantra';
+  }).length || 38;
+
+  // Update Articles Published counters
+  document.querySelectorAll('[data-stat="articles"]').forEach(function (el) {
+    el.dataset.count = totalArticles;
+    el.textContent = totalArticles.toLocaleString();
+  });
+
+  // Update Mantras & Stotras counters (actual numbers, no fake/plus)
+  document.querySelectorAll('[data-stat="mantras"]').forEach(function (el) {
+    el.dataset.count = totalMantras;
+    el.removeAttribute('data-suffix');
+    el.textContent = totalMantras.toLocaleString();
+  });
+};
+
 // ── COUNTER ANIMATION ──────────────────────────────────
 BAS.animateCounters = function () {
+  if (typeof BAS.updateDynamicCounters === 'function') {
+    BAS.updateDynamicCounters();
+  }
   const counters = document.querySelectorAll('[data-count]');
   if (!counters.length) return;
 
@@ -620,6 +648,10 @@ BAS.translations = {
     hero_quick_label: 'त्वरित दर्शन:',
     hero_search_ph: 'मंत्र, व्रत, देव कथा खोजें...',
     hero_search_btn: '🔍 Search',
+    stat_articles_label: 'प्रकाशित लेख (Articles Published)',
+    stat_mantras_label: 'मंत्र एवं स्तोत्र (Mantras & Stotras)',
+    stat_trust_number: 'शास्त्र-सम्मत',
+    stat_trust_label: 'परंपरा-आधारित सामग्री',
     panchang_title: 'दैनिक हिन्दू पंचांग',
     label_tithi: 'तिथि (TITHI)',
     label_paksha: 'पक्ष (PAKSHA)',
