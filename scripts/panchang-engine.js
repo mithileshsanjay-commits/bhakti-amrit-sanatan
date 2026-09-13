@@ -1,6 +1,6 @@
 /* ==========================================================================
    BHAKTI AMRIT SANATAN — HIGH-PRECISION ASTRONOMICAL PANCHANG & GRAHAN ENGINE
-   - Geocentric Jean Meeus ELP-2000 Periodic Series for Sun & Moon Longitudes
+   - Geocentric Sun (Meeus Ch. 25 Solar Equation of Center) & Moon (Meeus Ch. 47 Truncated 60-Term Periodic Series)
    - Lahiri (Chitrapaksha) Ayanamsa for Sidereal Lunar Mansions (Nakshatras)
    - NOAA Solar Geometry (Refraction -0.8333°) for Sunrise, Sunset & Solar Noon
    - Dynamic 8-fold Daytime Division for Rahu Kaal & 15-fold for Abhijit
@@ -382,7 +382,7 @@
     return new Date(Date.UTC(year, month - 1, day, hour, minute, second));
   };
 
-  // ── SUN & MOON GEOCENTRIC LONGITUDES (MEEUS ELP-2000) ───────────
+  // ── SUN & MOON GEOCENTRIC LONGITUDES (MEEUS CH. 25 & CH. 47 TRUNCATED SERIES) ─────
   Astro.getSunMoonLongitudes = function (jd) {
     const T = (jd - 2451545.0) / 36525.0;
 
