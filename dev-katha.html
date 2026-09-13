@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="/styles/main.css">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"CollectionPage","name":"Dev Katha","description":"सनातन धर्म की दिव्य देव कथाएं","url":"https://www.bhaktiamritsanatan.com/dev-katha/","publisher":{"@type":"Organization","name":"Bhakti Amrit Sanatan","url":"https://www.bhaktiamritsanatan.com"}}
   </script>
@@ -48,7 +48,10 @@
     .purana-card:hover{border-color:rgba(245,158,11,0.35);box-shadow:var(--shadow-gold)}
     @media(max-width:900px){.katha-grid{grid-template-columns:1fr 1fr}.katha-featured{grid-template-columns:1fr;min-height:auto}.katha-featured .katha-card__img{min-height:220px}}
     @media(max-width:640px){.katha-grid{grid-template-columns:1fr}}
-  </style>
+  
+    /* Ensure cards are visible even before scroll-reveal triggers */
+    .reveal { opacity: 1 !important; transform: none !important; }
+</style>
 </head>
 <body>
 <div class="reading-progress-bar reading-progress" role="progressbar"></div>
@@ -116,7 +119,7 @@
     <p class="page-hero__subtitle">देव कथा — दिव्य कहानियां</p>
     <p class="page-hero__desc">Discover the timeless divine stories of Sanatan Dharma — tales of Shiva, Vishnu, Rama, Krishna, Durga and all deities that illuminate the path of dharma and liberation.</p>
     <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-      <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:999px;padding:6px 18px;font-size:0.8rem;color:var(--clr-gold)">📖 52 Divine Stories</div>
+      <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:999px;padding:6px 18px;font-size:0.8rem;color:var(--clr-gold)">📖 57 Divine Stories</div>
       <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:999px;padding:6px 18px;font-size:0.8rem;color:var(--clr-gold)">🔱 Shiv Puran</div>
       <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:999px;padding:6px 18px;font-size:0.8rem;color:var(--clr-gold)">🏹 Ramayana</div>
     </div>
@@ -143,9 +146,9 @@
       <h2 class="section-title" id="featured-heading">इस सप्ताह की विशेष कथा</h2>
       <div class="divider-om">॥ ॐ ॥</div>
     </div>
-    <div class="katha-grid">
-      <a class="katha-card katha-featured reveal" href="/शिव-पुराण-कथाएं-shiva-purana-stories">
-        <div class="katha-card__img"><img src="/assets/images/sanatan_1784715094484_0-150x150.jpg" alt="Shiv Katha" loading="lazy"><div class="katha-card__overlay"></div><span class="katha-card__deity">🔱 Shiva Katha</span></div>
+            <div class="katha-grid">
+      <a class="katha-card katha-featured reveal" href="/समुद्र-मंथन-samudra-manthan">
+        <div class="katha-card__img"><img src="/assets/images/The_Eternal_Union_of_Cosmic_Silence_and_Primal_Energy_16_9_8K.png" alt="समुद्र मंथन कथा" loading="lazy"><div class="katha-card__overlay"></div><span class="katha-card__deity">🔱 Shiva Katha</span></div>
         <div class="katha-card__body">
           <div style="font-size:0.75rem;color:var(--clr-text-faint);margin-bottom:12px">📅 August 2026 · शिव पुराण</div>
           <h3 class="katha-card__title" style="font-size:1.5rem">समुद्र मंथन — अमृत और हलाहल की अद्भुत कथा</h3>
@@ -153,49 +156,49 @@
           <div class="katha-card__meta" style="margin-top:auto"><span>⏱ 12 min read</span><span class="katha-card__read">Read Full Katha →</span></div>
         </div>
       </a>
-      <a class="katha-card reveal reveal-delay-1" href="/रामायण-कथा-ramayana-stories">
-        <div class="katha-card__img"><img src="/assets/images/sanatan_1784297501195_0-150x150.jpg" alt="Ram Katha" loading="lazy"><div class="katha-card__overlay"></div><span class="katha-card__deity">🏹 Ram Katha</span></div>
+      <a class="katha-card reveal reveal-delay-1" href="/सीता-स्वयंवर-शिव-धनुष-भंग-sita-swayamvar-katha">
+        <div class="katha-card__img"><img src="/assets/images/sanatan_1783623713747_0.jpg" alt="सीता स्वयंवर कथा" loading="lazy"><div class="katha-card__overlay"></div><span class="katha-card__deity">🏹 Ram Katha</span></div>
         <div class="katha-card__body">
-          <div style="font-size:0.75rem;color:var(--clr-text-faint);margin-bottom:8px">📅 August 2026</div>
-          <h3 class="katha-card__title">सीता स्वयंवर — शिव धनुष भंग की रोचक कथा</h3>
-          <p class="katha-card__excerpt">जनक की नगरी मिथिला में लगे महायज्ञ में जब शिव का दिव्य धनुष रखा गया, तब किसी राजा से भी न उठा — पर राम के एक स्पर्श से वह धनुष टूट गया।</p>
-          <div class="katha-card__meta"><span>⏱ 8 min read</span><span class="katha-card__read">Read →</span></div>
-        </div>
-      </a>
-      <a class="katha-card reveal reveal-delay-2" href="/shree-krishna">
-        <div class="katha-card__img"><img src="/assets/images/sanatan_1784141275913_0-150x150.jpg" alt="Krishna Katha" loading="lazy"><div class="katha-card__overlay"></div><span class="katha-card__deity">🦚 Krishna Katha</span></div>
-        <div class="katha-card__body">
-          <div style="font-size:0.75rem;color:var(--clr-text-faint);margin-bottom:8px">📅 July 2026</div>
-          <h3 class="katha-card__title">कालिया नाग दमन — यमुना को मुक्त करने की कथा</h3>
-          <p class="katha-card__excerpt">जब विषैले कालिया नाग ने यमुना को प्रदूषित कर दिया, तब बालकृष्ण ने यमुना में कूदकर उसका दमन किया।</p>
-          <div class="katha-card__meta"><span>⏱ 6 min read</span><span class="katha-card__read">Read →</span></div>
-        </div>
-      </a>
-      <a class="katha-card reveal" href="/देवी-कथाएं-devi-stories">
-        <div class="katha-card__img"><img src="/assets/images/sanatan_1783879384971_0-150x150.jpg" alt="Durga Katha" loading="lazy"><div class="katha-card__overlay"></div><span class="katha-card__deity">🌺 Durga Katha</span></div>
-        <div class="katha-card__body">
-          <div style="font-size:0.75rem;color:var(--clr-text-faint);margin-bottom:8px">📅 July 2026</div>
-          <h3 class="katha-card__title">महिषासुर मर्दिनी — देवी दुर्गा और महिषासुर का युद्ध</h3>
-          <p class="katha-card__excerpt">जब महिषासुर का अत्याचार देवलोक में भी फैल गया, तब सभी देवताओं की शक्ति से माँ दुर्गा प्रकट हुईं।</p>
+          <div style="font-size:0.75rem;color:var(--clr-text-faint);margin-bottom:8px">📅 September 2026 · वाल्मीकि रामायण</div>
+          <h3 class="katha-card__title">सीता स्वयंवर — शिव धनुष भंग की पावन कथा</h3>
+          <p class="katha-card__excerpt">जनकपुर में पिनाक धनुष का प्रत्यंचा चढ़ाना और प्रभु श्री राम व माता जानकी का दिव्य विवाह प्रसंग।</p>
           <div class="katha-card__meta"><span>⏱ 10 min read</span><span class="katha-card__read">Read →</span></div>
         </div>
       </a>
-      <a class="katha-card reveal reveal-delay-1" href="/गणेश-कथा-ganesh-stories">
-        <div class="katha-card__img"><img src="/assets/images/sanatan_1783838948082_0-150x150.jpg" alt="Ganesh Katha" loading="lazy"><div class="katha-card__overlay"></div><span class="katha-card__deity">🐘 Ganesh Katha</span></div>
+      <a class="katha-card reveal reveal-delay-2" href="/कालिया-नाग-दमन-कथा-kaliya-naag-daman-katha">
+        <div class="katha-card__img"><img src="/assets/images/Sri_Krishna_The_Infinite_Soul_of_Vrindavan_8K_UHD.png" alt="कालिया नाग दमन कथा" loading="lazy"><div class="katha-card__overlay"></div><span class="katha-card__deity">🦚 Krishna Katha</span></div>
         <div class="katha-card__body">
-          <div style="font-size:0.75rem;color:var(--clr-text-faint);margin-bottom:8px">📅 July 2026</div>
-          <h3 class="katha-card__title">गणेश जी का जन्म — पार्वती और शिव की अद्भुत कथा</h3>
-          <p class="katha-card__excerpt">माँ पार्वती ने हल्दी और तेल से बनाए एक बालक में प्राण डाले और उसे द्वारपाल बनाया।</p>
-          <div class="katha-card__meta"><span>⏱ 7 min read</span><span class="katha-card__read">Read →</span></div>
+          <div style="font-size:0.75rem;color:var(--clr-text-faint);margin-bottom:8px">📅 September 2026 · श्रीमद्भागवत</div>
+          <h3 class="katha-card__title">कालिया नाग दमन — यमुना शुद्धि और बालकृष्ण लीला</h3>
+          <p class="katha-card__excerpt">कालिया नाग के विष से काली हुई यमुना का उद्धार और कालिया के फनों पर श्री कृष्ण का दिव्य तांडव नृत्य।</p>
+          <div class="katha-card__meta"><span>⏱ 9 min read</span><span class="katha-card__read">Read →</span></div>
         </div>
       </a>
-      <a class="katha-card reveal reveal-delay-2" href="/हनुमान-कथा-hanuman-stories">
-        <div class="katha-card__img"><img src="/assets/images/sanatan_1783624315090_1-150x150.jpg" alt="Hanuman Katha" loading="lazy"><div class="katha-card__overlay"></div><span class="katha-card__deity">🐒 Hanuman Katha</span></div>
+      <a class="katha-card reveal" href="/महिषासुर-मर्दिनी-कथा-mahishasura-mardini-katha">
+        <div class="katha-card__img"><img src="/assets/images/sanatan_1773575625180_0.jpg" alt="महिषासुर मर्दिनी कथा" loading="lazy"><div class="katha-card__overlay"></div><span class="katha-card__deity">🌺 Durga Katha</span></div>
         <div class="katha-card__body">
-          <div style="font-size:0.75rem;color:var(--clr-text-faint);margin-bottom:8px">📅 June 2026</div>
-          <h3 class="katha-card__title">हनुमान जी का सूर्य को फल समझना — बाल कथा</h3>
-          <p class="katha-card__excerpt">बालक हनुमान ने सूर्य को लाल फल समझकर उन्हें पकड़ने के लिए आकाश में उड़ान भरी।</p>
-          <div class="katha-card__meta"><span>⏱ 5 min read</span><span class="katha-card__read">Read →</span></div>
+          <div style="font-size:0.75rem;color:var(--clr-text-faint);margin-bottom:8px">📅 September 2026 · देवी महात्म्य</div>
+          <h3 class="katha-card__title">महिषासुर मर्दिनी कथा — माँ भगवती का प्राकट्य एवं विजय</h3>
+          <p class="katha-card__excerpt">देवताओं के सामूहिक तेज से महाशक्ति दुर्गा का प्राकट्य, अस्त्र-शस्त्र प्राप्ति और दुष्ट महिषासुर का वध।</p>
+          <div class="katha-card__meta"><span>⏱ 11 min read</span><span class="katha-card__read">Read →</span></div>
+        </div>
+      </a>
+      <a class="katha-card reveal reveal-delay-1" href="/श्री-गणेश-जन्म-कथा-shree-ganesh-janma-katha">
+        <div class="katha-card__img"><img src="/assets/images/The_Radiant_Lord_of_New_Beginnings.png" alt="श्री गणेश जन्म कथा" loading="lazy"><div class="katha-card__overlay"></div><span class="katha-card__deity">🐘 Ganesh Katha</span></div>
+        <div class="katha-card__body">
+          <div style="font-size:0.75rem;color:var(--clr-text-faint);margin-bottom:8px">📅 September 2026 · शिव पुराण</div>
+          <h3 class="katha-card__title">श्री गणेश जन्म कथा — गजमुख प्राकट्य और प्रथम पूज्य वरदान</h3>
+          <p class="katha-card__excerpt">माता पार्वती द्वारा उबटन से बालक का निर्माण, शिव गणों से धर्म युद्ध और गजमुख प्रदान कर प्रथम पूज्य बनने की कथा।</p>
+          <div class="katha-card__meta"><span>⏱ 8 min read</span><span class="katha-card__read">Read →</span></div>
+        </div>
+      </a>
+      <a class="katha-card reveal reveal-delay-2" href="/हनुमान-बाल-लीला-सूर्य-फल-hanuman-surya-katha">
+        <div class="katha-card__img"><img src="/assets/images/baal-hanuman.jpeg" alt="हनुमान बाल लीला कथा" loading="lazy"><div class="katha-card__overlay"></div><span class="katha-card__deity">🐒 Hanuman Katha</span></div>
+        <div class="katha-card__body">
+          <div style="font-size:0.75rem;color:var(--clr-text-faint);margin-bottom:8px">📅 September 2026 · वाल्मीकि रामायण</div>
+          <h3 class="katha-card__title">हनुमान जी की बाल लीला — सूर्य को फल समझकर निगलना</h3>
+          <p class="katha-card__excerpt">बालक मारुति द्वारा सूर्य देव को मीठा फल समझकर छलांग लगाना, इंद्र का वज्र प्रहार और समस्त देवताओं से अमोघ वरदान।</p>
+          <div class="katha-card__meta"><span>⏱ 8 min read</span><span class="katha-card__read">Read →</span></div>
         </div>
       </a>
     </div>
@@ -221,12 +224,13 @@
 
 
 
+
 <section style="padding:var(--sp-3xl) 0;background:var(--clr-bg-darkest);border-top:1px solid rgba(245,158,11,0.15);" id="katha-library" aria-labelledby="library-heading">
   <div class="container">
     <div class="section-header reveal">
       <span class="section-label">📖 सम्पूर्ण देव कथा संग्रह</span>
       <h2 class="section-title" id="library-heading">समस्त पौराणिक कथाएं</h2>
-      <p class="section-desc" id="katha-filter-summary">दिखा रहे हैं: 52 पावन देव कथाएं</p>
+      <p class="section-desc" id="katha-filter-summary">दिखा रहे हैं: 57 पावन देव कथाएं</p>
       <div class="divider-om">॥ ॐ ॥</div>
     </div>
     <div class="katha-grid" id="dev-katha-grid">
@@ -631,6 +635,22 @@
         </div>
       </a>
         
+      <a class="katha-card dev-katha-item reveal" data-deity="rama" href="/सीता-स्वयंवर-शिव-धनुष-भंग-sita-swayamvar-katha">
+        <div class="katha-card__img">
+          <img src="/assets/images/sanatan_1783623713747_0.jpg" alt="सीता स्वयंवर कथा: जनक सभा में शिव धनुष पिनाक का भंजन, श्री राम-जानकी विवाह और आध्यात्मिक रहस्य" loading="lazy" onerror="this.onerror=null;this.src='/assets/images/Gemini_Generated_Image_1wfrps1wfrps1wfr.jpg';">
+          <div class="katha-card__overlay"></div>
+          <span class="katha-card__deity">🏹 राम कथा</span>
+        </div>
+        <div class="katha-card__body">
+          <h3 class="katha-card__title">सीता स्वयंवर कथा: जनक सभा में शिव धनुष पिनाक का भंजन, श्री राम-जानकी विवाह और आध्यात्मिक रहस्य</h3>
+          <p class="katha-card__excerpt">सीता स्वयंवर एवं शिव धनुष भंग की प्रामाणिक कथा: राजा जनक की प्रतिज्ञा, भगवान श्री राम द्वारा पिनाक का भंजन, परशुराम संवाद और आध्यात्मिक महत्...</p>
+          <div class="katha-card__meta">
+            <span>⏱ पावन प्रसंग</span>
+            <span class="katha-card__read">कथा पढ़ें →</span>
+          </div>
+        </div>
+      </a>
+        
       <a class="katha-card dev-katha-item reveal" data-deity="rama" href="/रामायण-कथा-ramayana-stories">
         <div class="katha-card__img">
           <img src="/assets/images/sanatan_1783623713747_0.jpg" alt="रामायण के 5 प्रेरक प्रसंग: मर्यादा पुरुषोत्तम राम, केवट संवाद, शबरी के बेर और विभीषण शरणागति" loading="lazy" onerror="this.onerror=null;this.src='/assets/images/Gemini_Generated_Image_1wfrps1wfrps1wfr.jpg';">
@@ -688,6 +708,22 @@
         <div class="katha-card__body">
           <h3 class="katha-card__title">पौराणिक कथाएं और रहस्य: 7 दिव्य सम्पूर्ण पाठ विधि और लाभ</h3>
           <p class="katha-card__excerpt">...</p>
+          <div class="katha-card__meta">
+            <span>⏱ पावन प्रसंग</span>
+            <span class="katha-card__read">कथा पढ़ें →</span>
+          </div>
+        </div>
+      </a>
+        
+      <a class="katha-card dev-katha-item reveal" data-deity="krishna" href="/कालिया-नाग-दमन-कथा-kaliya-naag-daman-katha">
+        <div class="katha-card__img">
+          <img src="/assets/images/Sri_Krishna_The_Infinite_Soul_of_Vrindavan_8K_UHD.png" alt="कालिया नाग दमन कथा: यमुना का विषहरण, बालकृष्ण का फनों पर तांडव नृत्य और श्रीमद्भागवत रहस्य" loading="lazy" onerror="this.onerror=null;this.src='/assets/images/Gemini_Generated_Image_1wfrps1wfrps1wfr.jpg';">
+          <div class="katha-card__overlay"></div>
+          <span class="katha-card__deity">🦚 कृष्ण कथा</span>
+        </div>
+        <div class="katha-card__body">
+          <h3 class="katha-card__title">कालिया नाग दमन कथा: यमुना का विषहरण, बालकृष्ण का फनों पर तांडव नृत्य और श्रीमद्भागवत रहस्य</h3>
+          <p class="katha-card__excerpt">श्रीमद्भागवत महापुराण अनुसार कालिया नाग दमन की प्रामाणिक कथा: यमुना का विषैला जल, बालकृष्ण का कदंब से कूदना, नाग के फनों पर नृत्य और नागपत्न...</p>
           <div class="katha-card__meta">
             <span>⏱ पावन प्रसंग</span>
             <span class="katha-card__read">कथा पढ़ें →</span>
@@ -768,6 +804,22 @@
         <div class="katha-card__body">
           <h3 class="katha-card__title">पुरुषोत्तम मास 2026</h3>
           <p class="katha-card__excerpt">...</p>
+          <div class="katha-card__meta">
+            <span>⏱ पावन प्रसंग</span>
+            <span class="katha-card__read">कथा पढ़ें →</span>
+          </div>
+        </div>
+      </a>
+        
+      <a class="katha-card dev-katha-item reveal" data-deity="durga" href="/महिषासुर-मर्दिनी-कथा-mahishasura-mardini-katha">
+        <div class="katha-card__img">
+          <img src="/assets/images/sanatan_1773575625180_0.jpg" alt="महिषासुर मर्दिनी कथा: देवताओं के तेज से माँ दुर्गा का प्राकट्य, महिषासुर वध और शक्ति तत्व का रहस्य" loading="lazy" onerror="this.onerror=null;this.src='/assets/images/Gemini_Generated_Image_1wfrps1wfrps1wfr.jpg';">
+          <div class="katha-card__overlay"></div>
+          <span class="katha-card__deity">🌺 दुर्गा कथा</span>
+        </div>
+        <div class="katha-card__body">
+          <h3 class="katha-card__title">महिषासुर मर्दिनी कथा: देवताओं के तेज से माँ दुर्गा का प्राकट्य, महिषासुर वध और शक्ति तत्व का रहस्य</h3>
+          <p class="katha-card__excerpt">देवी भागवत एवं मार्कंडेय पुराण अनुसार महिषासुर मर्दिनी की पावन कथा: त्रिदेवों के तेज से माँ जगदम्बा का प्राकट्य, अस्त्र अर्पण, नौ दिनों का य...</p>
           <div class="katha-card__meta">
             <span>⏱ पावन प्रसंग</span>
             <span class="katha-card__read">कथा पढ़ें →</span>
@@ -864,6 +916,22 @@
         <div class="katha-card__body">
           <h3 class="katha-card__title">मां कात्यायनी पूजा विधि और मंत्र 2026: चैत्र नवरात्रि छठा दिन</h3>
           <p class="katha-card__excerpt">...</p>
+          <div class="katha-card__meta">
+            <span>⏱ पावन प्रसंग</span>
+            <span class="katha-card__read">कथा पढ़ें →</span>
+          </div>
+        </div>
+      </a>
+        
+      <a class="katha-card dev-katha-item reveal" data-deity="ganesh" href="/श्री-गणेश-जन्म-कथा-shree-ganesh-janma-katha">
+        <div class="katha-card__img">
+          <img src="/assets/images/The_Radiant_Lord_of_New_Beginnings.png" alt="श्री गणेश जन्म कथा: माता पार्वती के उबटन से बालक का निर्माण, शिव-गणेश संवाद और प्रथम पूज्य का वरदान" loading="lazy" onerror="this.onerror=null;this.src='/assets/images/Gemini_Generated_Image_1wfrps1wfrps1wfr.jpg';">
+          <div class="katha-card__overlay"></div>
+          <span class="katha-card__deity">🐘 गणेश कथा</span>
+        </div>
+        <div class="katha-card__body">
+          <h3 class="katha-card__title">श्री गणेश जन्म कथा: माता पार्वती के उबटन से बालक का निर्माण, शिव-गणेश संवाद और प्रथम पूज्य का वरदान</h3>
+          <p class="katha-card__excerpt">शिव पुराण अनुसार भगवान गणेश के जन्म की प्रामाणिक कथा: माता पार्वती द्वारा बालक का निर्माण, द्वार रक्षा, शिव गणों से संवाद, गजमुख प्रत्यारोपण...</p>
           <div class="katha-card__meta">
             <span>⏱ पावन प्रसंग</span>
             <span class="katha-card__read">कथा पढ़ें →</span>
@@ -999,6 +1067,22 @@
         </div>
       </a>
         
+      <a class="katha-card dev-katha-item reveal" data-deity="hanuman" href="/हनुमान-बाल-लीला-सूर्य-फल-hanuman-surya-katha">
+        <div class="katha-card__img">
+          <img src="/assets/images/baal-hanuman.jpeg" alt="श्री हनुमान बाल लीला: प्रभात के सूर्य को स्वादिष्ट फल समझना, देवराज इंद्र का वज्र और अमोघ वरदान" loading="lazy" onerror="this.onerror=null;this.src='/assets/images/Gemini_Generated_Image_1wfrps1wfrps1wfr.jpg';">
+          <div class="katha-card__overlay"></div>
+          <span class="katha-card__deity">🐒 हनुमान कथा</span>
+        </div>
+        <div class="katha-card__body">
+          <h3 class="katha-card__title">श्री हनुमान बाल लीला: प्रभात के सूर्य को स्वादिष्ट फल समझना, देवराज इंद्र का वज्र और अमोघ वरदान</h3>
+          <p class="katha-card__excerpt">वाल्मीकि रामायण अनुसार श्री हनुमान जी की पावन बाल कथा: बाल मारुति का सूर्य को पकड़ने के लिए आकाश में उड़ना, राहु का भय, इंद्र का वज्र प्रहार...</p>
+          <div class="katha-card__meta">
+            <span>⏱ पावन प्रसंग</span>
+            <span class="katha-card__read">कथा पढ़ें →</span>
+          </div>
+        </div>
+      </a>
+        
       <a class="katha-card dev-katha-item reveal" data-deity="hanuman" href="/हनुमान-कथा-hanuman-stories">
         <div class="katha-card__img">
           <img src="/assets/images/Five-faces-infinite-powers_-Panchmukhi-Hanuman-Ji_.jpeg" alt="श्री हनुमान पावन चरित्र: जन्म रहस्य, बाललीला, सुग्रीव-राम मिलन और लंका दहन" loading="lazy" onerror="this.onerror=null;this.src='/assets/images/Gemini_Generated_Image_1wfrps1wfrps1wfr.jpg';">
@@ -1071,6 +1155,7 @@
 
 
 
+
 <section class="cta-strip" aria-labelledby="newsletter-heading">
   <div class="container">
     <div class="cta-strip__inner">
@@ -1094,128 +1179,8 @@
   <div class="footer-bottom"><div class="container"><div class="footer-bottom__inner"><div>© 2026 <a href="index.html"><strong style="color:var(--clr-gold)">Bhakti Amrit Sanatan</strong></a> · All Rights Reserved</div><div style="display:flex;gap:16px;flex-wrap:wrap"><a href="/privacy-policy" target="_blank">Privacy Policy</a><a href="/disclaimer" target="_blank">Disclaimer</a><a href="sitemap.xml" target="_blank">Sitemap</a></div></div></div></div>
 </footer>
 <button class="back-to-top" aria-label="Back to top">↑</button>
-<script src="scripts/main.js" defer></script>
+<script src="/scripts/main.js" defer></script>
 <script src="/articles-data.js" defer></script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const filterBtns = document.querySelectorAll('#deity-filter .deity-btn');
-  const items = document.querySelectorAll('.dev-katha-item');
-  const summaryEl = document.getElementById('katha-filter-summary');
-
-  if (!filterBtns.length || !items.length) return;
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const deity = btn.getAttribute('data-deity') || 'all';
-      let visible = 0;
-
-      items.forEach(item => {
-        const itemDeity = item.getAttribute('data-deity');
-        if (deity === 'all' || itemDeity === deity) {
-          item.style.display = 'block';
-          visible++;
-        } else {
-          item.style.display = 'none';
-        }
-      });
-
-      if (summaryEl) {
-        if (deity === 'all') {
-          summaryEl.textContent = `दिखा रहे हैं: ${visible} पावन देव कथाएं`;
-        } else {
-          const deityName = btn.textContent.trim();
-          summaryEl.textContent = `दिखा रहे हैं: ${visible} ${deityName} कथाएं`;
-        }
-      }
-    });
-  });
-});
-</script>
-
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const filterBtns = document.querySelectorAll('#deity-filter .deity-btn');
-  const items = document.querySelectorAll('.dev-katha-item');
-  const summaryEl = document.getElementById('katha-filter-summary');
-
-  if (!filterBtns.length || !items.length) return;
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const deity = btn.getAttribute('data-deity') || 'all';
-      let visible = 0;
-
-      items.forEach(item => {
-        const itemDeity = item.getAttribute('data-deity');
-        if (deity === 'all' || itemDeity === deity) {
-          item.style.display = 'block';
-          visible++;
-        } else {
-          item.style.display = 'none';
-        }
-      });
-
-      if (summaryEl) {
-        if (deity === 'all') {
-          summaryEl.textContent = `दिखा रहे हैं: ${visible} पावन देव कथाएं`;
-        } else {
-          const deityName = btn.textContent.trim();
-          summaryEl.textContent = `दिखा रहे हैं: ${visible} ${deityName} कथाएं`;
-        }
-      }
-    });
-  });
-});
-</script>
-
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const filterBtns = document.querySelectorAll('#deity-filter .deity-btn');
-  const items = document.querySelectorAll('.dev-katha-item');
-  const summaryEl = document.getElementById('katha-filter-summary');
-
-  if (!filterBtns.length || !items.length) return;
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const deity = btn.getAttribute('data-deity') || 'all';
-      let visible = 0;
-
-      items.forEach(item => {
-        const itemDeity = item.getAttribute('data-deity');
-        if (deity === 'all' || itemDeity === deity) {
-          item.style.display = 'block';
-          visible++;
-        } else {
-          item.style.display = 'none';
-        }
-      });
-
-      if (summaryEl) {
-        if (deity === 'all') {
-          summaryEl.textContent = `दिखा रहे हैं: ${visible} पावन देव कथाएं`;
-        } else {
-          const deityName = btn.textContent.trim();
-          summaryEl.textContent = `दिखा रहे हैं: ${visible} ${deityName} कथाएं`;
-        }
-      }
-    });
-  });
-});
-</script>
-
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {

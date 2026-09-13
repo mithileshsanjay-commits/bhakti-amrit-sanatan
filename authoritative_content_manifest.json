@@ -4210,5 +4210,65 @@
     "publishedAt": "2026-03-04 14:16:54",
     "status": "publish",
     "image": "/assets/images/sanatan_1772633808975_0.png"
+  },
+  {
+    "id": 1001,
+    "slug": "सीता-स्वयंवर-शिव-धनुष-भंग-sita-swayamvar-katha",
+    "title": "सीता स्वयंवर कथा: जनक सभा में शिव धनुष पिनाक का भंजन, श्री राम-जानकी विवाह और आध्यात्मिक रहस्य",
+    "description": "सीता स्वयंवर एवं शिव धनुष भंग की प्रामाणिक कथा: राजा जनक की प्रतिज्ञा, भगवान श्री राम द्वारा पिनाक का भंजन, परशुराम संवाद और आध्यात्मिक महत्व।",
+    "category": "Dev Katha",
+    "featured_image": "/assets/images/sanatan_1783623713747_0.jpg",
+    "image": "/assets/images/sanatan_1783623713747_0.jpg",
+    "canonical_url": "https://www.bhaktiamritsanatan.com/सीता-स्वयंवर-शिव-धनुष-भंग-sita-swayamvar-katha",
+    "filename": "सीता-स्वयंवर-शिव-धनुष-भंग-sita-swayamvar-katha.html",
+    "publishedAt": "2026-08-15 08:00:00"
+  },
+  {
+    "id": 1002,
+    "slug": "कालिया-नाग-दमन-कथा-kaliya-naag-daman-katha",
+    "title": "कालिया नाग दमन कथा: यमुना का विषहरण, बालकृष्ण का फनों पर तांडव नृत्य और श्रीमद्भागवत रहस्य",
+    "description": "श्रीमद्भागवत महापुराण अनुसार कालिया नाग दमन की प्रामाणिक कथा: यमुना का विषैला जल, बालकृष्ण का कदंब से कूदना, नाग के फनों पर नृत्य और नागपत्नियों की स्तुति।",
+    "category": "Dev Katha",
+    "featured_image": "/assets/images/Sri_Krishna_The_Infinite_Soul_of_Vrindavan_8K_UHD.png",
+    "image": "/assets/images/Sri_Krishna_The_Infinite_Soul_of_Vrindavan_8K_UHD.png",
+    "canonical_url": "https://www.bhaktiamritsanatan.com/कालिया-नाग-दमन-कथा-kaliya-naag-daman-katha",
+    "filename": "कालिया-नाग-दमन-कथा-kaliya-naag-daman-katha.html",
+    "publishedAt": "2026-08-16 08:30:00"
+  },
+  {
+    "id": 1003,
+    "slug": "महिषासुर-मर्दिनी-कथा-mahishasura-mardini-katha",
+    "title": "महिषासुर मर्दिनी कथा: देवताओं के तेज से माँ दुर्गा का प्राकट्य, महिषासुर वध और शक्ति तत्व का रहस्य",
+    "description": "देवी भागवत एवं मार्कंडेय पुराण अनुसार महिषासुर मर्दिनी की पावन कथा: त्रिदेवों के तेज से माँ जगदम्बा का प्राकट्य, अस्त्र अर्पण, नौ दिनों का युद्ध और धर्म विजय।",
+    "category": "Dev Katha",
+    "featured_image": "/assets/images/sanatan_1773575625180_0.jpg",
+    "image": "/assets/images/sanatan_1773575625180_0.jpg",
+    "canonical_url": "https://www.bhaktiamritsanatan.com/महिषासुर-मर्दिनी-कथा-mahishasura-mardini-katha",
+    "filename": "महिषासुर-मर्दिनी-कथा-mahishasura-mardini-katha.html",
+    "publishedAt": "2026-08-17 09:00:00"
+  },
+  {
+    "id": 1004,
+    "slug": "श्री-गणेश-जन्म-कथा-shree-ganesh-janma-katha",
+    "title": "श्री गणेश जन्म कथा: माता पार्वती के उबटन से बालक का निर्माण, शिव-गणेश संवाद और प्रथम पूज्य का वरदान",
+    "description": "शिव पुराण अनुसार भगवान गणेश के जन्म की प्रामाणिक कथा: माता पार्वती द्वारा बालक का निर्माण, द्वार रक्षा, शिव गणों से संवाद, गजमुख प्रत्यारोपण और प्रथम पूज्य रहस्य।",
+    "category": "Dev Katha",
+    "featured_image": "/assets/images/The_Radiant_Lord_of_New_Beginnings.png",
+    "image": "/assets/images/The_Radiant_Lord_of_New_Beginnings.png",
+    "canonical_url": "https://www.bhaktiamritsanatan.com/श्री-गणेश-जन्म-कथा-shree-ganesh-janma-katha",
+    "filename": "श्री-गणेश-जन्म-कथा-shree-ganesh-janma-katha.html",
+    "publishedAt": "2026-08-18 09:30:00"
+  },
+  {
+    "id": 1005,
+    "slug": "हनुमान-बाल-लीला-सूर्य-फल-hanuman-surya-katha",
+    "title": "श्री हनुमान बाल लीला: प्रभात के सूर्य को स्वादिष्ट फल समझना, देवराज इंद्र का वज्र और अमोघ वरदान",
+    "description": "वाल्मीकि रामायण अनुसार श्री हनुमान जी की पावन बाल कथा: बाल मारुति का सूर्य को पकड़ने के लिए आकाश में उड़ना, राहु का भय, इंद्र का वज्र प्रहार और पवनदेव का क्रोध।",
+    "category": "Dev Katha",
+    "featured_image": "/assets/images/baal-hanuman.jpeg",
+    "image": "/assets/images/baal-hanuman.jpeg",
+    "canonical_url": "https://www.bhaktiamritsanatan.com/हनुमान-बाल-लीला-सूर्य-फल-hanuman-surya-katha",
+    "filename": "हनुमान-बाल-लीला-सूर्य-फल-hanuman-surya-katha.html",
+    "publishedAt": "2026-08-19 10:00:00"
   }
 ]

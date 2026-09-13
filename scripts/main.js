@@ -607,7 +607,7 @@ BAS.currentLang = localStorage.getItem('bas_lang') || 'hi';
 BAS.translations = {
   hi: {
     nav_home: '🏠 Home',
-    nav_articles: '📚 सभी लेख (281)',
+    nav_articles: '📚 सभी लेख (286)',
     nav_mantras: '🔱 Mantras',
     nav_puja: '🪔 Puja Vidhi',
     nav_vrat: '📅 Vrat & Festivals',
@@ -616,7 +616,7 @@ BAS.translations = {
     nav_donate: '🙏 Donate',
     lang_btn: 'English',
     hero_badge: 'सनातन धर्म की सम्पूर्ण जानकारी',
-    hero_cta_articles: '📕 सम्पूर्ण 281 लेख संग्रह',
+    hero_cta_articles: '📕 सम्पूर्ण 286 लेख संग्रह',
     hero_quick_label: 'त्वरित दर्शन:',
     hero_search_ph: 'मंत्र, व्रत, देव कथा खोजें...',
     hero_search_btn: '🔍 Search',
@@ -639,7 +639,7 @@ BAS.translations = {
     posts_section_label: '✨ Latest Articles',
     posts_section_title: 'Featured Bhakti Articles',
     posts_section_sub: 'नवीनतम आध्यात्मिक लेख',
-    view_all_articles_btn: '📚 सभी 281 प्रामाणिक लेख देखें (View All Articles) →',
+    view_all_articles_btn: '📚 सभी 286 प्रामाणिक लेख देखें (View All Articles) →',
     today_gita_label: '🕉️ गीता ज्ञान',
     today_gita_title: "Today's Divine Message",
     today_gita_sub: 'आज का गीता श्लोक',
@@ -665,7 +665,7 @@ BAS.translations = {
   },
   en: {
     nav_home: '🏠 Home',
-    nav_articles: '📚 All Articles (281)',
+    nav_articles: '📚 All Articles (286)',
     nav_mantras: '🔱 Mantras',
     nav_puja: '🪔 Puja Vidhi',
     nav_vrat: '📅 Vrat & Festivals',
@@ -674,7 +674,7 @@ BAS.translations = {
     nav_donate: '🙏 Donate',
     lang_btn: 'हिन्दी',
     hero_badge: 'Complete Guide to Sanatan Dharma',
-    hero_cta_articles: '📕 All 281 Articles Library',
+    hero_cta_articles: '📕 All 286 Articles Library',
     hero_quick_label: 'Quick Links:',
     hero_search_ph: 'Search mantras, rituals, sacred stories...',
     hero_search_btn: '🔍 Search',
@@ -701,7 +701,7 @@ BAS.translations = {
     posts_section_label: '✨ Latest Wisdom Articles',
     posts_section_title: 'Featured Devotional Articles',
     posts_section_sub: 'Latest authentic scriptural publications',
-    view_all_articles_btn: '📚 Explore All 281 Authentic Articles Library →',
+    view_all_articles_btn: '📚 Explore All 286 Authentic Articles Library →',
     today_gita_label: '🕉️ Geeta Wisdom',
     today_gita_title: "Today's Divine Message",
     today_gita_sub: 'Daily Bhagavad Gita Shloka & Life Insight',
@@ -1068,7 +1068,7 @@ BAS.initPwaInstallPopup = function () {
   const isEn = (BAS.currentLang === 'en');
   const title = isEn ? 'Bhakti Amrit Sanatan App' : 'भक्ति अमृत सनातन ऐप';
   const badge = isEn ? 'ॐ OFFICIAL APP' : 'ॐ आधिकारिक ऐप';
-  const desc = isEn ? 'Fast access to Daily Panchang, 281 Vedic articles, Aartis & Mantras on your home screen!' : 'दैनिक पंचांग, आरती, चालीसा और 281 सनातन लेख सीधे अपनी होम स्क्रीन पर पाएं!';
+  const desc = isEn ? 'Fast access to Daily Panchang, 286 Vedic articles, Aartis & Mantras on your home screen!' : 'दैनिक पंचांग, आरती, चालीसा और 286 सनातन लेख सीधे अपनी होम स्क्रीन पर पाएं!';
   const installBtnText = isEn ? '📲 Install App' : '📲 ऐप इंस्टॉल करें';
   const laterBtnText = isEn ? 'Later' : 'बाद में';
   const iosHelp = isEn ? 'To install on iPhone/iPad: Tap Share ⎋ below, then choose "Add to Home Screen ➕".' : 'iPhone/iPad पर इंस्टॉल करने के लिए: सफारी में नीचे Share ⎋ दबाएं और "Add to Home Screen ➕" चुनें।';
