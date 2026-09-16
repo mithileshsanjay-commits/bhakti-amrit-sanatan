@@ -4385,7 +4385,7 @@ img {
     <div class="container">
       <div class="footer-bottom__inner">
         <div>
-          © 2026 <a href="index.html"><strong style="color:var(--clr-gold);">Bhakti Amrit Sanatan</strong></a> · All Rights Reserved
+          © 2026 <a href="/"><strong style="color:var(--clr-gold);">Bhakti Amrit Sanatan</strong></a> · All Rights Reserved
         </div>
         <div style="display:flex; gap:16px; flex-wrap:wrap;">
           <a href="/privacy-policy" target="_blank">Privacy Policy</a>
@@ -4406,7 +4406,6 @@ img {
 <a class="whatsapp-float" href="https://wa.me/?text=सनातन धर्म की सम्पूर्ण जानकारी के लिए देखें: https://www.bhaktiamritsanatan.com" target="_blank" rel="noopener" aria-label="Share on WhatsApp" title="Share on WhatsApp">💬</a>
 
 <script src="/articles-data.js"></script>
-<script src="/scripts/panchang-engine.js"></script>
 <script>
 /* ======================================================
    BHAKTI AMRIT SANATAN — JavaScript Core
@@ -4416,7 +4415,10 @@ img {
 'use strict';
 
 // ── NAMESPACE ──────────────────────────────────────────
-const BAS = {};
+// Use window.BAS so the panchang engine IIFE (inlined below) writes
+// BAS.Astro onto the same object that this inline code reads.
+window.BAS = window.BAS || {};
+const BAS = window.BAS;
 
 // ── PANCHANG DATA ──────────────────────────────────────
 BAS.panchangData = (function () {
