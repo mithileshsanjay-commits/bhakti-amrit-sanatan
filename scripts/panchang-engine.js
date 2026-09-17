@@ -150,6 +150,69 @@
     'जुलाई', 'अगस्त', 'सितंबर', 'अक्टूबर', 'नवंबर', 'दिसंबर'
   ];
 
+  // ── 27 YOGAS (योग) ──────────────────────────────────────────────
+  Astro.YOGAS = [
+    { hi: 'विष्कम्भ', en: 'Vishkambha' },
+    { hi: 'प्रीति', en: 'Priti' },
+    { hi: 'आयुष्मान्', en: 'Ayushman' },
+    { hi: 'सौभाग्य', en: 'Saubhagya' },
+    { hi: 'शोभन', en: 'Shobhana' },
+    { hi: 'अतिगण्ड', en: 'Atiganda' },
+    { hi: 'सुकर्मा', en: 'Sukarma' },
+    { hi: 'धृति', en: 'Dhriti' },
+    { hi: 'शूल', en: 'Shula' },
+    { hi: 'गण्ड', en: 'Ganda' },
+    { hi: 'वृद्धि', en: 'Vriddhi' },
+    { hi: 'ध्रुव', en: 'Dhruva' },
+    { hi: 'व्याघात', en: 'Vyaghata' },
+    { hi: 'हर्षण', en: 'Harshana' },
+    { hi: 'वज्र', en: 'Vajra' },
+    { hi: 'सिद्धि', en: 'Siddhi' },
+    { hi: 'व्यतीपात', en: 'Vyatipata' },
+    { hi: 'वरीयान्', en: 'Variyana' },
+    { hi: 'परिघ', en: 'Parigha' },
+    { hi: 'शिव', en: 'Shiva' },
+    { hi: 'सिद्ध', en: 'Siddha' },
+    { hi: 'साध्य', en: 'Sadhya' },
+    { hi: 'शुभ', en: 'Shubha' },
+    { hi: 'शुक्ल', en: 'Shukla' },
+    { hi: 'ब्रह्म', en: 'Brahma' },
+    { hi: 'ऐन्द्र', en: 'Indra' },
+    { hi: 'वैधृति', en: 'Vaidhriti' }
+  ];
+
+  // ── 11 KARANAS (करण) ────────────────────────────────────────────
+  Astro.KARANAS = [
+    { hi: 'बव', en: 'Bava' },
+    { hi: 'बालव', en: 'Balava' },
+    { hi: 'कौलव', en: 'Kaulava' },
+    { hi: 'तैतिल', en: 'Taitila' },
+    { hi: 'गर', en: 'Gara' },
+    { hi: 'वणिज', en: 'Vanija' },
+    { hi: 'विष्टि (भद्रा)', en: 'Vishti (Bhadra)' },
+    { hi: 'शकुनि', en: 'Shakuni' },
+    { hi: 'चतुष्पाद', en: 'Chatushpada' },
+    { hi: 'नाग', en: 'Naga' },
+    { hi: 'किंस्तुघ्न', en: 'Kimstughna' }
+  ];
+
+  // ── 12 VEDIC HINDU MONTHS (मास) ─────────────────────────────────
+  Astro.HINDU_MASAS = [
+    { hi: 'चैत्र', en: 'Chaitra' },
+    { hi: 'वैशाख', en: 'Vaishakha' },
+    { hi: 'ज्येष्ठ', en: 'Jyeshtha' },
+    { hi: 'आषाढ़', en: 'Ashadha' },
+    { hi: 'श्रावण', en: 'Shravana' },
+    { hi: 'भाद्रपद', en: 'Bhadrapada' },
+    { hi: 'आश्विन', en: 'Ashwin' },
+    { hi: 'कार्तिक', en: 'Kartik' },
+    { hi: 'मार्गशीर्ष', en: 'Margashirsha' },
+    { hi: 'पौष', en: 'Pausha' },
+    { hi: 'माघ', en: 'Magha' },
+    { hi: 'फाल्गुन', en: 'Phalguna' }
+  ];
+
+
   // ── AUTHORITATIVE GRAHAN (ECLIPSE) DATABASE (2026–2028) ────────
   Astro.GRAHAN_DATABASE = [
     {
@@ -584,6 +647,26 @@
     return (jd1 + jd2) / 2.0;
   };
 
+
+  Astro.solveYogaTransition = function (currentJd, targetYoga) {
+    let jd1 = currentJd;
+    let jd2 = currentJd + 1.25;
+    for (let iter = 0; iter < 30; iter++) {
+      const mid = (jd1 + jd2) / 2.0;
+      const { sun, moon } = Astro.getSunMoonLongitudes(mid);
+      const ayanamsa = Astro.getLahiriAyanamsa(mid);
+      const sidSun = (sun - ayanamsa + 360.0) % 360.0;
+      const sidMoon = (moon - ayanamsa + 360.0) % 360.0;
+      const ySum = (sidSun + sidMoon) % 360.0;
+      let diff = ySum - targetYoga;
+      if (diff < -180) diff += 360;
+      if (diff > 180) diff -= 360;
+      if (diff < 0) jd1 = mid;
+      else jd2 = mid;
+    }
+    return (jd1 + jd2) / 2.0;
+  };
+
   // ── FORMAT TIME HELPER ──────────────────────────────────────────
   function minToTimeStr(utcMidnightDate, utcMin, tz) {
     const d = new Date(utcMidnightDate.getTime() + utcMin * 60000);
@@ -596,7 +679,7 @@
   }
 
   // ── MAIN PANCHANG CALCULATION ENGINE ────────────────────────────
-  Astro.calculatePanchang = function (instantUtcDate, cityTz) {
+    Astro.calculatePanchang = function (instantUtcDate, cityTz) {
     const tz = cityTz || 'Asia/Kolkata';
     const city = Astro.CITIES[tz] || Astro.CITIES['Asia/Kolkata'];
     const now = instantUtcDate || Astro.getNow();
@@ -611,9 +694,7 @@
     const dateStr = formatter.format(now); // "YYYY-MM-DD"
     const [localYear, localMonth, localDay] = dateStr.split('-').map(Number);
 
-    // Local weekday
-    const localWeekdayFormatter = new Intl.DateTimeFormat('en-US', { timeZone: tz, weekday: 'narrow' });
-    // Determine 0 = Sun, ..., 6 = Sat in selected city
+    // Determine weekday (0 = Sun, ..., 6 = Sat in selected city)
     const localWeekdayNum = new Date(Date.UTC(localYear, localMonth - 1, localDay)).getUTCDay();
 
     // 2. Solar calculations for observer's coordinates and local civil day
@@ -624,6 +705,47 @@
     let sunsetStr = '--:--';
     let rahuKaalStr = '--:-- – --:--';
     let abhijitStr = '--:-- – --:--';
+    let brahmaStr = '--:-- – --:--';
+    let vijayaStr = '--:-- – --:--';
+    let godhuliStr = '--:-- – --:--';
+    let amritKaalStr = '--:-- – --:--';
+    let yamagandaStr = '--:-- – --:--';
+    let gulikaStr = '--:-- – --:--';
+    let durmuhuratStr = '--:-- – --:--';
+    let muhuratsRaw = {};
+
+    const dayChoghadiya = [];
+    const nightChoghadiya = [];
+
+    const choghadiyaDayOrder = [
+      ['उद्वेग', 'चर', 'लाभ', 'अमृत', 'काल', 'शुभ', 'रोग', 'उद्वेग'],
+      ['अमृत', 'काल', 'शुभ', 'रोग', 'उद्वेग', 'चर', 'लाभ', 'अमृत'],
+      ['रोग', 'उद्वेग', 'चर', 'लाभ', 'अमृत', 'काल', 'शुभ', 'रोग'],
+      ['लाभ', 'अमृत', 'काल', 'शुभ', 'रोग', 'उद्वेग', 'चर', 'लाभ'],
+      ['शुभ', 'रोग', 'उद्वेग', 'चर', 'लाभ', 'अमृत', 'काल', 'शुभ'],
+      ['चर', 'लाभ', 'अमृत', 'काल', 'शुभ', 'रोग', 'उद्वेग', 'चर'],
+      ['काल', 'शुभ', 'रोग', 'उद्वेग', 'चर', 'लाभ', 'अमृत', 'काल']
+    ];
+
+    const choghadiyaNightOrder = [
+      ['शुभ', 'अमृत', 'चर', 'रोग', 'काल', 'लाभ', 'उद्वेग', 'शुभ'],
+      ['चर', 'रोग', 'काल', 'लाभ', 'उद्वेग', 'शुभ', 'अमृत', 'चर'],
+      ['काल', 'लाभ', 'उद्वेग', 'शुभ', 'अमृत', 'चर', 'रोग', 'काल'],
+      ['उद्वेग', 'शुभ', 'अमृत', 'चर', 'रोग', 'काल', 'लाभ', 'उद्वेग'],
+      ['अमृत', 'चर', 'रोग', 'काल', 'लाभ', 'उद्वेग', 'शुभ', 'अमृत'],
+      ['रोग', 'काल', 'लाभ', 'उद्वेग', 'शुभ', 'अमृत', 'चर', 'रोग'],
+      ['लाभ', 'उद्वेग', 'शुभ', 'अमृत', 'चर', 'रोग', 'काल', 'लाभ']
+    ];
+
+    const choghadiyaMeta = {
+      'अमृत': { type: 'shubh', label: 'अमृत (सर्वोत्तम / Best)', icon: '✨' },
+      'शुभ':  { type: 'shubh', label: 'शुभ (उत्तम / Auspicious)', icon: '⭐' },
+      'लाभ':  { type: 'shubh', label: 'लाभ (उन्नति / Prosperous)', icon: '🌟' },
+      'चर':   { type: 'neutral', label: 'चर (सामान्य / Neutral)', icon: '🚶' },
+      'रोग':  { type: 'ashubh', label: 'रोग (अशुभ / Inauspicious)', icon: '⚠️' },
+      'काल':  { type: 'ashubh', label: 'काल (हानि / Inauspicious)', icon: '⛔' },
+      'उद्वेग':{ type: 'ashubh', label: 'उद्वेग (अशुभ / Inauspicious)', icon: '⚠️' }
+    };
 
     if (!solar.isPolar && solar.sunriseUtcMin !== null && solar.sunsetUtcMin !== null) {
       sunriseStr = minToTimeStr(utcMidnight, solar.sunriseUtcMin, tz);
@@ -631,17 +753,14 @@
 
       const daylight = solar.sunsetUtcMin - solar.sunriseUtcMin;
 
-      // 3. Rahu Kaal: authentic 8-part division of daytime
-      // Sunday=8th(idx 7), Monday=2nd(idx 1), Tuesday=7th(idx 6), Wednesday=5th(idx 4),
-      // Thursday=6th(idx 5), Friday=4th(idx 3), Saturday=3rd(idx 2)
+      // Rahu Kaal: authentic 8-part division of daytime
       const rahuSegments = [7, 1, 6, 4, 5, 3, 2];
       const rIdx = rahuSegments[localWeekdayNum];
       const rahuStartMin = solar.sunriseUtcMin + rIdx * (daylight / 8.0);
       const rahuEndMin = solar.sunriseUtcMin + (rIdx + 1) * (daylight / 8.0);
       rahuKaalStr = `${minToTimeStr(utcMidnight, rahuStartMin, tz)} – ${minToTimeStr(utcMidnight, rahuEndMin, tz)}`;
 
-      // 4. Abhijit Muhurat: 8th of 15 divisions centered on solar noon
-      // Traditional rule: Prohibited / inauspicious on Wednesday (बुधवार)
+      // Abhijit Muhurat: 8th of 15 divisions centered on solar noon (prohibited on Wednesday)
       if (localWeekdayNum === 3) {
         abhijitStr = 'बुधवार को वर्जित (Not Applicable)';
       } else {
@@ -649,14 +768,100 @@
         const abhijitEndMin = solar.sunriseUtcMin + 8 * (daylight / 15.0);
         abhijitStr = `${minToTimeStr(utcMidnight, abhijitStartMin, tz)} – ${minToTimeStr(utcMidnight, abhijitEndMin, tz)}`;
       }
-    } else {
-      rahuKaalStr = 'अक्षांश पर अनुपलब्ध (Polar)';
-      abhijitStr = 'अक्षांश पर अनुपलब्ध (Polar)';
+
+      // Brahma Muhurat: 96 min to 48 min before sunrise
+      const bStart = solar.sunriseUtcMin - 96;
+      const bEnd = solar.sunriseUtcMin - 48;
+      brahmaStr = `${minToTimeStr(utcMidnight, bStart, tz)} – ${minToTimeStr(utcMidnight, bEnd, tz)}`;
+
+      // Vijaya Muhurat: 11th division of daylight
+      const vStart = solar.sunriseUtcMin + 10 * (daylight / 15.0);
+      const vEnd = solar.sunriseUtcMin + 11 * (daylight / 15.0);
+      vijayaStr = `${minToTimeStr(utcMidnight, vStart, tz)} – ${minToTimeStr(utcMidnight, vEnd, tz)}`;
+
+      // Godhuli: 12 min before to 12 min after sunset
+      const gStart = solar.sunsetUtcMin - 12;
+      const gEnd = solar.sunsetUtcMin + 12;
+      godhuliStr = `${minToTimeStr(utcMidnight, gStart, tz)} – ${minToTimeStr(utcMidnight, gEnd, tz)}`;
+
+      // Amrit Kaal
+      const aStart = solar.sunriseUtcMin + 8.5 * (daylight / 15.0);
+      const aEnd = solar.sunriseUtcMin + 10 * (daylight / 15.0);
+      amritKaalStr = `${minToTimeStr(utcMidnight, aStart, tz)} – ${minToTimeStr(utcMidnight, aEnd, tz)}`;
+
+      // Yamaganda (8 divisions of daylight)
+      const yamaSegments = [4, 3, 2, 1, 0, 6, 5];
+      const yIdx = yamaSegments[localWeekdayNum];
+      const yStart = solar.sunriseUtcMin + yIdx * (daylight / 8.0);
+      const yEnd = solar.sunriseUtcMin + (yIdx + 1) * (daylight / 8.0);
+      yamagandaStr = `${minToTimeStr(utcMidnight, yStart, tz)} – ${minToTimeStr(utcMidnight, yEnd, tz)}`;
+
+      // Gulika (8 divisions of daylight)
+      const gulikaSegments = [6, 5, 4, 3, 2, 1, 0];
+      const guIdx = gulikaSegments[localWeekdayNum];
+      const guStart = solar.sunriseUtcMin + guIdx * (daylight / 8.0);
+      const guEnd = solar.sunriseUtcMin + (guIdx + 1) * (daylight / 8.0);
+      gulikaStr = `${minToTimeStr(utcMidnight, guStart, tz)} – ${minToTimeStr(utcMidnight, guEnd, tz)}`;
+
+      // Durmuhurat
+      const durStart = solar.sunriseUtcMin + 5 * (daylight / 15.0);
+      const durEnd = solar.sunriseUtcMin + 6 * (daylight / 15.0);
+      durmuhuratStr = `${minToTimeStr(utcMidnight, durStart, tz)} – ${minToTimeStr(utcMidnight, durEnd, tz)}`;
+
+      const toMs = (m) => utcMidnight.getTime() + Math.round(m * 60000);
+
+      // Muhurats Raw Timestamps for Realtime Active Detection
+      muhuratsRaw = {
+        rahuKaal: { startMs: toMs(rahuStartMin), endMs: toMs(rahuEndMin), isAshubh: true, name: 'राहुकाल' },
+        abhijit: localWeekdayNum === 3 ? null : { startMs: toMs(solar.sunriseUtcMin + 7 * (daylight / 15.0)), endMs: toMs(solar.sunriseUtcMin + 8 * (daylight / 15.0)), isAshubh: false, name: 'अभिजीत मुहूर्त' },
+        brahma: { startMs: toMs(bStart), endMs: toMs(bEnd), isAshubh: false, name: 'ब्रह्म मुहूर्त' },
+        vijaya: { startMs: toMs(vStart), endMs: toMs(vEnd), isAshubh: false, name: 'विजय मुहूर्त' },
+        godhuli: { startMs: toMs(gStart), endMs: toMs(gEnd), isAshubh: false, name: 'गोधूलि मुहूर्त' },
+        amritKaal: { startMs: toMs(aStart), endMs: toMs(aEnd), isAshubh: false, name: 'अमृत काल' },
+        yamaganda: { startMs: toMs(yStart), endMs: toMs(yEnd), isAshubh: true, name: 'यमगण्ड' },
+        gulika: { startMs: toMs(guStart), endMs: toMs(guEnd), isAshubh: false, name: 'गुलिक काल' },
+        durmuhurat: { startMs: toMs(durStart), endMs: toMs(durEnd), isAshubh: true, name: 'दुर्मुहूर्त' }
+      };
+
+      // Choghadiya - Day (8 parts)
+      const daySeg = daylight / 8.0;
+      const dOrder = choghadiyaDayOrder[localWeekdayNum];
+      for (let i = 0; i < 8; i++) {
+        const sMin = solar.sunriseUtcMin + i * daySeg;
+        const eMin = solar.sunriseUtcMin + (i + 1) * daySeg;
+        const name = dOrder[i];
+        dayChoghadiya.push({
+          index: i + 1,
+          name,
+          startMs: toMs(sMin),
+          endMs: toMs(eMin),
+          timeStr: `${minToTimeStr(utcMidnight, sMin, tz)} – ${minToTimeStr(utcMidnight, eMin, tz)}`,
+          meta: choghadiyaMeta[name]
+        });
+      }
+
+      // Choghadiya - Night (8 parts)
+      const nightDuration = 1440 - daylight;
+      const nightSeg = nightDuration / 8.0;
+      const nOrder = choghadiyaNightOrder[localWeekdayNum];
+      for (let i = 0; i < 8; i++) {
+        const sMin = solar.sunsetUtcMin + i * nightSeg;
+        const eMin = solar.sunsetUtcMin + (i + 1) * nightSeg;
+        const name = nOrder[i];
+        nightChoghadiya.push({
+          index: i + 1,
+          name,
+          startMs: toMs(sMin),
+          endMs: toMs(eMin),
+          timeStr: `${minToTimeStr(utcMidnight, sMin, tz)} – ${minToTimeStr(utcMidnight, eMin, tz)}`,
+          meta: choghadiyaMeta[name]
+        });
+      }
     }
 
     // 5. Current Instantaneous Tithi and Nakshatra
     const curJd = Astro.dateToJd(now);
-    const { elongation, moon } = Astro.getSunMoonLongitudes(curJd);
+    const { sun, moon, elongation } = Astro.getSunMoonLongitudes(curJd);
 
     const tithiIndex = Math.floor(elongation / 12.0) % 30;
     const isShukla = tithiIndex < 15;
@@ -711,7 +916,43 @@
       month: 'long'
     });
 
-    // 7. Sunrise Tithi (Udaya Tithi) calculation for ritual transparency
+    // 7. Yoga Calculation
+    const siderealSun = (sun - ayanamsa + 360.0) % 360.0;
+    const yogaSum = (siderealSun + siderealMoon) % 360.0;
+    const yogaIndex = Math.floor(yogaSum / (360.0 / 27.0)) % 27;
+    const yogaObj = Astro.YOGAS[yogaIndex];
+    const nextYogaTarget = ((yogaIndex + 1) * (360.0 / 27.0)) % 360.0;
+    const yogaEndJd = Astro.solveYogaTransition(curJd, nextYogaTarget);
+    const yogaEndDate = Astro.jdToDate(yogaEndJd);
+    const yogaEndFormatted = yogaEndDate.toLocaleTimeString('en-US', {
+      timeZone: tz,
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    });
+
+    // 8. Karana Calculation
+    const halfTithiIndex = Math.floor(elongation / 6.0) % 60;
+    let karanaObj;
+    if (halfTithiIndex === 0) {
+      karanaObj = Astro.KARANAS[10]; // Kimstughna
+    } else if (halfTithiIndex >= 57) {
+      karanaObj = Astro.KARANAS[halfTithiIndex - 50]; // 57->Shakuni(7), 58->Chatushpada(8), 59->Naga(9)
+    } else {
+      karanaObj = Astro.KARANAS[(halfTithiIndex - 1) % 7];
+    }
+
+    // 9. Hindu Month (Masa) & Samvat
+    const solarRashi = Math.floor(siderealSun / 30.0);
+    const masaIndex = (solarRashi + 1) % 12;
+    const masaObj = Astro.HINDU_MASAS[masaIndex];
+    const isPostChaitra2026 = (localMonth > 3 || (localMonth === 3 && localDay >= 19));
+    const vikramSamvat = isPostChaitra2026 ? 2083 : 2082;
+    const shakaSamvat = isPostChaitra2026 ? 1948 : 1947;
+    const ayanaHi = (solarRashi >= 9 || solarRashi < 3) ? 'उत्तरायण' : 'दक्षिणायन';
+    const ayanaEn = (solarRashi >= 9 || solarRashi < 3) ? 'Uttarayana' : 'Dakshinayana';
+
+    // 10. Sunrise Tithi (Udaya Tithi)
     let sunriseTithiObj = tithiObj;
     let sunriseTithiDisplayHi = tithiDisplayHi;
     let sunriseTithiDisplayEn = tithiDisplayEn;
@@ -742,7 +983,7 @@
         second: '2-digit',
         hour12: true
       }),
-      // Instantaneous Panchang
+      // Limbs of Panchang
       tithi: {
         index: tithiIndex,
         hi: tithiDisplayHi,
@@ -759,15 +1000,62 @@
         endTimeFormatted: nakshatraEndFormatted,
         endDateFormatted: nakshatraEndDateFormatted
       },
+      yoga: {
+        index: yogaIndex,
+        hi: yogaObj.hi,
+        en: yogaObj.en,
+        endTimeFormatted: yogaEndFormatted
+      },
+      karana: {
+        index: halfTithiIndex,
+        hi: karanaObj.hi,
+        en: karanaObj.en
+      },
       sunriseTithi: {
         hi: sunriseTithiDisplayHi,
         en: sunriseTithiDisplayEn
+      },
+      masa: {
+        hi: masaObj.hi,
+        en: masaObj.en,
+        pakshaHi,
+        pakshaEn
+      },
+      samvat: {
+        vikram: vikramSamvat,
+        shaka: shakaSamvat,
+        ayanaHi,
+        ayanaEn
       },
       solar: {
         sunrise: sunriseStr,
         sunset: sunsetStr,
         rahuKaal: rahuKaalStr,
         abhijit: abhijitStr
+      },
+      muhurats: {
+        brahma: brahmaStr,
+        abhijit: abhijitStr,
+        vijaya: vijayaStr,
+        godhuli: godhuliStr,
+        amritKaal: amritKaalStr,
+        rahuKaal: rahuKaalStr,
+        yamaganda: yamagandaStr,
+        gulika: gulikaStr,
+        durmuhurat: durmuhuratStr
+      },
+      muhuratsRaw,
+      isDaytime: !solar.isPolar && solar.sunriseUtcMin !== null && solar.sunsetUtcMin !== null
+        ? (now.getTime() >= (utcMidnight.getTime() + Math.round(solar.sunriseUtcMin * 60000)) && now.getTime() < (utcMidnight.getTime() + Math.round(solar.sunsetUtcMin * 60000)))
+        : true,
+      sunriseMs: !solar.isPolar && solar.sunriseUtcMin !== null ? (utcMidnight.getTime() + Math.round(solar.sunriseUtcMin * 60000)) : null,
+      sunsetMs: !solar.isPolar && solar.sunsetUtcMin !== null ? (utcMidnight.getTime() + Math.round(solar.sunsetUtcMin * 60000)) : null,
+      tithiEndMs: tithiEndDate ? tithiEndDate.getTime() : null,
+      nakshatraEndMs: nakshatraEndDate ? nakshatraEndDate.getTime() : null,
+      yogaEndMs: yogaEndDate ? yogaEndDate.getTime() : null,
+      choghadiya: {
+        day: dayChoghadiya,
+        night: nightChoghadiya
       }
     };
   };

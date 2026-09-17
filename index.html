@@ -4418,7 +4418,7 @@ img {
 // Use window.BAS so the panchang engine IIFE (inlined below) writes
 // BAS.Astro onto the same object that this inline code reads.
 window.BAS = window.BAS || {};
-const BAS = window.BAS;
+var BAS = window.BAS;
 
 // ── PANCHANG DATA ──────────────────────────────────────
 BAS.panchangData = (function () {
@@ -6575,6 +6575,49 @@ BAS.initPwaInstallPopup = function () {
       }
     }, 3500);
   }
+};
+
+// ── SEARCH BAR SUGGESTIONS ─────────────────────────────
+BAS.initSearchBar = function () {
+  const form  = document.getElementById('hero-search-form');
+  if (!form) return;
+
+  const input = form.querySelector('input');
+  if (!input) return;
+
+  const suggestions = ['गायत्री मंत्र', 'महामृत्युंजय मंत्र', 'हनुमान चालीसा', 'दुर्गा पूजा विधि', 'एकादशी व्रत', 'नवरात्रि व्रत', 'गीता श्लोक', 'शिव पूजा', 'सोमवार व्रत'];
+
+  const list = document.createElement('ul');
+  list.style.cssText = 'position:absolute;top:100%;left:0;right:0;background:rgba(13,0,31,0.97);border:1px solid rgba(245,158,11,0.25);border-radius:16px;margin-top:8px;overflow:hidden;list-style:none;padding:8px 0;display:none;z-index:100;backdrop-filter:blur(20px);';
+  form.style.position = 'relative';
+  form.appendChild(list);
+
+  input.addEventListener('focus', () => {
+    list.innerHTML = '';
+    suggestions.forEach(s => {
+      const li = document.createElement('li');
+      li.textContent = '🔍 ' + s;
+      li.style.cssText = 'padding:10px 20px;cursor:pointer;font-family:var(--font-deva);font-size:0.875rem;color:rgba(255,255,255,0.75);transition:background 0.15s;';
+      li.addEventListener('mouseenter', () => li.style.background = 'rgba(245,158,11,0.1)');
+      li.addEventListener('mouseleave', () => li.style.background = '');
+      li.addEventListener('mousedown', (e) => { e.preventDefault(); input.value = s; list.style.display = 'none'; form.submit(); });
+      list.appendChild(li);
+    });
+    list.style.display = 'block';
+  });
+
+  input.addEventListener('blur', () => setTimeout(() => { list.style.display = 'none'; }, 200));
+
+  input.addEventListener('input', () => {
+    const val = input.value.trim().toLowerCase();
+    const items = list.querySelectorAll('li');
+    items.forEach(li => {
+      li.style.display = li.textContent.toLowerCase().includes(val) ? 'block' : 'none';
+    });
+    list.style.display = 'block';
+  });
+};
+
 // ── ROTATING SPIRITUAL QUOTES ──────────────────────────
 BAS.initRotatingQuotes = function () {
   const el = document.getElementById('rotating-quote');

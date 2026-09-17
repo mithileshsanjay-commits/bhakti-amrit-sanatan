@@ -1,0 +1,396 @@
+================================================================================
+  BHAKTI AMRIT SANATAN — VERCEL HISTORICAL DEPLOYMENT CLEANUP CANDIDATES
+================================================================================
+
+ACCOUNT / ENVIRONMENT:
+  GitHub: mithileshsanjay-commits/bhakti-amrit-sanatan
+  Vercel Scope: conver-ziva (mithileshsanjay@gmail.com)
+  Vercel Project: bhakti-amrit-sanatan
+  Current Live Domain: https://www.bhaktiamritsanatan.com/
+
+PROTECTED DEPLOYMENTS (MUST KEEP — ZERO DELETION):
+  [KEEP] Commit: a315f38 | Date: 2026-09-13 20:34:36 +0400 | Status: Ready | Alias: ACTIVE LIVE PRODUCTION
+         Message: docs(panchang): precisely document astronomical algorithms as Meeus Ch. 25 solar equation of center and Ch. 47 truncated 60-term lunar series
+  [KEEP] Commit: 2cae558 | Date: 2026-09-13 19:46:41 +0400 | Status: Ready | Alias: PROTECTED ROLLBACK POINT
+         Message: fix(panchang): implement high-precision astronomical engine, dynamic solar muhurats, and location-consistent grahan visibility
+  [KEEP] Commit: 9e647d4 | Date: 2026-09-13 15:26:20 +0400 | Status: Ready | Alias: PROTECTED ROLLBACK POINT
+         Message: feat(homepage): count actual published articles and mantras, replace fake YouTube metrics with authentic features
+  [KEEP] Commit: 320326e | Date: 2026-09-13 14:53:24 +0400 | Status: Ready | Alias: PROTECTED ROLLBACK POINT
+         Message: feat(dev-katha): add dedicated articles for featured topics, fix card visibility, and update sitemap
+  [KEEP] Commit: 4967d05 | Date: 2026-09-13 14:23:01 +0400 | Status: Ready | Alias: PROTECTED ROLLBACK POINT
+         Message: fix(puja-vidhi): replace duplicate image with authentic deity-specific images across all deities
+  [KEEP] Commit: f46ad8e | Date: 2026-09-13 13:46:19 +0400 | Status: Ready | Alias: PROTECTED ROLLBACK POINT
+         Message: feat(content): complete Puja Vidhi & Dev Katha pillars, dynamic counts, and hub catalog grids
+
+================================================================================
+CANDIDATE DEPLOYMENTS SAFE TO DELETE (HISTORICAL SUPERSEDED BUILDS):
+Each entry represents an unaliased historical production deployment snapshot on Vercel.
+Deleting these removes duplicate static asset bundles from Vercel Deployment Storage
+while preserving 100% of code, articles, images, and commit history in GitHub.
+================================================================================
+
+ 1. Commit: bdba2fe
+    Created Date: 2026-09-13 03:13:51 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: fix(grahan): surgical micro-fix replacing placeholder dashes with contextual normal-day compact state and verified eclipse expansion
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+ 2. Commit: de3537f
+    Created Date: 2026-09-13 03:02:39 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: feat(grahan): add timezone-aware solar and lunar eclipse indicator with city visibility to Hero Panchang card
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+ 3. Commit: b94db5f
+    Created Date: 2026-09-13 02:55:38 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: feat(panchang): display live timezone-aware local time badge next to date on Hindu Panchang card
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+ 4. Commit: 2b9a146
+    Created Date: 2026-09-13 02:46:59 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: feat(p1-closure): Panchang accuracy, festival rollover engine, English switcher retirement, monetization readiness audit, and UX stabilization
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+ 5. Commit: b04af92
+    Created Date: 2026-09-13 01:49:55 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: feat(trust): conservative spiritual reframing of remaining medical claims across 9 articles
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+ 6. Commit: 04e692c
+    Created Date: 2026-09-13 01:29:17 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: fix(seo): restrict q param stripping on homepage to prevent query parameter duplication
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+ 7. Commit: 626a788
+    Created Date: 2026-09-13 01:25:52 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: docs: update machine-readable audit report for trust and SEO
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+ 8. Commit: 8938658
+    Created Date: 2026-09-13 01:25:22 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: fix(seo): sanitize trailing meta tag brackets and ensure build idempotence
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+ 9. Commit: 0d3121f
+    Created Date: 2026-09-13 01:23:09 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: feat(p0-p1): complete 281-article trust cleanup, scientific claim removal, AI artifact purge and SEO optimization
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+10. Commit: f567ad4
+    Created Date: 2026-09-13 00:35:24 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: fix: prevent auto-scroll on page load and ensure site opens cleanly from top
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+11. Commit: e31599b
+    Created Date: 2026-09-13 00:25:24 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: feat: thoroughly elaborate all 18 Gita chapter placeholders with authentic shlokas, meanings, and insights on geeta-gyan.html
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+12. Commit: 0ef715e
+    Created Date: 2026-09-12 22:01:55 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: feat: complete all 5 user requests - mobile install popup, 18 Gita adhyayas, global translation button, standardized header menu, and YouTube video link
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+13. Commit: 4f8175c
+    Created Date: 2026-09-12 21:18:21 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: feat: embed youtube video YevwYZ-xV4M, remove duplicate festival section, luxury wisdom placeholder card, and complete site-wide bilingual english translation
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+14. Commit: baf480b
+    Created Date: 2026-09-12 20:44:18 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: feat: add hero background audio autoplay, compact hero layout, brand panchang & horoscope, and fix back-button blank page
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+15. Commit: c8826ef
+    Created Date: 2026-09-12 20:21:41 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: style(hero,nav): beautify navigation menu, remove duplicate donate button, and elevate hero page aesthetics
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+16. Commit: 9f6ecb1
+    Created Date: 2026-09-12 19:05:56 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: style(hero): align hero layout, colors, typography, buttons, search pill and panchang widget to visual mockup
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+17. Commit: 52c5d16
+    Created Date: 2026-09-12 18:24:41 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: feat(ui): add styled hero panchang card, standalone festival countdown section, bilingual EN/HI toggle, and fix header visibility
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+18. Commit: 3c800b1
+    Created Date: 2026-09-12 16:15:56 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: fix(layout): center article container in flex layout, cache bust stylesheet to v2.5, and update vercel cache-control headers
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+19. Commit: a4f214f
+    Created Date: 2026-09-12 14:46:08 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: fix(styles): enhance TOC styling to distinct high-contrast card and strip empty paragraph artifacts
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+20. Commit: cefd0a3
+    Created Date: 2026-09-12 13:20:26 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: fix(architecture): unify article template, center layout, eliminate dark text, remove shop leaks, and enforce generator idempotence
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+21. Commit: 237c681
+    Created Date: 2026-09-12 11:51:16 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: fix(articles): support dual property bindings and defensive normalization for 281 articles library rendering
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+22. Commit: fd22995
+    Created Date: 2026-09-12 11:06:11 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: feat: complete quality, readability, typography, seo and content audit pass across all 281 articles
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+23. Commit: 8d0bdd5
+    Created Date: 2026-09-12 03:40:35 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: fix: normalize image URLs across category hubs and replace external unsplash links
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+24. Commit: 3255c0c
+    Created Date: 2026-09-12 03:31:42 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: feat: final production closure - complete media recovery (574 assets), zero shop links, 410 shop rule, single H1 heading hierarchy, all legal pages, 296 valid sitemap URLs
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+25. Commit: c4cc533
+    Created Date: 2026-09-12 02:38:22 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: feat: complete recovery and reconciliation of 281 Sanatan Dharma articles, build /articles master library, exclude cricket, update sitemap and search
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+26. Commit: 6d13f1f
+    Created Date: 2026-09-12 02:06:37 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: Fix broken links on homepage and dev katha
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+27. Commit: 05ba65f
+    Created Date: 2026-09-12 02:04:36 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: Fix 404s by decoding percent-encoded filenames to Unicode
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+28. Commit: c547605
+    Created Date: 2026-09-12 01:28:30 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: Final content sweep and legal pages
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+29. Commit: b9a1d9a
+    Created Date: 2026-09-12 01:15:45 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: Final SEO, Security Hardening, and Cleanup
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+30. Commit: 18eb1e9
+    Created Date: 2026-09-12 00:57:18 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: Restore remaining 284 articles
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+31. Commit: 596734f
+    Created Date: 2026-09-12 00:36:52 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: Fix all remaining dead article links globally and bump SW cache
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+32. Commit: 913fd0a
+    Created Date: 2026-09-12 00:22:09 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: Update homepage links to restored articles
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+33. Commit: 7a05297
+    Created Date: 2026-09-12 00:18:04 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: Restored 3 articles from DB backup and removed maintenance mode
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+34. Commit: 5f69c55
+    Created Date: 2026-09-11 21:49:09 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: Enable maintenance mode
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+35. Commit: affd7c4
+    Created Date: 2026-09-11 21:06:15 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: Removed unused py script and temp html files
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+36. Commit: d117892
+    Created Date: 2026-09-11 20:54:36 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: Restore original category images
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+37. Commit: 8377e6c
+    Created Date: 2026-09-11 20:52:20 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: Restore theme-premium assets
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+38. Commit: c5c0c5b
+    Created Date: 2026-09-11 20:39:42 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: Final static migration: Removed Hostinger dependencies, optimized images, added local assets
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+39. Commit: f1cd119
+    Created Date: 2026-09-11 18:27:09 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: Fix Topbar UI, JS performance, inject Panchang and Rashifal widgets statically
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+40. Commit: 86e6c4d
+    Created Date: 2026-09-11 15:10:06 +0400
+    Environment: Production (Branch: main)
+    Status: Ready
+    Alias Status: Unaliased / Superseded by commit a315f38
+    Commit Message: feat: initial clean static site deployment
+    Reason Safe to Delete: Superseded intermediate static build; full commit preserved in GitHub.
+    Estimated Storage Benefit: ~450 MB - 864 MB
+
+--------------------------------------------------------------------------------
+TOTAL CANDIDATES PROPOSED FOR DELETION: 40 deployments
+ESTIMATED CUMULATIVE STORAGE RECOVERY: ~16.5 GB – 19.0 GB
+PROJECTED DEPLOYMENT STORAGE AFTER CLEANUP: ~2.5 GB – 4.5 GB / 10 GB (HEALTHY / IN LIMIT)
+--------------------------------------------------------------------------------
