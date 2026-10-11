@@ -8,7 +8,7 @@
   <link rel="icon" href="/assets/images/cropped-cropped-BHAKTI-AMRIT-SANATAN-LOGO-32x32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="/styles/main.css">
   <style>
     .reading-progress-bar { position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#f59e0b,#ea580c);z-index:9999; }
 
@@ -383,56 +383,36 @@
 
   </div>
 
-  <!-- RIGHT: Donation Form -->
+  <!-- RIGHT: Voluntary Seva & Editorial Desk Contact -->
   <div>
-    <div class="donate-form-card reveal">
-      <h2 class="donate-form-title">🙏 Make a Donation</h2>
-      <p class="donate-form-subtitle">दान करें — हर एक रुपया मायने रखता है</p>
+    <div class="donate-form-card reveal" style="text-align:center;">
+      <div style="font-size:2.8rem;margin-bottom:12px;" aria-hidden="true">🪔</div>
+      <h2 class="donate-form-title">स्वैच्छिक धर्म सेवा</h2>
+      <p class="donate-form-subtitle">Voluntary Dharma Seva &amp; Support</p>
 
-      <div class="amount-grid">
-        <button class="amount-btn donate-amount-btn" data-amount="51">₹51<small>Basic Support</small></button>
-        <button class="amount-btn donate-amount-btn selected" data-amount="101">₹101<small>Popular</small></button>
-        <button class="amount-btn donate-amount-btn" data-amount="251">₹251<small>Generous</small></button>
-        <button class="amount-btn donate-amount-btn" data-amount="501">₹501<small>Patron</small></button>
-        <button class="amount-btn donate-amount-btn" data-amount="1001">₹1001<small>Champion</small></button>
-        <button class="amount-btn donate-amount-btn" data-amount="2100">₹2100<small>Mahadaani</small></button>
+      <div style="text-align:left;color:rgba(255,255,255,0.85);font-size:0.92rem;line-height:1.8;margin:20px 0;padding:18px;background:rgba(255,255,255,0.04);border-radius:var(--radius-md);border:1px solid rgba(245,158,11,0.2);">
+        <p style="margin-bottom:12px;">
+          <strong>भक्ति अमृत सनातन</strong> एक गैर-व्यावसायिक, आध्यात्मिक ज्ञान मंच है। हमारा ध्येय संपूर्ण सनातन साहित्य, वैदिक मंत्र, श्रीमद्भगवद्गीता और नित्य पूजा पद्धतियों को प्रत्येक श्रद्धालु तक निःशुल्क पहुंचाना है।
+        </p>
+        <p style="margin-bottom:0;">
+          वर्तमान में वेबसाइट पर कोई स्वचालित ऑनलाइन पेमेंट गेटवे सक्रिय नहीं है। यदि आप तकनीकी रखरखाव, सर्वर संसाधनों अथवा धर्म-शोध में स्वैच्छिक योगदान देना चाहते हैं, तो कृपया हमारे संपादकीय डेस्क से संपर्क करें।
+        </p>
       </div>
 
-      <div class="donate-input-group">
-        <label for="donate-custom">Custom Amount (₹)</label>
-        <input class="donate-input" type="number" id="donate-custom" ="Enter custom amount" min="1" value="101">
-      </div>
-      <div class="donate-input-group">
-        <label for="donate-name">Your Name</label>
-        <input class="donate-input" type="text" id="donate-name" ="Devotee's name">
-      </div>
-      <div class="donate-input-group">
-        <label for="donate-message">Message (Optional)</label>
-        <textarea class="donate-input" id="donate-message" ="Your blessings, prayers, or message..." rows="3" style="resize:vertical;"></textarea>
+      <div style="margin:24px 0;">
+        <div style="font-size:0.82rem;color:var(--clr-text-muted);margin-bottom:6px;">आधिकारिक संपादकीय संपर्क:</div>
+        <div style="font-family:var(--font-sans);font-weight:700;color:var(--clr-gold);font-size:1.05rem;word-break:break-all;">
+          <a href="mailto:mithileshsanjay@gmail.com" style="color:var(--clr-gold);text-decoration:underline;">mithileshsanjay@gmail.com</a>
+        </div>
       </div>
 
       <a class="donate-submit-btn" href="/contact" style="text-decoration:none;">
-        🙏 सहयोग हेतु संपर्क करें (Contact for Seva)
+        ✉️ संपादकीय डेस्क से संपर्क करें (Contact Desk)
       </a>
 
-      <div class="payment-methods" style="margin-top:16px;">
-        <span class="payment-badge">UPI</span>
-        <span class="payment-badge">PhonePe</span>
-        <span class="payment-badge">Google Pay</span>
-        <span class="payment-badge">Net Banking</span>
-        <span class="payment-badge">Cards</span>
-      </div>
-      <p style="font-size:0.72rem; color:var(--clr-text-faint); text-align:center; margin-top:12px;">
-        🔒 Secure donation. Your information is protected.
+      <p style="font-size:0.75rem; color:var(--clr-text-muted); text-align:center; margin-top:16px; line-height:1.5;">
+        समस्त लेख, मंत्र एवं स्तोत्र सभी सनातन प्रेमियों के लिए सदैव निःशुल्क उपलब्ध हैं।
       </p>
-    </div>
-
-    <!-- UPI Direct -->
-    <div class="upi-card reveal">
-      <p style="font-size:0.82rem; color:var(--clr-text-muted); margin-bottom:12px;">Or donate directly via UPI:</p>
-      <div class="upi-id">bhaktiamritsanatan@upi</div>
-      <p style="font-size:0.78rem; color:var(--clr-text-faint);">Scan with any UPI app — Google Pay, PhonePe, Paytm</p>
-      <div style="padding:16px;background:rgba(245,158,11,0.06);border-radius:12px;border:1px solid rgba(245,158,11,0.2);margin-top:12px;"><p style="font-size:0.82rem;color:var(--clr-text-muted);margin:0;">संस्थागत सहयोग अथवा परामर्श हेतु कृपया आधिकारिक ईमेल पर संपर्क करें:<br><strong style="color:var(--clr-gold);">contact@bhaktiamritsanatan.com</strong></p></div>
     </div>
   </div>
 
